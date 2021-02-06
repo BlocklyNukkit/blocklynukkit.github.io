@@ -1,0 +1,18 @@
+{
+    "plugins": [
+        "highlight",
+        "copy-code",
+        "comment",
+        "image-zoom",
+        "flow",
+        "video"
+    ],
+    "pluginsConfig": {
+        "highlight": {
+            "defaultLanguage": "javascript"
+        },
+        "theme-default": {
+            "auto_open": true
+        }
+    }
+}
