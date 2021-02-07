@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # YML存储
 [TOC]
 我们通常会使用yml来存储数据

@@ -1,6 +1,8 @@
+---
+layout: default
+toc: true
+---
 # JSON使用
-[TOC]
-[TOC]
 在本章节中，笔者将为您介绍如何灵活的运用JSON。本章[参考资料]([https://www.runoob.com/json](https://www.runoob.com/json))
 ## 教程
 ### JSON语法

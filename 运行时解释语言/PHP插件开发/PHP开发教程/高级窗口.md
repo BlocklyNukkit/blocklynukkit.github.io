@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # 高级窗口
 [toc]
 

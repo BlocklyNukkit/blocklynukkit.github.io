@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # HelloWorld
 [toc]
 

@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # 创建命令
 [toc]
 ## 什么是命令

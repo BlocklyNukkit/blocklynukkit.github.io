@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # GameAPI基对象详解
 [TOC]
 ## GameAPI基对象

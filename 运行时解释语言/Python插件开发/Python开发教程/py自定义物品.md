@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # 自定义物品
 [toc]
 ## 创建一个木棍

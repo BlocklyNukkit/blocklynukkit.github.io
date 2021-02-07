@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # algorithm基对象详解
 [toc]
 ## algorithm基对象

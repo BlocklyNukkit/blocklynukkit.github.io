@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # Hello World!
 [toc]
 ## 创建你的第一个插件

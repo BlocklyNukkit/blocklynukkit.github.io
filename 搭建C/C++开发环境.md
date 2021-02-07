@@ -1,5 +1,8 @@
+---
+layout: default
+toc: true
+---
 # 搭建C/C++开发环境
-[toc]
 本节中笔者将带您搭建开发C/C++开发服务器插件的必须环境
 ## 支持C/C++插件的服务端
 默认情况下，nukkit系列服务器仅支持java编写的插件，C/C++插件需要使用**BlocklyNukkit**来植入nukkit服务端中进行运行。

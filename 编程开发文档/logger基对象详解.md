@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # logger基对象详解
 [toc]
 ## logger基对象

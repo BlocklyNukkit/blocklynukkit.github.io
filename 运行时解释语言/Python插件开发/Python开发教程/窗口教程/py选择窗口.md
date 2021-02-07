@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # 选择窗口
 [TOC]
 
