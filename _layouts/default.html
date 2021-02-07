@@ -9,8 +9,10 @@
 <div class="wrapper">
     <section>
         <div id="title">
-            <h1>{{ site.title | default: "BlocklyNukkit WIKI" }}</h1>
-            <p>{{ site.description | default: "这里是BN百科" }}</p>
+            <h1>{{ site.title | default: site.github.repository_name }}</h1>
+            <p>{{ site.description | default: site.github.project_tagline }}</p>
+            <li class="downloads"><a href="{{ site.github.zip_url }}">ZIP</a></li>
+            <li class="downloads"><a href="{{ site.github.tar_url }}">TAR</a></li>
         </div>
         <article class="article">
             {{ content }}
