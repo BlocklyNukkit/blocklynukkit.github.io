@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # 自定义物品

@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # JSON使用

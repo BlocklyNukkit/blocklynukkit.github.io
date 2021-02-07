@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # Lua插件开发  

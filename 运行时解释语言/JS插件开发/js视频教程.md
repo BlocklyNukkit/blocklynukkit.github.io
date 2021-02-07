@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # 视频教程 JS

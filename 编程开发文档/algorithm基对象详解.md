@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # algorithm基对象详解

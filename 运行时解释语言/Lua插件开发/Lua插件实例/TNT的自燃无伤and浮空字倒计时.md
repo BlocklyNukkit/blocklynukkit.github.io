@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # **TNT的自燃无伤and浮空字倒计时**

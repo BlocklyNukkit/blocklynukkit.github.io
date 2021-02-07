@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # JS插件开发  
