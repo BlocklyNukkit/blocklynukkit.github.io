@@ -1,5 +1,4 @@
 # API环境文档
-[toc]
 >[danger]  此文档中描述的API仍在未被确定，它们有可能被随时更改
 
 >[info] 请前往本项目[github仓库](https://github.com/Superice666/BlocklyNukkit)或qq群953752196以确认状态或提出建议

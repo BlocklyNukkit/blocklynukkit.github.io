@@ -4,7 +4,6 @@ toc: true
 ---
 # 自动寻路NPC
 
-[TOC]
 
 ```python
 # -*- coding: UTF-8 -*-

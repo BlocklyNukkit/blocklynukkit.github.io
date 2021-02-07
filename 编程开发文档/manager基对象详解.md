@@ -3,7 +3,6 @@ layout: default
 toc: true
 ---
 # manager基对象详解
-[toc]
 
 ## manager基对象
 manager基对象是进行基本操作的基对象，内含很多nk基础功能和便捷功能

@@ -3,7 +3,6 @@ layout: default
 toc: true
 ---
 # Hello World!
-[toc]
 ## 创建你的第一个插件
 创建一个插件十分简单，只需要新建一个python文件即可，后缀名为 .py
 本章我们将制作一个亘古不变的入门插件，它的功能为在服务器启动的时候输出一句Hello Wolrd!

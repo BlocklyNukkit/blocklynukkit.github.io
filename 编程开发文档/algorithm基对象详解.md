@@ -3,7 +3,6 @@ layout: default
 toc: true
 ---
 # algorithm基对象详解
-[toc]
 ## algorithm基对象
 algorithm基对象是bn封装的算法，用于简化开发流程提升效率
 ## algorithm方法一览

@@ -3,7 +3,6 @@ layout: default
 toc: true
 ---
 # **TNT的自燃无伤and浮空字倒计时**
-[TOC]
 ## **概述**
 Lua开发实例，TNT的自燃无伤and浮空字倒计时
 ## **代码**

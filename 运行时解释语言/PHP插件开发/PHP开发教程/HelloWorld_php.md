@@ -3,7 +3,6 @@ layout: default
 toc: true
 ---
 # HelloWorld
-[toc]
 
 我们创建一个文件`Helloworld.php`
 ```
