@@ -4,6 +4,7 @@ sass:
 defaults:
   - values:
       toc: false
+      layout: default
 # Build settings
 plugins:
   - jekyll-feed
