@@ -3,7 +3,6 @@ layout: default
 toc: true
 ---
 # 简单窗口
-[TOC]
 
 代码：
 -----

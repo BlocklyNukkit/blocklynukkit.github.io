@@ -1,5 +1,4 @@
 # 将bn插件编译为jar包
-[TOC]
 *****
 blocklynukkit为开发者提供了将js、py或lua编译为依赖于blocklynukkit.jar解释器作为依赖库的单独jar包的功能，只需要在在线编译器上提交js、py或lua文件，即可在线转为jar，方便分发
 >[success] 在线编译器 [https://tools.blocklynukkit.com/jar.html](http://tools.blocklynukkit.com/jar.html)

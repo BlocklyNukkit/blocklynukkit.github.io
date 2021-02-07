@@ -3,7 +3,6 @@ layout: default
 toc: true
 ---
 # YML存储
-[TOC]
 我们通常会使用yml来存储数据
 **在JavaScript中更推荐使用JSON存储**
 在使用前，要先创建，并设置参数

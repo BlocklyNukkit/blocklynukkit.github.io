@@ -3,7 +3,6 @@ layout: default
 toc: true
 ---
 # blockitem基对象详解
-[toc]
 
 ## blockitem基对象
 blockitem基对象是用来操作方块，环境，物品与合成的模块

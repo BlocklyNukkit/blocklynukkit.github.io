@@ -3,7 +3,6 @@ layout: default
 toc: true
 ---
 # logger基对象详解
-[toc]
 ## logger基对象
 logger基对象是用来在控制台进行输出的基对象，于print(python)或console.log(js)不同，它会按照nk格式进行输出，而且效率更高
 

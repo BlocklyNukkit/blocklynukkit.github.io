@@ -3,7 +3,6 @@ layout: default
 toc: true
 ---
 # 插件包装和发布
-[toc]
 
 为什么要进行插件包装？
 ---

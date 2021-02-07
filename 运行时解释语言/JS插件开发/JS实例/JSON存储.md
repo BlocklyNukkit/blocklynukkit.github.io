@@ -3,7 +3,6 @@ layout: default
 toc: true
 ---
 # JSON存储
-[TOC]
 ~~~
 // 写入JSON为YML文件 -Start
 

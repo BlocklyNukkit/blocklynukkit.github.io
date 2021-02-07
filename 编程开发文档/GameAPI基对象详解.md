@@ -3,7 +3,6 @@ layout: default
 toc: true
 ---
 # GameAPI基对象详解
-[TOC]
 ## GameAPI基对象
 GameAPI是一个用于快速开发小游戏的库
 ## 创建一个游戏
