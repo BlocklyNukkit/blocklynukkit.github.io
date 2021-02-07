@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # PHP插件开发  

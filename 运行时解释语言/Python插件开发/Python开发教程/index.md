@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # Python开发教程

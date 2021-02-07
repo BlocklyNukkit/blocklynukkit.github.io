@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # Python插件开发  

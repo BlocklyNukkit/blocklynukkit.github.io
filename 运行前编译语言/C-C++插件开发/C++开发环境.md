@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # 搭建C/C++开发环境

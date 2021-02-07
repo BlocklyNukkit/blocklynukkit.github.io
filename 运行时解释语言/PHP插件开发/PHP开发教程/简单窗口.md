@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # 简单窗口
