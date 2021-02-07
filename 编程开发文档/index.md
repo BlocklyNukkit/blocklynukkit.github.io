@@ -1,5 +1,6 @@
 ---
-layout: sidebar
+layout: default
+toc: true
 ---
 # BlocklyNukkit 编程开发文档
  
