@@ -104,11 +104,11 @@ int main(){
 ```
 ### 6.编译运行
 编译你的插件，放到`./plugins/BlocklyNukkit`文件夹中。启动服务器。你会发现多了一个`myFiles`文件夹
-![](images/screenshot_1610514974463.png)
+![](../../images/screenshot_1610514974463.png)
 里面有我们的`test.txt`文件：
-![](images/screenshot_1610515015055.png)
+![](../../images/screenshot_1610515015055.png)
 内容也是我们所写入的：
-![](images/screenshot_1610515038053.png)
+![](../../images/screenshot_1610515038053.png)
 ### 举一反三：读文件
 经过了上面写文件的插件，我想你一定可以分析出这个读文件的示例C++代码的意思：
 ```
@@ -127,4 +127,4 @@ int main(){
 }
 ```
 编译运行后，输出如下：
-![](images/screenshot_1610548506980.png)
+![](../../images/screenshot_1610548506980.png)
