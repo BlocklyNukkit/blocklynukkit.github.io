@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # 运行时解释语言

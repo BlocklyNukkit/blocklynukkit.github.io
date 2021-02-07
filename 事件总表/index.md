@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 ## 什么是事件

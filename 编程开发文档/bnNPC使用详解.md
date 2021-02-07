@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # bnNPC使用详解

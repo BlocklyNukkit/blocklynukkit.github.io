@@ -1,4 +1,10 @@
+sass:
+  sass_dir: _sass
+#Default value
+defaults:
+  - values:
+      toc: false
+      layout: default
 # Build settings
 plugins:
   - jekyll-feed
-  - jekyll-toc

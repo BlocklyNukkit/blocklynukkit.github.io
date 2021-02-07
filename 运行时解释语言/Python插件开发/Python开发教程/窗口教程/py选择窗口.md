@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # 选择窗口

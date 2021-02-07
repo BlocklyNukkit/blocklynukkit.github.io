@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # py2k 和 py3k 有什么区别？(Jython和CPython有什么区别？)

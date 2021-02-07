@@ -1,5 +1,4 @@
 ---
-layout: default
 toc: true
 ---
 # YML存储
