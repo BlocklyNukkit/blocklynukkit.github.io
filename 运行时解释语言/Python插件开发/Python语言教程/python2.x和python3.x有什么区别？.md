@@ -13,7 +13,7 @@ def greeting(name: str) -> str:
 ~~~
 但很遗憾，直到python 2.7.13，官方仍然没有加入这个东西.
 倘若你直接把这段代码硬要塞入py2k的解释器的话，解释器会表示非常的"开心"：
-![](images/screenshot_1612527980926.png)
+![](../../../images/screenshot_1612527980926.png)
 
 2.Jython不支持多进程，也没有GIL
 ---
