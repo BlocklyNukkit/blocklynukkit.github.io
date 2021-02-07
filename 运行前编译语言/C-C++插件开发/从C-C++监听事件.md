@@ -36,7 +36,7 @@ int main(){
 }
 ```
 编译运行以上代码，进服，你会发现如下输出：
-![](images/screenshot_1610628629533.png)
+![](../../images/screenshot_1610628629533.png)
 ## 处理事件
 查阅事件总表时，你会在`PlayerJoinEvent`下面发现如下的函数声明：
 *   TextContainer getJoinMessage()
@@ -70,4 +70,4 @@ int main(){
 }
 ```
 编译运行结果如下：
-![](images/screenshot_1610629492585.png)
+![](../../images/screenshot_1610629492585.png)
