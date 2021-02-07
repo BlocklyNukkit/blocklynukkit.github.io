@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # Python插件开发  
 [TOC]
 ## 概述

@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # JS插件开发  
 [TOC]
 ## 概述

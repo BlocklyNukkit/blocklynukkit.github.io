@@ -1,6 +1,8 @@
+---
+layout: sidebar
+---
 # BlocklyNukkit 编程开发文档
-[toc]
-  
+ 
 ## 基对象
 
 ### 指代基对象

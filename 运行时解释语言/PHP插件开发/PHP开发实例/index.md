@@ -2,5 +2,4 @@
 layout: default
 toc: true
 ---
-# inventory基对象详解
-[toc]
+# PHP开发实例

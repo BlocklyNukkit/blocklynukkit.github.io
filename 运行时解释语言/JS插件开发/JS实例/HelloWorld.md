@@ -1,5 +1,8 @@
+---
+layout: default
+toc: true
+---
 # **Hello World**
-[TOC]
 无论是什么语言，最为基础的莫过于Hello World。Hello World想必大家也很熟悉。在本章节中，笔者将通过注释的方式来解释js代码。
 ## 代码
 ```

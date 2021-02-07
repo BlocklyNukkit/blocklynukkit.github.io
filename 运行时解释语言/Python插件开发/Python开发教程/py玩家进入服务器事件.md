@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # 玩家进入服务器事件
 [TOC]
 

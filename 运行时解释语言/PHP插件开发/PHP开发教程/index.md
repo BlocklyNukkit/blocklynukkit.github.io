@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # PHP开发教程
 [toc]
 这里是PHP编写bn插件的示例，您可以在此学习。

@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # blockitem基对象详解
 [toc]
 

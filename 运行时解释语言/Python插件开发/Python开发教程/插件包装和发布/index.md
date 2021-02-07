@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # 插件包装和发布
 [toc]
 

@@ -1,3 +1,7 @@
+---
+layout: default
+toc: true
+---
 # 需要更多帮助？
 [toc]
 
