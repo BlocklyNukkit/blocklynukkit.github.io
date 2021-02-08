@@ -1,0 +1,8 @@
+@media screen and (max-width:656px ) {
+	.gitBadgeAutoHide{
+		display: none;
+	}
+}
+@media screen and (min-width:657px ) {
+	.gitBadgeAutoHide{}
+}
