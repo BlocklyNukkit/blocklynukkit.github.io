@@ -12,6 +12,7 @@
             <p>这里是BN百科</p>
         </div>
         <article class="article">
+			{% include toc.html html=content %}
             {{ content }}
 			{%- include nav.html -%}
         </article>
