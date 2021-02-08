@@ -5,9 +5,7 @@
 
 {%- include header.html -%}
 
-<div id="summaryNav" class="sidenav">
-	<a href="javascript:void(0);" class="closebtn" onclick="closeNav()">&times;</a>
-</div>
+{%- include nav.html -%}
 
 <div class="wrapper" id="main">
     <section>
@@ -20,18 +18,6 @@
         </article>
     </section>
 </div>
-<script type="text/javascript">
-/*打开侧栏，修改侧栏宽度，主体左跨度、背景透明度*/
-function openNav() {
-	document.getElementById("summaryNav").style.width = "350px";
-	document.getElementById("main").style.marginLeft = "350px";
-}
-/*关闭侧栏，恢复原始侧栏宽度，主体左跨度、背景透明度*/
-function closeNav() {
-	document.getElementById("summaryNav").style.width = "0";
-	document.getElementById("main").style.marginLeft= "0";
-}
-</script>
 {% if page.toc %}
 <script>
     const content = document.querySelector(".article");
