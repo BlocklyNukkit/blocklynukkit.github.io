@@ -1,7 +1,7 @@
 <div id="summaryNav" style="position: fixed;left: 10px;top: 10vh;overflow-y:scroll;overflow-x:hidden;height:80vh;">
 	{%- for page in site.pages -%}
 		{%- if page.url == '/SUMMARY.html' -%}
-			{{page}}
+			{{page.content}}
 		{%- endif -%}
 	{%- endfor -%}
 </div>
