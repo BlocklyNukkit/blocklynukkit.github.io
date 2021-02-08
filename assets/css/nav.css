@@ -5,14 +5,12 @@
 
 .nobar::-webkit-scrollbar{ width: 0 !important }
  
-@media screen and (max-width:1200px ) {
+@media screen and (max-width:1320px ) {
 	.summaryNav{
-		text-align:center;
-		display: block;
 	}
 }
 
-@media screen and (min-width:1201px ) {
+@media screen and (min-width:1321px ) {
 	.summaryNav{
 		position: fixed;
 		left: 10px;
