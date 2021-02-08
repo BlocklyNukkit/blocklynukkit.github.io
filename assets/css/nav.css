@@ -1,9 +1,8 @@
 @charset "utf-8";
 /* CSS Document */
- 
-body {
-    font-family: "Lato", sans-serif;
-    transition: background-color .5s;
+
+.content::-webkit-scrollbar{
+　　 display:none;/*隐藏滚动条*/
 }
  
 /*侧边栏选择器*/
