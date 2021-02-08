@@ -1,7 +1,11 @@
 <div id="summaryNav" class="nobar summaryNav">
-	{%- for page in site.pages -%}
-		{%- if page.url == '/SUMMARY.html' -%}
-			{{page.content | replace_first: "SUMMARY", "目录"}}
+	<div id="summaryContent">
+		{%- if page.url != '/SUMMARY.html' -%}
+			{%- for tpage in site.pages -%}
+				{%- if tpage.url == '/SUMMARY.html' -%}
+					{{tpage.content | replace_first: "SUMMARY", "目录"}}
+				{%- endif -%}
+			{%- endfor -%}
 		{%- endif -%}
-	{%- endfor -%}
+	</div>
 </div>

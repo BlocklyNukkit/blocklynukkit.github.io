@@ -6,8 +6,7 @@
 .nobar::-webkit-scrollbar{ width: 0 !important }
  
 @media screen and (max-width:1320px ) {
-	.summaryNav{
-	}
+	.summaryNav{} /*小屏由js设置*/
 }
 
 @media screen and (min-width:1321px ) {

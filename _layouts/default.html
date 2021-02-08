@@ -13,11 +13,10 @@
         </div>
         <article class="article">
             {{ content }}
+			{%- include nav.html -%}
         </article>
     </section>
 </div>
-
-{%- include nav.html -%}
 
 {% if page.toc %}
 <script>
