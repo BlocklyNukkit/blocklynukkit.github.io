@@ -16,6 +16,9 @@
 			{%- unless page.url contains "javadoc" -%}
 				{% include toc.html html=content %}
 			{%- endunless -%}
+			{%- if page.url contains "javadoc" -%}
+				{% include toc.html html=content %}
+			{%- endif -%}
             {{ content }}
 			{%- include nav.html -%}
         </article>
