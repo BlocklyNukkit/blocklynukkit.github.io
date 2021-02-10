@@ -1,8 +1,7 @@
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<ul class="blockList">
+
 <li class="blockList"><a name="field.summary">
 <!--   -->
 </a>
