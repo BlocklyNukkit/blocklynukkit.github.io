@@ -13,7 +13,9 @@
         </div>
         <article class="article">
 			<p>章节导览</p>
-			{% include toc.html html=content %}
+			{%- unless page.url contains "javadoc" -%}
+				{% include toc.html html=content %}
+			{%- endunless -%}
             {{ content }}
 			{%- include nav.html -%}
         </article>
