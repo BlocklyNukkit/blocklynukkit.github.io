@@ -7,7 +7,7 @@ manager基对象是进行基本操作的基对象，内含很多nk基础功能�
 ## manager对象方法一览  
 *与编程开发文档同步于2020/8/12*  
 |方法名|参数|返回值|解释|  
-|-----|-----|-----|----|  
+|-|-|-|-|  
 |getFile|String dir,String filename|File-J|获取bn目录下dir文件夹的filename文件(可为不存在文件)|  
 |time|int second|String|将秒数转为时:分:秒字符串|  
 |createConfig|File-J file,int type|Config-J|在虚拟文件file处构建种类type(yaml==2)的配置文件|  

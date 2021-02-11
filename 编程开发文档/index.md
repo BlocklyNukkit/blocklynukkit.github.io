@@ -6,7 +6,7 @@ toc: true
 ### 指代基对象  
 指代基对象是指用来直接获取java对象的基对象，并不会内置在解释器里面，由解释器从nukkit动态获取  
 |对象名|解释|  
-|------|---|  
+|-|-|  
 |server|服务器对象<Server-J>|  
 |plugin|blocklynukkit自身<Plugin-J>|  
 |logger|控制台输出器实例<PluginLogger-J>|  
@@ -14,7 +14,7 @@ toc: true
 ### 功能基对象  
 功能基对象是指用来实现一定功能的基对象，在所有的服务器上这些基对象都是相同的，被内置在解释器里，封装了很多常用功能  
 |对象名|解释|  
-|------|---|  
+|-|-|  
 |manager|BN插件管理器|  
 |blockitem|方块与物品管理器对象|  
 |algorithm|算法管理器对象|  
@@ -85,7 +85,7 @@ toc: true
 > Array<*>代表一个都是\*类型的元素组成的数组,由于js与java的互操作问题,传参需要把js数组转换为java对象,比如向函数传入Array<Item-J>类型的参数需要使用Java.to(array,\'cn.nukkit.item.Item[]\')转换后才能传入,具体用法参见图形编辑器自动生成的代码  
 ### manager基对象  
 |方法名|参数|返回值|解释|  
-|-----|-----|-----|----|  
+|-|-|-|-|  
 |getFile|String dir,String filename|File-J|获取bn目录下dir文件夹的filename文件(可为不存在文件)|  
 |time|int second|String|将秒数转为时:分:秒字符串|  
 |createConfig|File-J file,int type|Config-J|在虚拟文件file处构建种类type(yaml==2)的配置文件|  
@@ -182,7 +182,7 @@ toc: true
 |requireMinVersion|String minVersion,String failMessage|void|检查bn解释器版本，如果太低停止运行并发出failMessage|  
 ### algorithm基对象  
 |方法名|参数|返回值|解释|  
-|-----|-----|-----|----|  
+|-|-|-|-|  
 |buildPositionfromPlayer|Player-J p|Position-J|获取玩家p的位置|  
 |buildPositionfromBlock|Block-J b|Position-J|获取方块b的位置|  
 |buildPositionfromEntity|Entity-J e|Position-J|获取实体e的位置|  
@@ -190,7 +190,7 @@ toc: true
 |forLinkedBlock|Position-J a,String callback|void|对于位置a相邻的所有同种方块的位置调用函数名callback函数(注入参数一个:Position-J p,当前位置)|  
 ### blockitem基对象  
 |方法名|参数|返回值|解释|  
-|-----|-----|-----|----|  
+|-|-|-|-|  
 |makeSound|Position-J pos,String s|void|在位置pos播放s对应的声音(跟原版命令类似,点击进入[声音列表](https://ci.opencollab.dev/job/NukkitX/job/Nukkit/job/master/javadoc/cn/nukkit/level/Sound.html)|  
 |makeExpBall|Position-J pos,int exp|void|在位置pos生成包含exp点经验值的经验球|  
 |makeDropItem|Position-J pos,Item-J i|void|在位置pos生成与i相同的物品堆|  
@@ -233,7 +233,7 @@ toc: true
 |registerSimpleItem|int id,String name|void|注册简单的物品堆，只能覆写教育版物品|  
 ### database基对象  
 |方法名|参数|返回值|解释|  
-|-----|-----|-----|----|  
+|-|-|-|-|  
 |databaseOpen|String url,String username,String password,String table|void|打开与sql服务器的连接|  
 |databaseUpdate|String stt, Array<E+> objs|void|使用sql语句stt,语句参数为objs更新数据库|  
 |databaseQuery|String stt,String col,Array<E+> objs|Array|使用sql语句stt,参数objs,查询第col列数据|  
@@ -250,7 +250,7 @@ toc: true
 |memoryStorage.getKeys|void|Array<String>|内存共享存储管理器：获取所有的key|  
 ### entity基对象  
 |方法名|参数|返回值|解释|  
-|-----|-----|-----|----|  
+|-|-|-|-|  
 |getDropItemStack|EntityItem-J/Entity-J e|Item-J|获取掉落物实体e的物品堆|  
 |removeEntity|Entity-J e|void|移除生物e|  
 |setEntityName|Entity-J e,String name|void|设置e的名称为name|  
@@ -300,7 +300,7 @@ toc: true
 |lookAt|Entity e,Position pos|void|让实体e看向pos处|  
 ### inventory基对象  
 |方法名|参数|返回值|解释|  
-|-----|-----|-----|----|  
+|-|-|-|-|  
 |addInv|boolean d, Array<Item-J> i,String n|Inventory-J|构建虚拟标题n的物品栏,d控制是否大箱子,i是物品栏的物品列表|  
 |getItemsInInv|Inventory-J inv|Array|获取inv的所有物品|  
 |showFakeInv|Player-J player,Inventory-J inv|void|向玩家player展示物品栏inv|  
@@ -328,7 +328,7 @@ toc: true
 |getInventorySlot|Inventory-J inv,int slot|Item-J|获取物品栏inv第slot个槽位的物品对象|  
 ### world基对象  
 |方法名|参数|返回值|解释|  
-|-----|-----|-----|----|  
+|-|-|-|-|  
 |genLevel|String name,int seed,String gen|void|生成名称name种子seed,种类为gen(FLAT,NETHER,VOID,NORMAL,OCEAN,SKYLAND)的世界|  
 |loadLevel|String s|void|强制加载名称为s的世界|  
 |getServerLevels|void|Array<Level-J>|获取服务器的所有世界|  
@@ -341,7 +341,7 @@ toc: true
 |drawPic|Position pos1,Position pos2,String img,int faceData|void|从pos1到pos2绘制img路径上的图片，faceData指定物品展示框的朝向，pos1和pos2必须在同一垂直面上|  
 ### notemusic基对象  
 |方法名|参数|返回值|解释|  
-|-----|-----|-----|----|  
+|-|-|-|-|  
 |getSongFromFile|String name|Song-J|从notemusic文件夹的name文件解析红石音乐|  
 |getSongTitle|Song-J song|String|获取歌曲的标题|  
 |getSongDescription|Song-J song|String|获取歌曲的描述|  
@@ -361,7 +361,7 @@ toc: true
 |setHornStatus|HornSongPlayer horn,boolean isplaying|void|设置horn的播放状态|  
 ### window基对象  
 |方法名|参数|返回值|解释|  
-|-----|-----|-----|----|  
+|-|-|-|-|  
 |updateAllScoreBoard|String title,String text|void|给所有玩家更新计分板信息,多行用\';\'连接,"\\"可转义|  
 |updateOneScoreBoard|String title,String text,Player p|void|给玩家p更新计分板信息,多行用\';\'连接,"\\"可转义|  
 |getSimpleWindowBuilder|String title,String context|Simple-J|构建标题title,内容文字为context(非按钮)的简单窗口管理器|  
@@ -388,7 +388,7 @@ toc: true
 |getStyledSwingWindow|String title,int width,int height,String iconPath|JFrame|根据之前设置的样式获取Swing窗口对象，iconPath为null或""将使用bnLOGO替代|  
 ### particle基对象  
 |方法名|参数|返回值|解释|  
-|-----|-----|-----|----|  
+|-|-|-|-|  
 |drawCircle|Position-J pos,double radius,int pid,double sep|void|在pos处以radius为半径水平用粒子ID为pid的粒子以每隔sep格放置一个的距离绘制圆|  
 |drawLine|Position-J pos1,Position-J pos2,double sep,int pid|void|从pos1到pos2(必须同世界)每隔sep格放置一个粒子ID为pid的粒子来绘制直线|  
 |drawFireWork|Position-J pos,int colornum,boolean flick,boolean trail,int shape,int second|void|在pos处生成一个飞行时间为second的烟花,colornum指定颜色,flick指定是否闪烁,trail指定是否留有轨迹,shape指定形状,详见本节附表|  
@@ -485,7 +485,7 @@ toc: true
 js可以这样无缝连接java,这为bn的js开服提供了强大的类库支持  
 更多js与java交互示例,详见CSDN的[一篇教程](https://blog.csdn.net/ASDQWE09876/article/details/96871968?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1)  
 |方法名|参数|返回值|解释|  
-|-----|-----|-----|----|  
+|-|-|-|-|  
 |from|<E+> val|<E+> var|将java对象val转为合适的js数据var,如将java数组转为js数组|  
 |to|<E+> var,String package|<E+> val|将js变量var转为package包名对应的java类对象(包名后加[]可转为java数组)|  
 |type|String package|<E+>-C|获取package对应包名的java类(不是对象是类)|  
@@ -575,7 +575,7 @@ js可以这样无缝连接java,这为bn的js开服提供了强大的类库支持
 - void warning(String s)  
 ### BNNPC使用方法  
 |方法名|参数|返回值|解释|  
-|-----|-----|-----|----|  
+|-|-|-|-|  
 |start|void|void|启动这个npc实体|  
 |turnRound|double yaw|void|让实体水平视角旋转yaw度|  
 |headUp|double pitch|void|让实体垂直视角旋转pitch度|  

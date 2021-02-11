@@ -7,7 +7,7 @@ blockitem基对象是用来操作方块，环境，物品与合成的模块
 ## blockitem方法一览  
 *与编程开发文档同步与2020/8/12*  
 |方法名|参数|返回值|解释|  
-|-----|-----|-----|----|  
+|-|-|-|-|  
 |makeSound|Position-J pos,String s|void|在位置pos播放s对应的声音(跟原版命令类似)|  
 |makeExpBall|Position-J pos,int exp|void|在位置pos生成包含exp点经验值的经验球|  
 |makeDropItem|Position-J pos,Item-J i|void|在位置pos生成与i相同的物品堆|  

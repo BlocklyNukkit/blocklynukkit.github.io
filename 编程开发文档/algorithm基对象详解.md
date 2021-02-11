@@ -6,7 +6,7 @@ toc: true
 algorithm基对象是bn封装的算法，用于简化开发流程提升效率  
 ## algorithm方法一览  
 |方法名|参数|返回值|解释|  
-|-----|-----|-----|----|  
+|-|-|-|-|  
 |buildPositionfromPlayer|Player-J p|Position-J|获取玩家p的位置|  
 |buildPositionfromBlock|Block-J b|Position-J|获取方块b的位置|  
 |buildPositionfromEntity|Entity-J e|Position-J|获取实体e的位置|  
