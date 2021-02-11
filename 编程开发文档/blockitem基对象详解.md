@@ -6,46 +6,46 @@ toc: true
 blockitem基对象是用来操作方块，环境，物品与合成的模块  
 ## blockitem方法一览  
 *与编程开发文档同步与2020/8/12*  
-|方法名|参数|返回值|解释|  
-|-|-|-|-|  
-|makeSound|Position-J pos,String s|void|在位置pos播放s对应的声音(跟原版命令类似)|  
-|makeExpBall|Position-J pos,int exp|void|在位置pos生成包含exp点经验值的经验球|  
-|makeDropItem|Position-J pos,Item-J i|void|在位置pos生成与i相同的物品堆|  
-|getBlock|Position-J pos|Block-J|获取位置pos的方块|  
-|getLevelEntities|Position-J pos|Array|获取位置所在世界的实体列表|  
-|getLevelPlayers|Position-J pos|Array|获取位置所在世界的玩家列表|  
-|getIsSunny|Position-J pos|boolean|获取位置所在世界是否为晴天|  
-|setLevelWeather|Position-J p,String m|void|设置p所在世界天气为m("clear","thunder","rain")|  
-|isDay|Position-J pos|boolean|获取pos所在世界是否为白天|  
-|setBlock|Position-J p,Block-J b,boolean par|void|设置p处方块为b,par指定是否生成破坏粒子|  
-|getItemInHand|Player-J p|Item-J|获取玩家p手中的物品堆|  
-|setItemInHand|Player-J p,Item-J i|void|设置玩家p手上的物品为i|  
-|addItemToPlayer|Player-J p,Item-J i|void|向玩家p背包添加物品i|  
-|hasItemToPlayer|Player-J p,Item-J i|boolean|检查玩家p是否有物品i|  
-|removeItemToPlayer|Player-J p,Item-J i|void|移除玩家p背包里的物品i|  
-|getDropItems|Position-J pos|Array|获取pos所在世界的掉落物实体数组|  
-|getLevelName|Level-J l|String|获取世界l的的名称|  
-|buildBlock|int id,int data|Block-J|构建ID为id，数据值data的方块|  
-|buildItem|int id,int data,int count|Item-J|构建ID为id，数据值为data，数量为count的物品堆|  
-|buildItemFromBlock|Block-J block|Item-J|将方块转为物品|  
-|getItemLore|Item-J item|String|获取物品item的lore(多行lore用";"连接)|  
-|addToCreativeBar|Item-J item|void|把物品堆添加到创造物品栏|  
-|setItemLore|Item-J item,String str|void|设置物品item的lore为str(多行lore用";"连接)|  
-|addShapelessCraft|Array\<Item-J> i,Item-J o|void|添加无序合成,原料列表i,产物o|  
-|addFurnaceCraft|Item-J i,Item-J o|void|添加熔炉配方,原料i,产物o|  
-|addShapedCraft|Array\<String> shape,Item-J output,Array\<Item-J> append|void|添加有序合成(详见图形编辑器)|  
-|addItemEnchant|Item-J item,int i,int l|void|给item添加ID为i,等级为l的附魔(可去wiki查找id)|  
-|isSame|Item i1,Item i2,boolean d,boolean n|boolean|检测i1和i2是否相同(d是否毕竟数据值,n是否比较nbt,数量不会比较)|  
-|addBNCraft|String t,String d,Arryat\<Item-J> i,Array\<Item-J> o,int de,double p|void|添加一个种类为t,描述为d,原材料为i,产物为o,合成用时de,成功率p(0-1)的bn高级合成|  
-|openBNCraftForPlayer|String type, Player-J player|void|给玩家打开种类的type的合成高级合成ui|  
-|PositionMove|Position pos,double x,double y,double z|void|让pos偏移xyz|  
-|getNBTString|Item-J item|String|获取物品堆item的nbt字符串|  
-|putinNBTString|Item-J item,String nbt|void|向item注入NBT字符串nbt|  
-|getItemEnchant|Item-J item|Array\<Enchantment-J>|获取item的附魔列表|  
-|getEnchantID|Enchantment-J enc|int|获取附魔对象enc的附魔id|  
-|getEnchantLevel|Enchantment-J enc|int|获取附魔对象enc的附魔等级|  
-|setItemColor|Item-J item,int r,int g,int b|void|设置物品item的自定义颜色|  
-|setItemUnbreakable|Item item,boolean unbreakable|void|设置物品item是否不可破坏|  
+|方法名|参数|返回值|解释|
+|-|-|-|-|
+|makeSound|Position-J pos,String s|void|在位置pos播放s对应的声音(跟原版命令类似)|
+|makeExpBall|Position-J pos,int exp|void|在位置pos生成包含exp点经验值的经验球|
+|makeDropItem|Position-J pos,Item-J i|void|在位置pos生成与i相同的物品堆|
+|getBlock|Position-J pos|Block-J|获取位置pos的方块|
+|getLevelEntities|Position-J pos|Array|获取位置所在世界的实体列表|
+|getLevelPlayers|Position-J pos|Array|获取位置所在世界的玩家列表|
+|getIsSunny|Position-J pos|boolean|获取位置所在世界是否为晴天|
+|setLevelWeather|Position-J p,String m|void|设置p所在世界天气为m("clear","thunder","rain")|
+|isDay|Position-J pos|boolean|获取pos所在世界是否为白天|
+|setBlock|Position-J p,Block-J b,boolean par|void|设置p处方块为b,par指定是否生成破坏粒子|
+|getItemInHand|Player-J p|Item-J|获取玩家p手中的物品堆|
+|setItemInHand|Player-J p,Item-J i|void|设置玩家p手上的物品为i|
+|addItemToPlayer|Player-J p,Item-J i|void|向玩家p背包添加物品i|
+|hasItemToPlayer|Player-J p,Item-J i|boolean|检查玩家p是否有物品i|
+|removeItemToPlayer|Player-J p,Item-J i|void|移除玩家p背包里的物品i|
+|getDropItems|Position-J pos|Array|获取pos所在世界的掉落物实体数组|
+|getLevelName|Level-J l|String|获取世界l的的名称|
+|buildBlock|int id,int data|Block-J|构建ID为id，数据值data的方块|
+|buildItem|int id,int data,int count|Item-J|构建ID为id，数据值为data，数量为count的物品堆|
+|buildItemFromBlock|Block-J block|Item-J|将方块转为物品|
+|getItemLore|Item-J item|String|获取物品item的lore(多行lore用";"连接)|
+|addToCreativeBar|Item-J item|void|把物品堆添加到创造物品栏|
+|setItemLore|Item-J item,String str|void|设置物品item的lore为str(多行lore用";"连接)|
+|addShapelessCraft|Array\<Item-J> i,Item-J o|void|添加无序合成,原料列表i,产物o|
+|addFurnaceCraft|Item-J i,Item-J o|void|添加熔炉配方,原料i,产物o|
+|addShapedCraft|Array\<String> shape,Item-J output,Array\<Item-J> append|void|添加有序合成(详见图形编辑器)|
+|addItemEnchant|Item-J item,int i,int l|void|给item添加ID为i,等级为l的附魔(可去wiki查找id)|
+|isSame|Item i1,Item i2,boolean d,boolean n|boolean|检测i1和i2是否相同(d是否毕竟数据值,n是否比较nbt,数量不会比较)|
+|addBNCraft|String t,String d,Arryat\<Item-J> i,Array\<Item-J> o,int de,double p|void|添加一个种类为t,描述为d,原材料为i,产物为o,合成用时de,成功率p(0-1)的bn高级合成|
+|openBNCraftForPlayer|String type, Player-J player|void|给玩家打开种类的type的合成高级合成ui|
+|PositionMove|Position pos,double x,double y,double z|void|让pos偏移xyz|
+|getNBTString|Item-J item|String|获取物品堆item的nbt字符串|
+|putinNBTString|Item-J item,String nbt|void|向item注入NBT字符串nbt|
+|getItemEnchant|Item-J item|Array\<Enchantment-J>|获取item的附魔列表|
+|getEnchantID|Enchantment-J enc|int|获取附魔对象enc的附魔id|
+|getEnchantLevel|Enchantment-J enc|int|获取附魔对象enc的附魔等级|
+|setItemColor|Item-J item,int r,int g,int b|void|设置物品item的自定义颜色|
+|setItemUnbreakable|Item item,boolean unbreakable|void|设置物品item是否不可破坏|
 ## 方法详解  
 * void blockitem.makeSound(pos,s)  
     *在位置pos播放s对应的声音(跟原版命令类似)*  

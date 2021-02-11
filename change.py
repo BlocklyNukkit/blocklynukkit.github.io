@@ -10,14 +10,15 @@ def walker(where:str,isfiler:bool = True):
             res = os.path.join(root,file)
             if os.path.isfile(res) and isfiler:yield res
             elif os.path.isdir(res) and not isfiler:yield res
-for file in walker('.'):
-    if fnmatch(file,'*.md'):
-        print(file)
-        '''
-        with open(file,'r',True,'utf-8') as f:buffer=f.read()
-        #buffer = sub(r'\|\s+(\r\n|\r|\n)',r'|\1',buffer)
-        #buffer = sub(r'\s+(\r\n|\r|\n)',r'  \1',buffer)
-        #buffer = sub(r'\s(\r\n|\r|\n)',r'  \1',buffer)
-        #buffer = sub(r'\[info\]',r'',buffer)
-        with open(file,'w',True,'utf-8') as f:f.write(buffer)
-        '''
+if __name__ == '__main__':
+    for file in walker('.'):
+        if fnmatch(file,'*.md'):
+            print(file)
+            '''
+            with open(file,'r',True,'utf-8') as f:buffer=f.read()
+            #buffer = sub(r'\|\s+(\r\n|\r|\n)',r'|\1',buffer)
+            #buffer = sub(r'\s+(\r\n|\r|\n)',r'  \1',buffer)
+            #buffer = sub(r'\s(\r\n|\r|\n)',r'  \1',buffer)
+            #buffer = sub(r'\[info\]',r'',buffer)
+            with open(file,'w',True,'utf-8') as f:f.write(buffer)
+            '''
