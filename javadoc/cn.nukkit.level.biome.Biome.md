@@ -1,7 +1,6 @@
 <div class="summary">
 <ul class="blockList">
-<li class="blockList">
-
+<li class="blockList">  
 <li class="blockList"><a name="field.summary">
 <!--   -->
 </a>
@@ -78,8 +77,7 @@
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a >doesOverhang</a></span>()</code>
-<div class="block">Whether or not overhangs should generate in this biome (places where solid blocks generate over air)
-
+<div class="block">Whether or not overhangs should generate in this biome (places where solid blocks generate over air)  
  This should probably be used with a custom max elevation or things can look stupid</div>
 </td>
 </tr>

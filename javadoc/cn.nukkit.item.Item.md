@@ -1,7 +1,6 @@
 <div class="summary">
 <ul class="blockList">
-<li class="blockList">
-
+<li class="blockList">  
 <li class="blockList"><a name="field.summary">
 <!--   -->
 </a>
@@ -103,8 +102,7 @@
 <!--   -->
 </a>
 <h3>成员函数一览</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">  
 <tr>
 <th>修饰符和类</th>
 <th>成员函数描述</th>

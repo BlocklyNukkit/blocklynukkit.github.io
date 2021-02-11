@@ -15,8 +15,7 @@
 <code><a  title="enum in cn.nukkit.event.entity">EntityDamageEvent.DamageCause</a>, <a  title="enum in cn.nukkit.event.entity">EntityDamageEvent.DamageModifier</a></code></li>
 </ul>
 </li>
-</ul>
-
+</ul>  
 <li class="blockList"><a name="field.summary">
 <!--   -->
 </a>

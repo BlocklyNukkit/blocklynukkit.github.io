@@ -15,8 +15,7 @@
 <code><a  title="interface in cn.nukkit.math">AxisAlignedBB.BBConsumer</a>&lt;<a  title="type parameter in AxisAlignedBB.BBConsumer">T</a>&gt;</code></li>
 </ul>
 </li>
-</ul>
-
+</ul>  
 <li class="blockList"><a name="field.summary">
 <!--   -->
 </a>
@@ -241,7 +240,7 @@
 <tr id="i27" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a >getBreakTime</a></span>(<a  title="class in cn.nukkit.item">Item</a> item)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">This function is lack of Player class and is not accurate enough, use #getBreakTime(Item, Player)</span></div>
 </div>
 </td>

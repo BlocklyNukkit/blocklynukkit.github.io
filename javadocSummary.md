@@ -1,5 +1,4 @@
 # javaDoc目录  
-
 * [cn.nukkit.Nukkit](javadoc/cn.nukkit.Nukkit.md)
 * [cn.nukkit.Server](javadoc/cn.nukkit.Server.md)
 * [cn.nukkit.plugin.service.ServiceManager](javadoc/cn.nukkit.plugin.service.ServiceManager.md)
@@ -1309,6 +1308,4 @@
 * [cn.nukkit.permission.PermissionAttachmentInfo](javadoc/cn.nukkit.permission.PermissionAttachmentInfo.md)
 * [cn.nukkit.permission.PermissionAttachment](javadoc/cn.nukkit.permission.PermissionAttachment.md)
 * [cn.nukkit.utils.Watchdog](javadoc/cn.nukkit.utils.Watchdog.md)
-* [cn.nukkit.network.query.QueryHandler](javadoc/cn.nukkit.network.query.QueryHandler.md)
-
-
+* [cn.nukkit.network.query.QueryHandler](javadoc/cn.nukkit.network.query.QueryHandler.md)  

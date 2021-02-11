@@ -1,7 +1,6 @@
 <div class="summary">
 <ul class="blockList">
-<li class="blockList">
-
+<li class="blockList">  
 <li class="blockList"><a name="field.summary">
 <!--   -->
 </a>
@@ -15,8 +14,7 @@
 <tr class="altColor">
 <td class="colFirst"><code>protected byte[]</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a >biomes</a></span></code>
-<div class="block">encoded as:
-
+<div class="block">encoded as:  
  (x &lt;&lt; 4) | z</div>
 </td>
 </tr>

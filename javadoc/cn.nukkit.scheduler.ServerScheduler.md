@@ -1,7 +1,6 @@
 <div class="summary">
 <ul class="blockList">
-<li class="blockList">
-
+<li class="blockList">  
 <li class="blockList"><a name="field.summary">
 <!--   -->
 </a>
@@ -83,7 +82,7 @@
 <tr id="i8" class="altColor">
 <td class="colFirst"><code><a  title="class in cn.nukkit.scheduler">TaskHandler</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a >scheduleAsyncTask</a></span>(<a  title="class in cn.nukkit.scheduler">AsyncTask</a> task)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">Use <a ><code>scheduleAsyncTask(Plugin, AsyncTask)</code></a></span></div>
 </div>
 </td>
@@ -120,7 +119,7 @@
 <td class="colLast"><code><span class="memberNameLink"><a >scheduleDelayedRepeatingTask</a></span>(<a  title="class or interface in java.lang">Runnable</a> task,
                             int delay,
                             int period)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">Use <a ><code>scheduleDelayedRepeatingTask(Plugin, Runnable, int, int)</code></a></span></div>
 </div>
 </td>
@@ -131,7 +130,7 @@
                             int delay,
                             int period,
                             boolean asynchronous)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">Use <a ><code>scheduleDelayedRepeatingTask(Plugin, Runnable, int, int, boolean)</code></a></span></div>
 </div>
 </td>
@@ -166,7 +165,7 @@
 <td class="colFirst"><code><a  title="class in cn.nukkit.scheduler">TaskHandler</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a >scheduleDelayedTask</a></span>(<a  title="class or interface in java.lang">Runnable</a> task,
                    int delay)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">Use <a ><code>scheduleDelayedTask(Plugin, Runnable, int)</code></a></span></div>
 </div>
 </td>
@@ -176,7 +175,7 @@
 <td class="colLast"><code><span class="memberNameLink"><a >scheduleDelayedTask</a></span>(<a  title="class or interface in java.lang">Runnable</a> task,
                    int delay,
                    boolean asynchronous)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">Use <a ><code>scheduleDelayedTask(Plugin, Runnable, int, boolean)</code></a></span></div>
 </div>
 </td>
@@ -209,7 +208,7 @@
 <td class="colFirst"><code><a  title="class in cn.nukkit.scheduler">TaskHandler</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a >scheduleRepeatingTask</a></span>(<a  title="class or interface in java.lang">Runnable</a> task,
                      int period)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">Use <a ><code>scheduleRepeatingTask(Plugin, Runnable, int)</code></a></span></div>
 </div>
 </td>
@@ -219,7 +218,7 @@
 <td class="colLast"><code><span class="memberNameLink"><a >scheduleRepeatingTask</a></span>(<a  title="class or interface in java.lang">Runnable</a> task,
                      int period,
                      boolean asynchronous)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">Use <a ><code>scheduleRepeatingTask(Plugin, Runnable, int, boolean)</code></a></span></div>
 </div>
 </td>
@@ -249,7 +248,7 @@
 <tr id="i31" class="rowColor">
 <td class="colFirst"><code><a  title="class in cn.nukkit.scheduler">TaskHandler</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a >scheduleTask</a></span>(<a  title="class or interface in java.lang">Runnable</a> task)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">Use <a ><code>scheduleTask(Plugin, Runnable)</code></a></span></div>
 </div>
 </td>
@@ -258,7 +257,7 @@
 <td class="colFirst"><code><a  title="class in cn.nukkit.scheduler">TaskHandler</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a >scheduleTask</a></span>(<a  title="class or interface in java.lang">Runnable</a> task,
             boolean asynchronous)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">Use <a ><code>scheduleTask(Plugin, Runnable, boolean)</code></a></span></div>
 </div>
 </td>

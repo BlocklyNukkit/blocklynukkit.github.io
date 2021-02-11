@@ -15,8 +15,7 @@
 <code><a  title="enum in cn.nukkit.item.enchantment.protection">EnchantmentProtection.TYPE</a></code></li>
 </ul>
 </li>
-</ul>
-
+</ul>  
 <li class="blockList"><a name="field.summary">
 <!--   -->
 </a>

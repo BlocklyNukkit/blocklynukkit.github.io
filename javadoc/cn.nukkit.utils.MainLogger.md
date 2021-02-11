@@ -15,8 +15,7 @@
 <code><a  title="class or interface in java.lang">Thread.State</a>, <a  title="class or interface in java.lang">Thread.UncaughtExceptionHandler</a></code></li>
 </ul>
 </li>
-</ul>
-
+</ul>  
 <li class="blockList"><a name="field.summary">
 <!--   -->
 </a>

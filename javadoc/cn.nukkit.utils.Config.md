@@ -1,7 +1,6 @@
 <div class="summary">
 <ul class="blockList">
-<li class="blockList">
-
+<li class="blockList">  
 <li class="blockList"><a name="field.summary">
 <!--   -->
 </a>
@@ -235,7 +234,7 @@
 <tr id="i26" class="altColor">
 <td class="colFirst"><code><a  title="class or interface in java.lang">Object</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a >getNested</a></span>(<a  title="class or interface in java.lang">String</a> key)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">use <a ><code>get(String)</code></a> instead</span></div>
 </div>
 </td>
@@ -244,7 +243,7 @@
 <td class="colFirst"><code>&lt;T&gt; T</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a >getNested</a></span>(<a  title="class or interface in java.lang">String</a> key,
          T defaultValue)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">use <a ><code>get(String, Object)</code></a> instead</span></div>
 </div>
 </td>
@@ -253,7 +252,7 @@
 <td class="colFirst"><code>&lt;T&gt; T</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a >getNestedAs</a></span>(<a  title="class or interface in java.lang">String</a> key,
            <a  title="class or interface in java.lang">Class</a>&lt;T&gt; type)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">use <a ><code>get(String)</code></a> instead</span></div>
 </div>
 </td>
@@ -355,7 +354,7 @@
 <tr id="i51" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a >removeNested</a></span>(<a  title="class or interface in java.lang">String</a> key)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">use <a ><code>remove(String)</code></a> instead</span></div>
 </div>
 </td>

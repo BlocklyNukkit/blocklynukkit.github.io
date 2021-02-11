@@ -15,8 +15,7 @@
 <code><a  title="class in cn.nukkit.level.format">Chunk.Entry</a></code></li>
 </ul>
 </li>
-</ul>
-
+</ul>  
 <li class="blockList"><a name="field.summary">
 <!--   -->
 </a>

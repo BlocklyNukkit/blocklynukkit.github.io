@@ -188,8 +188,7 @@
 </tr>
 </table>
 </li>
-</ul>
-
+</ul>  
 <li class="blockList"><a name="field.summary">
 <!--   -->
 </a>

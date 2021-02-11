@@ -26,8 +26,7 @@
 <code><a  title="interface in cn.nukkit.math">AxisAlignedBB.BBConsumer</a>&lt;<a  title="type parameter in AxisAlignedBB.BBConsumer">T</a>&gt;</code></li>
 </ul>
 </li>
-</ul>
-
+</ul>  
 <li class="blockList"><a name="field.summary">
 <!--   -->
 </a>

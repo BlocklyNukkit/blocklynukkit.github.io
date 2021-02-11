@@ -1,7 +1,6 @@
 <div class="summary">
 <ul class="blockList">
-<li class="blockList">
-
+<li class="blockList">  
 <li class="blockList"><a name="field.summary">
 <!--   -->
 </a>
@@ -52,7 +51,7 @@
 </tr>
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a >CommandParameter</a></span>(<a  title="class or interface in java.lang">String</a> name)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">use <a ><code>newType(String, CommandParamType)</code></a> instead</span></div>
 </div>
 </td>
@@ -60,7 +59,7 @@
 <tr class="rowColor">
 <td class="colOne"><code><span class="memberNameLink"><a >CommandParameter</a></span>(<a  title="class or interface in java.lang">String</a> name,
                 boolean optional)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">use <a ><code>newType(String, boolean, CommandParamType)</code></a> instead</span></div>
 </div>
 </td>
@@ -69,7 +68,7 @@
 <td class="colOne"><code><span class="memberNameLink"><a >CommandParameter</a></span>(<a  title="class or interface in java.lang">String</a> name,
                 boolean optional,
                 <a  title="class or interface in java.lang">String</a> enumType)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">use <a ><code>newEnum(String, boolean, String)</code></a> instead</span></div>
 </div>
 </td>
@@ -78,7 +77,7 @@
 <td class="colOne"><code><span class="memberNameLink"><a >CommandParameter</a></span>(<a  title="class or interface in java.lang">String</a> name,
                 boolean optional,
                 <a  title="class or interface in java.lang">String</a>[] enumValues)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">use <a ><code>newEnum(String, boolean, String[])</code></a> instead</span></div>
 </div>
 </td>
@@ -87,7 +86,7 @@
 <td class="colOne"><code><span class="memberNameLink"><a >CommandParameter</a></span>(<a  title="class or interface in java.lang">String</a> name,
                 <a  title="enum in cn.nukkit.command.data">CommandParamType</a> type,
                 boolean optional)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">use <a ><code>newType(String, boolean, CommandParamType)</code></a> instead</span></div>
 </div>
 </td>
@@ -95,7 +94,7 @@
 <tr class="rowColor">
 <td class="colOne"><code><span class="memberNameLink"><a >CommandParameter</a></span>(<a  title="class or interface in java.lang">String</a> name,
                 <a  title="class or interface in java.lang">String</a> enumType)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">use <a ><code>newEnum(String, String)</code></a> instead</span></div>
 </div>
 </td>
@@ -103,7 +102,7 @@
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a >CommandParameter</a></span>(<a  title="class or interface in java.lang">String</a> name,
                 <a  title="class or interface in java.lang">String</a>[] enumValues)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">use <a ><code>newEnum(String, String[])</code></a> instead</span></div>
 </div>
 </td>
@@ -112,7 +111,7 @@
 <td class="colOne"><code><span class="memberNameLink"><a >CommandParameter</a></span>(<a  title="class or interface in java.lang">String</a> name,
                 <a  title="class or interface in java.lang">String</a> type,
                 boolean optional)</code>
-<div class="block"><strong>此函数已弃用</strong> 
+<div class="block"><strong>此函数已弃用</strong>  
 <div class="block"><span class="deprecationComment">use <a ><code>newType(String, boolean, CommandParamType)</code></a> instead</span></div>
 </div>
 </td>
