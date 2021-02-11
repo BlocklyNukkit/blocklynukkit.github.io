@@ -5,13 +5,13 @@ toc: true
 ## algorithm基对象  
 algorithm基对象是bn封装的算法，用于简化开发流程提升效率  
 ## algorithm方法一览  
-|方法名|参数|返回值|解释|  
-|-----|-----|-----|----|  
-|buildPositionfromPlayer|Player-J p|Position-J|获取玩家p的位置|  
-|buildPositionfromBlock|Block-J b|Position-J|获取方块b的位置|  
-|buildPositionfromEntity|Entity-J e|Position-J|获取实体e的位置|  
-|forEachBlockInArea|Position-J a, Position-J b,boolean isair,String callback|void|为位置a到位置b的每一个isair包括空气的方块回调函数名callback函数(注入参数一个:Block-J b,当前方块)|  
-|forLinkedBlock|Position-J a,String callback|void|对于位置a相邻的所有同种方块的位置调用函数名callback函数(注入参数一个:Position-J p,当前位置)|  
+|方法名|参数|返回值|解释|
+|-----|-----|-----|----|
+|buildPositionfromPlayer|Player-J p|Position-J|获取玩家p的位置|
+|buildPositionfromBlock|Block-J b|Position-J|获取方块b的位置|
+|buildPositionfromEntity|Entity-J e|Position-J|获取实体e的位置|
+|forEachBlockInArea|Position-J a, Position-J b,boolean isair,String callback|void|为位置a到位置b的每一个isair包括空气的方块回调函数名callback函数(注入参数一个:Block-J b,当前方块)|
+|forLinkedBlock|Position-J a,String callback|void|对于位置a相邻的所有同种方块的位置调用函数名callback函数(注入参数一个:Position-J p,当前位置)|
 ## 方法详解  
 * Position algorithm.buildPositionfromPlayer(p)  
     *获取玩家p的位置*  
