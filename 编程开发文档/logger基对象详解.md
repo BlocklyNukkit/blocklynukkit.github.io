@@ -6,10 +6,10 @@ toc: true
 logger基对象是用来在控制台进行输出的基对象，于print(python)或console.log(js)不同，它会按照nk格式进行输出，而且效率更高  
 ## logger基对象方法一览  
 *与编程开发文档同步于2020/7/19*  
-|方法名|参数|返回值|解释|
-|-|-|-|-|
-|info|void|void|在控制台发送INFO开头的信息|
-|warning|void|void|在控制台发送WARN开头的警告|
+|方法名|参数|返回值|解释|  
+|-|-|-|-|  
+|info|void|void|在控制台发送INFO开头的信息|  
+|warning|void|void|在控制台发送WARN开头的警告|  
 ## 方法详解  
 *  logger.info()  
     *在控制台发送INFO开头的信息*  

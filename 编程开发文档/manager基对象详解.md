@@ -6,66 +6,66 @@ toc: true
 manager基对象是进行基本操作的基对象，内含很多nk基础功能和便捷功能  
 ## manager对象方法一览  
 *与编程开发文档同步于2020/8/12*  
-|方法名|参数|返回值|解释|
-|-----|-----|-----|----|
-|getFile|String dir,String filename|File-J|获取bn目录下dir文件夹的filename文件(可为不存在文件)|
-|time|int second|String|将秒数转为时:分:秒字符串|
-|createConfig|File-J file,int type|Config-J|在虚拟文件file处构建种类type(yaml==2)的配置文件|
-|createCommand|String name,String des,String call|void|创建名称为name,描述为des的命令，回调函数的函数名为call|
-|createCommand|String name,String des,String call,String per|void|同上，但是仅限有per权限的玩家可用|
-|createTask|String functionName, int delay|TaskHandler-J|延迟dalay刻调用函数名functionName的函数(不会阻塞)|
-|createLoopTask|String functionName, int delay|TaskHandler-J|每dalay刻重复调用函数名functionNmae的函数|
-|getTaskId|TaskHandler-J handler|int|获取handler的任务id|
-|cancelTask|int id|void|取消任务ID为id的任务|
-|getPlugin|String name|Plugin-J|获取注册名称为name的插件对象|
-|plugin|void|Plugin-J|获取plugin基对象(有点多余)|
-|buildskin|Player-J player,String skin|void|将玩家的皮肤设置为BlocklyNukkit/skin文件夹下的同名皮肤(自动识别4D)|
-|buildskinfor|Player-J player,String skin,Player to|void|同上，但只展示给to玩家|
-|getMoney|Player-J player|double|获取玩家player金钱(EconomyAPI)|
-|reduceMoney|Player-J player,double money|void|给玩家减去money金钱(可减为负数)|
-|addMoney|Player-J player,double money|void|给玩家加上money金钱|
-|setMoney|Player-J player,double money|void|设置玩家的金钱为money|
-|getAllKeyInConfig|Config-J config|Array|获取config配置文件的所有键|
-|putEasy|String string,\<E\> val|void|存入临时存储->键string,值为泛型val|
-|getEasy\<E\>|String string|\<E\>|获取临时存储->键string|
-|setPrivateCall|String event,String callname|void|将event事件回调在本插件映射到callname函数|
-|PlayerIsOP|Player-J player|boolean|获取player是否是op|
-|getPlayerGameMode|Player-J player|int|获取玩家的游戏模式id(0-生存 1-创造 2-冒险 3-观察者)|
-|kickPlayer|Player-J player,String reason|void|踢出玩家player并发送踢出原因reason|
-|setHTMLPlaceholder|String key,String value|void|设置速建官网功能的自定义placeholder|
-|getPlayerArea|Player-J player|String|获取玩家的地理位置字符串|
-|checkIsBear|Player-J player|String|使用BlackBE云黑检查玩家是否为熊孩子|
-|buildvec3|double x,double y,double z|Vector3-J|从xyz构建三维向量|
-|httpRequest|String method,String url,String data|String|发送method(GET/POST)类型的http请求并获取返回值|
-|callFunciton|String fun,\<E+\> args...|void|调用函数名为fun的函数(直接写函数名调用所有插件中同名的函数,可以在开头加入xxx.js::函数名这样指定调用xxx.js下面的函数),注入参数为args,args参数不限类型,不限数量(0-1024),但是需要保证和被调用的函数参数一致|
-|readFile|String path|String|以文本格式自适应编码读取path路径的文件返回字符串内容|
-|writeFile|String path,String text|void|向path路径的文件(不存在自动创建)以utf8编码写入text|
-|isFileSame|String p1,String p2|boolean|比较p1路径和p2路径的文件是否相同|
-|JSONtoYAML|String json|String|将json字符串转为yaml字符串|
-|YAMLtoJSON|String yaml|String|将yaml字符串转为json字符串|
-|newCommand|String name, String des, Function fun|void|创建一个名称为name，描述为des，处理函数为fun的命令，fun是一个函数，有名函数的函数名(无需字符串)或一个匿名函数|
-|newCommand|String name, String des, Function fun, String per|void|同上，但仅限有per权限的玩家使用|
-|setTimeout|Function fun,int delay,<E+>... args|int|同浏览器上面的用法，但无法执行字符串，注册延时调用，返回任务id|
-|clearTimeout|int id|void|取消任务ID为id的延时调用|
-|setInterval|Function fun,int delay,<E+>... args|int|同浏览器上面的用法，但无法执行字符串，注册循环调用，返回任务id|
-|clearInterval|int id|void|取消任务ID为id的循环调用|
-|isWindows|void|boolean|获取当前运行环境是否是Windows系统|
-|createPermission|String per,String description,String defaultper|void|创建一个权限，名称为per，描述为description，默认授予组为defaultper(OP/ALL/NONE 管理员/全体/控制台)|
-|removePermission|String per|void|删除一个权限|
-|checkPlayerPermission|String per,Player player|boolean|检查一个玩家是否有per权限|
-|MD5Encryption|String str|String|将字符串进行md5加密|
-|SHA1Encryption|String str|String|将字符串进行sha1加密|
-|loadJar|String path|void|加载path路径的jar包作为依赖|
-|bStats|String pluginName,String pluginVer,String authorName,int pluginid|void|使用bstats统计，参数请填写你在bstats的申请内容|
-|getServerMotd|String host, int port, String callback|void|根据服务器IP和端口获取在线人数信息|
-|getVariableFrom|String scriptName,String varName|\<E\>|获取scriptname插件varName变量的值|
-|putVariableTo|String scriptName,String varName,<E> var|void|在scriptname插件中声明varName变量，值为var|
-|getCPULoad|void|double|获取服务器的cpu负载|
-|getCPUCores|void|int|获取服务器核心数量|
-|getMemoryTotalSizeMB|void|double|获取服务器总内存|
-|getMemoryUsedSizeMB|void|double|获取服务器已用内存|
-|forceDisconnect|Player-J player|void|立即让服务器停止响应player的数据，玩家会以为自己网卡了|
-|getEventFunctions|Event-J event|Array\<String\>|获取event事件可用的成员函数名称|
+|方法名|参数|返回值|解释|  
+|-----|-----|-----|----|  
+|getFile|String dir,String filename|File-J|获取bn目录下dir文件夹的filename文件(可为不存在文件)|  
+|time|int second|String|将秒数转为时:分:秒字符串|  
+|createConfig|File-J file,int type|Config-J|在虚拟文件file处构建种类type(yaml==2)的配置文件|  
+|createCommand|String name,String des,String call|void|创建名称为name,描述为des的命令，回调函数的函数名为call|  
+|createCommand|String name,String des,String call,String per|void|同上，但是仅限有per权限的玩家可用|  
+|createTask|String functionName, int delay|TaskHandler-J|延迟dalay刻调用函数名functionName的函数(不会阻塞)|  
+|createLoopTask|String functionName, int delay|TaskHandler-J|每dalay刻重复调用函数名functionNmae的函数|  
+|getTaskId|TaskHandler-J handler|int|获取handler的任务id|  
+|cancelTask|int id|void|取消任务ID为id的任务|  
+|getPlugin|String name|Plugin-J|获取注册名称为name的插件对象|  
+|plugin|void|Plugin-J|获取plugin基对象(有点多余)|  
+|buildskin|Player-J player,String skin|void|将玩家的皮肤设置为BlocklyNukkit/skin文件夹下的同名皮肤(自动识别4D)|  
+|buildskinfor|Player-J player,String skin,Player to|void|同上，但只展示给to玩家|  
+|getMoney|Player-J player|double|获取玩家player金钱(EconomyAPI)|  
+|reduceMoney|Player-J player,double money|void|给玩家减去money金钱(可减为负数)|  
+|addMoney|Player-J player,double money|void|给玩家加上money金钱|  
+|setMoney|Player-J player,double money|void|设置玩家的金钱为money|  
+|getAllKeyInConfig|Config-J config|Array|获取config配置文件的所有键|  
+|putEasy|String string,\<E\> val|void|存入临时存储->键string,值为泛型val|  
+|getEasy\<E\>|String string|\<E\>|获取临时存储->键string|  
+|setPrivateCall|String event,String callname|void|将event事件回调在本插件映射到callname函数|  
+|PlayerIsOP|Player-J player|boolean|获取player是否是op|  
+|getPlayerGameMode|Player-J player|int|获取玩家的游戏模式id(0-生存 1-创造 2-冒险 3-观察者)|  
+|kickPlayer|Player-J player,String reason|void|踢出玩家player并发送踢出原因reason|  
+|setHTMLPlaceholder|String key,String value|void|设置速建官网功能的自定义placeholder|  
+|getPlayerArea|Player-J player|String|获取玩家的地理位置字符串|  
+|checkIsBear|Player-J player|String|使用BlackBE云黑检查玩家是否为熊孩子|  
+|buildvec3|double x,double y,double z|Vector3-J|从xyz构建三维向量|  
+|httpRequest|String method,String url,String data|String|发送method(GET/POST)类型的http请求并获取返回值|  
+|callFunciton|String fun,\<E+\> args...|void|调用函数名为fun的函数(直接写函数名调用所有插件中同名的函数,可以在开头加入xxx.js::函数名这样指定调用xxx.js下面的函数),注入参数为args,args参数不限类型,不限数量(0-1024),但是需要保证和被调用的函数参数一致|  
+|readFile|String path|String|以文本格式自适应编码读取path路径的文件返回字符串内容|  
+|writeFile|String path,String text|void|向path路径的文件(不存在自动创建)以utf8编码写入text|  
+|isFileSame|String p1,String p2|boolean|比较p1路径和p2路径的文件是否相同|  
+|JSONtoYAML|String json|String|将json字符串转为yaml字符串|  
+|YAMLtoJSON|String yaml|String|将yaml字符串转为json字符串|  
+|newCommand|String name, String des, Function fun|void|创建一个名称为name，描述为des，处理函数为fun的命令，fun是一个函数，有名函数的函数名(无需字符串)或一个匿名函数|  
+|newCommand|String name, String des, Function fun, String per|void|同上，但仅限有per权限的玩家使用|  
+|setTimeout|Function fun,int delay,<E+>... args|int|同浏览器上面的用法，但无法执行字符串，注册延时调用，返回任务id|  
+|clearTimeout|int id|void|取消任务ID为id的延时调用|  
+|setInterval|Function fun,int delay,<E+>... args|int|同浏览器上面的用法，但无法执行字符串，注册循环调用，返回任务id|  
+|clearInterval|int id|void|取消任务ID为id的循环调用|  
+|isWindows|void|boolean|获取当前运行环境是否是Windows系统|  
+|createPermission|String per,String description,String defaultper|void|创建一个权限，名称为per，描述为description，默认授予组为defaultper(OP/ALL/NONE 管理员/全体/控制台)|  
+|removePermission|String per|void|删除一个权限|  
+|checkPlayerPermission|String per,Player player|boolean|检查一个玩家是否有per权限|  
+|MD5Encryption|String str|String|将字符串进行md5加密|  
+|SHA1Encryption|String str|String|将字符串进行sha1加密|  
+|loadJar|String path|void|加载path路径的jar包作为依赖|  
+|bStats|String pluginName,String pluginVer,String authorName,int pluginid|void|使用bstats统计，参数请填写你在bstats的申请内容|  
+|getServerMotd|String host, int port, String callback|void|根据服务器IP和端口获取在线人数信息|  
+|getVariableFrom|String scriptName,String varName|\<E\>|获取scriptname插件varName变量的值|  
+|putVariableTo|String scriptName,String varName,<E> var|void|在scriptname插件中声明varName变量，值为var|  
+|getCPULoad|void|double|获取服务器的cpu负载|  
+|getCPUCores|void|int|获取服务器核心数量|  
+|getMemoryTotalSizeMB|void|double|获取服务器总内存|  
+|getMemoryUsedSizeMB|void|double|获取服务器已用内存|  
+|forceDisconnect|Player-J player|void|立即让服务器停止响应player的数据，玩家会以为自己网卡了|  
+|getEventFunctions|Event-J event|Array\<String\>|获取event事件可用的成员函数名称|  
 ## 方法详解  
 * File manager.getFile(dir,filename)  
     *获取bn目录下的文件*  
