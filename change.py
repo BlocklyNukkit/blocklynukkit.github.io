@@ -21,4 +21,3 @@ for file in walker('.'):
         #buffer = sub(r'\[info\]',r'',buffer)
         with open(file,'w',True,'utf-8') as f:f.write(buffer)
         '''
-os.system('pause')
