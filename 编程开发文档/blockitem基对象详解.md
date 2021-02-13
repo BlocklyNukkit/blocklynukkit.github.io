@@ -1,11 +1,10 @@
----  
-toc: true  
----  
 # blockitem基对象详解  
 ## blockitem基对象  
 blockitem基对象是用来操作方块，环境，物品与合成的模块  
 ## blockitem方法一览  
 *与编程开发文档同步与2020/8/12*  
+
+
 |方法名|参数|返回值|解释|
 |-|-|-|-|
 |makeSound|Position-J pos,String s|void|在位置pos播放s对应的声音(跟原版命令类似)|
@@ -46,6 +45,8 @@ blockitem基对象是用来操作方块，环境，物品与合成的模块
 |getEnchantLevel|Enchantment-J enc|int|获取附魔对象enc的附魔等级|
 |setItemColor|Item-J item,int r,int g,int b|void|设置物品item的自定义颜色|
 |setItemUnbreakable|Item item,boolean unbreakable|void|设置物品item是否不可破坏|
+
+
 ## 方法详解  
 * void blockitem.makeSound(pos,s)  
     *在位置pos播放s对应的声音(跟原版命令类似)*  

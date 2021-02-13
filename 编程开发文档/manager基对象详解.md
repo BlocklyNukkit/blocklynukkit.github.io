@@ -1,30 +1,32 @@
----  
-toc: true  
----  
 # manager基对象详解  
 ## manager基对象  
+
 manager基对象是进行基本操作的基对象，内含很多nk基础功能和便捷功能  
+
 ## manager对象方法一览  
+
 *与编程开发文档同步于2020/8/12*  
+
 |方法名|参数|返回值|解释|
-|-|-|-|-|
+|-----|-----|-----|----|
 |getFile|String dir,String filename|File-J|获取bn目录下dir文件夹的filename文件(可为不存在文件)|
 |time|int second|String|将秒数转为时:分:秒字符串|
 |createConfig|File-J file,int type|Config-J|在虚拟文件file处构建种类type(yaml==2)的配置文件|
 |createCommand|String name,String des,String call|void|创建名称为name,描述为des的命令，回调函数的函数名为call|
 |createCommand|String name,String des,String call,String per|void|同上，但是仅限有per权限的玩家可用|
-|createTask|String functionName, int delay|TaskHandler-J|延迟dalay刻调用函数名functionName的函数(不会阻塞)|
-|createLoopTask|String functionName, int delay|TaskHandler-J|每dalay刻重复调用函数名functionNmae的函数|
+|addCommandCompleter|String cmd,String id,String completer|void|创建命令补全器，将被发送给玩家用作命令提示和tab补全,cmd为要添加给的命令的名称，id为补全器标识符，随意只要不重复即可，completer是补全器内容|
+|createTask|String functionName, int delay, \<E+\>... args|TaskHandler-J|延迟dalay刻调用函数名functionName的函数(不会阻塞),args是在调用函数时向函数传递的参数，可没有|
+|createLoopTask|String functionName, int delay, \<E+\>... args|TaskHandler-J|每dalay刻重复调用函数名functionNmae的函数,args是在调用函数时向函数传递的参数，可没有|
 |getTaskId|TaskHandler-J handler|int|获取handler的任务id|
 |cancelTask|int id|void|取消任务ID为id的任务|
 |getPlugin|String name|Plugin-J|获取注册名称为name的插件对象|
 |plugin|void|Plugin-J|获取plugin基对象(有点多余)|
 |buildskin|Player-J player,String skin|void|将玩家的皮肤设置为BlocklyNukkit/skin文件夹下的同名皮肤(自动识别4D)|
 |buildskinfor|Player-J player,String skin,Player to|void|同上，但只展示给to玩家|
-|getMoney|Player-J player|double|获取玩家player金钱(EconomyAPI)|
-|reduceMoney|Player-J player,double money|void|给玩家减去money金钱(可减为负数)|
-|addMoney|Player-J player,double money|void|给玩家加上money金钱|
-|setMoney|Player-J player,double money|void|设置玩家的金钱为money|
+|getMoney|Player-J/String player|double|获取玩家player金钱(EconomyAPI)|
+|reduceMoney|Player-J/String player,double money|void|给玩家减去money金钱(可减为负数)|
+|addMoney|Player-J/String player,double money|void|给玩家加上money金钱|
+|setMoney|Player-J/String player,double money|void|设置玩家的金钱为money|
 |getAllKeyInConfig|Config-J config|Array|获取config配置文件的所有键|
 |putEasy|String string,\<E\> val|void|存入临时存储->键string,值为泛型val|
 |getEasy\<E\>|String string|\<E\>|获取临时存储->键string|
@@ -37,7 +39,7 @@ manager基对象是进行基本操作的基对象，内含很多nk基础功能�
 |checkIsBear|Player-J player|String|使用BlackBE云黑检查玩家是否为熊孩子|
 |buildvec3|double x,double y,double z|Vector3-J|从xyz构建三维向量|
 |httpRequest|String method,String url,String data|String|发送method(GET/POST)类型的http请求并获取返回值|
-|callFunciton|String fun,\<E+\> args...|void|调用函数名为fun的函数(直接写函数名调用所有插件中同名的函数,可以在开头加入xxx.js::函数名这样指定调用xxx.js下面的函数),注入参数为args,args参数不限类型,不限数量(0-1024),但是需要保证和被调用的函数参数一致|
+|callFunction|String fun,\<E+\> args...|<E>|调用函数名为fun的函数并获取返回值(直接写函数名调用所有插件中同名的函数,可以在开头加入xxx.js::函数名这样指定调用xxx.js下面的函数),注入参数为args,args参数不限类型,不限数量(0-1024),但是需要保证和被调用的函数参数一致|
 |readFile|String path|String|以文本格式自适应编码读取path路径的文件返回字符串内容|
 |writeFile|String path,String text|void|向path路径的文件(不存在自动创建)以utf8编码写入text|
 |isFileSame|String p1,String p2|boolean|比较p1路径和p2路径的文件是否相同|
@@ -57,7 +59,7 @@ manager基对象是进行基本操作的基对象，内含很多nk基础功能�
 |SHA1Encryption|String str|String|将字符串进行sha1加密|
 |loadJar|String path|void|加载path路径的jar包作为依赖|
 |bStats|String pluginName,String pluginVer,String authorName,int pluginid|void|使用bstats统计，参数请填写你在bstats的申请内容|
-|getServerMotd|String host, int port, String callback|void|根据服务器IP和端口获取在线人数信息|
+|getServerMotd|String host,int port,String callback|void|根据服务器IP和端口获取在线人数信息|
 |getVariableFrom|String scriptName,String varName|\<E\>|获取scriptname插件varName变量的值|
 |putVariableTo|String scriptName,String varName,<E> var|void|在scriptname插件中声明varName变量，值为var|
 |getCPULoad|void|double|获取服务器的cpu负载|
@@ -66,6 +68,43 @@ manager基对象是进行基本操作的基对象，内含很多nk基础功能�
 |getMemoryUsedSizeMB|void|double|获取服务器已用内存|
 |forceDisconnect|Player-J player|void|立即让服务器停止响应player的数据，玩家会以为自己网卡了|
 |getEventFunctions|Event-J event|Array\<String\>|获取event事件可用的成员函数名称|
+|qq.startBot|void|void|启动qq机器人进程|
+|qq.stopBot|void|void|停止qq机器人进程|
+|qq.reDirectBot|String ip|void|将机器人重定向到指定ip地址，并使用那台电脑的小栗子qq机器人框架。要求目标电脑开放8404-TCP端口，并且在小栗子的tcpapi插件中允许远程控制|
+|qq.sendFriendMessage|String fromQQ,String toQQ,String message|void|发送好友信息,fromQQ是机器人账号,toQQ是目标账号,message是内容|
+|qq.sendGroupMessage|String fromQQ,String toGroup,String message|void|发送群信息|
+|qq.sendGroupPicMessage|String fromQQ,String toGroup,String picturePaths,String message|void|发送qq群图文消息，picturePaths用;分割多个本地图片路径，消息中使用图片只需用%picture数字%即可，数字指代第几个路径的图片，从0开始算起|
+|qq.kickGroupMember|String fromQQ,String toGroup,String toQQ|void|踢了指定群员,fromQQ是机器人账号|
+|qq.banSpeakGroupMember|String fromQQ,String toGroup,String toQQ,int second|void|禁言指定群员|
+|getPlayerDeviceID|Player player|String|获取玩家的手机或电脑设备标识码|
+|getPlayerDeviceModal|Player player|String|获取玩家的设备型号|
+|getPlayerDeviceOS|Player player|int|获取玩家的操作系统id|
+|setNukkitCodeVersion|String string|void|修改version命令显示的nk版本|
+|nodejs.eval|String str,boolean isPath|void|使用nodejs运行str，运行nodejs代码是隔离在nodejs环境运行的，而非java环境，若isPath为true，则执行该路径的文件，否则将str作为nodejs代码执行，其中可以使用callFunction(String BNFunctionName,String args...)来调用bn插件的函数|
+|nodejs.newDocker|String dockerName,String str,boolean isPath|void|开启一个常驻nodejs容器，dockerName是创建的nodejs容器的名字，容器一旦创建就会立即开始执行其中的代码，重启创建后执行完代码不会被销毁，而是可以继续通过callDockerFunction调用其中方法，如果需要在其他bn插件调用其中的nodejs函数，需要使用registerFunction(String 函数名,Function 函数)注册，其余同nodejs.eval函数|
+|nodejs.callDockerFunction|String function,String... args|String|调用指定容器中的指定函数并向其传参，调用的函数必须先注册再使用，否则bn无法获取此函数内存地址进行调用，返回值将自动被转为字符串，如果被调函数无返回值则返回字符串"null"，function指定调用的函数，格式为 容器名::函数名（同其他地方的调用格式），若直接输入函数名，则将在所有未关闭容器中随机寻找一个有此名称函数的容器调用，若找不到，返回NO FUNCTION，args参数只接受字符串，数量不限，也可没有|
+|newPlugin|String path|void|加载指定路径上的bn插件|
+|newJSPlugin|String name,String code|void|根据javascript代码字符串创建一个新的bn插件|
+|newPYPlugin|String name,String code|void|根据python代码字符串创建一个新的bn插件|
+|newLUAPlugin|String name,String code|void|根据lua代码字符串创建一个新的bn插件|
+|newPHPPlugin|String name,String code|void|根据php代码字符串创建一个新的bn插件|
+|getOnlinePlayers|void|Array<Player>|void|获取所有的在线玩家构成的数组|
+|getResource|String resName|String|获取资源内容，resName可以是一个链接，也可以是bn目录下的一个文件名|
+|runCMD|String cmd|void|执行外部操作系统的命令行上的一条命令|
+|isPathExists|String path|boolean|路径是否存在|
+|getFolderFiles|String path|Array<String>|获取指定文件夹下的所有文件名|
+|getFileSize|String path|int|获取指定文件的大小，以字节为单位|
+|deleteFile|String path|void|删除指定路径，可以是文件或文件夹|
+|doPathCreate|String path|void|创建一个文件夹|
+|isPathReadable|String path|boolean|路径指向的文件或文件夹是否可读|
+|isPathWritable|String path|boolean|路径指向的文件或文件夹是否可写|
+|copyFile|String fromPath,String toPath|void|把fromPath的文件复制到toPath|
+|interrupt|String info|void|强制中断当前函数运行并发出info作为原因提示，如果不在函数内部使用将直接中断整个插件运行|
+|downloadFromURL|String url,String saveDir,String saveName|void|把url下载到saveDir文件夹中，以saveName作为文件名保存|
+|runThread|String functionName,\<E+\> args|Thread|在新线程中执行名为functionName函数并同步返回这个线程|
+|requireMinVersion|String minVersion,String failMessage|void|检查bn解释器版本，如果太低停止运行并发出failMessage|
+
+
 ## 方法详解  
 * File manager.getFile(dir,filename)  
     *获取bn目录下的文件*  

@@ -1,8 +1,5 @@
----  
-toc: true  
----  
 # JSON存储  
-~~~  
+~~~javascript
 // 写入JSON为YML文件 -Start  
 var  config;  
 // 声明一个名为config的变量  

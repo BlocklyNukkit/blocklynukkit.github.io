@@ -1,10 +1,7 @@
----  
-toc: true  
----  
 # **Hello World**  
 无论是什么语言，最为基础的莫过于Hello World。Hello World想必大家也很熟悉。在本章节中，笔者将通过注释的方式来解释js代码。  
 ## 代码  
-```  
+```javascript
 logger.info('Hello World');  
 //logger是BN提供的一个基对象，而info则是logger下面的一个成员函数。  
 //BN的js插件开发主要的操作是调用各种函数。  

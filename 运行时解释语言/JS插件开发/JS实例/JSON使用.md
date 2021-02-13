@@ -1,11 +1,8 @@
----  
-toc: true  
----  
 # JSON使用  
 在本章节中，笔者将为您介绍如何灵活的运用JSON。本章[参考资料]([https://www.runoob.com/json](https://www.runoob.com/json))  
 ## 教程  
 ### JSON语法  
-~~~  
+~~~json
 {  
 "XXX" : "XXX",  
 "XXX1" : 1  
@@ -27,7 +24,7 @@ JSON 语法是 JavaScript 对象表示语法的子集。
 就可以将JSON字符串转换为JSON对象。  
 ****  
 ### JSON对象的使用  
-~~~  
+~~~javascript
 config='{"test" : "testt"}';//赋值JSON  
 configobj=JSON.parse(config);//转换为JSON对象  
 logger.info(configobj.test);  
@@ -41,7 +38,7 @@ logger.info(configobj.test);
 ****  
 ### JSON使用实例  
 本插件用途是给玩家发布公告  
-~~~  
+~~~javascript
 function sendMessage(){  
     if(l > len){  
         l=0;  

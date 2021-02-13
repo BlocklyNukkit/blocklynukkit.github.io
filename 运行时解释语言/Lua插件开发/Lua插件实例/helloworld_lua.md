@@ -1,18 +1,15 @@
----  
-toc: true  
----  
 # **Hello,world**  
 不管是什么编程语言都从Hello,world开始  
 我们先创建一个函数，叫PlayerJoinEvent，这个函数在每次有玩家加入服务器的时候会自动调用  
 就像这样  
-```  
+```lua
 function PlayerJoinEvent(event)  
 end  
 ```  
 然后加上输出控制台提示  
 *logger:info("Hello,world!")*  
 代码变成  
-```  
+```lua
 function PlayerJoinEvent(event)  
     logger:info("Hello, world!")  
 end  
