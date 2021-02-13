@@ -1,6 +1,3 @@
----  
-toc: true  
----  
 # BlocklyNukkit 编程开发文档  
 ## 基对象  
 ### 指代基对象  
