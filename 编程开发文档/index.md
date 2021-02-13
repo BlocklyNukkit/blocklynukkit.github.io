@@ -1,17 +1,26 @@
 # BlocklyNukkit 编程开发文档  
 ## 基对象  
+
 ### 指代基对象  
+
 指代基对象是指用来直接获取java对象的基对象，并不会内置在解释器里面，由解释器从nukkit动态获取  
+
+
 |对象名|解释|
-|-|-|
+|------|---|
 |server|服务器对象<Server-J>|
 |plugin|blocklynukkit自身<Plugin-J>|
 |logger|控制台输出器实例<PluginLogger-J>|
 |\_\_NAME\_\_|插件的名称，指代字符串<String>|
+
+
 ### 功能基对象  
+
 功能基对象是指用来实现一定功能的基对象，在所有的服务器上这些基对象都是相同的，被内置在解释器里，封装了很多常用功能  
+
+
 |对象名|解释|
-|-|-|
+|------|---|
 |manager|BN插件管理器|
 |blockitem|方块与物品管理器对象|
 |algorithm|算法管理器对象|
@@ -23,66 +32,80 @@
 |window|窗口管理器对象|
 |particle|粒子管理器对象|
 |gameapi|小游戏API对象|
-|Java|js对java进行操作的管理器对象|
+|Java|js对java进行操作的管理器对象|  
+
+
 ### 内置函数  
-#### 通用  
+
+#### **通用**  
+
+
 |函数名|参数|返回值|解释|
+|-|-|-|-|
 |F|匿名函数或闭包|参数的函数名|用于把匿名函数或者闭包传入BNAPI中需要填写回调函数名的地方使用|
+
+
 #### PHP模块一览  
-- ApcModule  
-- ArrayModule  
-- Array2Module  
-- BcmathModule  
-- ClassesModule  
-- CoreModule  
-- CtypeModule  
-- ExifModule  
-- FunctionModule  
-- HashModule  
-- JavaModule  
-- MathModule  
-- MhashModule  
-- MiscModule  
-- NetworkModule  
-- OptionsModule  
-- OutputModule  
-- QuercusModule  
-- TokenModule  
-- UrlModule  
-- VariableModule  
-- CurlModule  
-- DateModule  
-- FileModule  
-- SocketModule  
-- StreamModule  
-- FilterModule  
-- GettextModule  
-- MbstringModule  
-- MysqliModule  
-- ImageModule  
-- JMSModule  
-- JsonModule  
-- McryptModule  
-- PDFModule  
-- PDOMoudle  
-- RegexpModule  
-- SessionModule  
-- SimpleXMLModule  
-- StringModule  
-- XmlModule  
-- XMLWriterModule  
-- ZipModule  
-- ZlibModule  
+
+- ApcModule
+- ArrayModule
+- Array2Module
+- BcmathModule
+- ClassesModule
+- CoreModule
+- CtypeModule
+- ExifModule
+- FunctionModule
+- HashModule
+- JavaModule
+- MathModule
+- MhashModule
+- MiscModule
+- NetworkModule
+- OptionsModule
+- OutputModule
+- QuercusModule
+- TokenModule
+- UrlModule
+- VariableModule
+- CurlModule
+- DateModule
+- FileModule
+- SocketModule
+- StreamModule
+- FilterModule
+- GettextModule
+- MbstringModule
+- MysqliModule
+- ImageModule
+- JMSModule
+- JsonModule
+- McryptModule
+- PDFModule
+- PDOMoudle
+- RegexpModule
+- SessionModule
+- SimpleXMLModule
+- StringModule
+- XmlModule
+- XMLWriterModule
+- ZipModule
+- ZlibModule
+
 ## 基对象成员函数  
-> 注:  
+
+> 注:   
 > \<E\> 指泛型，可以被替换为Number,String,Boolean,Position,Player,Block,Item  
 > \<E+\> 指完全泛型，所有类型都可以  
 > 带有-J的类型指Java对象，可以在js中直接使用java对象的成员函数  
 > 带有-C的类型指Java类，可以直接new一个java对象在js中使用，也可以世界使用static的java类成员函数  
 > Array<*>代表一个都是\*类型的元素组成的数组,由于js与java的互操作问题,传参需要把js数组转换为java对象,比如向函数传入Array<Item-J>类型的参数需要使用Java.to(array,\'cn.nukkit.item.Item[]\')转换后才能传入,具体用法参见图形编辑器自动生成的代码  
+
+
 ### manager基对象  
+
 |方法名|参数|返回值|解释|
-|-|-|-|-|
+|-----|-----|-----|----|
 |getFile|String dir,String filename|File-J|获取bn目录下dir文件夹的filename文件(可为不存在文件)|
 |time|int second|String|将秒数转为时:分:秒字符串|
 |createConfig|File-J file,int type|Config-J|在虚拟文件file处构建种类type(yaml==2)的配置文件|
@@ -177,18 +200,24 @@
 |downloadFromURL|String url,String saveDir,String saveName|void|把url下载到saveDir文件夹中，以saveName作为文件名保存|
 |runThread|String functionName,\<E+\> args|Thread|在新线程中执行名为functionName函数并同步返回这个线程|
 |requireMinVersion|String minVersion,String failMessage|void|检查bn解释器版本，如果太低停止运行并发出failMessage|
+
+
 ### algorithm基对象  
+
 |方法名|参数|返回值|解释|
-|-|-|-|-|
+|-----|-----|-----|----|
 |buildPositionfromPlayer|Player-J p|Position-J|获取玩家p的位置|
 |buildPositionfromBlock|Block-J b|Position-J|获取方块b的位置|
 |buildPositionfromEntity|Entity-J e|Position-J|获取实体e的位置|
 |forEachBlockInArea|Position-J a, Position-J b,boolean isair,String callback|void|为位置a到位置b的每一个isair包括空气的方块回调函数名callback函数(注入参数一个:Block-J b,当前方块)|
 |forLinkedBlock|Position-J a,String callback|void|对于位置a相邻的所有同种方块的位置调用函数名callback函数(注入参数一个:Position-J p,当前位置)|
+
+
 ### blockitem基对象  
+
 |方法名|参数|返回值|解释|
-|-|-|-|-|
-|makeSound|Position-J pos,String s|void|在位置pos播放s对应的声音(跟原版命令类似,点击进入[声音列表](https://ci.opencollab.dev/job/NukkitX/job/Nukkit/job/master/javadoc/cn/nukkit/level/Sound.html)|
+|-----|-----|-----|----|
+|makeSound|Position-J pos,String s|void|在位置pos播放s对应的声音(跟原版命令类似,点击进入[声音列表](https://ci.opencollab.dev/job/NukkitX/job/Nukkit/job/master/javadoc/cn/nukkit/level/Sound.html))|
 |makeExpBall|Position-J pos,int exp|void|在位置pos生成包含exp点经验值的经验球|
 |makeDropItem|Position-J pos,Item-J i|void|在位置pos生成与i相同的物品堆|
 |getBlock|Position-J pos|Block-J|获取位置pos的方块|
@@ -228,9 +257,12 @@
 |setItemUnbreakable|Item item,boolean unbreakable|void|设置物品item是否不可破坏|
 |registerSolidBlock|int id,String name,double hardness,double resistance,int toolType,boolean isSilkTouchable,int dropMinExp,int dropMaxExp,int mineTier|void|注册固体方块，参数分别为方块id(只能覆写教育版方块)，方块名称，方块硬度，方块抗爆炸度，挖掘工具，是否受精准采集影响，最小掉落经验，最大掉落经验，挖掘等级，方块硬度越大挖掘时间越长，抗爆炸度越高越不容易被炸，挖掘工具0-无,1-剑,2-铲,3-镐,4-斧,5-剪刀，挖掘等级0-空手,1-木,2-金,3-石,4-铁,5-钻石|
 |registerSimpleItem|int id,String name|void|注册简单的物品堆，只能覆写教育版物品|
+
+
 ### database基对象  
+
 |方法名|参数|返回值|解释|
-|-|-|-|-|
+|-----|-----|-----|----|
 |databaseOpen|String url,String username,String password,String table|void|打开与sql服务器的连接|
 |databaseUpdate|String stt, Array<E+> objs|void|使用sql语句stt,语句参数为objs更新数据库|
 |databaseQuery|String stt,String col,Array<E+> objs|Array|使用sql语句stt,参数objs,查询第col列数据|
@@ -245,9 +277,12 @@
 |memoryStorage.getItem|String key|String|内存共享存储管理器：获取指定key对应的数据|
 |memoryStorage.removeItem|String key|String|内存共享存储管理器：移除指定key对应的数据|
 |memoryStorage.getKeys|void|Array<String>|内存共享存储管理器：获取所有的key|
+
+
 ### entity基对象  
+
 |方法名|参数|返回值|解释|
-|-|-|-|-|
+|-----|-----|-----|----|
 |getDropItemStack|EntityItem-J/Entity-J e|Item-J|获取掉落物实体e的物品堆|
 |removeEntity|Entity-J e|void|移除生物e|
 |setEntityName|Entity-J e,String name|void|设置e的名称为name|
@@ -295,9 +330,12 @@
 |shootArrow|Position from,Position to,double multiply|void|从from向to射击箭矢,mutiply发射速度倍率,倍率越大,伤害越高|
 |shootArrow|Position from,Position to,boolean canPickUp,double multiply|void|从from向to射击箭矢,canPickUp是否能被捡起,mutiply发射速度倍率|
 |lookAt|Entity e,Position pos|void|让实体e看向pos处|
+
+
 ### inventory基对象  
+
 |方法名|参数|返回值|解释|
-|-|-|-|-|
+|-----|-----|-----|----|
 |addInv|boolean d, Array<Item-J> i,String n|Inventory-J|构建虚拟标题n的物品栏,d控制是否大箱子,i是物品栏的物品列表|
 |getItemsInInv|Inventory-J inv|Array|获取inv的所有物品|
 |showFakeInv|Player-J player,Inventory-J inv|void|向玩家player展示物品栏inv|
@@ -323,9 +361,12 @@
 |setEntityItemInHand|Entity-J entity,Item-J item|void|设置npc或玩家实体的手上的物品|
 |setEntityItemInOffHand|Entity-J entity,Item-J item|void|设置npc或玩家实体的副手上的物品|
 |getInventorySlot|Inventory-J inv,int slot|Item-J|获取物品栏inv第slot个槽位的物品对象|
+
+
 ### world基对象  
+
 |方法名|参数|返回值|解释|
-|-|-|-|-|
+|-----|-----|-----|----|
 |genLevel|String name,int seed,String gen|void|生成名称name种子seed,种类为gen(FLAT,NETHER,VOID,NORMAL,OCEAN,SKYLAND)的世界|
 |loadLevel|String s|void|强制加载名称为s的世界|
 |getServerLevels|void|Array<Level-J>|获取服务器的所有世界|
@@ -336,9 +377,12 @@
 |regenerateChunk|Position pos|void|重新生成pos所在的区块|
 |defineChunkRenderByName|String forLevel,String callback,int priority/void|void|forLevel是渲染器能够渲染的指定世界名称，callback是渲染器回调函数，priority是优先级，优先级越大先调用，不填默认为0|
 |drawPic|Position pos1,Position pos2,String img,int faceData|void|从pos1到pos2绘制img路径上的图片，faceData指定物品展示框的朝向，pos1和pos2必须在同一垂直面上|
+
+
 ### notemusic基对象  
+
 |方法名|参数|返回值|解释|
-|-|-|-|-|
+|-----|-----|-----|----|
 |getSongFromFile|String name|Song-J|从notemusic文件夹的name文件解析红石音乐|
 |getSongTitle|Song-J song|String|获取歌曲的标题|
 |getSongDescription|Song-J song|String|获取歌曲的描述|
@@ -356,9 +400,12 @@
 |getPlayerInHorn|HornSongPlayer-J horn|Array|void|获取horn的所有听众|
 |getSongInHorn|HornSongPlayer-J horn|Song-J|获取horn播放的歌曲|
 |setHornStatus|HornSongPlayer horn,boolean isplaying|void|设置horn的播放状态|
+
+
 ### window基对象  
+
 |方法名|参数|返回值|解释|
-|-|-|-|-|
+|-----|-----|-----|----|
 |updateAllScoreBoard|String title,String text|void|给所有玩家更新计分板信息,多行用\';\'连接,"\\"可转义|
 |updateOneScoreBoard|String title,String text,Player p|void|给玩家p更新计分板信息,多行用\';\'连接,"\\"可转义|
 |getSimpleWindowBuilder|String title,String context|Simple-J|构建标题title,内容文字为context(非按钮)的简单窗口管理器|
@@ -368,7 +415,7 @@
 |getEventResponseModal|Event-J e|String|获取e中对话框点击的按钮文本|
 |getEventResponseIndex|Event-J e|int|获取e中简单窗口或对话框点击的按钮序号，从0开始|
 |getEventCustomVar|Event-J e,int id,String mode|String|获取e中高级窗口ID为id的mode(input,toggle,dropdown,slider,stepslider)元素的值|
-|setPlayerBossBar|Player-J player,String text,float len|Array<int>|设置玩家的boss血条文字和剩余血量百分比len(0-100),text参数中使用;来添加多个bossbar|
+|setPlayerBossBar|Player-J player,String text,float len|Array\<int>|设置玩家的boss血条文字和剩余血量百分比len(0-100),text参数中使用;来添加多个bossbar|
 |removePlayerBossBar|Player-J player|void|移除玩家所有的boss血条|
 |removePlayerBossBar|Player-J player,int id|void|移除玩家指定id的boss血条|
 |getLengthOfPlayerBossBar|Player-J player|double|获取玩家最上方的boss血条剩余血量百分比|
@@ -383,15 +430,21 @@
 |startEndPoem|Player player|void|让玩家屏幕上开始展示终末之诗|
 |setSwingStyle|String style|void|设置swing的样式，目前有：Darcula Intellij Metal Motif Multi Nimbus OS(系统样式)|
 |getStyledSwingWindow|String title,int width,int height,String iconPath|JFrame|根据之前设置的样式获取Swing窗口对象，iconPath为null或""将使用bnLOGO替代|
+
+
 ### particle基对象  
+
 |方法名|参数|返回值|解释|
-|-|-|-|-|
+|-----|-----|-----|----|
 |drawCircle|Position-J pos,double radius,int pid,double sep|void|在pos处以radius为半径水平用粒子ID为pid的粒子以每隔sep格放置一个的距离绘制圆|
 |drawLine|Position-J pos1,Position-J pos2,double sep,int pid|void|从pos1到pos2(必须同世界)每隔sep格放置一个粒子ID为pid的粒子来绘制直线|
 |drawFireWork|Position-J pos,int colornum,boolean flick,boolean trail,int shape,int second|void|在pos处生成一个飞行时间为second的烟花,colornum指定颜色,flick指定是否闪烁,trail指定是否留有轨迹,shape指定形状,详见本节附表|
 |drawBlockBreak|Position-J pos, Block-J block|void|在pos处绘制block对应的方块被破坏的粒子|
 |drawParticleFactoryMcFunction|String fun,Position-J pos,double turn|void|在pos处释放名为fun(无后缀)的mcfunction文件存储的粒子工厂自定义粒子,释放时旋转角度为turn度|
+
+
 附表:粒子id表(有些粒子我没见过，所以描述很神奇，大家帮忙贡献更好的描述，谢谢)  
+
 |粒子描述|id|
 |-|-|
 |气泡|1|
@@ -447,7 +500,10 @@
 |篝火烟雾|64|
 |下落的龙息|66|
 |龙息|67|
+
+
 附表:烟花颜色码表  
+
 |颜色|colornum码|
 |-|-|
 |黑色|0|
@@ -466,7 +522,10 @@
 |洋红色|13|
 |橙色|14|
 |白色|15|
+
+
 附表：烟花形状  
+
 |形状|shape码|
 |-|-|
 |小球型|0|
@@ -474,105 +533,122 @@
 |星形|2|
 |苦力怕型|3|
 |爆裂型|4|
+
+
 ### gameapi基对象  
-**坐等企鹅补上**  
+详见[gameapi基对象详解](./GameAPI基对象详解)  
+
 ### Java基对象  
-**仅js可用！python中没有此基对象！**  
+
+**仅js可用！其他语言中没有此基对象！**
 这是一个特殊的基对象,用于直接操作java类和对象,所以你可以参照[java文档](https://docs.oracle.com/javase/8/docs/api/)和[nukkit文档](https://ci.nukkitx.com/job/NukkitX/job/Nukkit/job/master/javadoc/overview-summary.html)操作  
 js可以这样无缝连接java,这为bn的js开服提供了强大的类库支持  
 更多js与java交互示例,详见CSDN的[一篇教程](https://blog.csdn.net/ASDQWE09876/article/details/96871968?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1)  
+
 |方法名|参数|返回值|解释|
-|-|-|-|-|
+|-----|-----|-----|----|
 |from|<E+> val|<E+> var|将java对象val转为合适的js数据var,如将java数组转为js数组|
 |to|<E+> var,String package|<E+> val|将js变量var转为package包名对应的java类对象(包名后加[]可转为java数组)|
 |type|String package|<E+>-C|获取package对应包名的java类(不是对象是类)|
 |extend|<E+>-C class,[可选<E+> object]|<E+>|继承java类并构造js对象(跟modPE差不多的)|
 |super|<E+> obj|<E+>|获取obj的父类对象|
+
 ## BN专有对象方法文档  
+
 ### windowbuilder三件套  
+
 1.Custom  
-- this setTitle(String title)  
-- this showToPlayer(Player p)  
-- this showToPlayer(Player p,boolean acceptClose)  
-- this showToPlayer(Player p,String callbackFunctionName/F function)  
-- this show(Player p)  
-- this show(Player p,boolean accpetClose)  
-- this show(Player p,String callbackFunctionName/F function)  
-- this show(Player p,String callbackFunctionName/F function,boolean acceptClose)  
-- this showToPlayer(Player p,String callbackFunctionName/F function,boolean acceptClose)  
-- this showAsSetting(Player p, String callbackFunctionName/F function)  
-- this showAsSetting(Player p, String imageURL, String callbackFunctionName/F function)  
-- this buildLabel(String text)  
-- this label(String text)  
-- this buildInput(String title,String placeholder)  
-- this input(String title,String placeholder)  
-- this buildInput(String title,String placeholder,String defaulttext)  
-- this input(String title,String placeholder,String defaulttext)  
-- this buildToggle(String title)  
-- this toggle(String title)  
-- this buildToggle(String title,boolean open)  
-- this toggle(String title,boolean open)  
-- this buildDropdown(String title,String inner)  
-- this dropdown(String title,String inner)  
-- this buildDropdown(String title,String inner,int index)  
-- this dropdown(String title,String inner,int index)  
-- this buildSlider(String title,double min,double max,int step,double defaultvalue)  
-- this slider(String title,double min,double max,int step,double defaultvalue)  
-- this buildSlider(String title,double min,double max,int step)  
-- this slider(String title,double min,double max,int step)  
-- this buildSlider(String title,double min,double max)  
-- this slider(String title,double min,double max)  
-- this buildStepSlider(String title,String options)  
-- this stepSlider(String title,String options)  
-- this stepslider(String title,String options)  
-- this buildStepSlider(String title,String options,int index)  
-- this stepSlider(String title,String options,int index)  
-- this stepslider(String title,String options,int index)  
-- this setAction(String callbackFunctionName/F function)  
-- this action(String callbackFunctionName/F function)  
+
+- this setTitle(String title)
+- this showToPlayer(Player p)
+- this showToPlayer(Player p,boolean acceptClose)
+- this showToPlayer(Player p,String callbackFunctionName/F function)
+- this show(Player p)
+- this show(Player p,boolean accpetClose)
+- this show(Player p,String callbackFunctionName/F function)
+- this show(Player p,String callbackFunctionName/F function,boolean acceptClose)
+- this showToPlayer(Player p,String callbackFunctionName/F function,boolean acceptClose)
+- this showAsSetting(Player p, String callbackFunctionName/F function)
+- this showAsSetting(Player p, String imageURL, String callbackFunctionName/F function)
+- this buildLabel(String text)
+- this label(String text)
+- this buildInput(String title,String placeholder)
+- this input(String title,String placeholder)
+- this buildInput(String title,String placeholder,String defaulttext)
+- this input(String title,String placeholder,String defaulttext)
+- this buildToggle(String title)
+- this toggle(String title)
+- this buildToggle(String title,boolean open)
+- this toggle(String title,boolean open)
+- this buildDropdown(String title,String inner)
+- this dropdown(String title,String inner)
+- this buildDropdown(String title,String inner,int index)
+- this dropdown(String title,String inner,int index)
+- this buildSlider(String title,double min,double max,int step,double defaultvalue)
+- this slider(String title,double min,double max,int step,double defaultvalue)
+- this buildSlider(String title,double min,double max,int step)
+- this slider(String title,double min,double max,int step)
+- this buildSlider(String title,double min,double max)
+- this slider(String title,double min,double max)
+- this buildStepSlider(String title,String options)
+- this stepSlider(String title,String options)
+- this stepslider(String title,String options)
+- this buildStepSlider(String title,String options,int index)
+- this stepSlider(String title,String options,int index)
+- this stepslider(String title,String options,int index)
+- this setAction(String callbackFunctionName/F function)
+- this action(String callbackFunctionName/F function)
+
 2.Modal  
-- this setTitle(String title)  
-- this title(String title)  
-- this setContext(String context)  
-- this context(String context)  
-- this setButton1(String text)  
-- this setButton2(String text)  
-- this button1(String text)  
-- this button2(String text)  
-- this setAction(String callbackFunctionName/F function)  
-- this action(String callbackFunctionName/F function)  
-- this showToPlayer(Player p)  
-- this showToPlayer(Player p,boolean acceptClose)  
-- this showToPlayer(Player p,String callbackFunctionName/F function)  
-- this showToPlayer(Player p,String callbackFunctionName/F function,boolean acceptClose)  
-- this show(Player p)  
-- this show(Player p,boolean accpetClose)  
-- this show(Player p,String callbackFunctionName/F function)  
-- this show(Player p,String callbackFunctionName/F function,boolean acceptClose)  
+
+- this setTitle(String title)
+- this title(String title)
+- this setContext(String context)
+- this context(String context)
+- this setButton1(String text)
+- this setButton2(String text)
+- this button1(String text)
+- this button2(String text)
+- this setAction(String callbackFunctionName/F function)
+- this action(String callbackFunctionName/F function)
+- this showToPlayer(Player p)
+- this showToPlayer(Player p,boolean acceptClose)
+- this showToPlayer(Player p,String callbackFunctionName/F function)
+- this showToPlayer(Player p,String callbackFunctionName/F function,boolean acceptClose)
+- this show(Player p)
+- this show(Player p,boolean accpetClose)
+- this show(Player p,String callbackFunctionName/F function)
+- this show(Player p,String callbackFunctionName/F function,boolean acceptClose)
+
 3.Simple  
-- this buildButton(String text,String img)  
-- this button(String text,String img)  
-- this button(String text)  
-- this setAction(String actionFunctionName/F function)  
-- this action(String actionFunctionName/F function)  
-- this setTitle(String title)  
-- this title(String title)  
-- this setContext(String context)  
-- this context(String context)  
-- this showToPlayer(Player p)  
-- this showToPlayer(Player p,boolean acceptClose)  
-- this showToPlayer(Player p,String callbackFunctionName/F function)  
-- this showToPlayer(Player p,String callbackFunctionName/F function,boolean acceptClose)  
-- this show(Player p)  
-- this show(Player p,boolean accpetClose)  
-- this show(Player p,String callbackFunctionName/F function)  
-- this show(Player p,String callbackFunctionName/F function,boolean acceptClose)  
+
+- this buildButton(String text,String img)
+- this button(String text,String img)
+- this button(String text)
+- this setAction(String actionFunctionName/F function)
+- this action(String actionFunctionName/F function)
+- this setTitle(String title)
+- this title(String title)
+- this setContext(String context)
+- this context(String context)
+- this showToPlayer(Player p)
+- this showToPlayer(Player p,boolean acceptClose)
+- this showToPlayer(Player p,String callbackFunctionName/F function)
+- this showToPlayer(Player p,String callbackFunctionName/F function,boolean acceptClose)
+- this show(Player p)
+- this show(Player p,boolean accpetClose)
+- this show(Player p,String callbackFunctionName/F function)
+- this show(Player p,String callbackFunctionName/F function,boolean acceptClose)
+
 ### logger常用招式  
-- void info(String s)  
-- void warning(String s)  
+
+- void info(String s)
+- void warning(String s)
+
 ### BNNPC使用方法  
+
 |方法名|参数|返回值|解释|
-|-|-|-|-|
+|-----|-----|-----|----|
 |start|void|void|启动这个npc实体|
 |turnRound|double yaw|void|让实体水平视角旋转yaw度|
 |headUp|double pitch|void|让实体垂直视角旋转pitch度|
@@ -618,74 +694,110 @@ js可以这样无缝连接java,这为bn的js开服提供了强大的类库支持
 |removeDropSlot|int slot|void|移除死亡时掉落的背包槽位|
 |doEmote|String action/void|void|让npc执行指定的表情动作,action可以是 Wave Punch Clap OverThere Hammer Fall Diamond Pickaxe,也可以填写对应的中文 挥手 拳击 鼓掌 在那 锤子 摔倒 钻石,不填的话将上面的动作中任选一个|
 |directMove|Position to|boolean|bnnpc直线移动到某处|
-例子：（在world,128,64,128处生成一个yj皮肤的npc，并且使得它可以被攻击）  
-1. 准备：  
-- 安装bn解释器1.2.7.5及以上版本  
+
+
+例子：（在world,128,64,128处生成一个yj皮肤的npc，并且使得它可以被攻击） 
+
+1. 准备:  
+
+- 安装bn解释器1.2.7.5及以上版本
 - 在./plugins/BlocklyNukkit/skins文件夹下面准备好一个4D/3D皮肤文件，比如这里我准备了一个yj.png和yj.json  
+
 2. 首先创建一个BNNPC对象：  
-~~~  
-var pos = Java.type("cn.nukkit.level.Position").fromObject(manager.buildvec3(128,64,128),server.getLevelByName('world'));  
-var npc = entity.buildNPC(pos,'测试NPC','yj')  
-~~~  
+
+~~~
+var pos = Java.type("cn.nukkit.level.Position").fromObject(manager.buildvec3(128,64,128),server.getLevelByName('world'));
+var npc = entity.buildNPC(pos,'测试NPC','yj')
+~~~
+
+
 3. 然后设置它的属性  
-~~~  
-npc.setEnableAttack(true)  
-npc.setEnableHurt(true)  
-~~~  
+
+~~~
+npc.setEnableAttack(true)
+npc.setEnableHurt(true)
+~~~
+
+
 4. 最后启动这个npc，这样玩家就能看见并且攻击它了  
-~~~  
-npc.start()  
-~~~  
+
+~~~
+npc.start()
+~~~
+
 ### bn插件与java联合开发  
-可以通过导出标记将bn插件中的函数导出到全局环境中，然后即可使用java来快速调用bn插件  
-命令exportdevjar <BN插件名>将可以导出bn插件中的函数头到一个jar包里面便于开发  
+
+可以通过导出标记将bn插件中的函数导出到全局环境中，然后即可使用java来快速调用bn插件，
+命令exportdevjar <BN插件名>将可以导出bn插件中的函数头到一个jar包里面便于开发
+
 javascript:  
-```javascript  
-export function MyFun(arg1,arg2,arg3){}  
-```  
+```javascript
+export function MyFun(arg1,arg2,arg3){}
+```
+
 python:  
-```python  
-@export  
-def MyFun(arg1,arg2,arg3):  
-    pass  
-```  
+```python
+@export
+def MyFun(arg1,arg2,arg3):
+    pass
+```
+
 lua:  
-```lua  
-function BlockPlaceEvent(ent)-->export  
-end  
-```  
+```lua
+function BlockPlaceEvent(ent)-->export
+
+end
+```
+
 php:  
-```php  
-static function PlayerJoinEvent($event){  
-}  
-```  
+```php
+static function PlayerJoinEvent($event){
+    
+}
+```
+
 ### C/C++开发  
+
 C/C++  
+
 更新了基于webassembly技术栈的C/C++插件编写支持，可以调用bn基对象。  
 可以直接调用java并于java进行交互，一次编译，处处运行，支持windows linux macos  
 详细教程请看：[bn教程库-C/C++插件开发](http://www.blocklynukkit.info/2105692)  
+
 ### bn插件包功能  
+
 bn插件包功能可以将多个互相具有依赖关系的插件文件以及附属的资源文件打成一个包，这样分发的时候只需分发一个文件即可，打成的插件包文件也可以继续打包为`jar`文件。  
-bn插件包有两种格式，一种是`.bnp`文件，另一种是`.bnpx`文件，`.bnp`文件是单纯把各个插件文件和资源文件拼凑起来，而`.bnpx`是把它们压缩并归档成的文件，只有`.bnp`文件能继续达成`jar`包。  
+bn插件包有两种格式，一种是`.bnp`文件，另一种是`.bnpx`文件，`.bnp`文件是单纯把各个插件文件和资源文件拼凑起来，而`.bnpx`是把它们压缩并归档成的文件，只有`.bnp`文件能继续达成`jar`包。
+
 打包需要使用bn提供的`bnp`命令，`bnp build 构建清单路径`即可构建一个bn插件包。  
+
 makefile是一个json格式的包配置文件，由name,compress,plugins三个字段组成，其中：  
-- name为打包的插件包的名字(字符串)  
-- compress为是否打出压缩插件包(boolean)  
-- plugins是一个字符串数组，里面标注要打进包中的bn插件的路径，加载时从上到下加载，也可以打进去json yml xml txt格式的资源文件，资源文件将会被按顺序解压到打包时与nk核心的相对位置解压。  
+
+- name为打包的插件包的名字(字符串)
+- compress为是否打出压缩插件包(boolean)
+- plugins是一个字符串数组，里面标注要打进包中的bn插件的路径，加载时从上到下加载，也可以打进去json yml xml txt格式的资源文件，资源文件将会被按顺序解压到打包时与nk核心的相对位置解压。
+
+
 示例：  
-```  
-{  
-	"name":"demo",  
-	"compress":false,  
-	"plugins":[  
-		"./plugins/BlocklyNukkit/mod.py",  
-		"./plugins/BlocklyNukkit/test.lua"  
-	]  
-}  
-```  
+
+```
+{
+	"name":"demo",
+	"compress":false,
+	"plugins":[
+		"./plugins/BlocklyNukkit/mod.py",
+		"./plugins/BlocklyNukkit/test.lua"
+	]
+}
+```
+
+
+
 ## 事件回调函数  
+
 事件回调函数是解释器内置的自动调用的函数,只要你的函数名跟列表里面的相同就会自动调用  
 详细的事件成员方法跟调用方式详见事件回调详解章节  
+
 |介绍|代码|
 |-|-|
 |玩家聊天|PlayerChatEvent|
@@ -833,18 +945,26 @@ makefile是一个json格式的包配置文件，由name,compress,plugins三个�
 |机器人收到qq群消息事件|QQGroupMessageEvent|
 |机器人收到qq好友消息事件|QQFriendMessageEvent|
 |机器人其他qq操作事件|QQOtherEvent|
+
+
 ## 常用java类/对象的成员函数  
-注:这部分由于不属于bn类库范畴,所以不会加说明,应该看参数和函数名能看懂,不懂的看图形编辑器生成的代码或者直接qq联系开发组或者issue,谢谢  
+
+注:这部分由于不属于bn类库范畴,所以不会加说明,应该看参数和函数名能看懂,不懂的看图形编辑器生成的代码或者直接qq联系开发组或者issue,谢谢    
 注:这部分的java对象不加-J了,因为太多  
 注:xxx[]代表xxx类型的数组,需要使用Java基对象的方法转换  
 注:bn解释器会自动执行部分类型转换,比如js的数字转为java的整形int,浮点型float,双精度型double,Player转为CommandSender等等,如果不能自动转会报错  
 注:标注static的函数是直接从类调用而不是对象,未标注static是从对象调用的  
 注:类/对象 继承自某包意味着这个类/对象能够使用被继承的包里面可以用的方法/函数  
-> 温馨提示:  
-> 下面的只是冰山一角!  
-> 更多的用法请去[nukkit官方文档](https://ci.nukkitx.com/job/NukkitX/job/Nukkit/job/master/javadoc/index.html?overview-summary.html)查看  
+
+
+> 温馨提示:
+> 下面的只是冰山一角!
+> 更多的用法请去[nukkit官方文档](https://ci.nukkitx.com/job/NukkitX/job/Nukkit/job/master/javadoc/index.html?overview-summary.html)查看
+
+
 ### server常用招式  
 #### cn.nukkit.Server  
+
 |返回值类型|函数名|
 |-|-|
 |void|addOp(String name)|
@@ -925,8 +1045,10 @@ makefile是一个json格式的包配置文件，由name,compress,plugins三个�
 |void|tickProcessor()|
 |void|titleTick()|
 |boolean|unloadLevel(Level level)|
+
 ### Player常用函数  
 #### cn.nukkit.Player  
+
 - 继承自 cn.nukkit.math.Vector3  
 - 继承自 cn.nukkit.level.Position  
 - 继承自 cn.nukkit.level.Location  
@@ -935,6 +1057,8 @@ makefile是一个json格式的包配置文件，由name,compress,plugins三个�
 - 继承自 cn.nukkit.entity.EntityCreature  
 - 继承自 cn.nukkit.entity.EntityHumanType  
 - 继承自 cn.nukkit.entity.EntityHuman  
+
+
 |返回值类型|函数名|
 |-|-|
 |void|addExperience(int add)|
@@ -1071,8 +1195,10 @@ makefile是一个json格式的包配置文件，由name,compress,plugins三个�
 |void|transfer(InetSocketAddress address)|
 |void|unloadChunk(int x, int z)|
 |void|unloadChunk(int x, int z, Level level)|
+
 ### Event常用函数  
 #### cn.nukkit.event.Event  
+
 |返回值类型|函数名|
 |-|-|
 |String|getEventName()|
@@ -1096,8 +1222,10 @@ makefile是一个json格式的包配置文件，由name,compress,plugins三个�
 |Entity|getDamager()|
 |float|getDamage()|
 |float|getKnockBack()|
+
 ### Vector3常用方法  
 #### cn.nukkit.math.Vector3  
+
 |返回值类型|函数名|
 |-|-|
 |Vector3|add(double x, double y, double z)|
@@ -1112,9 +1240,12 @@ makefile是一个json格式的包配置文件，由name,compress,plugins三个�
 |double|getX()|
 |double|getY()|
 |double|getZ()|
+
 ### Position常用方法  
 #### cn.nukkit.level.Position  
-- 继承自 cn.nukkit.math.Vector3  
+
+- 继承自 cn.nukkit.math.Vector3
+
 |返回值类型|函数名|
 |-|-|
 |static Position|fromObject(Vector3 pos)//if it no level,the default level will be used|
@@ -1125,8 +1256,10 @@ makefile是一个json格式的包配置文件，由name,compress,plugins三个�
 |Location|getLocation()|
 |Position|setComponents(double x, double y, double z)|
 |Position|setLevel(Level level)|
+
 ### Item常用方法  
 #### cn.nukkit.item.Item  
+
 |返回值类型|函数名|
 |-|-|
 |boolean|canBeActivated()|
@@ -1178,10 +1311,13 @@ makefile是一个json格式的包配置文件，由name,compress,plugins三个�
 |void|setDamage(int meta)|
 |Item|setLore(String[] lines)|
 |Item|setNamedTag(CompoundTag tag)|
+
 ### Block常用方法  
 #### cn.nukkit.block.Block  
-- 继承自 cn.nukkit.level.Position  
-- 继承自 cn.nukkit.math.Vector3  
+
+- 继承自 cn.nukkit.level.Position
+- 继承自 cn.nukkit.math.Vector3
+
 |返回值类型		|函数名																										|
 |-				|-																											|
 |boolean		|canBeActivated()																							|
@@ -1241,11 +1377,14 @@ makefile是一个json格式的包配置文件，由name,compress,plugins三个�
 |Block			|up(int step)																								|
 |Block			|west()																										|
 |Block			|west(int step)																								|
+
 ### Entity常用方法  
 #### cn.nukkit.entity.Entity  
+
 - 继承自 cn.nukkit.math.Vector3  
 - 继承自 cn.nukkit.level.Position  
-- 继承自 cn.nukkit.level.Location  
+- 继承自 cn.nukkit.level.Location 
+
 |返回值类型		|函数名																										|
 |-				|-																											|
 |void																|addEffect(Effect effect)																	|

@@ -1,22 +1,24 @@
----  
-toc: true  
----  
 # GameAPI基对象详解  
 ## GameAPI基对象  
 GameAPI是一个用于快速开发小游戏的库  
 ## 创建一个游戏  
+
 方法 `GameBase newGame(name,useTeam,startGameCallBack,endGameCallBack,mainLoopCallBack,deathCallBack,teamSize,maxPlayers,gameLength)`  
+
 参数解释  
-- name -> String 游戏名字  
-- useTeam -> boolean 是否使用队伍  
-- startGameCallBack -> String 开始游戏回调  
-- endGameCallBack -> String 结束游戏回调  
-- mainLoopCallBack -> String 主循环回调  
-- deathCallBack -> String 死亡回调  
-- teamSize -> int 队伍大小（仅使用队伍时有效，不使用时可设为0）  
-- maxPlayers -> int 最大玩家人数  
-- gameLength -> int 游戏时长（秒）  
+
+- name -> String 游戏名字
+- useTeam -> boolean 是否使用队伍
+- - startGameCallBack -> String 开始游戏回调
+- endGameCallBack -> String 结束游戏回调
+- mainLoopCallBack -> String 主循环回调
+- deathCallBack -> String 死亡回调
+- teamSize -> int 队伍大小（仅使用队伍时有效，不使用时可设为0
+- maxPlayers -> int 最大玩家人数
+- gameLength -> int 游戏时长（秒）
+
 示例  
+
 ```javascript  
 var game = gameapi.newGame("Example",false,'start','end','mainloop','death',0,10,60);  
 function start(){  
@@ -32,69 +34,101 @@ function death(deathevent){
     //亿些代码  
 }  
 ```  
+
+
 ## 实用工具  
-### Menu  
+### Menu   
+
 Menu是一个帮助你快速创建表单或将物品栏转换成菜单的工具  
+
 方法  
+
 - InventoryMenu createInventoryMenu(inventoryType,title)  
+
 参数解释  
-    - inventoryType -> String 物品栏的类型，一般直接填CHEST  
-    - title -> String 物品栏标题  
+
+- inventoryType -> String 物品栏的类型，一般直接填CHEST  
+- title -> String 物品栏标题  
 - addMenuItem(menu, slot, item, inventoryCallback)  
+
 参数解释  
-    - menu -> InventoryMenu 实例  
-    - slot -> int 物品在物品栏内的位置  
-    - item -> Item 物品实例  
-    - inventoryCallback -> String 物品栏回调  
+
+- menu -> InventoryMenu 实例  
+- slot -> int 物品在物品栏内的位置  
+- item -> Item 物品实例  
+- inventoryCallback -> String 物品栏回调  
+
 示例  
+
 ```javascript  
 var menu = gameapi.createInventoryMenu("CHEST","我是标题");  
 gameapi.addMenuItem(menu,1,item,"inv");  
 function inv(){  
     //亿些代码  
 }  
-```  
+```
+
 方法  
-- FormMenu createFormMenu(title,content)  
+
+- FormMenu createFormMenu(title,content) 
+
 参数解释  
-    - title -> String 表单标题  
-    - content -> String 表单副标题  
+
+- title -> String 表单标题  
+- content -> String 表单副标题  
 - addMenuButton(menu,buttonText,imageData,formCallback)  
+
 参数解释  
-    - menu -> FormMenu 实例  
-    - buttonText -> String 按钮名称  
-    - imageData -> String 图像数据  
-    - formCallback -> String 表单回调  
+
+- menu -> FormMenu 实例  
+- buttonText -> String 按钮名称  
+- imageData -> String 图像数据  
+- formCallback -> String 表单回调
+
 示例  
+
 ```javascript  
 var menu = gameapi.createFormMenu("我是标题","我是副标题");  
 gameapi.addMenuButton(menu,"一个按钮","","form");  
 function form(){  
     //亿些代码  
 }  
-```  
+```
+
+
 ### 计分板  
+
 GameAPI提供的计分板是面向个体玩家的，每个玩家将有一个独立的计分板实例  
+
 方法  
+
 - Scoreboard getScoreboard(Player player)  
 - void setObjective(scoreboard,objectiveName, displayName)  
+
 参数解释  
-    - scoreboard -> Scoreboard 计分板实例  
-    - objectiveName -> String 计分项名  
-    - displayname -> String 计分项显示名  
+
+- scoreboard -> Scoreboard 计分板实例  
+- objectiveName -> String 计分项名  
+- displayname -> String 计分项显示名  
+
 示例  
+
 ```javascript  
 var scoreboard = gameapi.getScoreboard(player);  
 gameapi.setObjective(scoreboard,"计分项名","显示");  
 scoreboard.setLine("一行文字", 0);  
 ```  
+
 ## 示例  
+
 我们现在要实际从零开始制作一个小游戏  
 欧皇大乱斗  
 游戏有大致以下思路:  
+
 1. 每过10s随机死一个人  
 2. 每回合不被杀死就能免于死亡  
 3. 活到最后的人胜利  
+
 ```javascript  
 var game = gameapi.newGame("ChampionLuck",false,"start","end","mainloop",0,10,100);  
 //游戏名=ChampionLuck  
@@ -141,6 +175,8 @@ function death(player,killer,items){ //死亡回调
     player.getInventory().setBoots(blockitem.buildItem(305,0,1));  
 }  
 ```  
+
+
 ## GameBase对象可用方法  
 ### 玩家与队伍  
 - `List<Player> getPlayers();`  
