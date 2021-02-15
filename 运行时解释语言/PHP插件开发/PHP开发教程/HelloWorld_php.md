@@ -1,9 +1,6 @@
----  
-toc: true  
----  
 # HelloWorld  
 我们创建一个文件`Helloworld.php`  
-```  
+```php
 <?php  
 echo "HelloWorld"  
 ?>  

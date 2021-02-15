@@ -30,31 +30,33 @@ bn机器人编写并不难，下面将带您初步认识编写一个机器人插
 ①启动机器人  
 首先确保环境正确配置的情况下，使用如下代码即可启动机器人  
 javascript:  
-```  
+```javascript
 manager.qq.startBot();  
 ```  
 python:  
-```  
+```python
 manager.qq.startBot()  
 ```  
 ②监听聊天事件  
 bn中，qq机器人收到的聊天事件将以事件的形式公开给bn插件，关于qq聊天的事件目前有两种：  
 QQGroupMessageEvent --机器人收到qq群消息事件  
 其成员函数有：  
-    - String getSelfQQ() --获取收到消息的qq账号  
-    - String getFromQQ() --获取发送消息的qq账号  
-    - String getFromGroup() --获取消息事件的qq群号  
-    - String getMessage() -获取消息  
+- String getSelfQQ() 获取收到消息的qq账号  
+- String getFromQQ() 获取发送消息的qq账号  
+- String getFromGroup() 获取消息事件的qq群号  
+- String getMessage() 获取消息 
+
 QQFriendMessageEvent --机器人收到qq好友消息事件  
 其成员函数有：  
-    - String getEventId() --获取事件id  
-    - String getEventSeed() --获取事件中的群消息标识码  
-    - String getFromQQ() --获取发送消息的qq  
-    - String getSelfQQ() --获取接受到群消息的qq账号  
-    - String getMessage() --获取事件的消息  
+- String getEventId() 获取事件id  
+- String getEventSeed() 获取事件中的群消息标识码  
+- String getFromQQ() 获取发送消息的qq  
+- String getSelfQQ() 获取接受到群消息的qq账号  
+- String getMessage() 获取事件的消息  
+
 下面是监听qq聊天事件的示例：  
 javascript:  
-```  
+```javascript
 function QQFriendMessageEvent(event){  
     let self = event.getSelfQQ();  
     let fromqq = event.getFromQQ();  
@@ -70,7 +72,7 @@ function QQGroupMessageEvent(event){
 }  
 ```  
 python:  
-```  
+```python
 def QQFriendMessageEvent(event):  
     selfqq = event.getSelfQQ()  
     fromqq = event.getFromQQ()  
@@ -85,22 +87,22 @@ def QQGroupMessageEvent(event):
 ```  
 ③机器人发送信息  
 JavaScript：  
-```  
+```javascript
 manager.qq.sendFriendMessage("发送消息qq号","发送给qq号","消息内容"); //给好友发消息  
 manager.qq.sendGroupMessage("发送消息qq号","群号","消息内容"); //给qq群发送消息  
 ```  
 python：  
-```  
+```python
 manager.qq.sendFriendMessage(u"发送消息qq号",u"发送给qq号",u"消息内容") #给好友发消息  
 manager.qq.sendGroupMessage(u发送消息qq号",u"群号",u"消息内容") #给qq群发送消息  
 ```  
 ④机器人发送图文使用qq.sendGroupPicMessage(String fromQQ,String toGroup,String picturePaths,String message)发送qq图文消息picturePaths用;分割多个本地图片路径  
 消息中使用图片只需用%picture数字%即可，数字指代第几个路径的图片，从0开始算起  
 JavaScript：  
-```  
+```javascript
 manager.qq.sendGroupPicMessage("发送消息qq号","发送给qq号","C:/Users/Administer/image.jpg;C:/Users/Administer/smile.jpg","图片image.png是:%picture0%\n图片smile.jpg是%picture1% "); //给qq群发图文消息  
 ```  
 python：  
-```  
+```python
 manager.qq.sendGroupMessage(u"发送消息qq号",u"群号",u"C:/Users/Administer/image.jpg;C:/Users/Administer/smile.jpg",u"图片image.png是:%picture0%\n图片smile.jpg是%picture1% ") #给qq群发送图文消息  
 ```

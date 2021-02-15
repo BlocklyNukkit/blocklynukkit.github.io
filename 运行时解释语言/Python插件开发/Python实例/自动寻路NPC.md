@@ -1,7 +1,5 @@
----  
-toc: true  
----  
 # 自动寻路NPC  
+
 ```python  
 # -*- coding: UTF-8 -*-  
 import cn.nukkit.Server as nk #从java导入nk的服务器类  

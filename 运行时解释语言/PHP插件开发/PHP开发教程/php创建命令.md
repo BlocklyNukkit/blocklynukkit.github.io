@@ -1,12 +1,9 @@
----  
-toc: true  
----  
 # 创建命令  
 ## 什么是命令  
 命令是一种特殊的聊天信息，在游戏聊天框中用 **/** 来标识一个命令，命令是最常见的插件与玩家交互的方式。  
 ## 创建一个命令  
-在使用python开发bn插件中，我们使用manager基对象来创建一个命令。  
-查阅[编程开发文档](http://www.blocklynukkit.info/1723846)可知：我们使用createCommnad函数来创建一个命令  
+在使用php开发bn插件中，我们使用manager基对象来创建一个命令。  
+查阅[编程开发文档](https://wiki.blocklynukkit.com/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/)可知：我们使用createCommnad函数来创建一个命令  
 > 技能：识读函数表  
 > blocklynukkit编程开发文档中提供了很多函数表，这里教您如何识读它们  
 > 您会看到每一张函数表可能是在基对象下面的，如manager基对象，这意味着这个函数表内的所有函数都是在这个基对象里面的，要调用这些函数，您不能直接使用函数名，而是需要使用 **基对象名称.函数名称(参数)** 这样来调用  
@@ -22,13 +19,14 @@ toc: true
 > 其中createCommand是这个函数的名称，调用的时候我们只需要使用manager.createCommand(xxxxx)就可以调用，它接受两种函数类型，分别是3个字符串作为参数和4个字符串作为参数，当接受三个字符串作为参数的时候，第一个字符串参数的名字是name，我们看解释得知第一个字符串参数name是要创建的命令的名称，第二个字符串参数的名字是des，我们看解释得知第二个字符串参数des是对这个命令的一些文字描述，第三个字符串参数的名字是call，我们看解释得直第三个字符串参数call是这个命令被执行之后的用于处理命令被调用的函数的名称。当接受四个字符串作为参数的时候，前三个跟之前一样，第四个字符串参数名字叫per，我们看解释得知第四个字符串参数per是这个命令的权限节点的名称。  
 > 我们再来看返回值，可以看到无论调用这个函数的时候是传入了三个还是四个参数，返回值都是void，即没有返回值。  
 查阅得知，createCommand函数可以用来创建一个新的命令，我们现在就来使用它创建一个新的命令hello  
-*command*.*py* ：  
-```python  
-# -*- coding: utf-8 -*-  
-#pragma python  
-manager.createCommand("hello",u"一个命令","myCallBack")  
-def myCallBack(sender,args):  
-    pass  
+*command*.*php* ：  
+```php
+#pragma php  
+$manager->createCommand("hello","一个命令","myCallBack");
+function myCallBack(sender,args){
+	global $logger; //在函数内使用bn基对象，需要将其声明为全局变量
+	//TODO
+}
 ```  
 这样，我们就创建了一个新的命令，这个命令的名称是hello，描述为“一个命令”，用于处理命令输入的回调函数的名字是myCallBack，并且我们在下面声明了一个空函数，名称也是myCallBack，这就是我们的回调函数。  
 我们赶紧进服看看：  
@@ -41,15 +39,18 @@ def myCallBack(sender,args):
 现在我们来对回调函数进行修改，你会看到我们的回调函数接受了两个参数，这是规定，必须要这样做，bn会把第一个参数设置为一个发送者对象，第二是命令参数列表：  
 发送者对象是什么？首先，我们要说明一点，发送者对象不是玩家或者控制台哦！它是一个抽象，包含了这个发送者（玩家或者控制台）的必要信息。  
 下面我们来对发送者对象进行一下实践：  
-```python  
-# -*- coding: utf-8 -*-  
-#pragma python  
-manager.createCommand("hello",u"一个命令","myCallBack")  
-def myCallBack(sender,args):  
-    if sender.isPlayer():  
-        logger.info(u"发送者是玩家")  
-    else:  
-        logger.info(u"发送者是控制台")  
+```php
+#pragma php  
+$manager->createCommand("hello",u"一个命令","myCallBack");  
+function myCallBack($sender,$args){
+	global $logger;
+    if($sender->isPlayer()){
+		$logger->info("发送者是玩家");
+	}else{
+		$logger->info("发送者是控制台");
+	}  
+}
+    
 ```  
 可以看到，我们刚刚修改了myCallBack函数的内容，而myCallBack函数正是我们在第三行（包括注释）创建的命令所标注的回调函数，一旦这个命令被输入，我们的回调函数就会被执行，我们在回调函数中使用了sender.isPlayer()来判断发送者是否为玩家，然后输出是不是玩家，我们现在去进服测试一下：  
 *在控制台输入hello命令*  
@@ -66,20 +67,25 @@ bn中，命令的所有参数将会以一个列表的形式传入命令回调函
 > 命令回调参数列表是由整个命令语句，除去主命令名和前缀斜杠之后，以空格分隔开之后的内容  
 > 比如：命令gamemode 1 Steve中，命令名是字符串gamemode 参数列表是[u'1','u'Steve]  
 举个栗子：  
-```python  
-# coding:utf-8  
-#pragma python  
-manager.createCommand("hello",u"一个命令(后面跟着你想对谁说话(玩家/控制台))","helloworld")  
-def helloworld(sender,args):  
-    if args[0] == u'控制台':  
-        logger.info(sender.getPlayer().getName() + u'向您问好！！')  
-    else:  
-        if len(args) > 1:  
-            del args[0]  
-            #把后面的参数连起来  
-            #发给发送者  
-            summer = ''  
-            for i in args:  
-                summer+=i  
-            sender.getPlayer().sendMessage(summer)  
+```php
+#pragma php  
+$manager->createCommand("hello","一个命令(后面跟着你想对谁说话(玩家/控制台))","helloworld");
+function helloworld($sender,$args){
+	global $logger
+	if($args[0] == '控制台'){  
+        $logger->info($sender->getPlayer()->getName().'向您问好！！');
+		//$sender是发送者对象，是对发送命令的东西的抽象封装
+		//	->getPlayer() 获取发送者对象中封装起来的玩家，若命令不为玩家发出则为空
+		//	->getName() 获取玩家对象的名字，字符串
+	}else{
+		if(sizeof($args) > 1){
+			$out = "";
+			for($i=1;$i < sizeof($args); $i++) {
+				$out .= $args[$i];
+			}
+			$sender->getPlayer()->sendMessage($out);
+		}
+	}
+}  
+     
 ```

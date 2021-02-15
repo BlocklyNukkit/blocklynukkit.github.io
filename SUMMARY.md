@@ -51,7 +51,7 @@ layout: default
                 * [高级窗口](运行时解释语言/JS插件开发/JS实例/高级窗口.md)  
         * [Python插件开发](运行时解释语言/Python插件开发/index.md)  
             * [Python语言教程](运行时解释语言/Python插件开发/Python语言教程/index.md)  
-                * [python 2.x和python 3.x有什么区别？](运行时解释语言/Python插件开发/Python语言教程/python2.x和python3.x有什么区别？.md)  
+                * [python 2.x和python 3.x有什么区别？](运行时解释语言/Python插件开发/Python语言教程/区别.md)  
                 * [0.课前准备](运行时解释语言/Python插件开发/Python语言教程/0.课前准备.md)  
                 * [1.函数介绍](运行时解释语言/Python插件开发/Python语言教程/1.函数.md)  
                 * [2.函数深度教程](运行时解释语言/Python插件开发/Python语言教程/2.函数深度教程.md)  
