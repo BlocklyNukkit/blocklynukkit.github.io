@@ -41,6 +41,7 @@
 - I32 -> 用来实现的函数的导出名字符串指针
 
 #### getJString  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|getJString|void|I32, I32|
@@ -50,6 +51,7 @@
 - I32 -> 获取字符串后写入的指针  
 
 #### getJInt  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|getJInt|I32|I32|
@@ -59,6 +61,7 @@
 - 返回 -> 指定java堆栈的32位整数  
 
 #### getJLong  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|getJLong|I64|I32|
@@ -68,6 +71,7 @@
 - 返回 -> 指定java堆栈的64位整数
 
 #### getJFloat  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|getJFloat|F32|I32|
@@ -77,6 +81,7 @@
 - 返回 -> 指定java堆栈的32位浮点数 
 
 #### getJDouble  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|getJDouble|F64|I32|
@@ -86,6 +91,7 @@
 - 返回 -> 指定java堆栈的64位整数  
 
 #### getJIntArray  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|getJIntArray|void|I32, I32|
@@ -95,6 +101,7 @@
 - I32 -> 获取数组后写入的指针  
 
 #### getJLongArray  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|getJLongArray|void|I32, I32|
@@ -104,6 +111,7 @@
 - I32 -> 获取数组后写入的指针  
 
 #### getJFloatArray  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|getJFloatArray|void|I32, I32|
@@ -113,6 +121,7 @@
 - I32 -> 获取数组后写入的指针  
 
 #### getJDoubleArray  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|getJDoubleArray|void|I32, I32|
@@ -122,6 +131,7 @@
 - I32 -> 获取数组后写入的指针  
 
 #### getJMethod  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|getJMethod|I32|I32, I32, I32|
@@ -133,6 +143,7 @@
 - 返回 -> 成员函数对象的java堆栈索引  
 
 #### getJStaticMethod  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|getJStaticMethod|I32|I32, I32, I32|
@@ -144,6 +155,7 @@
 - 返回 -> 成员函数对象的java堆栈索引  
 
 #### invokeJMethod  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|invokeJMethod|I32|I32, I32, I32, I32|
@@ -156,6 +168,7 @@
 - 返回 -> 函数返回值的java堆栈索引  
 
 #### pushIntToJavaStack  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|pushIntToJavaStack|I32|I32|
@@ -165,6 +178,7 @@
 - 返回 -> 放入的I32整数的java堆栈索引  
 
 #### pushLongToJavaStack  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|pushLongToJavaStack|I32|I64|
@@ -174,6 +188,7 @@
 - 返回 -> 放入的I64整数的java堆栈索引  
 
 #### pushFloatToJavaStack  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|pushFloatToJavaStack|I32|F32|
@@ -183,6 +198,7 @@
 - 返回 -> 放入的F32浮点数的java堆栈索引  
 
 #### pushDoubleToJavaStack  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|pushDoubleToJavaStack|I32|F64|
@@ -192,6 +208,7 @@
 - 返回 -> 放入的F64浮点的java堆栈索引  
 
 #### pushStringToJavaStack  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|pushStringToJavaStack|I32|I32|
@@ -201,6 +218,7 @@
 - 返回 -> 放入的字符串对象的java堆栈索引 
 
 #### newJObject  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|newJObject|I32|I32, I32, I32|
@@ -212,6 +230,7 @@
 - 返回 -> 新建对象的java堆栈索引，-1表示创建失败  
 
 #### getJIndexByKey  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|newJObject|I32|I32|
@@ -221,6 +240,7 @@
 - 返回 -> 对应的java字符串索引，-1为获取失败  
 
 #### castJObject  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|castJObject|void|I32, I32|
@@ -230,6 +250,7 @@
 - I32 -> 要转换到的类的类名字符串指针  
 
 #### deleteJObject  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|deleteJObject|void|I32|
@@ -238,6 +259,7 @@
 - I32 -> 要清除对象的java堆栈索引  
 
 #### logInfo  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|logInfo|void|I32|
@@ -246,6 +268,7 @@
 - I32 -> 要输出的字符串指针  
 
 #### logWarning  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|logWarning|void|I32|
@@ -254,6 +277,7 @@
 - I32 -> 要输出的字符串指针  
 
 #### newJArray  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|newJObject|I32|I32, I32|
@@ -264,6 +288,7 @@
 - 返回 -> 新建java数组的堆栈索引，失败返回-1  
 
 #### setJObjectKey  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|setJObjectKey|void|I32, I32|
@@ -273,6 +298,7 @@
 - I32 -> key字符串指针  
 
 #### getJObjectFromJArray  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|getJObjectFromJArray|I32|I32, I32|
@@ -283,6 +309,7 @@
 - 返回 -> 从数组中获取到的java对象的索引  
 
 #### isJObjectEqualsNull  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|isJObjectEqualsNull|I32|I32|
@@ -292,6 +319,7 @@
 - 返回 -> 若是null，返回1，否则0  
 
 #### setJArrayByIndex  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|setJArrayByIndex|void|I32, I32, I32|
@@ -302,6 +330,7 @@
 - I32 -> 数组下标  
 
 #### getJObjectField  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|getJObjectField|I32|I32, I32|
@@ -312,6 +341,7 @@
 - 返回 -> 成员变量值的java堆栈索引  
 
 #### getJClassField  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|getJClassField|I32|I32, I32|
@@ -322,6 +352,7 @@
 - 返回 -> 成员变量值的java字符串索引  
 
 #### getJObjectArray  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|getJObjectArray|void|I32, I32|
@@ -331,6 +362,7 @@
 - I32 -> 获取数组后写入的指针，写入的将会是I32类型的java堆栈索引  
 
 #### getJArrayLength  
+
 |命名空间|名称|返回值|参数|
 |-|-|-|-|
 |env|getJArrayLength|I32|I32|

@@ -1,17 +1,23 @@
 # C/C++头文件  
 ## 引用头文件  
 ### 在C中引用  
-```  
+
+```c++
 #include <blocklynukkit.h>  
 ```  
+
 ### 在C++中引用  
-```  
+
+```c++
 #include <blocklynukkit>  
 using namespace std; //bn的所有函数都定义在BlocklyNukkit命名空间下  
 ```  
+
 ## 头文件内容  
+
 ### C 头文件  
-```  
+
+```c++
 #define EXPORT(name)  __attribute__((export_name(#name)))  
 #include <stdio.h>  
 #include <stdarg.h>  
@@ -67,8 +73,10 @@ void setJArrayByIndex(int jStackIndex, int jObjStackIndex, int index);
 int getJObjectField(int jStackIndex, char* fieldName);  
 int getJClassField(char* className, char* fieldName);  
 ```  
+
 ### C++ 头文件  
-```  
+
+```c++
 #define EXPORT(name)  __attribute__((export_name(#name)))  
 #include <stdio.h>  
 #include <stdarg.h>  

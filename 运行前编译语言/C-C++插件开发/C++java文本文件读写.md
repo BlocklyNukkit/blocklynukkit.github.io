@@ -10,7 +10,7 @@
 基对象，顾名思义，基本的对象。基对象是一系列含有API函数作为成员函数的对象，他们会在启动的时候被bn推入你的C/C++插件独有的java堆栈。基对象，是插件操作服务器的重要桥梁。C/C++插件的基对象和解释型语言的基对象是完全一样的，你可以在 **#bn编程开发->#运行时解释语言->#编程开发文档** 章节中查看。  
 ### 1. 把需要的信息推入java堆栈  
 bnAPI提供了5个函数来把C/C++中的信息复制并推入java堆栈中：  
-```  
+```c++
 int pushIntToJavaStack(int toPush);  
 int pushLongToJavaStack(long long int toPush);  
 int pushFloatToJavaStack(float toPush);  
@@ -21,7 +21,7 @@ int pushStringToJavaStack(std::string toPush);
 #endif  
 ```  
 下面，我们将要写入的文件路径和写入的字符串推入java堆栈中：  
-```  
+```c++
 #include <blocklynukkit>  
 using namespace BlocklyNukkit;  
 int main(){  
@@ -33,7 +33,7 @@ int main(){
 上面的相对路径是以nukkit服务端核心而言的，bn在一会创建文件的时候会自动递归创建文件夹和文件。  
 ### 2.获取manager基对象索引  
 接下来，我们从java堆栈上获取manager基对象对应的索引：  
-```  
+```c++
 #include <blocklynukkit>  
 using namespace BlocklyNukkit;  
 int main(){  
@@ -49,12 +49,16 @@ int main(){
 获取一个方法签名很简单，bn提供了signature命令，在服务器启动后，控制台输入`signature 基对象/java类名 成员函数名`即可获取指定函数的方法签名，如果输入`signature 基对象/java类名`将会输出所有的成员函数的方法签名。  
 为了开发方便，你也可以手动编写，方法签名的规则很简单，就是把一个成员函数每一个参数的类的名称用`;`连起来，如果确认这个成员函数没有多个有相同数量参数的重名成员函数，那么方法签名可以直接用对应参数数量的`*;`来替代，比如一个函数有两个参数而且所有跟它重名的成员和函数的参数都不是两个，那么它的方法签名就可以写作`*;*;`。如果某个成员函数有多个相同数量参数的重名成员参数，你可以只写某一个可以将它们区分出来的参数的完整类名，而剩下的用`*`替代，就是说，以上两种方式可以混用，只要能准确区分出某一个特定的成员函数即可。  
 查询[bn编程开发文档](http://www.blocklynukkit.info/1994516)，找到位于`manager`基对象下的`writeFile`函数：  
+
 |方法名|参数|返回值|解释|
 |-|-|-|-|
 |writeFile|String path,String text|void|向path路径的文件(不存在自动创建)以utf8编码写入text|
+
 现在，我们来获取`writeFIle`成员函数的对象索引：  
+
 > P.S. java程序员习惯把对象的成员函数称作“方法”  
-```  
+
+```c++
 #include <blocklynukkit>  
 using namespace BlocklyNukkit;  
 int main(){  
@@ -67,7 +71,7 @@ int main(){
 ```  
 ### 4.调用方法，写入文件  
 最后一步，就是把我们获取到的函数进行调用，来真正地把文件写入：  
-```  
+```c++
 #include <blocklynukkit>  
 using namespace BlocklyNukkit;  
 int main(){  
@@ -84,7 +88,7 @@ int main(){
 这里，我们使用了`invokeJMethod`函数来调用对应的java函数，所有的参数都必须放在java堆栈上面，调用的时候我们要指定调用的成员函数，成员函数归属的对象，参数个数和参数数组。之所以要传入成员函数归属的对象，因为成员函数是无状态的，bn解释器并不能知道成员函数是从哪获取的，也就是说，如果有两个同类的java对象，只需获取一遍成员函数，这个获取到的成员函数能在两个对象下都被调用。传入的参数数组，如果没有参数，即第三个参数为0的情况，只需传入`NULL`即可。  
 ### 5.为java堆栈清理不必要的临时变量  
 正如你所知的，C/C++的变量在函数都执行完之后会自动被全部释放掉，这里我们就不手动释放C++中的变量了，但是java堆栈上的变量不会被自动清除掉，可能其他插件会获取你的C++插件的java堆栈上的信息，所以这时你要手动删除：  
-```  
+```c++
 #include <blocklynukkit>  
 using namespace BlocklyNukkit;  
 int main(){  
@@ -109,7 +113,7 @@ int main(){
 ![](../../images/screenshot_1610515038053.png)  
 ### 举一反三：读文件  
 经过了上面写文件的插件，我想你一定可以分析出这个读文件的示例C++代码的意思：  
-```  
+```c++
 #include <blocklynukkit>  
 using namespace BlocklyNukkit;  
 using namespace std;  
