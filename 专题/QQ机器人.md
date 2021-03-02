@@ -37,6 +37,15 @@ python:
 ```python
 manager.qq.startBot()  
 ```  
+lua:  
+~~~lua
+manager.qq:startBot();
+~~~  
+php:  
+~~~php
+global $manager;
+$manager->qq->startBot();
+~~~  
 ②监听聊天事件  
 bn中，qq机器人收到的聊天事件将以事件的形式公开给bn插件，关于qq聊天的事件目前有两种：  
 QQGroupMessageEvent --机器人收到qq群消息事件  
@@ -85,6 +94,40 @@ def QQGroupMessageEvent(event):
     message = event.getMessage()  
     logger.info(selfqq+u"收到群"+group+u"中"+fromqq+u"的消息: "+message)  
 ```  
+lua:  
+~~~lua
+function QQFriendMessageEvent(event)
+    self = event:getSelfQQ();  
+    fromqq = event:getFromQQ();  
+    message = event:getMessage();  
+    logger:info(self.."收到好友"..fromqq.."的消息: "..message);  
+end
+function QQGroupMessageEvent(event)
+    self = event:getSelfQQ();  
+    group = event:getFromGroup();  
+    fromqq = event:getFromQQ();  
+    message = event:getMessage();  
+    logger:info(self.."收到群"..group.."中"..fromqq.."的消息: "..message);  
+end
+~~~  
+php:  
+~~~php
+function QQFriendMessageEvent($event){
+    $self = $event->getSelfQQ();  
+    $fromqq = $event->getFromQQ();  
+    $message = $event->getMessage();  
+	global $logger;
+    $logger->info(self."收到好友".fromqq."的消息: ".message);  
+}  
+function QQGroupMessageEvent($event){  
+    $self = $event->getSelfQQ();  
+    $group = $event->getFromGroup();  
+    $fromqq = $event->getFromQQ();  
+    $message = $event->getMessage();  
+	global $logger;
+    $logger->info(self."收到群".group."中".fromqq."的消息: ".message);  
+}  
+~~~  
 ③机器人发送信息  
 JavaScript：  
 ```javascript
@@ -96,6 +139,17 @@ python：
 manager.qq.sendFriendMessage(u"发送消息qq号",u"发送给qq号",u"消息内容") #给好友发消息  
 manager.qq.sendGroupMessage(u发送消息qq号",u"群号",u"消息内容") #给qq群发送消息  
 ```  
+lua:  
+~~~lua
+manager.qq:sendFriendMessage("发送消息qq号","发送给qq号","消息内容") --给好友发消息  
+manager.qq:sendGroupMessage(发送消息qq号","群号","消息内容") --给qq群发送消息
+~~~  
+php:  
+~~~php
+global $manager;
+$manager->qq->sendFriendMessage("发送消息qq号","发送给qq号","消息内容"); //给好友发消息  
+$manager->qq->sendGroupMessage("发送消息qq号","群号","消息内容"); //给qq群发送消息 
+~~~  
 ④机器人发送图文使用qq.sendGroupPicMessage(String fromQQ,String toGroup,String picturePaths,String message)发送qq图文消息picturePaths用;分割多个本地图片路径  
 消息中使用图片只需用%picture数字%即可，数字指代第几个路径的图片，从0开始算起  
 JavaScript：  
@@ -105,4 +159,13 @@ manager.qq.sendGroupPicMessage("发送消息qq号","发送给qq号","C:/Users/Ad
 python：  
 ```python
 manager.qq.sendGroupMessage(u"发送消息qq号",u"群号",u"C:/Users/Administer/image.jpg;C:/Users/Administer/smile.jpg",u"图片image.png是:%picture0%\n图片smile.jpg是%picture1% ") #给qq群发送图文消息  
-```
+```  
+lua：  
+```lua
+manager.qq:sendGroupPicMessage("发送消息qq号","发送给qq号","C:/Users/Administer/image.jpg;C:/Users/Administer/smile.jpg","图片image.png是:%picture0%\n图片smile.jpg是%picture1% "); --给qq群发图文消息  
+```  
+php：  
+```php
+global $manager;
+$manager.qq.sendGroupPicMessage("发送消息qq号","发送给qq号","C:/Users/Administer/image.jpg;C:/Users/Administer/smile.jpg","图片image.png是:%picture0%\n图片smile.jpg是%picture1% "); //给qq群发图文消息  
+```  
