@@ -8,4 +8,27 @@
 			{%- endfor -%}
 		{%- endif -%}
 	</div>
+	<script>
+		$(function(){
+			function visit(parent){
+				let childs = parent.children;
+				if(childs.length==0){
+					if(parent.tagName=="ul"){
+						parent.style.margin = "0 0 0 0px";
+					}
+				}else{
+					for(let i=0;i<childs.length;i++){
+						visit(childs[i]);
+					}
+				}
+			}
+			visit(document.getElementById("summaryContent"));
+		});
+		$(function(){
+			var sideNav = $("#summaryNav");
+			sideNav.scroll(function(){
+				console.log(sideNav.scrollTop());
+			});
+		})
+	</script>
 </div>
