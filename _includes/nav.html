@@ -12,11 +12,10 @@
 		$(function(){
 			function visit(parent){
 				let childs = parent.children;
-				if(childs.length==0){
-					if(parent.tagName=="ul"){
-						parent.style.margin = "0 0 0 0px";
-					}
-				}else{
+				if(parent.tagName=="ul"){
+					parent.style.margin = "0 0 0 0px";
+				}
+				if(childs.length!=0){
 					for(let i=0;i<childs.length;i++){
 						visit(childs[i]);
 					}
@@ -26,8 +25,11 @@
 		});
 		$(function(){
 			var sideNav = $("#summaryNav");
+			if(window.localStorage.getItem("sideBarFlow")!=null){
+				sideNav.scrollTop(Number(window.localStorage.getItem("sideBarFlow")));
+			}
 			sideNav.scroll(function(){
-				console.log(sideNav.scrollTop());
+				window.localStorage.setItem("sideBarFlow",""+sideNav.scrollTop());
 			});
 		})
 	</script>
