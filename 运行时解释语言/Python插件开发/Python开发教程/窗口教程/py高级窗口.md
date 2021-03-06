@@ -1,10 +1,8 @@
----  
-toc: true  
----  
 # 高级窗口  
 代码  
 ----  
-~~~~  
+
+~~~~python  
 def test(sender, args):  
     test = window.getCustomWindowBuilder("Test") #创建一个高级窗口  
     test.buildLabel("Label") #创建一个标签,参数1标题  

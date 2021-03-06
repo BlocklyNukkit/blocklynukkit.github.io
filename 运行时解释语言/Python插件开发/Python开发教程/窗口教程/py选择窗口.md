@@ -1,10 +1,8 @@
----  
-toc: true  
----  
 # 选择窗口  
 代码  
 ----  
-~~~  
+
+~~~python  
 manager.createCommand('test','test','test')  
 def test(sender,args):  
     tst = window.getModalWindowBuilder('Test','Select')  

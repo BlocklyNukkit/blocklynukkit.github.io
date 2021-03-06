@@ -12,7 +12,7 @@
 		$(function(){
 			function visit(parent){
 				let childs = parent.children;
-				if(parent.tagName=="ul"){
+				if(parent.tagName=="UL" || parent.tagName=="ul"){
 					parent.style.margin = "0 0 0 0px";
 				}
 				if(childs.length!=0){

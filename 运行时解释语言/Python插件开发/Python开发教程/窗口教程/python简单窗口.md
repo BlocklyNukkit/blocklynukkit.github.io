@@ -1,9 +1,7 @@
----  
-toc: true  
----  
 # 简单窗口  
 代码：  
 -----  
+
 ~~~~python  
 manager.createCommand('pa','pa','pa')  
 def pa(sender,args):  
