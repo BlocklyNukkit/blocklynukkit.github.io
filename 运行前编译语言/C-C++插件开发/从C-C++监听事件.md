@@ -66,7 +66,7 @@ void listen(int event){
 	int jName = invokeJMethod(getNameMethod, player, 0, NULL);  
 	string message = "欢迎您，" + getJString(jName) + "来到我的服务器！";  
     int jMessage = pushStringToJavaStack(message);  
-    int sendMessageMethod = getJMethod(player, "sendMessage", "*;");  
+    int sendMessageMethod = getJMethod(player, "sendMessage", "String;");  
     int args[] = {jMessage};  
     invokeJMethod(sendMessageMethod, player, 1, args);  
 }  

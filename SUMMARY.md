@@ -88,6 +88,7 @@ layout: default
             * [从HelloWorld开始](运行前编译语言/C-C++插件开发/从HelloWorld开始.md)  
             * [C++&java 文本文件读写](运行前编译语言/C-C++插件开发/C++java文本文件读写.md)  
             * [从C/C++监听事件](运行前编译语言/C-C++插件开发/从C-C++监听事件.md)  
+            * [在C/C++注册命令](运行前编译语言/C-C++插件开发/在C-C++注册命令.md)  
 * [开发wiki](开发wiki/index.md)  
     * [开发docs](开发wiki/开发docs/index.md)  
         * [事件对照表](开发wiki/开发docs/事件对照表.md)  
