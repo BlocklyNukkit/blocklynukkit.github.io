@@ -4,22 +4,21 @@
 			var childs = parent.children;
 			if(parent.tagName=="LI" || parent.tagName=="li"){
 				if(childs.length >= 2 && (childs[1].tagName=="UL" || childs[1].tagName=="ul")){
-					var open = window.localStorage.getItem(childs[0].getAttribute("href"));
-					if(open == null){open = false;}
-					else if(open == "false"){open = false;}
-					else if(open == "true"){open = true;}
+					parent.id = getDom(childs,"a").getAttribute("href");
+					var open = isOpen(parent.id);
 					if(open){
 						let span = document.createElement("span");
 						span.innerText = "➖";
 						parent.insertBefore(span,getDom(childs,"a"));
 						span.addEventListener("click",function(event){
-							window.localStorage.setItem(childs[0].getAttribute("href"),(!open)+"");
+							var open = isOpen(parent.id);
+							window.localStorage.setItem(getDom(childs,"a").getAttribute("href"),(!open)+"");
 							if(open){
 								getDom(childs,"span").innerText = "➖";
-								$(getDom(childs,"ul")).hide(2000);
+								$(getDom(childs,"ul")).hide(500);
 							}else{
 								getDom(childs,"span").innerText = "➕";
-								$(getDom(childs,"ul")).show(2000);
+								$(getDom(childs,"ul")).show(500);
 							}
 						})
 					}else{
@@ -28,13 +27,14 @@
 						parent.insertBefore(span,getDom(childs,"a"));
 						$(getDom(childs,"ul")).hide(0);
 						span.addEventListener("click",function(event){
-							window.localStorage.setItem(childs[0].getAttribute("href"),(!open)+"");
+							var open = isOpen(parent.id);
+							window.localStorage.setItem(getDom(childs,"a").getAttribute("href"),(!open)+"");
 							if(open){
 								getDom(childs,"span").innerText = "➖";
-								$(getDom(childs,"ul")).hide(2000);
+								$(getDom(childs,"ul")).hide(500);
 							}else{
 								getDom(childs,"span").innerText = "➕";
-								$(getDom(childs,"ul")).show(2000);
+								$(getDom(childs,"ul")).show(500);
 							}
 						});
 					}
@@ -48,15 +48,22 @@
 		};
 		function getDom(fromArray,tag){
 			for(let i=0;i<fromArray.length;i++){
-				if(fromArray.tagName.toUpperCase() == tag.toUpperCase()){
+				if(fromArray[i].tagName.toUpperCase() == tag.toUpperCase()){
 					return fromArray[i];
 				}
 			}
 			return null;
 		}
+		function isOpen(key){
+			let tmp = window.localStorage.getItem(key);
+			if(tmp == null){tmp = false;}
+			else if(tmp == "false"){tmp = false;}
+			else if(tmp == "true"){tmp = true;}
+			return tmp;
+		}
 		visit(document.getElementById("summaryContent"))
 	}
-	// $(function(){
-	// 	flushSummaryCollapse(true);
-	// });
+	$(function(){
+		flushSummaryCollapse(true);
+	});
 </script>
