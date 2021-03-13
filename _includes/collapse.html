@@ -1,0 +1,27 @@
+<script>
+	function flushSummaryCollapse(first){
+		function visit(parent){
+			let childs = parent.children;
+			if(parent.tagName=="LI" || parent.tagName=="li"){
+				if(childs[1].tagName=="UL" || childs[1].tagName=="ul"){
+					let open = window.localStorage.getItem(childs[0].getAttribute("href"));
+					if(open == null){open = false;}
+					if(open){
+						parent.style.listStyleType = "-";
+					}else{
+						parent.style.listStyleType = "+";
+						$(parent).hide(0);
+					}
+				}
+			}
+			if(childs.length!=0){
+				for(let i=0;i<childs.length;i++){
+					visit(childs[i]);
+				}
+			}
+		}(document.getElementById("summaryContent"));
+	}
+	$(function(){
+		flushSummaryCollapse(true);
+	});
+</script>
