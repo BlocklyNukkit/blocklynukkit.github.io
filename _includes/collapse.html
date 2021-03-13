@@ -11,7 +11,8 @@
 						span.innerText = "➖";
 						parent.insertBefore(span,getDom(childs,"a"));
 						span.addEventListener("click",function(event){
-							var open = isOpen(parent.id);
+							var open = isOpen(event.target.parentElement.id);
+							var childs = event.target.parentElement.children;
 							window.localStorage.setItem(getDom(childs,"a").getAttribute("href"),(!open)+"");
 							if(open){
 								getDom(childs,"span").innerText = "➖";
@@ -27,7 +28,8 @@
 						parent.insertBefore(span,getDom(childs,"a"));
 						$(getDom(childs,"ul")).hide(0);
 						span.addEventListener("click",function(event){
-							var open = isOpen(parent.id);
+							var open = isOpen(event.target.parentElement.id);
+							var childs = event.target.parentElement.children;
 							window.localStorage.setItem(getDom(childs,"a").getAttribute("href"),(!open)+"");
 							if(open){
 								getDom(childs,"span").innerText = "➖";
