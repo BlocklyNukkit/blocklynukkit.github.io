@@ -9,24 +9,35 @@
 					else if(open == "false"){open = false;}
 					else if(open == "true"){open = true;}
 					if(open){
-						childs[0].innerText = childs[0].innerText.replace("📁 ","")
-					}else{
-						childs[0].innerText = "📁 "+childs[0].innerText.replace("📁 ","")
-						$(childs[1]).hide(0);
-					}
-					if(first){
-						parent.addEventListener("click",function(event){
+						let span = document.createElement("span");
+						span.innerText = "➖";
+						parent.insertBefore(span,getDom(childs,"a"));
+						span.addEventListener("click",function(event){
 							window.localStorage.setItem(childs[0].getAttribute("href"),(!open)+"");
-							if(!open){
-								childs[0].innerText = childs[0].innerText.replace("📁 ","");
-								$(childs[1]).show(3000);
+							if(open){
+								getDom(childs,"span").innerText = "➖";
+								$(getDom(childs,"ul")).hide(2000);
 							}else{
-								childs[0].innerText = "📁 "+childs[0].innerText.replace("📁 ","")
-								$(childs[1]).hide(2000);
+								getDom(childs,"span").innerText = "➕";
+								$(getDom(childs,"ul")).show(2000);
 							}
 						})
+					}else{
+						let span = document.createElement("span");
+						span.innerText = "➕";
+						parent.insertBefore(span,getDom(childs,"a"));
+						$(getDom(childs,"ul")).hide(0);
+						span.addEventListener("click",function(event){
+							window.localStorage.setItem(childs[0].getAttribute("href"),(!open)+"");
+							if(open){
+								getDom(childs,"span").innerText = "➖";
+								$(getDom(childs,"ul")).hide(2000);
+							}else{
+								getDom(childs,"span").innerText = "➕";
+								$(getDom(childs,"ul")).show(2000);
+							}
+						});
 					}
-					
 				}
 			}
 			if(childs.length!=0){
@@ -35,9 +46,17 @@
 				}
 			}
 		};
+		function getDom(fromArray,tag){
+			for(let i=0;i<fromArray.length;i++){
+				if(fromArray.tagName.toUpperCase() == tag.toUpperCase()){
+					return fromArray[i];
+				}
+			}
+			return null;
+		}
 		visit(document.getElementById("summaryContent"))
 	}
-	$(function(){
-		flushSummaryCollapse(true);
-	});
+	// $(function(){
+	// 	flushSummaryCollapse(true);
+	// });
 </script>
