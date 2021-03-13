@@ -1,6 +1,3 @@
----  
-toc: true  
----  
 # BlocklyNukkit  
 ## 欢迎  
 欢迎来到blocklynukkit！  
@@ -13,6 +10,7 @@ blocklynukkit是一套完整的从入门到高阶的快捷简单高效率插件�
 - 只会JavaScript或者python又想开发插件的人  
 - JavaScript或者python十分熟练的服主  
 - 希望掌握新技能的开发者  
+
 ## 如何开发  
 **下文的BN、bn均指代BlocklyNukkit**  
 ### 使用图形化编辑器开发  

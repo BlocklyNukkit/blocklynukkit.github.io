@@ -5,6 +5,10 @@ defaults:
   - values:
       toc: false
       layout: default
+#Markdown处理器
+markdown: GFM
+#增量构建
+incremental: true
 # Build settings
 plugins:
   - jekyll-feed
