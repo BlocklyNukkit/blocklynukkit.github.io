@@ -14,6 +14,7 @@
 							var open = isOpen(event.target.parentElement.id);
 							var childs = event.target.parentElement.children;
 							window.localStorage.setItem(getDom(childs,"a").getAttribute("href"),(!open)+"");
+							console.log("open:"+open);
 							if(open){
 								getDom(childs,"span").innerText = "➖";
 								$(getDom(childs,"ul")).hide(500);
@@ -31,6 +32,7 @@
 							var open = isOpen(event.target.parentElement.id);
 							var childs = event.target.parentElement.children;
 							window.localStorage.setItem(getDom(childs,"a").getAttribute("href"),(!open)+"");
+							console.log("open:"+open);
 							if(open){
 								getDom(childs,"span").innerText = "➖";
 								$(getDom(childs,"ul")).hide(500);
