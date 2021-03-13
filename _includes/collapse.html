@@ -2,7 +2,9 @@
 	function flushSummaryCollapse(first){
 		function visit(parent){
 			let childs = parent.children;
+			console.log(parent);
 			if(parent.tagName=="LI" || parent.tagName=="li"){
+				console.log(childs[1]);
 				if(childs[1].tagName=="UL" || childs[1].tagName=="ul"){
 					let open = window.localStorage.getItem(childs[0].getAttribute("href"));
 					if(open == null){open = false;}
