@@ -9,6 +9,7 @@
 					if(open){
 						let span = document.createElement("span");
 						span.innerText = "➖";
+						span.style.cursor = "s-resize";
 						parent.insertBefore(span,getDom(childs,"a"));
 						span.addEventListener("click",function(event){
 							var open = isOpen(event.target.parentElement.id);
@@ -25,6 +26,7 @@
 					}else{
 						let span = document.createElement("span");
 						span.innerText = "➕";
+						span.style.cursor = "s-resize";
 						parent.insertBefore(span,getDom(childs,"a"));
 						$(getDom(childs,"ul")).hide(0);
 						span.addEventListener("click",function(event){
