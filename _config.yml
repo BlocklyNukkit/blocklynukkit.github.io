@@ -12,3 +12,4 @@ incremental: true
 # Build settings
 plugins:
   - jekyll-feed
+exclude: [vendor]

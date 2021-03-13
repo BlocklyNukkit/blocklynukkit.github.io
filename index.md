@@ -25,15 +25,15 @@ BlocklyNukkit最大的特点之一就是为没有任何编程经验或者基础�
 bn图形化编辑器展示：  
 ![](./images/2.png)  
 ### 使用JavaScript开发  
-BlocklyNukkit提供了一套成熟的JavaScript开发插件的解决方案，您可以使用JavaScript来开发插件。我们编写了JavaScript开发文档和配套的vscode插件来方便开发，开发完的代码可以直接打包成jar包发布，详细资料详见[JS插件开发](http://www.blocklynukkit.info/2014501)  
+BlocklyNukkit提供了一套成熟的JavaScript开发插件的解决方案，您可以使用JavaScript来开发插件。我们编写了JavaScript开发文档和配套的vscode插件来方便开发，开发完的代码可以直接打包成jar包发布，详细资料详见[JS插件开发](https://wiki.blocklynukkit.com/%E8%BF%90%E8%A1%8C%E6%97%B6%E8%A7%A3%E9%87%8A%E8%AF%AD%E8%A8%80/JS%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/)  
 ### 使用Python开发  
-BlocklyNukkit在最新版本中提供了Python开发的能力，支持全部标准原生Python库和全部的Java类库直接导入，而且您还可以直接import其他插件的类、函数与对象进行操作。详细资料详见[Python插件开发](http://www.blocklynukkit.info/2125195)  
+BlocklyNukkit在最新版本中提供了Python开发的能力，支持全部标准原生Python库和全部的Java类库直接导入，而且您还可以直接import其他插件的类、函数与对象进行操作。详细资料详见[Python插件开发](https://wiki.blocklynukkit.com/%E8%BF%90%E8%A1%8C%E6%97%B6%E8%A7%A3%E9%87%8A%E8%AF%AD%E8%A8%80/Python%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/)  
 ### 使用Lua开发  
-BlocklyNukkit在最新版本中提供了使用Lua5.2开发的能力，支持全部标准原生Lua库和全部的Java类库直接导入，而且您还可以直接导入其他插件的类、函数与对象进行操作。我们编写了配套的VSCode插件来方便开发，开发完的代码可以直接打包成jar包发布，详细资料详见[lua插件开发](http://www.blocklynukkit.info/2125196)  
+BlocklyNukkit在最新版本中提供了使用Lua5.2开发的能力，支持全部标准原生Lua库和全部的Java类库直接导入，而且您还可以直接导入其他插件的类、函数与对象进行操作。我们编写了配套的VSCode插件来方便开发，开发完的代码可以直接打包成jar包发布，详细资料详见[lua插件开发](https://wiki.blocklynukkit.com/%E8%BF%90%E8%A1%8C%E6%97%B6%E8%A7%A3%E9%87%8A%E8%AF%AD%E8%A8%80/Lua%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/)  
 ### 使用PHP开发  
-BlocklyNukkit在最新版本中提供了使用PHP5.7开发的能力，支持全部标准原生PHP库和全部的Java类库直接导入，而且您还可以直接导入其他插件的类、函数与对象进行操作。我们编写了PHP打包成jar包发布，详细资料详见[PHP插件开发](http://www.blocklynukkit.info/2125197)  
+BlocklyNukkit在最新版本中提供了使用PHP5.7开发的能力，支持全部标准原生PHP库和全部的Java类库直接导入，而且您还可以直接导入其他插件的类、函数与对象进行操作。我们编写了PHP打包成jar包发布，详细资料详见[PHP插件开发](https://wiki.blocklynukkit.com/%E8%BF%90%E8%A1%8C%E6%97%B6%E8%A7%A3%E9%87%8A%E8%AF%AD%E8%A8%80/PHP%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/)  
 ### 使用C/C++开发  
-BlocklyNukkit在最新版本中提供了使用C/C++开发的能力，C/C++代码可以用过我们提供的基于clang编译器定制的sdk进行开发，调试和编译，我们使用webassembly（web汇编）作为目标码，真正实现C/C++一次编译，全平台运行。所有的代码都会运行在安全的jvm沙箱中，且性能损失相较原生二进制机器码损失不到10%，支持C/C++与java、javascript、php、python、lua互调用，详细资料详见[使用编译语言开发](http://www.blocklynukkit.info/2105692)  
+BlocklyNukkit在最新版本中提供了使用C/C++开发的能力，C/C++代码可以用过我们提供的基于clang编译器定制的sdk进行开发，调试和编译，我们使用webassembly（web汇编）作为目标码，真正实现C/C++一次编译，全平台运行。所有的代码都会运行在安全的jvm沙箱中，且性能损失相较原生二进制机器码损失不到10%，支持C/C++与java、javascript、php、python、lua互调用，详细资料详见[使用C/C++开发](https://wiki.blocklynukkit.com/%E8%BF%90%E8%A1%8C%E5%89%8D%E7%BC%96%E8%AF%91%E8%AF%AD%E8%A8%80/C-C++%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/)  
 ## 做出贡献  
 您可以在一下三方面做出贡献  
 1. 图形化编辑器多语言翻译  
