@@ -1,19 +1,32 @@
 <script>
 	function flushSummaryCollapse(first){
 		function visit(parent){
-			let childs = parent.children;
-			console.log(parent);
+			var childs = parent.children;
 			if(parent.tagName=="LI" || parent.tagName=="li"){
-				console.log(childs[1]);
-				if(childs[1].tagName=="UL" || childs[1].tagName=="ul"){
-					let open = window.localStorage.getItem(childs[0].getAttribute("href"));
+				if(childs.length >= 2 && (childs[1].tagName=="UL" || childs[1].tagName=="ul")){
+					var open = window.localStorage.getItem(childs[0].getAttribute("href"));
 					if(open == null){open = false;}
+					else if(open == "false"){open = false;}
+					else if(open == "true"){open = true;}
 					if(open){
-						parent.style.listStyleType = "-";
+						childs[0].innerText = childs[0].innerText.replace("📁 ","")
 					}else{
-						parent.style.listStyleType = "+";
-						$(parent).hide(0);
+						childs[0].innerText = "📁 "+childs[0].innerText.replace("📁 ","")
+						$(childs[1]).hide(0);
 					}
+					if(first){
+						parent.addEventListener("click",function(event){
+							window.localStorage.setItem(childs[0].getAttribute("href"),(!open)+"");
+							if(!open){
+								childs[0].innerText = childs[0].innerText.replace("📁 ","");
+								$(childs[1]).show(3000);
+							}else{
+								childs[0].innerText = "📁 "+childs[0].innerText.replace("📁 ","")
+								$(childs[1]).hide(2000);
+							}
+						})
+					}
+					
 				}
 			}
 			if(childs.length!=0){
@@ -21,7 +34,8 @@
 					visit(childs[i]);
 				}
 			}
-		}(document.getElementById("summaryContent"));
+		};
+		visit(document.getElementById("summaryContent"))
 	}
 	$(function(){
 		flushSummaryCollapse(true);
