@@ -337,6 +337,12 @@ dt {
   }
 }
 
+@media print, screen and (min-width: 721px) {
+  .menuButton {
+	  display: none;
+  }
+}
+
 @media print, screen and (max-width: 720px) {
 
   #title {
@@ -356,6 +362,17 @@ dt {
         display: block;
       }
     }
+  }
+  
+  .menuButton {
+	  position: fixed;
+	  left: 10px;
+	  top: 8px;
+	  z-index:101;
+	  cursor: pointer;
+	  font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
+	  font-weight: normal;
+	  color: #696969;
   }
 }
 
