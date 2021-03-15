@@ -11,7 +11,9 @@
 	<br>
 	<script>
 		$(function(){
-			$("#summaryNav").hide(0);
+			if(document.body.clientWidth <= 1320){
+				$("#summaryNav").hide(0);
+			}
 			function visit(parent){
 				let childs = parent.children;
 				if(parent.tagName=="UL" || parent.tagName=="ul"){
