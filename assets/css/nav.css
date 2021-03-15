@@ -7,9 +7,13 @@
  
 @media screen and (max-width:1320px ) {
 	.summaryNav{
-		height: 80vh;
-		overflow-y:scroll;
-		overflow-x:hidden;
+		width: 100%;
+		top: 44px;
+		position: fixed;
+		display: none;
+		height: 100%;
+		overflow-y: scroll;
+		overflow-x: hidden;
 		scrollbar-width: 0px;
 		padding-top: 20px;
 		background-color: #252525;
