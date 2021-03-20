@@ -1,0 +1,38 @@
+.codetab {
+  /* border:1px solid #222; */
+  margin:8px auto;
+}
+.codetab li { list-style:none; float:left; }
+.codetab ul {
+	padding-inline-start: 0px;
+}
+.codetab ul a {
+  display:block;
+  padding:6px 10px;
+  text-decoration:none!important;
+  margin:1px;
+  margin-left:0;
+  font:10px Verdana;
+  color:#FFF;
+  background:#444;
+}
+.codetab ul a:hover {
+  color:#FFF;
+  background:#111;
+  }
+.codetab ul a.selected {
+  margin-bottom:0;
+  color:#ffcc00;
+  background:#353535;
+  border-bottom:1px solid #ffcc00;
+  cursor:default;
+  }
+.codetab div {
+  padding:10px 10px 8px 10px;
+  *padding-top:3px;
+  *margin-top:-15px;
+  clear:left;
+  background:#252525;
+  font:10pt Georgia;
+}
+.codetab div a { color:#000; font-weight:bold; }
