@@ -12,9 +12,10 @@
   text-decoration:none!important;
   margin:1px;
   margin-left:0;
-  font:10px Verdana;
+  font:16px Verdana;
   color:#FFF;
   background:#444;
+  outline: none;
 }
 .codetab ul a:hover {
   color:#FFF;

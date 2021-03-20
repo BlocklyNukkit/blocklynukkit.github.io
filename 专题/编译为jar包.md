@@ -14,24 +14,24 @@ blocklynukkit为开发者提供了将js、py或lua编译为依赖于blocklynukki
 		<li><a href="#tab4">PHP</a></li> 
 	</ul> 
 	<div id="tab1">
-```javascript
+{% highlight javascript %}
 //pragma javascript  
-```  
+{% endhighlight %}
 	</div> 
 	<div id="tab2">
-```python
+{% highlight python %}
 #pragma python  
-```  
+{% endhighlight %} 
 	</div> 
 	<div id="tab3">
-	```lua
-	-- pragma lua  
-	``` 
+{% highlight lua %}
+-- pragma lua  
+{% endhighlight %}
 	</div> 
 	<div id="tab4">
-	```php
-	//pragma php
-	```
+{% highlight php %}
+//pragma php
+{% endhighlight %}
 	</div> 
 	<script markdown="0"> 
 	$("#usual1 ul").idTabs(function(id,list,set){$("a",set).removeClass("selected").filter("[href='"+id+"']",set).addClass("selected"); for(i in list){$(list[i]).hide();};$(id).fadeIn(); return false; });
