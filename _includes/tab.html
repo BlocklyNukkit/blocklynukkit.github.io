@@ -1,0 +1,15 @@
+<div id="{{ include.tabId }}" class="codetab"> 
+	{%- assign tabTitiles = include.tabTitles | split: "," -%}
+	{%- assign tabContents = include.tabContents | split: "---NEWTAB---" -%}
+	<ul>
+		{%- for tabTitle in tabTitiles -%}
+			{{ '<li><a href="#' | append: include.tabId | append: tabTitle | append: '">' | append: tabTitle | append: '</a></li> ' }}
+		{%- endfor -%}
+	</ul>
+	{%- for tabTitle in tabTitiles -%}
+		{{ '<div id="' | append: include.tabId | append: tabTitle | append: '">' | append: tabContents[forloop.index0] | append: '</div> ' }}
+	{%- endfor -%}
+	<script markdown="0"> 
+	$("#{{ include.tabId }} ul").idTabs(function(id,list,set){$("a",set).removeClass("selected").filter("[href='"+id+"']",set).addClass("selected"); for(i in list){$(list[i]).hide();};$(id).fadeIn(); return false; });
+	</script>
+</div>

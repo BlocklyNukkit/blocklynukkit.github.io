@@ -6,37 +6,24 @@ blocklynukkit为开发者提供了将js、py或lua编译为依赖于blocklynukki
 
 由于bn支持多编程语言开发，而在线编译器由于某些原因无法直接识别你所使用的开发语言，因此你**必须**在文件第一行插入如下的识别码    
 
-<div id="usual1" class="codetab"> 
-	<ul> 
-		<li><a href="#tab1">JavaScript</a></li> 
-		<li><a href="#tab2">Python</a></li> 
-		<li><a href="#tab3">Lua</a></li> 
-		<li><a href="#tab4">PHP</a></li> 
-	</ul> 
-	<div id="tab1">
+{% capture idDisplays %}
 {% highlight javascript %}
 //pragma javascript  
 {% endhighlight %}
-	</div> 
-	<div id="tab2">
+---NEWTAB---
 {% highlight python %}
 #pragma python  
-{% endhighlight %} 
-	</div> 
-	<div id="tab3">
+{% endhighlight %}
+---NEWTAB---
 {% highlight lua %}
 -- pragma lua  
 {% endhighlight %}
-	</div> 
-	<div id="tab4">
+---NEWTAB---
 {% highlight php %}
 //pragma php
 {% endhighlight %}
-	</div> 
-	<script markdown="0"> 
-	$("#usual1 ul").idTabs(function(id,list,set){$("a",set).removeClass("selected").filter("[href='"+id+"']",set).addClass("selected"); for(i in list){$(list[i]).hide();};$(id).fadeIn(); return false; });
-	</script>
-</div>
+{% endcapture %}
+{% include tab.html tabId="identifyCodes" tabTitles="JavaScript,Python,Lua,PHP" tabContents=idDisplays %}
 
 当然你直接在这里使用在线编译器：  
 <div markdown="0"><iframe src="https://tools.blocklynukkit.com/jar.html" width="100%" height="800px"></iframe></div>
