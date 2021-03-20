@@ -6,7 +6,7 @@ defaults:
       toc: false
       layout: default
 #Markdown处理器
-markdown: GFM
+markdown: kramdown
 #增量构建
 incremental: true
 # Build settings

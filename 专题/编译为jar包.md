@@ -37,10 +37,10 @@ blocklynukkit为开发者提供了将js、py或lua编译为依赖于blocklynukki
 	<div id="tab3">tab 3.</div> 
 	<div id="tab4">tab 4.</div> 
 	<script type="text/javascript"> 
-	$("#usual1 ul").idTabs(function(id,list,set){$("a",set).removeClass("selected").filter("[href='"+id+"']",set).addClass("selected"); for(i in list){$(list[i]).hide();};$(id).fadeIn(); return false; }); 
+	$("#usual1 ul").idTabs(function(id,list,set){$("a",set).removeClass("selected").filter("[href='"+id+"']",set).addClass("selected"); for(i in list){$(list[i]).hide();};$(id).fadeIn(); return false; });
 	</script>
 </div>
 
 当然你直接在这里使用在线编译器：  
 
-<iframe src="https://tools.blocklynukkit.com/jar.html" width="100%" height="800px"></iframe>  
+<div markdown="0"><iframe src="https://tools.blocklynukkit.com/jar.html" width="100%" height="800px"></iframe></div>
