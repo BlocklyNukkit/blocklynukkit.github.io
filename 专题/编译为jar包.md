@@ -7,21 +7,21 @@ blocklynukkit为开发者提供了将js、py或lua编译为依赖于blocklynukki
 由于bn支持多编程语言开发，而在线编译器由于某些原因无法直接识别你所使用的开发语言，因此你**必须**在文件第一行插入如下的识别码    
 
 {% capture idDisplays %}
-{% highlight javascript %}
+```javascript
 //pragma javascript  
-{% endhighlight %}
+```
 ---NEWTAB---
-{% highlight python %}
+```python
 #pragma python  
-{% endhighlight %}
+```
 ---NEWTAB---
-{% highlight lua %}
+```lua
 -- pragma lua  
-{% endhighlight %}
+```
 ---NEWTAB---
-{% highlight php %}
+```php
 //pragma php
-{% endhighlight %}
+```
 {% endcapture %}
 {% include tab.html tabId="identifyCodes" tabTitles="JavaScript,Python,Lua,PHP" tabContents=idDisplays %}
 

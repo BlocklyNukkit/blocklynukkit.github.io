@@ -6,8 +6,12 @@
 			{{ '<li><a href="#' | append: include.tabId | append: tabTitle | append: '">' | append: tabTitle | append: '</a></li> ' }}
 		{%- endfor -%}
 	</ul>
+	{%- capture js -%}{% raw %}{% highlight javascript %}{% endraw %}{%- endcapture -%}
+	{%- capture py -%}{% raw %}{% highlight python %}{% endraw %}{%- endcapture -%}
+	{%- capture php -%}{% raw %}{% highlight php %}{% endraw %}{%- endcapture -%}
+	{%- capture lua -%}{% raw %}{% highlight lua %}{% endraw %}{%- endcapture -%}
 	{%- for tabTitle in tabTitiles -%}
-		{{ '<div id="' | append: include.tabId | append: tabTitle | append: '">' | append: tabContents[forloop.index0] | append: '</div> ' }}
+		{{ '<div id="' | append: include.tabId | append: tabTitle | append: '">' | append: tabContents[forloop.index0] | replace: "```javascript", js | replace: "~~~javascript", js | replace: "```python", py | replace: "~~~python", py | replace: "```lua", lua | replace: "~~~lua", lua | replace: "```php", php | replace: "~~~php", php | append: '</div> ' }}
 	{%- endfor -%}
 	<script markdown="0"> 
 	$("#{{ include.tabId }} ul").idTabs(function(id,list,set){$("a",set).removeClass("selected").filter("[href='"+id+"']",set).addClass("selected"); for(i in list){$(list[i]).hide();};$(id).fadeIn(); return false; });
