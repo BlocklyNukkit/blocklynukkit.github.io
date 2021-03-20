@@ -12,4 +12,6 @@ incremental: true
 # Build settings
 plugins:
   - jekyll-feed
+  - kramdown
+  - kramdown-parser-gfm
 exclude: [vendor]
