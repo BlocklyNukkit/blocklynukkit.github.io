@@ -1,11 +1,12 @@
 # QQ机器人  
-**前言：**  
+## 前言  
+
 众所周知，自从酷q被停止运营之后，一众qq机器人框架都挂了......  
 现在市面上只剩下为数不多的没有跑路的qq机器人框架，其中小栗子机器人框架是唯一一个免费的大型框架（不是打广告），blocklynukkit从1.2.8.4测试版r1开始提供了对小栗子机器人框架的api支持，使得各位服主可以通过blocklynukkit快速的对接配置\*\*和mc服务器内部，本教程将介绍如何使用。  
-**配置环境：**  
+## 配置环境  
+
 首先，你需要有一台windows系统的服务器（linux不推荐但也可以）  
-下载1.2.8.4测试版r1及以上版本的blocklynukkit并安装  
-下载连接**：****[blocklynukkit-1284-beta.r1.jar](https://www.mcbbs.net/plugin.php?id=link_redirect&target=https%3A%2F%2Ficesight.lanzous.com%2FigRZDfnf14d)**下载完毕后安装到nukkit服务器中  
+下载链接：**[blocklynukkit-1284-beta.r1.jar](https://www.mcbbs.net/plugin.php?id=link_redirect&target=https%3A%2F%2Ficesight.lanzous.com%2FigRZDfnf14d)**下载完毕后安装到nukkit服务器中  
 然后下载小栗子机器人框架，可以官网下载，这里提供已经配置好bn接口的一键使用包：  
 下载链接：**[小栗子qq机器人框架.zip](https://www.mcbbs.net/plugin.php?id=link_redirect&target=https%3A%2F%2Ficesight.lanzous.com%2Fi2gOjfnf8md)**  
 然后解压，打开压缩包中的小栗子框架.exe程序  
@@ -18,34 +19,38 @@
 登录成功后，进入应用中心界面，启用HttpAPI和TCPAPI两个插件  
 ![](https://attachment.mcbbs.net/forum/202008/15/161116rhz2nfanmugmfah8.png)  
 至此，机器人环境配置完成。  
-**机器人使用：**  
+
+## 机器人使用
+
 blocklynukkit提供了机器人接口，可以通过JavaScript或者python来使用机器人，目前机器人接口比较少，日后会逐渐增加。  
 注：图形编辑器的机器人模块正在加紧制作中，暂时没弄好。  
 1、正确安装blocklynukkit：  
-详见：[**https://www.mcbbs.net/thread-987302-1-1.html**](https://www.mcbbs.net/thread-987302-1-1.html)  
+详见：[https://www.mcbbs.net/thread-987302-1-1.html](https://www.mcbbs.net/thread-987302-1-1.html)  
 2、学习blocklynukkit基本的js于py函数库：  
-详见：**[http://www.blocklynukkit.info](https://www.mcbbs.net/plugin.php?id=link_redirect&target=http%3A%2F%2Fwww.blocklynukkit.info)**  
+详见：[http://www.blocklynukkit.info](https://www.mcbbs.net/plugin.php?id=link_redirect&target=http%3A%2F%2Fwww.blocklynukkit.info)  
 3、编写第一个机器人  
 bn机器人编写并不难，下面将带您初步认识编写一个机器人插件的一般步骤：  
 ①启动机器人  
 首先确保环境正确配置的情况下，使用如下代码即可启动机器人  
-javascript:  
+{% capture start %} 
 ```javascript
 manager.qq.startBot();  
 ```  
-python:  
+---NEWTAB--- 
 ```python
 manager.qq.startBot()  
 ```  
-lua:  
+---NEWTAB---  
 ~~~lua
 manager.qq:startBot();
 ~~~  
-php:  
+---NEWTAB---  
 ~~~php
 global $manager;
 $manager->qq->startBot();
 ~~~  
+{% endcapture %}
+{% include tab.html tabId="startbot" tabTitles="JavaScript,Python,Lua,PHP" tabContents=start %}
 ②监听聊天事件  
 bn中，qq机器人收到的聊天事件将以事件的形式公开给bn插件，关于qq聊天的事件目前有两种：  
 QQGroupMessageEvent --机器人收到qq群消息事件  
@@ -64,7 +69,7 @@ QQFriendMessageEvent --机器人收到qq好友消息事件
 - String getMessage() 获取事件的消息  
 
 下面是监听qq聊天事件的示例：  
-javascript:  
+{% capture listen %} 
 ```javascript
 function QQFriendMessageEvent(event){  
     let self = event.getSelfQQ();  
@@ -80,7 +85,7 @@ function QQGroupMessageEvent(event){
     logger.info(self+"收到群"+group+"中"+fromqq+"的消息: "+message);  
 }  
 ```  
-python:  
+---NEWTAB--- 
 ```python
 def QQFriendMessageEvent(event):  
     selfqq = event.getSelfQQ()  
@@ -94,7 +99,7 @@ def QQGroupMessageEvent(event):
     message = event.getMessage()  
     logger.info(selfqq+u"收到群"+group+u"中"+fromqq+u"的消息: "+message)  
 ```  
-lua:  
+---NEWTAB--- 
 ~~~lua
 function QQFriendMessageEvent(event)
     self = event:getSelfQQ();  
@@ -110,7 +115,7 @@ function QQGroupMessageEvent(event)
     logger:info(self.."收到群"..group.."中"..fromqq.."的消息: "..message);  
 end
 ~~~  
-php:  
+---NEWTAB--- 
 ~~~php
 function QQFriendMessageEvent($event){
     $self = $event->getSelfQQ();  
@@ -128,31 +133,37 @@ function QQGroupMessageEvent($event){
     $logger->info(self."收到群".group."中".fromqq."的消息: ".message);  
 }  
 ~~~  
+{% endcapture %}
+{% include tab.html tabId="listen" tabTitles="JavaScript,Python,Lua,PHP" tabContents=listen %}
+
 ③机器人发送信息  
-JavaScript：  
+{% capture sendMessage %} 
 ```javascript
 manager.qq.sendFriendMessage("发送消息qq号","发送给qq号","消息内容"); //给好友发消息  
 manager.qq.sendGroupMessage("发送消息qq号","群号","消息内容"); //给qq群发送消息  
 ```  
-python：  
+---NEWTAB---  
 ```python
 manager.qq.sendFriendMessage(u"发送消息qq号",u"发送给qq号",u"消息内容") #给好友发消息  
-manager.qq.sendGroupMessage(u发送消息qq号",u"群号",u"消息内容") #给qq群发送消息  
+manager.qq.sendGroupMessage(u"发送消息qq号",u"群号",u"消息内容") #给qq群发送消息  
 ```  
-lua:  
+---NEWTAB---  
 ~~~lua
 manager.qq:sendFriendMessage("发送消息qq号","发送给qq号","消息内容") --给好友发消息  
-manager.qq:sendGroupMessage(发送消息qq号","群号","消息内容") --给qq群发送消息
+manager.qq:sendGroupMessage("发送消息qq号","群号","消息内容") --给qq群发送消息
 ~~~  
-php:  
+---NEWTAB--- 
 ~~~php
 global $manager;
 $manager->qq->sendFriendMessage("发送消息qq号","发送给qq号","消息内容"); //给好友发消息  
 $manager->qq->sendGroupMessage("发送消息qq号","群号","消息内容"); //给qq群发送消息 
 ~~~  
+{% endcapture %}
+{% include tab.html tabId="sendMessage" tabTitles="JavaScript,Python,Lua,PHP" tabContents=sendMessage %}
+
 ④机器人发送图文使用qq.sendGroupPicMessage(String fromQQ,String toGroup,String picturePaths,String message)发送qq图文消息picturePaths用;分割多个本地图片路径  
 消息中使用图片只需用%picture数字%即可，数字指代第几个路径的图片，从0开始算起  
-JavaScript：  
+{% capture sendPicture %}  
 ```javascript
 manager.qq.sendGroupPicMessage("发送消息qq号","发送给qq号","C:/Users/Administer/image.jpg;C:/Users/Administer/smile.jpg","图片image.png是:%picture0%\n图片smile.jpg是%picture1% "); //给qq群发图文消息  
 ```  
@@ -169,3 +180,5 @@ php：
 global $manager;
 $manager.qq.sendGroupPicMessage("发送消息qq号","发送给qq号","C:/Users/Administer/image.jpg;C:/Users/Administer/smile.jpg","图片image.png是:%picture0%\n图片smile.jpg是%picture1% "); //给qq群发图文消息  
 ```  
+{% endcapture %}
+{% include tab.html tabId="sendPicture" tabTitles="JavaScript,Python,Lua,PHP" tabContents=sendPicture %}
