@@ -25,7 +25,7 @@ blocklynukkit为开发者提供了将js、py或lua编译为依赖于blocklynukki
 
 代码测试：  
 
-<div id="usual1" class="codetab" markdown="0"> 
+<div id="usual1" class="codetab"> 
 	<ul> 
 		<li><a href="#tab1">JavaScript</a></li> 
 		<li><a href="#tab2">Python</a></li> 
@@ -36,12 +36,10 @@ blocklynukkit为开发者提供了将js、py或lua编译为依赖于blocklynukki
 	<div id="tab2">tab 2?.</div> 
 	<div id="tab3">tab 3?.</div> 
 	<div id="tab4">tab 4?.</div> 
-	<script type="text/javascript"> 
+	<script markdown="0"> 
 	$("#usual1 ul").idTabs(function(id,list,set){$("a",set).removeClass("selected").filter("[href='"+id+"']",set).addClass("selected"); for(i in list){$(list[i]).hide();};$(id).fadeIn(); return false; });
 	</script>
 </div>
 
 当然你直接在这里使用在线编译器：  
-{% raw %}
 <div markdown="0"><iframe src="https://tools.blocklynukkit.com/jar.html" width="100%" height="800px"></iframe></div>
-{% endraw %}
