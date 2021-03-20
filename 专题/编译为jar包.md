@@ -13,22 +13,22 @@ blocklynukkit为开发者提供了将js、py或lua编译为依赖于blocklynukki
 		<li><a href="#tab3">Lua</a></li> 
 		<li><a href="#tab4">PHP</a></li> 
 	</ul> 
-	<div id="tab1" markdown="1">
-	```javascript
-	//pragma javascript  
-	```  
+	<div id="tab1">
+```javascript
+//pragma javascript  
+```  
 	</div> 
-	<div id="tab2" markdown="1">
-	```python
-	#pragma python  
-	```  
+	<div id="tab2">
+```python
+#pragma python  
+```  
 	</div> 
-	<div id="tab3" markdown="1">
+	<div id="tab3">
 	```lua
 	-- pragma lua  
 	``` 
 	</div> 
-	<div id="tab4" markdown="1">
+	<div id="tab4">
 	```php
 	//pragma php
 	```
