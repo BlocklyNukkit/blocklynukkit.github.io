@@ -20,9 +20,9 @@ if __name__ == '__main__':
             
             with open(file,'r',True,'utf-8') as f:buffer=f.read()
             #buffer = sub(r'\|\s+(\r\n|\r|\n)',r'|  \1',buffer)
-            buffer = sub(r'\s+(\r\n|\r|\n)',r'  \1',buffer)
+            #buffer = sub(r'\s+(\r\n|\r|\n)',r'  \1',buffer)
             #buffer = sub(r'\s(\r\n|\r|\n)',r'  \1',buffer)
-            buffer = sub(r'\[info\]',r'',buffer)
-            buffer = sub(r'\[warning\]',r'',buffer)
+            #buffer = sub(r'\[info\]',r'',buffer)
+            #buffer = sub(r'\[warning\]',r'',buffer)
             with open(file,'w',True,'utf-8') as f:f.write(buffer)
             
