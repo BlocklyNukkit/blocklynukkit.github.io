@@ -104,7 +104,7 @@ $返回值 = $java对象->对象方法函数名(参数列表);
 var xxx = Java.type("java类的全类名");
 var 返回值 = xxx.静态方法函数名(参数列表);
 ```  
----NEWTAB--- 
+
 ```javascript
 var xxx = Java.type("java类的全类名");
 var 返回值 = xxx.静态方法函数名(参数列表);
@@ -114,7 +114,7 @@ var 返回值 = xxx.静态方法函数名(参数列表);
 import java类的全类名
 返回值 = java类的类名.静态方法函数名(参数列表)
 ```
----NEWTAB--- 
+
 ```python
 import java类的全类名 as xxx
 返回值 = xxx.静态方法函数名(参数列表)
@@ -129,10 +129,10 @@ xxx = luajava.bindClass("java类的全类名")
 $xxx = java_class("java类全类名");
 $返回值 = $xxx->静态方法函数名(参数列表);
 ```
----NEWTAB--- 
+
 ```php
 import java类全类名;
 $返回值 = java类的类名::静态方法函数名(参数列表);
 ```
 {% endcapture %}
-{% include tab.html tabId="staticmethod" tabTitles="JavaScript,JS(require),Python,Py(as),Lua,PHP,PHP(import)" tabContents=staticmethod %}
+{% include tab.html tabId="staticmethod" tabTitles="JavaScript,Python,Lua,PHP" tabContents=staticmethod %}
