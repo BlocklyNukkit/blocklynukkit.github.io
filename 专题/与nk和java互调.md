@@ -72,11 +72,12 @@ java是一门面向对象语言，nk也是用java编写而成。java中，所有
 
 ## 在bn插件中调用java  
 
+### 调用对象方法
+
 听起来很高大上，其实你已经不知不觉中通过了！  
 还记得基对象不？基对象就是一个java中的对象！而你调用基对象中的函数就是在bn插件中调用java函数!  
 没错，bn插件的开发就是在与java的互调用中进行的。而调用java类产生的java对象的对象方法非常简单，
 只需要通过在对象后面加上`.`(js&python)、`:`(lua)、`->`(php)，在加上对象的非静态成员函数的函数名，后面跟着括号传入参数就行了！  
-
 {% capture method %} 
 ```javascript
 var 返回值 = java对象.对象方法函数名(参数列表);
@@ -95,3 +96,43 @@ $返回值 = $java对象->对象方法函数名(参数列表);
 ```
 {% endcapture %}
 {% include tab.html tabId="method" tabTitles="JavaScript,Python,Lua,PHP" tabContents=method %}
+### 调用静态方法  
+
+调用静态方法需要直接从类调用而不是从对象调用。需要先使用每个语言中对应的方式导入java类，然后才能调用。  
+{% capture staticmethod %} 
+```javascript
+var xxx = Java.type("java类的全类名");
+var 返回值 = xxx.静态方法函数名(参数列表);
+```  
+---NEWTAB--- 
+```javascript
+var xxx = Java.type("java类的全类名");
+var 返回值 = xxx.静态方法函数名(参数列表);
+```  
+---NEWTAB--- 
+```python
+import java类的全类名
+返回值 = java类的类名.静态方法函数名(参数列表)
+```
+---NEWTAB--- 
+```python
+import java类的全类名 as xxx
+返回值 = xxx.静态方法函数名(参数列表)
+```
+---NEWTAB--- 
+```lua
+xxx = luajava.bindClass("java类的全类名")
+返回值 = xxx:静态方法函数名(参数列表)
+```
+---NEWTAB--- 
+```php
+$xxx = java_class("java类全类名");
+$返回值 = $xxx->静态方法函数名(参数列表);
+```
+---NEWTAB--- 
+```php
+import java类全类名;
+$返回值 = java类的类名::静态方法函数名(参数列表);
+```
+{% endcapture %}
+{% include tab.html tabId="staticmethod" tabTitles="JavaScript,JS(require),Python,Py(as),Lua,PHP,PHP(import)" tabContents=staticmethod %}
