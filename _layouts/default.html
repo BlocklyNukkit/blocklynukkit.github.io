@@ -16,7 +16,7 @@
         <article class="article">
             {%- unless page.categories contains "notoc" -%}
                 {{<p>章节导览</p>}}
-            {%- unless -%}
+            {%- endunless -%}
 			{% include toc.html html=content id='page_toc' %}
 			<br>
             {{ content }}
