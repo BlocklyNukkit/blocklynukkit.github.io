@@ -71,11 +71,26 @@ function register(account,password,confirmPassword){
         });
 }
 //重置密码函数
-function resetPassword(password,confirmPassword){
+function resetPassword(oldpassword,password,confirmPassword){
+    if(oldpassword == null || oldpassword == undefined){
+        oldpassword = document.getElementById("userOldPasswordInupt").value;
+    }
     if(password == null || password == undefined){
-        password = document.getElementById("registerPassword").value;
+        password = document.getElementById("userNewPasswordInupt").value;
     }
     if(confirmPassword == null || confirmPassword == undefined){
-        confirmPassword = document.getElementById("registerConfirmPassword").value;
+        confirmPassword = document.getElementById("userConfirmNewPasswordNameInupt").value;
     }
+    if(confirmPassword != password){
+        $("#userResetPasswordInputError").show(0);
+        return;
+    }
+    let user = auth.currentUser;
+    user.updatePassword(password, oldpassword).then(() => {
+        document.getElementById("userOldPasswordInupt").value = "";
+        document.getElementById("userNewPasswordInupt").value = "";
+        document.getElementById("userConfirmNewPasswordNameInupt").value = "";
+    },() => {
+        $("#userResetPasswordOtherError").show(0);
+    });
 }

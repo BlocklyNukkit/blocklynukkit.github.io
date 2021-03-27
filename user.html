@@ -13,8 +13,10 @@ layout: default
 <p>修改密码</p>
 <p id="userResetPasswordInputError" style="color: red;display: none;">两次密码不一致！</p>
 <p id="userResetPasswordOtherError" style="color: red;display: none;">您的密码不符合规则！</p>
-<input type="text" id="userNewPasswordInupt" class="colorfulButton loginInput" style="width: 100%;" placeholder="密码8-32位,需含字母数字">
-<input type="text" id="userConfirmNewPasswordNameInupt" class="colorfulButton loginInput" style="width: 100%;" placeholder="请再输入一次密码">
+<p id="userResetPasswordOtherError" style="color: #FFCC00;font-weight: bold;display: none;">您的密码不符合规则！</p>
+<input type="password" id="userOldPasswordInupt" class="colorfulButton loginInput" style="width: 100%;" placeholder="请输入您的旧密码">
+<input type="password" id="userNewPasswordInupt" class="colorfulButton loginInput" style="width: 100%;" placeholder="密码8-32位,需含字母数字">
+<input type="password" id="userConfirmNewPasswordNameInupt" class="colorfulButton loginInput" style="width: 100%;" placeholder="请再输入一次密码">
 <button class="loginButton" style="width: 100%;" onclick="resetPassword();">修改密码</button>
 <script>
     $(()=>{
