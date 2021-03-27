@@ -41,12 +41,21 @@ function login(account,password){
     if(password == null || password == undefined){
         password = document.getElementById("loginPassword").value;
     }
-    auth.signInWithEmailAndPassword(account, password)
-        .then((loginState) => {
-            window.history.back(-1);
-        },() => {
-            $("#loginError").show(0);
-        });
+    if(account.indexOf("@")!=-1){
+        auth.signInWithEmailAndPassword(account, password)
+            .then((loginState) => {
+                window.history.back(-1);
+            },() => {
+                $("#loginError").show(0);
+            });
+    }else{
+        auth.signInWithUsernameAndPassword(account, password)
+            .then((loginState) => {
+                window.history.back(-1);
+            },() => {
+                $("#loginError").show(0);
+            });
+    }
 }
 //注册函数
 function register(account,password,confirmPassword){
@@ -101,18 +110,29 @@ function resetNickName(newNickName){
         newNickName = document.getElementById("userNickNameInupt").value;
         if(newNickName == ""){
             $("#userResetUserNameError").show(0);
+        }else{
+            auth.isUsernameRegistered(username).then((registered) => {
+                if(!registered){
+                    let user = auth.currentUser;
+                    user.update({
+                            nickName: newNickName, 
+                        })
+                        .then(() => {
+                            document.getElementById("userNickNameInupt").value = "";
+                            user.updateUsername(newNickName).then(()=>{
+                                $("#userResetUserNameSuccess").show(0);
+                            },()=>{
+                                $("#userResetUserNameError").show(0);
+                            })
+                        },() => {
+                            $("#userResetUserNameError").show(0);
+                        });
+                }else{
+                    $("#userResetUserNameSameError").show(0);
+                }
+            });
         }
     }
-    let user = auth.currentUser;
-    user.update({
-            nickName: newNickName, 
-        })
-        .then(() => {
-            document.getElementById("userNickNameInupt").value = "";
-            $("#userResetUserNameSuccess").show(0);
-        },() => {
-            $("#userResetUserNameError").show(0);
-        });
 }
 //登出账号函数
 function logout(){
