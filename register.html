@@ -2,9 +2,10 @@
 layout: default
 ---
 <div>
-    <p id="registerError" style="color: red;display: none;">账号或密码错误！</p>
+    <p id="registerPasswordError" style="color: red;display: none;">两次密码不一致！</p>
+    <p id="registerOtherError" style="color: red;display: none;">注册失败，请尝试换用其他邮箱注册！</p>
     <div>邮箱</div>
-    <input id="registerAccount" type="text" class="loginInput">
+    <input id="registerAccount" type="email" class="loginInput">
     <p></p><!-- 空行 -->
     <div>密码</div>
     <input id="registerPassword" type="password" class="loginInput">
@@ -12,5 +13,5 @@ layout: default
     <div>确认密码</div>
     <input id="registerConfirmPassword" type="password" class="loginInput">
     <p></p>
-    <button class="colorfulButton loginButton" style="width: 100%;">注册</button>
+    <button class="colorfulButton loginButton" style="width: 100%;" onclick="register();">注册</button>
 </div>

@@ -43,4 +43,24 @@ function login(account,password){
             $("#loginError").show(0);
         });
 }
-
+//注册函数
+function register(account,password,confirmPassword){
+    if(account == null || account == undefined){
+        account = document.getElementById("registerAccount").value;
+    }
+    if(password == null || password == undefined){
+        password = document.getElementById("registerPassword").value;
+    }
+    if(confirmPassword == null || confirmPassword == undefined){
+        confirmPassword = document.getElementById("registerConfirmPassword").value;
+    }
+    if(confirmPassword != password){
+        $("#registerPasswordError").show(0);
+    }
+    auth.signUpWithEmailAndPassword(account, password)
+        .then((loginState) => {
+            window.location.href = "/confirmEmail.html";
+        },() => {
+            $("#registerOtherError").show(0);
+        });
+}
