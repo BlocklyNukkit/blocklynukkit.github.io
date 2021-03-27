@@ -114,3 +114,7 @@ function resetNickName(newNickName){
             $("#userResetUserNameError").show(0);
         });
 }
+//登出账号函数
+function logout(){
+    auth.signOut();
+}
