@@ -116,5 +116,9 @@ function resetNickName(newNickName){
 }
 //登出账号函数
 function logout(){
-    auth.signOut();
+    auth.signOut().then(()=>{
+        window.location.href = "/";
+    },()=>{
+        alert("登出失败");
+    });
 }
