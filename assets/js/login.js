@@ -13,11 +13,16 @@ function reloadLoginStatus(loginState){
     if(loginState == null || loginState == undefined){
         loginState = auth.hasLoginState();
     }
+    console.log(loginState);
     if(loginState){
+        console.log("1");
         if(loginState.user != null){
-            if(loginState.user.nickName != null){
+            console.log("2");
+            if(loginState.user.nickName != null && loginState.user.nickName != ""){
+                console.log("3");
                 document.getElementById("userName").innerText = loginState.user.nickName; 
-            }else if(loginState.user.email != null){
+            }else if(loginState.user.email != null && loginState.user.email != ""){
+                console.log("4");
                 document.getElementById("userName").innerText = loginState.user.email; 
             }else{
                 document.getElementById("userName").innerText = loginState.user.uid;
