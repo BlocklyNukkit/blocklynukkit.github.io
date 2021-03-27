@@ -8,7 +8,7 @@ const auth = app.auth({
 auth.onLoginStateChanged(reloadLoginStatus);
 //刷新登录状态函数
 function reloadLoginStatus(loginState){
-    if(loginState == null || loginState = undefined){
+    if(loginState == null || loginState == undefined){
         loginState = auth.hasLoginState();
     }
     if(loginState){
