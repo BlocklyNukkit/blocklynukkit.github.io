@@ -14,9 +14,6 @@
             <p>这里是BN百科</p>
         </div>
         <article class="article">
-            {%- unless page.categories contains "notoc" -%}
-                {{<p>章节导览</p>}}
-            {%- endunless -%}
 			{% include toc.html html=content id='page_toc' %}
 			<br>
             {{ content }}

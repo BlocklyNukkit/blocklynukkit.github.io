@@ -36,7 +36,7 @@ function login(account,password){
     if(password == null || password == undefined){
         password = document.getElementById("loginPassword").value;
     }
-    auth.signInWithEmailAndPassword(email, password)
+    auth.signInWithEmailAndPassword(account, password)
         .then((loginState) => {
             window.history.back(-1);
         },() => {
