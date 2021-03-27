@@ -31,7 +31,7 @@
 		  font-weight: normal;
 		  color: #696969;
 	}
-    .loginButton{
+    .loginBar{
         position: fixed;
         right: 10px;
         top: 4px;
@@ -54,7 +54,7 @@
     	  font-weight: normal;
     	  color: #696969;
     }
-    .loginButton{
+    .loginBar{
         position: fixed;
         right: 16px;
         top: 16px;

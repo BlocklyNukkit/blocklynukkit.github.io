@@ -20,12 +20,12 @@ function reloadLoginStatus(loginState){
             }
         }else{
             document.getElementById("userName").innerText = "未登录";
-            document.getElementById("userName").setAttribute("href","login.html"); 
+            document.getElementById("userName").setAttribute("href","/login.html"); 
         }
     }else{
         document.getElementById("userName").innerText = "未登录";
-        document.getElementById("userName").setAttribute("href","login.html"); 
+        document.getElementById("userName").setAttribute("href","/login.html"); 
     }
 }
-reloadLoginStatus();//初始化刷新
+$(reloadLoginStatus);//初始化刷新
 
