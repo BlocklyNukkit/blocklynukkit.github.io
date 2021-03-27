@@ -70,3 +70,12 @@ function register(account,password,confirmPassword){
             $("#registerOtherError").show(0);
         });
 }
+//重置密码函数
+function resetPassword(password,confirmPassword){
+    if(password == null || password == undefined){
+        password = document.getElementById("registerPassword").value;
+    }
+    if(confirmPassword == null || confirmPassword == undefined){
+        confirmPassword = document.getElementById("registerConfirmPassword").value;
+    }
+}
