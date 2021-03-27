@@ -56,6 +56,7 @@ function register(account,password,confirmPassword){
     }
     if(confirmPassword != password){
         $("#registerPasswordError").show(0);
+        return;
     }
     auth.signUpWithEmailAndPassword(account, password)
         .then((loginState) => {
