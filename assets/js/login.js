@@ -28,4 +28,19 @@ function reloadLoginStatus(loginState){
     }
 }
 $(reloadLoginStatus);//初始化刷新
+//登录函数
+function login(account,password){
+    if(account == null || account == undefined){
+        account = document.getElementById("loginAccount").value;
+    }
+    if(password == null || password == undefined){
+        password = document.getElementById("loginPassword").value;
+    }
+    auth.signInWithEmailAndPassword(email, password)
+        .then((loginState) => {
+            window.history.back(-1);
+        },() => {
+            $("#loginError").show(0);
+        });
+}
 
