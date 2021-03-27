@@ -90,7 +90,27 @@ function resetPassword(oldpassword,password,confirmPassword){
         document.getElementById("userOldPasswordInupt").value = "";
         document.getElementById("userNewPasswordInupt").value = "";
         document.getElementById("userConfirmNewPasswordNameInupt").value = "";
+        $("#userResetPasswordSuccess").show(0);
     },() => {
         $("#userResetPasswordOtherError").show(0);
     });
+}
+//修改昵称函数
+function resetNickName(newNickName){
+    if(newNickName == null || newNickName == undefined){
+        newNickName = document.getElementById("userNickNameInupt").value;
+        if(newNickName == ""){
+            $("#userResetUserNameError").show(0);
+        }
+    }
+    let user = auth.currentUser;
+    user.update({
+            nickName: newNickName, 
+        })
+        .then(() => {
+            document.getElementById("userNickNameInupt").value = "";
+            $("#userResetUserNameSuccess").show(0);
+        },() => {
+            $("#userResetUserNameError").show(0);
+        });
 }

@@ -3,21 +3,26 @@ layout: default
 ---
 <h1 id="userNameTitle">用户名</h1>
 <p>UID</p>
-<p id="userUidTitle"></p><!-- 空行 -->
+<p id="userUidTitle"></p>
 <hr>
 <div>昵称</div>
 <input type="text" id="userNickNameInupt" class="loginInput" style="width: 87%;">&#8194;
-<button class="loginButton">修改</button>
+<p id="userResetUserNameError" style="color: red;display: none;">用户名不符合规则！</p>
+<p id="userResetUserNameSuccess" style="color: #FFCC00;font-weight: bold;display: none;">密码修改成功</p>
+<button class="colorfulButton loginButton" onclick="resetNickName();">修改</button>
 <p></p><!-- 空行 -->
 <hr>
 <p>修改密码</p>
 <p id="userResetPasswordInputError" style="color: red;display: none;">两次密码不一致！</p>
 <p id="userResetPasswordOtherError" style="color: red;display: none;">您的密码不符合规则！</p>
-<p id="userResetPasswordOtherError" style="color: #FFCC00;font-weight: bold;display: none;">您的密码不符合规则！</p>
-<input type="password" id="userOldPasswordInupt" class="colorfulButton loginInput" style="width: 100%;" placeholder="请输入您的旧密码">
-<input type="password" id="userNewPasswordInupt" class="colorfulButton loginInput" style="width: 100%;" placeholder="密码8-32位,需含字母数字">
-<input type="password" id="userConfirmNewPasswordNameInupt" class="colorfulButton loginInput" style="width: 100%;" placeholder="请再输入一次密码">
-<button class="loginButton" style="width: 100%;" onclick="resetPassword();">修改密码</button>
+<p id="userResetPasswordSuccess" style="color: #FFCC00;font-weight: bold;display: none;">密码修改成功</p>
+<input type="password" id="userOldPasswordInupt" class="loginInput" style="width: 100%;" placeholder="请输入您的旧密码">
+<p></p><!-- 空行 -->
+<input type="password" id="userNewPasswordInupt" class="loginInput" style="width: 100%;" placeholder="密码8-32位,需含字母数字">
+<p></p><!-- 空行 -->
+<input type="password" id="userConfirmNewPasswordNameInupt" class="loginInput" style="width: 100%;" placeholder="请再输入一次密码">
+<p></p><!-- 空行 -->
+<button class="colorfulButton loginButton" style="width: 100%;" onclick="resetPassword();">修改密码</button>
 <script>
     $(()=>{
         var loginState = auth.hasLoginState();
