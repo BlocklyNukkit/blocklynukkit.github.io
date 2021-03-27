@@ -6,7 +6,7 @@ const auth = app.auth({
 });
 
 $(()=>{auth.onLoginStateChanged(reloadLoginStatus);});//监听登录状态
-setTimeout(()=>reloadLoginStatus(),500});//初始化刷新
+setTimeout(()=>{reloadLoginStatus()},500);//初始化刷新
 
 //刷新登录状态函数
 function reloadLoginStatus(loginState){
