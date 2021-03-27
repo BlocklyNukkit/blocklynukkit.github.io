@@ -111,7 +111,7 @@ function resetNickName(newNickName){
         if(newNickName == ""){
             $("#userResetUserNameError").show(0);
         }else{
-            auth.isUsernameRegistered(username).then((registered) => {
+            auth.isUsernameRegistered(newNickName).then((registered) => {
                 if(!registered){
                     let user = auth.currentUser;
                     user.update({
