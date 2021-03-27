@@ -4,8 +4,10 @@ const app = cloudbase.init({
 const auth = app.auth({
   persistence: "local"
 });
-//监听登录状态
-auth.onLoginStateChanged(reloadLoginStatus);
+
+$(()=>{auth.onLoginStateChanged(reloadLoginStatus);});//监听登录状态
+$(reloadLoginStatus);//初始化刷新
+
 //刷新登录状态函数
 function reloadLoginStatus(loginState){
     if(loginState == null || loginState == undefined){
@@ -15,8 +17,10 @@ function reloadLoginStatus(loginState){
         if(loginState.user != null){
             if(loginState.user.nickName != null){
                 document.getElementById("userName").innerText = loginState.user.nickName; 
+            }else if(loginState.user.email != null){
+                document.getElementById("userName").innerText = loginState.user.email; 
             }else{
-                document.getElementById("userName").innerText = loginState.user.username; 
+                document.getElementById("userName").innerText = loginState.user.uid;
             }
         }else{
             document.getElementById("userName").innerText = "未登录";
@@ -27,7 +31,6 @@ function reloadLoginStatus(loginState){
         document.getElementById("userName").setAttribute("href","/login.html"); 
     }
 }
-$(reloadLoginStatus);//初始化刷新
 //登录函数
 function login(account,password){
     if(account == null || account == undefined){
