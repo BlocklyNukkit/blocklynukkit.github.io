@@ -17,8 +17,11 @@
 		scrollbar-width: 0px;
 		padding-top: 20px;
 		background-color: #252525;
-	} /*小屏由js设置*/
-	.menuButton {
+	}
+}
+
+@media screen and (max-width:720px ) {
+    .menuButton {
 		  position: fixed;
 		  left: 10px;
 		  top: 4px;
@@ -28,6 +31,19 @@
 		  font-weight: normal;
 		  color: #696969;
 	}
+}
+
+@media screen and (max-width:1320px ) and (min-width:721px ) {
+    .menuButton {
+    	  position: fixed;
+    	  left: 16px;
+    	  top: 16px;
+    	  z-index:101;
+    	  cursor: pointer;
+    	  font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    	  font-weight: normal;
+    	  color: #696969;
+    }
 }
 
 @media screen and (min-width:1321px ) {

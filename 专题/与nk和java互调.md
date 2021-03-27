@@ -100,39 +100,110 @@ $返回值 = $java对象->对象方法函数名(参数列表);
 
 调用静态方法需要直接从类调用而不是从对象调用。需要先使用每个语言中对应的方式导入java类，然后才能调用。  
 {% capture staticmethod %} 
+javascript中可以使用`Java.type`来根据全类名获取类，而后可以通过`.`来调用静态方法。  
 ```javascript
 var xxx = Java.type("java类的全类名");
 var 返回值 = xxx.静态方法函数名(参数列表);
 ```  
-
+也可以通过`require`来获取，效果跟上面是一样的(只能在1.2.9.2及更高版本使用)  
 ```javascript
-var xxx = Java.type("java类的全类名");
+var xxx = require("java类的全类名");
 var 返回值 = xxx.静态方法函数名(参数列表);
 ```  
 ---NEWTAB--- 
+python中直接通过import语句就可以导入，导入后使用类名加上`.`来调用静态方法。  
 ```python
 import java类的全类名
 返回值 = java类的类名.静态方法函数名(参数列表)
 ```
-
+也可以使用`as`来指定一个别名。  
 ```python
 import java类的全类名 as xxx
 返回值 = xxx.静态方法函数名(参数列表)
 ```
 ---NEWTAB--- 
+lua中可以使用`luajava.bindClass`来根据全类名获取类，而后可以通过`:`来调用静态方法。 
 ```lua
 xxx = luajava.bindClass("java类的全类名")
 返回值 = xxx:静态方法函数名(参数列表)
 ```
 ---NEWTAB--- 
+php中可以使用`java_class`来根据全类名获取类，而后可以通过`->`来调用静态方法。 
 ```php
 $xxx = java_class("java类全类名");
 $返回值 = $xxx->静态方法函数名(参数列表);
 ```
-
+也可以直接使用`import`语句，而后通过全类名加`::`来调用静态方法。  
 ```php
 import java类全类名;
 $返回值 = java类的类名::静态方法函数名(参数列表);
 ```
 {% endcapture %}
 {% include tab.html tabId="staticmethod" tabTitles="JavaScript,Python,Lua,PHP" tabContents=staticmethod %}
+
+### 调用对象字段  
+
+调用对象字段，即获取对象的非静态成员变量的值，调用的方式跟调用对象方法类似。  
+{% capture field %} 
+```javascript
+var xxx = java对象.对象字段名;
+```  
+---NEWTAB--- 
+```python
+xxx = java对象.对象字段名
+```
+---NEWTAB--- 
+```lua
+xxx = java对象.对象字段名
+```
+---NEWTAB--- 
+```php
+$xxx = $java对象->对象字段名;
+```
+{% endcapture %}
+{% include tab.html tabId="field" tabTitles="JavaScript,Python,Lua,PHP" tabContents=field %}
+
+### 调用静态字段  
+
+调用静态字段，即获取对象的静态成员变量的值，调用的方式跟调用静态方法类似。  
+{% capture staticfield %} 
+javascript中可以使用`Java.type`来根据全类名获取类，而后可以通过`.`来调用静态字段。  
+```javascript
+var xxx = Java.type("java类的全类名");
+var 值 = xxx.静态字段名;
+```  
+也可以通过`require`来获取，效果跟上面是一样的(只能在1.2.9.2及更高版本使用)  
+```javascript
+var xxx = require("java类的全类名");
+var 值 = xxx.静态字段名;
+```  
+---NEWTAB--- 
+python中直接通过import语句就可以导入，导入后使用类名加上`.`来调用静态方法。  
+```python
+import java类的全类名
+值 = java类的类名.静态字段名
+```
+也可以使用`as`来指定一个别名。  
+```python
+import java类的全类名 as xxx
+值 = xxx.静态字段名
+```
+---NEWTAB--- 
+lua中可以使用`luajava.bindClass`来根据全类名获取类，而后可以通过`:`来调用静态方法。 
+```lua
+xxx = luajava.bindClass("java类的全类名")
+值 = xxx:静态字段名
+```
+---NEWTAB--- 
+php中可以使用`java_class`来根据全类名获取类，而后可以通过`->`来调用静态方法。 
+```php
+$xxx = java_class("java类全类名");
+$值 = $xxx->静态字段名;
+```
+也可以直接使用`import`语句，而后通过全类名加`::`来调用静态方法。  
+```php
+import java类全类名;
+$值 = java类的类名::静态字段名;
+```
+{% endcapture %}
+{% include tab.html tabId="staticfield" tabTitles="JavaScript,Python,Lua,PHP" tabContents=staticfield %}
