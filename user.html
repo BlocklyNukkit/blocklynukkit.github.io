@@ -1,0 +1,31 @@
+<h1 id="userNameTitle">用户名</h1>
+<p>昵称</p>
+<p id="userUidTitle"></p><!-- 空行 -->
+<hr>
+<div>昵称</div>
+<input type="text" id="userNickNameInupt" class="loginInput" style="width: 87%;">&#8194;
+<button class="loginButton">修改</button>
+<p></p><!-- 空行 -->
+<hr>
+<p>修改密码</p>
+<input type="text" id="userNewPasswordInupt" class="loginInput" style="width: 100%;" placeholder="输入密码">
+<input type="text" id="userConfirmNewPasswordNameInupt" class="loginInput" style="width: 100%;" placeholder="确认密码">
+<button class="loginButton" style="width: 100%;">修改密码</button>
+<script>
+    $(()=>{
+        var loginState = auth.hasLoginState();
+        if(loginState){
+            if(loginState.user != null){
+                if(loginState.user.email != null && loginState.user.email != ""){
+                    document.getElementById("userNameTitle").innerText = loginState.user.email; 
+                }
+                if(loginState.user.nickName != null && loginState.user.nickName != ""){
+                    document.getElementById("userNickNameInupt").innerText = loginState.user.nickName; 
+                }
+                if(loginState.user.uid != null && loginState.user.uid != ""){
+                    document.getElementById("userUidTitle").innerText = loginState.user.uid; 
+                }
+            }
+        }
+    })
+</script>

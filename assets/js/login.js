@@ -6,7 +6,7 @@ const auth = app.auth({
 });
 
 $(()=>{auth.onLoginStateChanged(reloadLoginStatus);});//监听登录状态
-$(()=>{setTimeout(()=>reloadLoginStatus(),100});//初始化刷新
+setTimeout(()=>reloadLoginStatus(),500});//初始化刷新
 
 //刷新登录状态函数
 function reloadLoginStatus(loginState){
@@ -15,18 +15,15 @@ function reloadLoginStatus(loginState){
     }
     console.log(loginState);
     if(loginState){
-        console.log("1");
         if(loginState.user != null){
-            console.log("2");
             if(loginState.user.nickName != null && loginState.user.nickName != ""){
-                console.log("3");
                 document.getElementById("userName").innerText = loginState.user.nickName; 
             }else if(loginState.user.email != null && loginState.user.email != ""){
-                console.log("4");
                 document.getElementById("userName").innerText = loginState.user.email; 
             }else{
                 document.getElementById("userName").innerText = loginState.user.uid;
             }
+            document.getElementById("userName").setAttribute("href","/user.html"); 
         }else{
             document.getElementById("userName").innerText = "未登录";
             document.getElementById("userName").setAttribute("href","/login.html"); 
