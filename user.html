@@ -37,7 +37,7 @@ layout: default
                     document.getElementById("userNameTitle").innerText = loginState.user.email; 
                 }
                 if(loginState.user.nickName != null && loginState.user.nickName != ""){
-                    document.getElementById("userNickNameInupt").innerText = loginState.user.nickName; 
+                    document.getElementById("userNickNameInupt").value = loginState.user.nickName; 
                 }
                 if(loginState.user.uid != null && loginState.user.uid != ""){
                     document.getElementById("userUidTitle").innerText = loginState.user.uid; 
