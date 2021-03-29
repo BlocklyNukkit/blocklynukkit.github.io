@@ -49,7 +49,7 @@ function login(account,password){
                 $("#loginError").show(0);
             });
     }else{
-        auth.signInWithUsernameAndPassword(account, password)
+        auth.signInWithUsernameAndPassword(Pinyin.convertToPinyin(account,'',true), password)
             .then((loginState) => {
                 window.history.back(-1);
             },() => {
@@ -119,7 +119,7 @@ function resetNickName(newNickName){
                         })
                         .then(() => {
                             document.getElementById("userNickNameInupt").value = "";
-                            user.updateUsername(newNickName).then(()=>{
+                            user.updateUsername(Pinyin.convertToPinyin(newNickName,'',true)).then(()=>{
                                 $("#userResetUserNameSuccess").show(0);
                             },()=>{
                                 $("#userResetUserNameError").show(0);
