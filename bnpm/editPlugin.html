@@ -45,7 +45,10 @@ layout: bnpm
                 $("#mainView").hide(0);
                 $("#noGetView").show(0);
             }else{
-                isPluginNotExists(pluginName,function(data){
+                isPluginNotExists(pluginName,function(){
+                    $("#mainView").hide(0);
+                    $("#noGetView").show(0);
+                },function(data){
                     if(auth.currentUser.uid == data["_openid"]){
                         $("#pluginNameInput").val(data["name"]);
                         $("#pluginDescriptionInput").val(data["description"]);
@@ -55,9 +58,6 @@ layout: bnpm
                         $("#mainView").hide(0);
                         $("#noPermissionView").show(0);
                     }
-                },function(){
-                    $("#mainView").hide(0);
-                    $("#noGetView").show(0);
                 })
             }
         },500);
