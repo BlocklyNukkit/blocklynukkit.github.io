@@ -41,7 +41,7 @@ function addNewPlugin(pluginName,pluginVersion,pluginDescription,pluginInfo,plug
         }
     }
     
-    isPluginExists(pluginName,function(){
+    isPluginNotExists(pluginName,function(){
         assetsPaths = [];
         uploadAssets(pluginName+"_"+pluginVersion,pluginAssets,function(paths){
             userplugin.add({
@@ -50,6 +50,7 @@ function addNewPlugin(pluginName,pluginVersion,pluginDescription,pluginInfo,plug
                 user: auth.hasLoginState().user.email,
                 userNickName: auth.hasLoginState().user.nickName,
                 description: pluginDescription,
+                info: pluginInfo,
                 time: new Date(),
                 assets: assetsPaths
             })
@@ -64,6 +65,64 @@ function addNewPlugin(pluginName,pluginVersion,pluginDescription,pluginInfo,plug
         });
     },function(){
         $("#uploadError").show(0).text("插件重名，请更换插件名称");
+    });
+}
+
+function editPlugin(pluginVersion,pluginDescription,pluginInfo,pluginAssets){
+    if(pluginVersion == null || pluginVersion == undefined){
+        pluginVersion = $("#pluginVersionInput").val();
+        if(pluginVersion == "" || pluginVersion.indexOf(" ") != -1){
+            $("#uploadError").show(0).text("版本不能为空或者带有空格");return;
+        }
+    }
+    if(pluginDescription == null || pluginDescription == undefined){
+        pluginDescription = $("#pluginDescriptionInput").val();
+    }
+    if(pluginInfo == null || pluginInfo == undefined){
+        pluginInfo = $("#pluginInfoInput").val();
+    }
+    if(pluginAssets == null || pluginAssets == undefined){
+        pluginAssets = assets;
+    }
+    
+    isPluginExists(pluginName,function(){
+        $("#uploadError").show(0).text("找不到要修改的插件");
+    },function(data){
+        if(pluginAssets.length == 0){
+            data.update({
+                version: pluginVersion,
+                userNickName: auth.hasLoginState().user.nickName,
+                description: pluginDescription,
+                info: pluginInfo,
+                time: new Date()
+            })
+            .then((res) => {
+                console.log(res);
+                $("#addPluginSuccess").show(0).text(pluginName+" "+pluginVersion+"上传成功！");
+            },() => {
+                $("#uploadError").show(0).text("信息填写错误！");
+            });
+        }else{
+            assetsPaths = [];
+            uploadAssets(pluginName+"_"+pluginVersion,pluginAssets,function(paths){
+                data.update({
+                    version: pluginVersion,
+                    userNickName: auth.hasLoginState().user.nickName,
+                    description: pluginDescription,
+                    info: pluginInfo,
+                    time: new Date(),
+                    assets: assetsPaths
+                })
+                .then((res) => {
+                    console.log(res);
+                    $("#addPluginSuccess").show(0).text(pluginName+" "+pluginVersion+"上传成功！");
+                },() => {
+                    $("#uploadError").show(0).text("信息填写错误！");
+                });
+            },function(why){
+                $("#uploadError").show(0).text(why.name+"上传失败");
+            });
+        }
     });
 }
 
@@ -85,14 +144,14 @@ function uploadAssets(dir,assetFiles,handler,failed){
     }
 }
 
-function isPluginExists(pluginName,yes,no){
+function isPluginNotExists(pluginName,yes,no){
     userplugin.where({
         name: pluginName
     }).get()
     .then((res) => {
         console.log(res.data);
         if(res.data.length != 0){
-            no();
+            no(res.data[0]);
         }else{
             yes();
         }
