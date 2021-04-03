@@ -15,7 +15,7 @@ layout: bnpm
     <p></p><!-- 空行 -->
     <textarea id="pluginInfoInput" class="loginInput" style="width: 100%;" placeholder="markdown here..."></textarea>
     <p></p><!-- 空行 -->
-    <div id="infoPreview"></div>
+    <div id="infoPreview" style="background-color: #333;"></div>
     <p></p><!-- 空行 -->
     
     <script>
@@ -37,9 +37,10 @@ layout: bnpm
                 $("#noLoginView").show(0);
             }
         },500);
-        $("#pluginInfoInput").change(()=>{
-            $("infoPreview").html(Mdjs.md2html(this.value));
-        })
+        $("#pluginInfoInput").bind('input propertychange','textarea',function(){
+            let md = this.value;
+            document.getElementById("infoPreview").innerHTML = Mdjs.md2html(md);
+        });
         var assets = [];
         function doWarn(errtext){
             $("#uploadError").show(0).text(errtext);
