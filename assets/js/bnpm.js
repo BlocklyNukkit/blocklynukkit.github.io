@@ -42,6 +42,7 @@ function addNewPlugin(pluginName,pluginVersion,pluginDescription,pluginInfo,plug
     }
     
     isPluginExists(pluginName,function(){
+        assetsPaths = [];
         uploadAssets(pluginName+"_"+pluginVersion,pluginAssets,function(paths){
             userplugin.add({
                 name: pluginName,
@@ -67,7 +68,6 @@ function addNewPlugin(pluginName,pluginVersion,pluginDescription,pluginInfo,plug
 }
 
 function uploadAssets(dir,assetFiles,handler,failed){
-    assetsPaths = [];
     let assetFile = assetFiles.shift();
     if(assetFile != undefined || assetFile != null){
         app.uploadFile({
