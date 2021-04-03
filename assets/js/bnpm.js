@@ -17,22 +17,22 @@ const userplugin = db.collection("userplugin");
 
 function addNewPlugin(pluginName,pluginVersion,pluginDescription,pluginInfo,pluginAssets){
     if(pluginName == null || pluginName == undefined){
-        pluginName = $("pluginNameInput").val();
+        pluginName = $("#pluginNameInput").val();
         if(pluginName == "" || pluginName.indexOf(" ") != -1){
             $("#uploadError").show(0).text("名称不能为空或者带有空格");return;
         }
     }
     if(pluginVersion == null || pluginVersion == undefined){
-        pluginVersion = $("pluginVersionInput").val();
+        pluginVersion = $("#pluginVersionInput").val();
         if(pluginVersion == "" || pluginVersion.indexOf(" ") != -1){
             $("#uploadError").show(0).text("版本不能为空或者带有空格");return;
         }
     }
     if(pluginDescription == null || pluginDescription == undefined){
-        pluginDescription = $("pluginDescriptionInput").val();
+        pluginDescription = $("#pluginDescriptionInput").val();
     }
     if(pluginInfo == null || pluginInfo == undefined){
-        pluginInfo = $("pluginInfoInput").val();
+        pluginInfo = $("#pluginInfoInput").val();
     }
     if(pluginAssets == null || pluginAssets == undefined){
         pluginAssets = assets;
