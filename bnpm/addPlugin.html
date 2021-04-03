@@ -10,7 +10,14 @@ layout: bnpm
     <p></p><!-- 空行 -->
     <input type="text" id="pluginVersionInput" class="loginInput" style="width: 100%;" placeholder="插件版本">
     <p></p><!-- 空行 -->
-
+    
+    <h2>插件详情</h2>
+    <p></p><!-- 空行 -->
+    <textarea id="pluginInfoInput" class="loginInput" style="width: 100%;" placeholder="markdown here..."></textarea>
+    <p></p><!-- 空行 -->
+    <div id="infoPreview"></div>
+    <p></p><!-- 空行 -->
+    
     <script>
         Array.prototype.del=function(index){ 
             if(isNaN(index)||index>=this.length){ 
@@ -30,6 +37,9 @@ layout: bnpm
                 $("#noLoginView").show(0);
             }
         },500);
+        $("#pluginInfoInput").change(()=>{
+            $("infoPreview").html(Mdjs.md2html(this.value));
+        })
         var assets = [];
         function doWarn(errtext){
             $("#uploadError").show(0).text(errtext);
@@ -64,7 +74,7 @@ layout: bnpm
     </script>
 
     <h2>上传插件</h2>
-    <input type="file" style="visibility: hidden;" accept="*.*" id="sefile" onchange="changefile();"></input>
+    <input type="file" style="visibility: hidden;" accept="*.*" id="sefile" multiple="multiple" onchange="changefile();"></input>
     <ul id="assets_list" style="margin: 0px;">
         <!-- js生成的列表 -->
     </ul>

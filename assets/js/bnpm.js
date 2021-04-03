@@ -18,3 +18,20 @@ const userplugin = db.collection("userplugin");
 function addNewPlugin(pluginName,pluginVersion,pluginDescription,pluginInfo,pluginAssets){
     
 }
+
+function uploadAssets(dir,assetFiles){
+    var index = 0;
+    if(index < assetFiles.length){
+        let assetFile = assetFiles[index];
+        index++;
+        app.uploadFile({
+            cloudPath: dir+"/"+assetFile.name,
+            filePath: assetFile
+        })
+        .then((res) => {
+            console.log(res.fileID);
+            uploadAssets();
+        });
+    }
+    
+}
