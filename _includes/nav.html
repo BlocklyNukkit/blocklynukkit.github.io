@@ -15,6 +15,9 @@
 				$("#summaryNav").hide(0);
 			}
 			function visit(parent){
+                if(parent == null){
+                    return;
+                }
 				let childs = parent.children;
 				if(parent.tagName=="UL" || parent.tagName=="ul"){
 					parent.style.margin = "0 0 0 0px";
