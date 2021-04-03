@@ -14,7 +14,7 @@ const userplugin = db.collection("userplugin");
 //         "内容下载链接2"
 //     ]
 // }
-
+var assetsPaths = [];
 function addNewPlugin(pluginName,pluginVersion,pluginDescription,pluginInfo,pluginAssets){
     if(pluginName == null || pluginName == undefined){
         pluginName = $("#pluginNameInput").val();
@@ -41,10 +41,8 @@ function addNewPlugin(pluginName,pluginVersion,pluginDescription,pluginInfo,plug
         }
     }
     
-    var _assets;
     isPluginExists(pluginName,function(){
         uploadAssets(pluginName+"_"+pluginVersion,pluginAssets,function(paths){
-            _assets = paths;
             userplugin.add({
                 name: pluginName,
                 version: pluginVersion,
@@ -52,7 +50,7 @@ function addNewPlugin(pluginName,pluginVersion,pluginDescription,pluginInfo,plug
                 userNickName: auth.hasLoginState().user.nickName,
                 description: pluginDescription,
                 time: new Date(),
-                assets: _assets
+                assets: assetsPaths
             })
             .then((res) => {
                 console.log(res);
@@ -69,7 +67,7 @@ function addNewPlugin(pluginName,pluginVersion,pluginDescription,pluginInfo,plug
 }
 
 function uploadAssets(dir,assetFiles,handler,failed){
-    var assetsPaths = [];
+    assetsPaths = [];
     let assetFile = assetFiles.shift();
     if(assetFile != undefined || assetFile != null){
         app.uploadFile({
