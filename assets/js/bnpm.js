@@ -78,7 +78,7 @@ function uploadAssets(dir,assetFiles,handler,failed){
         }).then((res) => {
             console.log(res.fileID);
             assetsPaths.push(res.fileID);
-            uploadAssets(dir,assetFiles);
+            uploadAssets(dir,assetFiles,handler,failed);
         },() => {
             failed(assetFile);
         });
