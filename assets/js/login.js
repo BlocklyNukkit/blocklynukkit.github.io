@@ -28,10 +28,7 @@ function reloadLoginStatus(loginState){
 }
 //获取是否登录函数
 function isLogined(){
-    if(loginState == null || loginState == undefined){
-        loginState = auth.hasLoginState();
-    }
-    console.log(loginState);
+    let loginState = auth.hasLoginState();
     if(loginState){
         if(loginState.user != null){
             return true;

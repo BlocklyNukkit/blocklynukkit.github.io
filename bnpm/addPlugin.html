@@ -48,14 +48,16 @@ layout: bnpm
                     return;
                 }
             }
-            assets = assets.concat(fs)
+            for(let i=0;i<fs.length;i++){
+                assets.push(fs[i]);
+            }
             updateAssets();
         }
         function updateAssets(){
             let all = "";
             for(let i=0;i<assets.length;i++){
                 let each = assets[i];
-                all += ('<li><a onclick="assets.del('+i+');updateAssets();">删除</a> '+each.name+' '+(each.size/1024).toFixed(2)+"KB"+'</li>\n');
+                all += ('<li><a onclick="assets.del('+i+');updateAssets();" style="cursor: pointer;">删除</a> '+each.name+' '+(each.size/1024).toFixed(2)+"KB"+'</li>\n');
             }
             document.getElementById("assets_list").innerHTML = all;
         }
