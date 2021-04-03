@@ -80,8 +80,11 @@ layout: bnpm
         <!-- js生成的列表 -->
     </ul>
     <p></p><!-- 空行 -->
-    <p id="uploadError" style="color: red;display: none;"></p>
     <button class="colorfulButton loginButton" style="width: 100%;" onclick="document.getElementById('sefile').click();">添加文件</button>
+    <p id="uploadError" style="color: red;display: none;"></p>
+    <p id="addPluginSuccess" style="color: #FFCC00;font-weight: bold;display: none;"></p>
+    <p></p><!-- 空行 -->
+    <button class="colorfulButton loginButton" style="width: 100%;" onclick="addNewPlugin();">确认上传</button>
 </div>
 <div id="noLoginView" style="display: none;">
     <h2>请先登录</h2>
