@@ -1,10 +1,3 @@
-const app = cloudbase.init({
-    env: 'blocklunukkit-1488c9'
-})
-const auth = app.auth({
-  persistence: "local"
-});
-
 $(()=>{auth.onLoginStateChanged(reloadLoginStatus);});//监听登录状态
 setTimeout(()=>{reloadLoginStatus()},500);//初始化刷新
 
@@ -31,6 +24,22 @@ function reloadLoginStatus(loginState){
     }else{
         document.getElementById("userName").innerText = "未登录";
         document.getElementById("userName").setAttribute("href","/login.html"); 
+    }
+}
+//获取是否登录函数
+function isLogined(){
+    if(loginState == null || loginState == undefined){
+        loginState = auth.hasLoginState();
+    }
+    console.log(loginState);
+    if(loginState){
+        if(loginState.user != null){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        return false;
     }
 }
 //登录函数

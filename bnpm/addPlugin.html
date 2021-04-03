@@ -1,0 +1,76 @@
+---
+layout: bnpm
+---
+<div id="mainView">
+    <h2>添加插件</h2>
+    <p></p><!-- 空行 -->
+    <input type="text" id="pluginNameInput" class="loginInput" style="width: 100%;" placeholder="输入插件名">
+    <p></p><!-- 空行 -->
+    <input type="text" id="pluginDescriptionInput" class="loginInput" style="width: 100%;" placeholder="插件简介">
+    <p></p><!-- 空行 -->
+    <input type="text" id="pluginVersionInput" class="loginInput" style="width: 100%;" placeholder="插件版本">
+    <p></p><!-- 空行 -->
+
+    <script>
+        Array.prototype.del=function(index){ 
+            if(isNaN(index)||index>=this.length){ 
+                return false; 
+            } 
+            for(let i=0,n=0;i<this.length;i++){ 
+                if(this[i]!=this[index]){ 
+                    this[n++]=this[i]; 
+                } 
+            }
+            this.length-=1; 
+            return true;
+        }; 
+        window.setTimeout(()=>{
+            if(!isLogined()){
+                $("#mainView").hide(0);
+                $("#noLoginView").show(0);
+            }
+        },500);
+        var assets = [];
+        function doWarn(errtext){
+            $("#uploadError").show(0).text(errtext);
+        }
+        function changefile(){
+            fs = document.getElementById("sefile").files;
+            if(fs==undefined||fs==null||fs.length==0){
+                fs=null;
+                return;
+            }
+            for(let i=0;i<fs.length;i++){
+                let f = fs[i];
+                if(f.size>=1024*1024){
+                    doWarn('您选择的文件大小'+(f.size/1024).toFixed(2)+"KB,文件大小限制1024KB以内！");
+                    f=null;document.getElementById("sefile").files=[];
+                    return;
+                }
+            }
+            assets = assets.concat(fs)
+            updateAssets();
+        }
+        function updateAssets(){
+            let all = "";
+            for(let i=0;i<assets.length;i++){
+                let each = assets[i];
+                all += ('<li><a onclick="assets.del('+i+');updateAssets();">删除</a> '+each.name+' '+(f.size/1024).toFixed(2)+"KB"+'</li>\n');
+            }
+            document.getElementById("assets_list").innerHTML = all;
+        }
+    </script>
+
+    <h2>上传插件</h2>
+    <input type="file" style="visibility: hidden;" accept="*.*" id="sefile" onchange="changefile();"></input>
+    <ul id="assets_list" style="margin: 0px;">
+        <!-- js生成的列表 -->
+    </ul>
+    <p></p><!-- 空行 -->
+    <p id="uploadError" style="color: red;display: none;"></p>
+    <button class="colorfulButton loginButton" style="width: 100%;" onclick="document.getElementById('sefile').click();">添加文件</button>
+</div>
+<div id="noLoginView" style="display: none;">
+    <h2>请先登录</h2>
+    <p>要向BNPM插件管理器上传插件，您需要先登录账号</p>
+</div>

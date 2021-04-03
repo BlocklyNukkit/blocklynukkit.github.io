@@ -3,7 +3,7 @@
 		{%- if page.url != '/SUMMARY.html' -%}
 			{%- for tpage in site.pages -%}
 				{%- if tpage.url == '/SUMMARY.html' -%}
-					{{tpage.content | markdownify | replace_first: "SUMMARY", "目录"}}
+					{{tpage.content | markdownify | replace_first: "SUMMARY", "导航"}}
 				{%- endif -%}
 			{%- endfor -%}
 		{%- endif -%}

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="{{ site.lang | default: " en-US" }}">
-{%- include head.html -%}
+{%- include account_head.html -%}
 <body>
 
 {%- include header.html -%}
@@ -10,13 +10,9 @@
 <div class="wrapper" id="main">
     <section>
         <div id="title">
-            <h1>BlocklyNukkit WIKI</h1>
-            <p>这里是BN百科</p>
+            <h1>BNPM 插件管理器</h1>
         </div>
         <article class="article">
-            <p>章节导览</p>
-			{% include toc.html html=content id='page_toc' %}
-			<br>
             {{ content }}
 			{%- include nav.html -%}
         </article>
