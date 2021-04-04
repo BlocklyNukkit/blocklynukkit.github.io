@@ -111,7 +111,7 @@ function editPlugin(pluginName,pluginVersion,pluginDescription,pluginInfo,plugin
         }else{
             assetsPaths = [];
             uploadAssets(pluginName+"_"+pluginVersion,pluginAssets,function(paths){
-                data.update({
+                userplugin.doc(data["_id"]).update({
                     version: pluginVersion,
                     userNickName: auth.hasLoginState().user.nickName,
                     description: pluginDescription,
