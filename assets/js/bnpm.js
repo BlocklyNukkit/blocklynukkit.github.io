@@ -85,7 +85,7 @@ function editPlugin(pluginVersion,pluginDescription,pluginInfo,pluginAssets){
         pluginAssets = assets;
     }
     
-    isPluginExists(pluginName,function(){
+    isPluginNotExists(pluginName,function(){
         $("#uploadError").show(0).text("找不到要修改的插件");
     },function(data){
         if(pluginAssets.length == 0){
