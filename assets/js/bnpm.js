@@ -68,7 +68,13 @@ function addNewPlugin(pluginName,pluginVersion,pluginDescription,pluginInfo,plug
     });
 }
 
-function editPlugin(pluginVersion,pluginDescription,pluginInfo,pluginAssets){
+function editPlugin(pluginName,pluginVersion,pluginDescription,pluginInfo,pluginAssets){
+    if(pluginName == null || pluginName == undefined){
+        pluginName = $("#pluginNameInput").val();
+        if(pluginName == "" || pluginName.indexOf(" ") != -1){
+            $("#uploadError").show(0).text("名称不能为空或者带有空格");return;
+        }
+    }
     if(pluginVersion == null || pluginVersion == undefined){
         pluginVersion = $("#pluginVersionInput").val();
         if(pluginVersion == "" || pluginVersion.indexOf(" ") != -1){
