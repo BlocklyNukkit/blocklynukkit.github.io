@@ -15,13 +15,17 @@ layout: bnpm
             }else{
                 getUserPlugins((datas) => {
                     let content = "";
+                    if(datas.length==0){
+                        content = "<h3>您还没有上传过插件</h3>"
+                    }
                     for(let i=0;i<datas;i++){
                         let each = datas[i];
                         content += `<hr><h3 style="display: contents;">${each["name"]}</h3>
                         <span>${each["description"]} <a href="/bnpm/editPlugin?name=${each["name"]}">前往修改</a></span>
                         <p>版本 ${each["version"]} 最后修改时间 ${each["time"]+""}</p>`;
                     }
-                    $("#pluginList").html(content).show(1500);
+                    document.getElementById("pluginList").innerHTML = content;
+                    $("#pluginList").show(1500);
                 },() => {
                     $("#mainView").hide(0);
                     $("#errorView").show(0);
