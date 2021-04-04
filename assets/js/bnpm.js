@@ -150,6 +150,18 @@ function uploadAssets(dir,assetFiles,handler,failed){
     }
 }
 
+function getUserPlugins(handler,failed){
+    userplugin.where({
+        _openid: auth.currentUser.uid
+    }).get()
+    .then((res) => {
+        console.log(res.data);
+        handler(res.data);
+    },() => {
+        failed();
+    });
+}
+
 function isPluginNotExists(pluginName,yes,no){
     userplugin.where({
         name: pluginName
