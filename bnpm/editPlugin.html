@@ -54,6 +54,7 @@ layout: bnpm
                         $("#pluginDescriptionInput").val(data["description"]);
                         $("#pluginVersionInput").val(data["version"]);
                         $("#pluginInfoInput").val(data["info"]);
+                        document.getElementById("infoPreview").innerHTML = Mdjs.md2html(data["info"]);
                     }else{
                         $("#mainView").hide(0);
                         $("#noPermissionView").show(0);

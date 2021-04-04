@@ -95,7 +95,7 @@ function editPlugin(pluginName,pluginVersion,pluginDescription,pluginInfo,plugin
         $("#uploadError").show(0).text("找不到要修改的插件");
     },function(data){
         if(pluginAssets.length == 0){
-            data.update({
+            userplugin.doc(data["_id"]).update({
                 version: pluginVersion,
                 userNickName: auth.hasLoginState().user.nickName,
                 description: pluginDescription,
