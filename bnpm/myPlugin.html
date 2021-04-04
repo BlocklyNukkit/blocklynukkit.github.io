@@ -25,7 +25,7 @@ layout: bnpm
                         <p>版本 ${each["version"]} 最后修改时间 ${each["time"]+""}</p>`;
                     }
                     document.getElementById("pluginList").innerHTML = content;
-                    $("#pluginList").show(1500);
+                    $("#pluginList").show(500);
                 },() => {
                     $("#mainView").hide(0);
                     $("#errorView").show(0);
