@@ -18,7 +18,7 @@ layout: bnpm
         <!-- 由js生成内容 -->
     </div>
     <script>
-        var lastCheckTime = new Date().getTime();
+        var lastChecker = -1;
         function refreshList(){
             let cond = {};
             let timeCond = $("#timeSelect").val();
@@ -55,20 +55,21 @@ layout: bnpm
             }else{
                 refreshList();
                 $("#timeSelect").change(() => {
-                    console.log(new Date().getTime())
-                    console.log((new Date()).getTime())
-                    lastCheckTime = (new Date()).getTime();
+                    if(lastChecker != -1){
+                        window.clearTimeout(lastChecker);
+                    }
+                    lastChecker = window.setTimeout(()=>{
+                        refreshList();lastChecker = -1;
+                    },3000);
                 });
                 $("#searchInput").change(() => {
-                    lastCheckTime = (new Date()).getTime();
+                    if(lastChecker != -1){
+                        window.clearTimeout(lastChecker);
+                    }
+                    lastChecker = window.setTimeout(()=>{
+                        refreshList();lastChecker = -1;
+                    },3000);
                 });
-            }
-        },500);
-        window.setInterval(()=>{
-            if(isLogined()){
-                if((new Date()).getTime()-lastCheckTime > 3*1000){
-                    refreshList();
-                }
             }
         },500);
     </script>
