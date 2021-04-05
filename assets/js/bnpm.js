@@ -166,7 +166,7 @@ function getUserPlugins(handler,failed){
 function getAllPlugins(condition,handler,failed){
     if(condition == null || condition == undefined){
         condition = {
-            time: _.gte(new Date((new Date()).getTime()-7*24*60*60*1000));
+            time: _.gte(new Date((new Date()).getTime()-7*24*60*60*1000))
         }
     }
     userplugin.where({
