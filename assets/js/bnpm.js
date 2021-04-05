@@ -169,6 +169,7 @@ function getAllPlugins(condition,handler,failed){
             time: _.gte(new Date((new Date()).getTime()-7*24*60*60*1000))
         }
     }
+    console.log(condition);
     userplugin.where({
         _openid: auth.currentUser.uid
     }).get()

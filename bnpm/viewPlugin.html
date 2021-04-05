@@ -36,8 +36,7 @@ layout: bnpm
             }
             if(searchCond != ""){
                 cond["name"] = new db.RegExp({
-                    regexp: '.*'+searchCond+'.*',
-                    options: 'i'
+                    regexp: '.*'+searchCond+'.*'
                 })
             }
             console.log(cond);
