@@ -17,6 +17,7 @@ layout: bnpm
                     let content = "";
                     if(datas.length==0){
                         content = "<h3>您还没有上传过插件</h3>"
+                        return;
                     }
                     for(let i=0;i<datas.length;i++){
                         let each = datas[i];
