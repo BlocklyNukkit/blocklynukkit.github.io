@@ -55,10 +55,12 @@ layout: bnpm
             }else{
                 refreshList();
                 $("#timeSelect").change(() => {
-                    lastCheckTime = new Date().getTime();
+                    console.log(new Date().getTime())
+                    console.log((new Date()).getTime())
+                    lastCheckTime = (new Date()).getTime();
                 });
                 $("#searchInput").change(() => {
-                    lastCheckTime = new Date().getTime();
+                    lastCheckTime = (new Date()).getTime();
                 });
             }
         },500);
