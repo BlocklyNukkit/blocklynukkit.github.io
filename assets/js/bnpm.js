@@ -1,6 +1,6 @@
 const db = app.database();
 const userplugin = db.collection("userplugin");
-
+const _ = db.command;
 // {
 //     name: "插件名",
 //     version: "插件版本",
@@ -51,6 +51,7 @@ function addNewPlugin(pluginName,pluginVersion,pluginDescription,pluginInfo,plug
                 userNickName: auth.hasLoginState().user.nickName,
                 description: pluginDescription,
                 info: pluginInfo,
+                download: 0,
                 time: new Date(),
                 assets: assetsPaths
             })
@@ -151,6 +152,23 @@ function uploadAssets(dir,assetFiles,handler,failed){
 }
 
 function getUserPlugins(handler,failed){
+    userplugin.where({
+        _openid: auth.currentUser.uid
+    }).get()
+    .then((res) => {
+        console.log(res.data);
+        handler(res.data);
+    },() => {
+        failed();
+    });
+}
+
+function getAllPlugins(condition,handler,failed){
+    if(condition == null || condition == undefined){
+        condition = {
+            time: _.gte(new Date((new Date()).getTime()-7*24*60*60*1000));
+        }
+    }
     userplugin.where({
         _openid: auth.currentUser.uid
     }).get()

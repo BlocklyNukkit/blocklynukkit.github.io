@@ -1,0 +1,82 @@
+---
+layout: bnpm
+---
+<div id="mainView">
+    <h2>插件广场</h2>
+    <p></p><!-- 空行 -->
+    <span>时间</span>
+    <select class="colorfulSelect" id="timeSelect">
+        <option class="colorfunOption">一周内</option>
+        <option class="colorfunOption">一月内</option>
+        <option class="colorfunOption">三月内</option>
+        <option class="colorfunOption">半年内</option>
+        <option class="colorfunOption">一年内</option>
+    </select>
+    <input type="text" id="searchInput" class="loginInput" placeholder="搜索..." style="width: auto;">
+    <p></p><!-- 空行 -->
+    <div id="pluginList" style="display: none;">
+        <!-- 由js生成内容 -->
+    </div>
+    <script>
+        var lastCheckTime = new Date().getTime();
+        const _ = app.database().command;
+        function refreshList(){
+            let cond = {};
+            let timeCond = $("#timeSelect").val();
+            if(timeCond == "一周内"){
+                cond["time"] = _.gte(new Date((new Date()).getTime()-7*24*60*60*1000));
+            }else if(timeCond == "一月内"){
+                cond["time"] = _.gte(new Date((new Date()).getTime()-30*24*60*60*1000));
+            }else if(timeCond == "三月内"){
+                cond["time"] = _.gte(new Date((new Date()).getTime()-90*24*60*60*1000));
+            }else if(timeCond == "半年内"){
+                cond["time"] = _.gte(new Date((new Date()).getTime()-182*24*60*60*1000));
+            }else if(timeCond == "一年内"){
+                cond["time"] = _.gte(new Date((new Date()).getTime()-365*60*60*1000));
+            }
+            getAllPlugins(cond,(datas) => {
+                let content = "";
+                for(let i=0;i<datas.length;i++){
+                    let each = datas[i];
+                    content += `<hr><h3 style="display: contents;">${each["name"]}</h3>
+                    <span>${each["description"]} <a href="/bnpm/editPlugin?name=${each["name"]}">前往修改</a></span>
+                    <p>版本 ${each["version"]} 下载量 ${each["download"]} 最后修改时间 ${each["time"]+""}</p>`;
+                }
+                document.getElementById("pluginList").innerHTML = content;
+                $("#pluginList").hide(500).show(500);
+            },() => {
+                $("#mainView").hide(0);
+                $("#errorView").show(0);
+            });
+        }
+        window.setTimeout(()=>{
+            if(!isLogined()){
+                $("#mainView").hide(0);
+                $("#noLoginView").show(0);
+            }else{
+                refreshList();
+                $("#timeSelect").change(() => {
+                    lastCheckTime = new Date().getTime();
+                });
+                $("#searchInput").change(() => {
+                    lastCheckTime = new Date().getTime();
+                });
+            }
+        },500);
+        window.setInterval(()=>{
+            if(isLogined()){{
+                if((new Date()).getTime()-lastCheckTime > 3*1000){
+                    refreshList();
+                }
+            }
+        },500);
+    </script>
+</div>
+<div id="noLoginView" style="display: none;">
+    <h2>请先登录</h2>
+    <p>要向BNPM插件管理器管理并编辑插件，您需要先登录账号</p>
+</div>
+<div id="errorView" style="display: none;">
+    <h2>获取失败</h2>
+    <p>无法获取插件列表，请检测网络情况后重试</p>
+</div>

@@ -145,3 +145,18 @@
 .loginButton:hover:after {
 	height:110%;
 }
+.colorfulSelect {
+    border: none;
+    color: #E8E8E8;
+    border-bottom: solid 2px #FFCC00;
+    background-color: rgba(0,0,0,0);
+    font-size: 18px;
+    margin-right: 5px;
+    outline: none;
+}
+.colorfunOption{
+    background-color: #353535;
+    color: #E8E8E8;
+    font-size: 18px;
+    padding: 0 0 0 0
+}

@@ -22,7 +22,7 @@ layout: bnpm
                         let each = datas[i];
                         content += `<hr><h3 style="display: contents;">${each["name"]}</h3>
                         <span>${each["description"]} <a href="/bnpm/editPlugin?name=${each["name"]}">前往修改</a></span>
-                        <p>版本 ${each["version"]} 最后修改时间 ${each["time"]+""}</p>`;
+                        <p>版本 ${each["version"]} 下载量 ${each["download"]} 最后修改时间 ${each["time"]+""}</p>`;
                     }
                     document.getElementById("pluginList").innerHTML = content;
                     $("#pluginList").show(500);
