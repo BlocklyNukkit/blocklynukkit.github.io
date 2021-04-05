@@ -38,7 +38,7 @@ layout: bnpm
                 for(let i=0;i<datas.length;i++){
                     let each = datas[i];
                     content += `<hr><h3 style="display: contents;">${each["name"]}</h3>
-                    <span>${each["description"]} <div class="tooltip">安装到服务器<span class="tooltiptext">bnpm install ${each["name"]}</span></div></span>
+                    <span>${each["description"]} <div class="tooltip">安装到服务器<span class="tooltiptext">bnpm install &ensp;&ensp;${each["name"]}&ensp;&ensp;</span></div></span>
                     <p>版本 ${each["version"]} 下载量 ${each["download"]} 最后修改时间 ${each["time"]+""}</p>`;
                 }
                 document.getElementById("pluginList").innerHTML = content;
