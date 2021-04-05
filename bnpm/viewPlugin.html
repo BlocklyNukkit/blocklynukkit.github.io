@@ -64,7 +64,7 @@ layout: bnpm
             }
         },500);
         window.setInterval(()=>{
-            if(isLogined()){{
+            if(isLogined()){
                 if((new Date()).getTime()-lastCheckTime > 3*1000){
                     refreshList();
                 }
