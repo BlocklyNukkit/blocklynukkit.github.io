@@ -164,28 +164,19 @@
     position: relative;
     display: inline-block;
     border-bottom: 1px dotted black;
+    color: #FFCC00;
 }
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 120px;
     background-color: black;
-    color: #FFD460;
+    color: #E8E8E8;
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
     position: absolute;
     opacity: 0;
     transition: opacity 1s;
-}
-.tooltip .tooltiptext::after {
-    content: " ";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent black transparent;
 }
 .tooltip:hover .tooltiptext {
     visibility: visible;

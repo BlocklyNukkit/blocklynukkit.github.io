@@ -5,6 +5,7 @@ layout: default
 * [简介](index.md)  
 * [贡献者](其他_贡献者.md)  
 * **[bnpm插件管理器](bnpm/index.md)**  
+    * [插件广场](bnpm/viewPlugin.html)  
     * [上传新插件](bnpm/addPlugin.html)  
     * [我的插件](bnpm/myPlugin.html)  
 * [bn图形编辑器](bn图形编辑器/index.md)  
