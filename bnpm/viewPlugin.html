@@ -22,6 +22,7 @@ layout: bnpm
         function refreshList(){
             let cond = {};
             let timeCond = $("#timeSelect").val();
+            let searchCond = $("#searchInput").val();
             if(timeCond == "一周内"){
                 cond["time"] = _.gte(new Date((new Date()).getTime()-7*24*60*60*1000));
             }else if(timeCond == "一月内"){
@@ -33,12 +34,18 @@ layout: bnpm
             }else if(timeCond == "一年内"){
                 cond["time"] = _.gte(new Date((new Date()).getTime()-365*60*60*1000));
             }
+            if(searchCond != ""){
+                cond["name"] = new db.RegExp({
+                    regexp: '.*'+searchCond+'.*'
+                    options: 'i'
+                })
+            }
             getAllPlugins(cond,(datas) => {
                 let content = "";
                 for(let i=0;i<datas.length;i++){
                     let each = datas[i];
                     content += `<hr><h3 style="display: contents;">${each["name"]}</h3>
-                    <span>${each["description"]} <div class="tooltip">安装到服务器<span class="tooltiptext">bnpm install &ensp;&ensp;${each["name"]}&ensp;&ensp;</span></div></span>
+                    <span>${each["description"]} <div class="tooltip">安装到服务器<span class="tooltiptext">&ensp;&ensp;bnpm install ${each["name"]}&ensp;&ensp;</span></div></span>
                     <p>版本 ${each["version"]} 下载量 ${each["download"]} 最后修改时间 ${each["time"]+""}</p>`;
                 }
                 document.getElementById("pluginList").innerHTML = content;
