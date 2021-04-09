@@ -1,0 +1,22 @@
+name: CDN Deployment
+
+on: page_build
+
+jobs:
+  deploy:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout bnwiki contents
+        uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Deploy to tencent CDN
+        uses: BlocklyNukkit/cdn-deploy@master
+        env:
+          SECRET_ID: ${{ secrets.SECRET_ID}}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          PATHS: "https://wiki.blocklynukkit.com/"
