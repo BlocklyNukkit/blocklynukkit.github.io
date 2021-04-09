@@ -40,10 +40,12 @@ BlocklyNukkit在最新版本中提供了使用C/C++开发的能力，C/C++代码
 2. 帮助blocklynukkit.info网站的教程编写  
 3. 贡献项目代码  
 多语言翻译与帮助教程编写详见http://www.blocklynukkit.info的开发wiki章节的参与贡献教程，贡献项目代码请联系开发组或超神的冰凉。  
+
 *****  
+
 **教程补充来源(部分)**  
 以下链接不分先后  
-- [NukkitX Javadoc](https://ci.nukkitx.com/job/NukkitX/job/Nukkit/job/master/javadoc/index.html?overview-summary.html)  
+- [NukkitX Javadoc](/javadocSummary)  
 - [Java 8 API docs](https://docs.oracle.com/javase/8/docs/api/index.html)  
 - [Python Documentation](https://docs.python.org/zh-cn/)  
 - [w3school 在线教程](https://www.w3school.com.cn/index.html)  
