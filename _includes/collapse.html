@@ -4,44 +4,46 @@
 			var childs = parent.children;
 			if(parent.tagName=="LI" || parent.tagName=="li"){
 				if(childs.length >= 2 && (childs[1].tagName=="UL" || childs[1].tagName=="ul")){
-					parent.id = getDom(childs,"a").getAttribute("href");
-					var open = isOpen(parent.id);
-					if(open){
-						let span = document.createElement("span");
-						span.innerText = "➖";
-						span.style.cursor = "s-resize";
-						parent.insertBefore(span,getDom(childs,"a"));
-						span.addEventListener("click",function(event){
-							var open = isOpen(event.target.parentElement.id);
-							var childs = event.target.parentElement.children;
-							window.localStorage.setItem(getDom(childs,"a").getAttribute("href"),(!open)+"");
-							if(open){
-								getDom(childs,"span").innerText = "➕";
-								$(getDom(childs,"ul")).hide(500);
-							}else{
-								getDom(childs,"span").innerText = "➖";
-								$(getDom(childs,"ul")).show(500);
-							}
-						})
-					}else{
-						let span = document.createElement("span");
-						span.innerText = "➕";
-						span.style.cursor = "s-resize";
-						parent.insertBefore(span,getDom(childs,"a"));
-						$(getDom(childs,"ul")).hide(0);
-						span.addEventListener("click",function(event){
-							var open = isOpen(event.target.parentElement.id);
-							var childs = event.target.parentElement.children;
-							window.localStorage.setItem(getDom(childs,"a").getAttribute("href"),(!open)+"");
-							if(open){
-								getDom(childs,"span").innerText = "➕";
-								$(getDom(childs,"ul")).hide(500);
-							}else{
-								getDom(childs,"span").innerText = "➖";
-								$(getDom(childs,"ul")).show(500);
-							}
-						});
-					}
+                    if(getDom(childs,"a") != null){
+                       parent.id = getDom(childs,"a").getAttribute("href");
+                        var open = isOpen(parent.id);
+                        if(open){
+                            let span = document.createElement("span");
+                            span.innerText = "➖";
+                            span.style.cursor = "s-resize";
+                            parent.insertBefore(span,getDom(childs,"a"));
+                            span.addEventListener("click",function(event){
+                                var open = isOpen(event.target.parentElement.id);
+                                var childs = event.target.parentElement.children;
+                                window.localStorage.setItem(getDom(childs,"a").getAttribute("href"),(!open)+"");
+                                if(open){
+                                    getDom(childs,"span").innerText = "➕";
+                                    $(getDom(childs,"ul")).hide(500);
+                                }else{
+                                    getDom(childs,"span").innerText = "➖";
+                                    $(getDom(childs,"ul")).show(500);
+                                }
+                            })
+                        }else{
+                            let span = document.createElement("span");
+                            span.innerText = "➕";
+                            span.style.cursor = "s-resize";
+                            parent.insertBefore(span,getDom(childs,"a"));
+                            $(getDom(childs,"ul")).hide(0);
+                            span.addEventListener("click",function(event){
+                                var open = isOpen(event.target.parentElement.id);
+                                var childs = event.target.parentElement.children;
+                                window.localStorage.setItem(getDom(childs,"a").getAttribute("href"),(!open)+"");
+                                if(open){
+                                    getDom(childs,"span").innerText = "➕";
+                                    $(getDom(childs,"ul")).hide(500);
+                                }else{
+                                    getDom(childs,"span").innerText = "➖";
+                                    $(getDom(childs,"ul")).show(500);
+                                }
+                            });
+                        } 
+                    }
 				}
 			}
 			if(childs.length!=0){
