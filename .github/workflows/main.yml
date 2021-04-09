@@ -16,4 +16,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Deploy to tencent CDN
         uses: BlocklyNukkit/cdn-deploy@master
-
+        env:
+          SECRET_ID: ${{ secrets.SECRET_ID}}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          PATHS: "https://wiki.blocklynukkit.com/"
