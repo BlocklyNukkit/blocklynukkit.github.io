@@ -19,4 +19,4 @@ plugins:
   - jekyll-feed
   - kramdown
   - kramdown-parser-gfm
-exclude: [vendor]
+exclude: [vendor,.well-known,.github]
