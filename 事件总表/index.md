@@ -34,6 +34,21 @@ def PlayerChatEvent(event):
 
 
 ## bn事件所有事件总表  
+### BNInitializedEvent——BN模块加载完成事件  
+*所有bn模块加载都加载完成事件*  
+- String getEventName()  
+
+### BNClosedEvent——BN准备关闭事件  
+*NK要求bn进行关闭操作事件*  
+- String getEventName()  
+
+### StartFishingEvent——玩家开始钓鱼事件  
+*玩家开始钓鱼事件*  
+- Player getPlayer()  
+- EntityFishingHook getFishingHook()  
+- void setCancelled(boolean)  
+- boolean isCancelled()  
+
 ### PlayerToggleFlightEvent——玩家开始飞行事件  
 *玩家开始飞行事件*  
 - Player getPlayer()  
@@ -41,6 +56,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - boolean isFlying()  
+
 ### EntityExplodeEvent——实体爆炸事件  
 *实体爆炸事件*  
 - boolean isCancelled()  
@@ -52,6 +68,7 @@ def PlayerChatEvent(event):
 - void setYield(double)  
 - List getBlockList()  
 - double getYield()  
+
 ### EntityDamageByBlockEvent——实体被方块伤害事件  
 *实体被方块伤害事件*  
 - float getDamage(DamageModifier)  
@@ -67,6 +84,7 @@ def PlayerChatEvent(event):
 - Block getDamager()  
 - void setAttackCooldown(int)  
 - float getOriginalDamage(DamageModifier)  
+
 ### PlayerInteractEvent——玩家交互(右键、点地、物理触碰、左键)  
 *玩家交互(右键、点地、物理触碰、左键)*  
 - Block getBlock()  
@@ -78,6 +96,7 @@ def PlayerChatEvent(event):
 - Action getAction()  
 - BlockFace getFace()  
 - Vector3 getTouchVector()  
+
 ### RightClickBlockEvent——玩家右键点击方块事件  
 *玩家右键点击方块事件*  
 - Block getBlock()  
@@ -88,6 +107,7 @@ def PlayerChatEvent(event):
 - Item getItem()  
 - BlockFace getFace()  
 - Vector3 getTouchVector()  
+
 ### LeftClickBlockEvent——玩家左键点击方块事件  
 *玩家左键点击方块事件*  
 - Block getBlock()  
@@ -98,6 +118,7 @@ def PlayerChatEvent(event):
 - Item getItem()  
 - BlockFace getFace()  
 - Vector3 getTouchVector()  
+
 ### ClickOnAirEvent——玩家右键点击空气长按空气事件  
 *玩家右键点击空气长按空气事件*  
 - Block getBlock()  
@@ -108,6 +129,7 @@ def PlayerChatEvent(event):
 - Item getItem()  
 - BlockFace getFace()  
 - Vector3 getTouchVector()  
+
 ### PhysicalTouchEvent——玩家物理触碰事件(如踩压力板、踩坏耕地)  
 *玩家物理触碰事件，比如踩压力板和踩坏耕地*  
 - Block getBlock()  
@@ -118,6 +140,7 @@ def PlayerChatEvent(event):
 - Item getItem()  
 - BlockFace getFace()  
 - Vector3 getTouchVector()  
+
 ### PlayerAnimationEvent——玩家动画事件  
 *玩家动画事件*  
 - Player getPlayer()  
@@ -125,6 +148,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Action getAnimationType()  
+
 ### PlayerBlockPickEvent——玩家捡起方块事件  
 *玩家捡起方块事件*  
 - Player getPlayer()  
@@ -134,6 +158,7 @@ def PlayerChatEvent(event):
 - Item getItem()  
 - void setItem(Item)  
 - Block getBlockClicked()  
+
 ### FurnaceSmeltEvent——熔炉烧炼完成事件  
 *熔炉烧炼完成事件*  
 - Block getBlock()  
@@ -144,6 +169,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - Item getResult()  
 - BlockEntityFurnace getFurnace()  
+
 ### PlayerToggleSwimEvent——玩家开始游泳事件  
 *玩家开始游泳事件*  
 - Player getPlayer()  
@@ -151,6 +177,7 @@ def PlayerChatEvent(event):
 - boolean isSwimming()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### ExplosionPrimeEvent——实体开始爆炸倒计时事件  
 *实体开始爆炸倒计时事件*  
 - boolean isCancelled()  
@@ -161,6 +188,7 @@ def PlayerChatEvent(event):
 - boolean isBlockBreaking()  
 - Entity getEntity()  
 - void setBlockBreaking(boolean)  
+
 ### ItemFrameDropItemEvent——篝火抛出物品  
 *篝火抛出物品*  
 - Player getPlayer()  
@@ -170,6 +198,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - BlockEntityItemFrame getItemFrame()  
 - Item getItem()  
+
 ### PlayerToggleSneakEvent——玩家开始潜行事件  
 *玩家开始潜行事件*  
 - Player getPlayer()  
@@ -177,6 +206,7 @@ def PlayerChatEvent(event):
 - boolean isSneaking()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### DoorToggleEvent——开关门事件  
 *开关门事件*  
 - Player getPlayer()  
@@ -185,6 +215,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - void setPlayer(Player)  
+
 ### StartBrewEvent——开始酿造事件  
 *开始酿造事件*  
 - Item getPotion(int)  
@@ -196,6 +227,7 @@ def PlayerChatEvent(event):
 - Inventory getInventory()  
 - Player[] getViewers()  
 - Item[] getPotions()  
+
 ### EntityBlockChangeEvent——实体改变方块事件  
 *实体改变方块事件*  
 - boolean isCancelled()  
@@ -204,6 +236,7 @@ def PlayerChatEvent(event):
 - Block getTo()  
 - Entity getEntity()  
 - Block getFrom()  
+
 ### PlayerItemConsumeEvent——玩家使用了一个一次性消耗品事件  
 *玩家使用了一个一次性消耗品事件*  
 - Player getPlayer()  
@@ -211,6 +244,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Item getItem()  
+
 ### DataPacketReceiveEvent——服务器收到数据包事件  
 *服务器收到数据包事件*  
 - Player getPlayer()  
@@ -218,11 +252,13 @@ def PlayerChatEvent(event):
 - DataPacket getPacket()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### PlayerLocallyInitializedEvent——玩家客户端登录本地初始化完成事件  
 *玩家客户端登录本地初始化完成事件*  
 - Player getPlayer()  
 - boolean isCancelled()  
 - String getEventName()  
+
 ### PotionApplyEvent——药水效果添加事件  
 *药水效果添加事件*  
 - Potion getPotion(int)  
@@ -233,6 +269,7 @@ def PlayerChatEvent(event):
 - void setPotion(Potion)  
 - Entity getEntity()  
 - void setApplyEffect(Effect)  
+
 ### EntityVehicleExitEvent——实体离开载具事件  
 *实体离开载具事件*  
 - boolean isCancelled()  
@@ -240,6 +277,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Entity getEntity()  
+
 ### PlayerQuitEvent——玩家退出事件  
 *玩家退出事件*  
 - Player getPlayer()  
@@ -251,6 +289,7 @@ def PlayerChatEvent(event):
 - boolean getAutoSave()  
 - void setQuitMessage(TextContainer)  
 - void setAutoSave(boolean)  
+
 ### PlayerMoveEvent——玩家移动  
 *玩家移动*  
 - Player getPlayer()  
@@ -263,12 +302,14 @@ def PlayerChatEvent(event):
 - Location getTo()  
 - Location getFrom()  
 - boolean isResetBlocksAround()  
+
 ### LevelLoadEvent——世界加载事件  
 *世界加载事件*  
 - Level getLevel()  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### PlayerEditBookEvent——玩家编辑书本事件  
 *玩家编辑书本事件*  
 - Player getPlayer()  
@@ -279,6 +320,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - Item getOldBook()  
 - Action getAction()  
+
 ### ServerCommandEvent——服务器执行后台命令事件  
 *服务器执行后台命令事件*  
 - boolean isCancelled()  
@@ -287,6 +329,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - CommandSender getSender()  
 - void setCommand(String)  
+
 ### SignChangeEvent——告示牌文字更改  
 *告示牌文字更改*  
 - Player getPlayer()  
@@ -297,6 +340,7 @@ def PlayerChatEvent(event):
 - String getLine(int)  
 - String[] getLines()  
 - void setLine(int,String)  
+
 ### LiquidFlowEvent——液体流动  
 *液体流动*  
 - Block getBlock()  
@@ -306,6 +350,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - Block getTo()  
 - int getNewFlowDecay()  
+
 ### BlockFromToEvent——液体流动/龙蛋自己传送的事件  
 *液体流动/龙蛋自己传送的事件*  
 - Block getBlock()  
@@ -315,12 +360,14 @@ def PlayerChatEvent(event):
 - void setTo(Block)  
 - Block getTo()  
 - Block getFrom()  
+
 ### LevelInitEvent——世界初始化事件  
 *世界初始化事件*  
 - Level getLevel()  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### BlockPistonChangeEvent——活塞臂状态变化事件  
 *活塞臂状态变化事件*  
 - Block getBlock()  
@@ -329,12 +376,14 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - int getOldPower()  
+
 ### VehicleDestroyEvent——载具破坏事件  
 *载具破坏事件*  
 - boolean isCancelled()  
 - Entity getVehicle()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### EntityMotionEvent——实体运动事件  
 *实体运动事件*  
 - boolean isCancelled()  
@@ -343,6 +392,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - Vector3 getVector()  
 - Entity getEntity()  
+
 ### PlayerBucketEmptyEvent——玩家空桶事件  
 *玩家空桶事件*  
 - Item getBucket()  
@@ -354,6 +404,7 @@ def PlayerChatEvent(event):
 - Item getItem()  
 - void setItem(Item)  
 - Block getBlockClicked()  
+
 ### PlayerBedLeaveEvent——玩家下床  
 *玩家下床*  
 - Player getPlayer()  
@@ -361,6 +412,7 @@ def PlayerChatEvent(event):
 - Block getBed()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### InventoryOpenEvent——物品栏打开  
 *物品栏打开*  
 - Player getPlayer()  
@@ -369,6 +421,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - Inventory getInventory()  
 - Player[] getViewers()  
+
 ### EntityCombustByBlockEvent——实体因方块而燃烧事件  
 *实体因方块而燃烧事件*  
 - void setDuration(int)  
@@ -378,12 +431,14 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Entity getEntity()  
+
 ### ItemDespawnEvent——掉落物消失  
 *掉落物消失*  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
 - EntityItem getEntity()  
+
 ### EntityRegainHealthEvent——实体回血事件  
 *实体回血事件*  
 - boolean isCancelled()  
@@ -393,12 +448,14 @@ def PlayerChatEvent(event):
 - void setAmount(float)  
 - Entity getEntity()  
 - float getAmount()  
+
 ### ProjectileLaunchEvent——投掷物发出  
 *投掷物发出*  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
 - EntityProjectile getEntity()  
+
 ### DataPacketSendEvent——服务器发送数据包事件  
 *服务器发送数据包事件*  
 - Player getPlayer()  
@@ -406,6 +463,7 @@ def PlayerChatEvent(event):
 - DataPacket getPacket()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### PlayerGameModeChangeEvent——玩家游戏模式改变事件  
 *玩家游戏模式改变事件*  
 - Player getPlayer()  
@@ -415,6 +473,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - AdventureSettings getNewAdventureSettings()  
 - int getNewGamemode()  
+
 ### PlayerKickEvent——玩家被踢出服务器事件  
 *玩家被踢出服务器事件*  
 - Player getPlayer()  
@@ -425,6 +484,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - Reason getReasonEnum()  
 - void setQuitMessage(TextContainer)  
+
 ### BrewEvent——酿造完成事件  
 *酿造完成事件*  
 - Item getPotion(int)  
@@ -437,6 +497,7 @@ def PlayerChatEvent(event):
 - Inventory getInventory()  
 - Player[] getViewers()  
 - Item[] getPotions()  
+
 ### ChunkUnloadEvent——区块卸载事件  
 *区块卸载事件*  
 - Level getLevel()  
@@ -444,12 +505,14 @@ def PlayerChatEvent(event):
 - FullChunk getChunk()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### InventoryTransactionEvent——物品转移(漏斗)  
 *物品转移(漏斗)*  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
 - InventoryTransaction getTransaction()  
+
 ### CraftItemEvent——物品合成事件  
 *物品合成事件*  
 - Player getPlayer()  
@@ -459,6 +522,7 @@ def PlayerChatEvent(event):
 - Recipe getRecipe()  
 - Item[] getInput()  
 - CraftingTransaction getTransaction()  
+
 ### PlayerMouseOverEntityEvent——玩家鼠标在指向实体事件  
 *玩家鼠标在指向实体事件*  
 - Player getPlayer()  
@@ -466,6 +530,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Entity getEntity()  
+
 ### EntityDamageEvent——生物受到伤害  
 *生物受到伤害*  
 - float getDamage(DamageModifier)  
@@ -480,6 +545,7 @@ def PlayerChatEvent(event):
 - DamageCause getCause()  
 - void setAttackCooldown(int)  
 - float getOriginalDamage(DamageModifier)  
+
 ### PlayerChatEvent——玩家聊天  
 *玩家聊天*  
 - Player getPlayer()  
@@ -493,6 +559,7 @@ def PlayerChatEvent(event):
 - void setMessage(String)  
 - Set getRecipients()  
 - void setRecipients(Set)  
+
 ### BlockFadeEvent——方块因自然原因消失或衰落事件  
 *方块因自然原因消失或衰落事件*  
 - Block getBlock()  
@@ -500,6 +567,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Block getNewState()  
+
 ### LightningStrikeEvent——打雷事件  
 *打雷事件*  
 - Level getLevel()  
@@ -507,6 +575,7 @@ def PlayerChatEvent(event):
 - EntityLightningStrike getLightning()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### PlayerSettingsRespondedEvent——玩家设置服务器设置事件  
 *玩家设置服务器设置事件*  
 - int getFormID()  
@@ -516,6 +585,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - FormResponse getResponse()  
 - String getEventName()  
+
 ### EntityExitVehicleEvent——实体离开载具事件  
 *实体离开载具事件*  
 - boolean isPlayer()  
@@ -524,6 +594,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Entity getEntity()  
+
 ### FurnaceBurnEvent——熔炉燃烧  
 *熔炉燃烧*  
 - Block getBlock()  
@@ -536,6 +607,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - BlockEntityFurnace getFurnace()  
 - boolean isBurning()  
+
 ### ProjectileHitEvent——投掷物击中  
 *投掷物击中*  
 - MovingObjectPosition getMovingObjectPosition()  
@@ -544,18 +616,21 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - void setMovingObjectPosition(MovingObjectPosition)  
 - Entity getEntity()  
+
 ### BlockBurnEvent——方块起火  
 *方块起火*  
 - Block getBlock()  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### LevelUnloadEvent——世界卸载事件  
 *世界卸载事件*  
 - Level getLevel()  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### EntityCombustEvent——实体燃烧事件  
 *实体燃烧事件*  
 - void setDuration(int)  
@@ -564,6 +639,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Entity getEntity()  
+
 ### BlockBreakEvent——方块破坏  
 *方块破坏*  
 - void setDrops(Item[])  
@@ -580,6 +656,7 @@ def PlayerChatEvent(event):
 - int getDropExp()  
 - boolean isFastBreak()  
 - Item[] getDrops()  
+
 ### BlockRedstoneEvent——方块接受到的红石信号变化事件  
 *方块接受到的红石信号变化事件*  
 - Block getBlock()  
@@ -588,6 +665,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - int getOldPower()  
+
 ### FakeSlotChangeEvent——虚拟物品栏操作事件  
 *虚拟物品栏操作事件*  
 - boolean isCancelled()  
@@ -595,6 +673,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - SlotChangeAction getAction()  
 - FakeInventory getInventory()  
+
 ### EntitySpawnEvent——生物生成  
 *生物生成*  
 - boolean isCreature()  
@@ -608,6 +687,7 @@ def PlayerChatEvent(event):
 - boolean isHuman()  
 - boolean isProjectile()  
 - Entity getEntity()  
+
 ### SpawnChangeEvent——世界重生点更改事件  
 *世界重生点更改事件*  
 - Level getLevel()  
@@ -615,6 +695,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Position getPreviousSpawn()  
+
 ### QueryRegenerateEvent——服务器生成远程查询信息事件  
 *服务器生成远程查询信息事件*  
 - String getWorld()  
@@ -639,12 +720,14 @@ def PlayerChatEvent(event):
 - Player[] getPlayerList()  
 - void setWorld(String)  
 - byte[] getLongQuery(byte[])  
+
 ### PluginEnableEvent——插件被启用事件  
 *插件被启用事件*  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
 - Plugin getPlugin()  
+
 ### BlockSpreadEvent——方块蔓延事件  
 *方块蔓延事件*  
 - Block getBlock()  
@@ -653,6 +736,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Block getNewState()  
+
 ### PlayerAsyncPreLoginEvent——玩家尝试登录服务器事件  
 *玩家尝试登录服务器事件*  
 - Player getPlayer()  
@@ -668,6 +752,7 @@ def PlayerChatEvent(event):
 - String getAddress()  
 - LoginResult getLoginResult()  
 - List getScheduledActions()  
+
 ### PlayerChangeSkinEvent——玩家切换皮肤事件  
 *玩家切换皮肤事件*  
 - Player getPlayer()  
@@ -675,6 +760,7 @@ def PlayerChatEvent(event):
 - Skin getSkin()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### PlayerDropItemEvent——玩家丢物品事件  
 *玩家丢物品事件*  
 - Player getPlayer()  
@@ -682,12 +768,14 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Item getItem()  
+
 ### VehicleUpdateEvent——载具更新事件  
 *载具更新事件*  
 - boolean isCancelled()  
 - Entity getVehicle()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### CreatureSpawnEvent——使用生成蛋事件  
 *使用生成蛋事件*  
 - boolean isCancelled()  
@@ -697,18 +785,21 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - int getEntityNetworkId()  
+
 ### PluginDisableEvent——插件被关闭事件  
 *插件被关闭事件*  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
 - Plugin getPlugin()  
+
 ### ItemSpawnEvent——掉落物生成  
 *掉落物生成*  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
 - EntityItem getEntity()  
+
 ### InventoryPickupItemEvent——捡起物品  
 *捡起物品*  
 - boolean isCancelled()  
@@ -717,6 +808,7 @@ def PlayerChatEvent(event):
 - EntityItem getItem()  
 - Inventory getInventory()  
 - Player[] getViewers()  
+
 ### PlayerFormRespondedEvent——玩家FormUI操作  
 *玩家FormUI操作*  
 - int getFormID()  
@@ -726,6 +818,7 @@ def PlayerChatEvent(event):
 - FormResponse getResponse()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### BlockGrowEvent——方块生长事件  
 *方块生长事件*  
 - Block getBlock()  
@@ -733,6 +826,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Block getNewState()  
+
 ### PlayerInteractEntityEvent——玩家与实体交互事件  
 *玩家与实体交互事件*  
 - Player getPlayer()  
@@ -742,6 +836,7 @@ def PlayerChatEvent(event):
 - Item getItem()  
 - Entity getEntity()  
 - Vector3 getClickedPos()  
+
 ### PlayerBucketFillEvent——玩家填桶事件  
 *玩家填桶事件*  
 - Item getBucket()  
@@ -753,6 +848,7 @@ def PlayerChatEvent(event):
 - Item getItem()  
 - void setItem(Item)  
 - Block getBlockClicked()  
+
 ### EntityShootBowEvent——实体射箭事件  
 *实体射箭事件*  
 - void setProjectile(Entity)  
@@ -764,6 +860,7 @@ def PlayerChatEvent(event):
 - EntityProjectile getProjectile()  
 - EntityLiving getEntity()  
 - Item getBow()  
+
 ### EntityInventoryChangeEvent——生物更改物品栏  
 *生物更改物品栏*  
 - int getSlot()  
@@ -774,6 +871,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - Item getNewItem()  
 - Entity getEntity()  
+
 ### PlayerTeleportEvent——玩家进行传送  
 *玩家进行传送*  
 - Player getPlayer()  
@@ -783,18 +881,21 @@ def PlayerChatEvent(event):
 - Location getTo()  
 - TeleportCause getCause()  
 - Location getFrom()  
+
 ### VehicleCreateEvent——载具创建事件  
 *载具创建事件*  
 - boolean isCancelled()  
 - Entity getVehicle()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### LeavesDecayEvent——树叶自然消失  
 *树叶自然消失*  
 - Block getBlock()  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### EntityTeleportEvent——生物瞬移  
 *生物瞬移*  
 - boolean isCancelled()  
@@ -805,6 +906,7 @@ def PlayerChatEvent(event):
 - Location getTo()  
 - Entity getEntity()  
 - Location getFrom()  
+
 ### PlayerJoinEvent——玩家进入  
 *玩家进入*  
 - TextContainer getJoinMessage()  
@@ -813,6 +915,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - void setJoinMessage(TextContainer)  
+
 ### InventoryClickEvent——物品栏点击事件  
 *物品栏点击事件*  
 - int getSlot()  
@@ -824,6 +927,7 @@ def PlayerChatEvent(event):
 - Item getSourceItem()  
 - Inventory getInventory()  
 - Player[] getViewers()  
+
 ### InventoryCloseEvent——玩家关闭物品栏界面事件  
 *玩家关闭物品栏界面事件*  
 - Player getPlayer()  
@@ -832,6 +936,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - Inventory getInventory()  
 - Player[] getViewers()  
+
 ### EntityDamageByEntityEvent——实体被实体攻击事件  
 *实体被实体攻击事件*  
 - float getDamage(DamageModifier)  
@@ -849,12 +954,14 @@ def PlayerChatEvent(event):
 - Entity getDamager()  
 - void setAttackCooldown(int)  
 - float getOriginalDamage(DamageModifier)  
+
 ### BlockUpdateEvent——方块更新事件  
 *方块更新事件*  
 - Block getBlock()  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### EntityLevelChangeEvent——生物切换世界  
 *生物切换世界*  
 - Level getTarget()  
@@ -863,6 +970,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Entity getEntity()  
+
 ### PlayerCreationEvent——玩家创建事件  
 *玩家创建事件*  
 - SourceInterface getInterface()  
@@ -877,6 +985,7 @@ def PlayerChatEvent(event):
 - Class getBaseClass()  
 - void setBaseClass(Class)  
 - Class getPlayerClass()  
+
 ### PlayerItemHeldEvent——玩家手持物品切换事件  
 *玩家手持物品切换事件*  
 - int getSlot()  
@@ -886,12 +995,14 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - int getInventorySlot()  
 - Item getItem()  
+
 ### LevelSaveEvent——世界保存事件  
 *世界保存事件*  
 - Level getLevel()  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### PotionCollideEvent——药水效果冲突事件  
 *药水效果冲突事件*  
 - Potion getPotion(int)  
@@ -900,12 +1011,14 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - void setPotion(Potion)  
 - EntityPotion getThrownPotion()  
+
 ### SongDestroyingEvent——红石音乐电台被摧毁  
 *红石音乐电台被摧毁*  
 - boolean isCancelled()  
 - void setCancelled(boolean)  
 - String getEventName()  
 - SongPlayer getSongPlayer()  
+
 ### PlayerBedEnterEvent——玩家上床  
 *玩家上床*  
 - Player getPlayer()  
@@ -913,6 +1026,7 @@ def PlayerChatEvent(event):
 - Block getBed()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### PlayerEatFoodEvent——玩家吃东西事件  
 *玩家吃东西事件*  
 - Player getPlayer()  
@@ -921,6 +1035,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - void setFood(Food)  
 - Food getFood()  
+
 ### EntityExplosionPrimeEvent——实体爆炸  
 *实体爆炸*  
 - boolean isCancelled()  
@@ -931,6 +1046,7 @@ def PlayerChatEvent(event):
 - boolean isBlockBreaking()  
 - Entity getEntity()  
 - void setBlockBreaking(boolean)  
+
 ### ChunkLoadEvent——区块加载事件  
 *区块加载事件*  
 - Level getLevel()  
@@ -939,6 +1055,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - boolean isNewChunk()  
+
 ### PlayerToggleSprintEvent——玩家开始疾跑事件  
 *玩家开始疾跑事件*  
 - Player getPlayer()  
@@ -946,6 +1063,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - boolean isSprinting()  
+
 ### PlayerRespawnEvent——玩家重生事件  
 *玩家重生事件*  
 - Position getRespawnPosition()  
@@ -955,12 +1073,14 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - void setRespawnPosition(Position)  
 - boolean isFirstSpawn()  
+
 ### ThunderChangeEvent——雷暴天气更改事件  
 *雷暴天气更改事件*  
 - Level getLevel()  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### BlockFormEvent——方块自然生成(下雪等)  
 *方块自然生成(下雪等)*  
 - Block getBlock()  
@@ -968,6 +1088,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Block getNewState()  
+
 ### PlayerMapInfoRequestEvent——玩家请求地图数据事件  
 *玩家请求地图数据事件*  
 - Player getPlayer()  
@@ -975,6 +1096,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Item getMap()  
+
 ### EntityEnterVehicleEvent——实体进入载具事件  
 *实体进入载具事件*  
 - boolean isPlayer()  
@@ -983,6 +1105,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Entity getEntity()  
+
 ### PlayerDeathEvent——玩家死亡  
 *玩家死亡*  
 - void setDrops(Item[])  
@@ -999,6 +1122,7 @@ def PlayerChatEvent(event):
 - void setDeathMessage(String)  
 - boolean getKeepExperience()  
 - void setKeepExperience(boolean)  
+
 ### InventoryMoveItemEvent——非玩家触发格子物品传输事件  
 *非玩家触发格子物品传输事件*  
 - boolean isCancelled()  
@@ -1011,6 +1135,7 @@ def PlayerChatEvent(event):
 - Inventory getInventory()  
 - Player[] getViewers()  
 - void setItem(Item)  
+
 ### PlayerFoodLevelChangeEvent——玩家饥饿值改变事件  
 *玩家饥饿值改变事件*  
 - Player getPlayer()  
@@ -1021,6 +1146,7 @@ def PlayerChatEvent(event):
 - void setFoodLevel(int)  
 - int getFoodLevel()  
 - float getFoodSaturationLevel()  
+
 ### EntityCombustByEntityEvent——实体因其他实体而燃烧事件  
 *实体因其他实体而燃烧事件*  
 - void setDuration(int)  
@@ -1030,6 +1156,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Entity getEntity()  
+
 ### ChunkPopulateEvent——新区块生成事件  
 *新区块生成事件*  
 - Level getLevel()  
@@ -1037,6 +1164,7 @@ def PlayerChatEvent(event):
 - FullChunk getChunk()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### VehicleDamageEvent——载具受伤事件  
 *载具受伤事件*  
 - double getDamage(DamageModifier)  
@@ -1045,6 +1173,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - void setDamage(double)  
+
 ### PlayerServerSettingsRequestEvent——玩家请求服务器设置事件  
 *玩家请求服务器设置事件*  
 - void setSettings(Map)  
@@ -1053,6 +1182,7 @@ def PlayerChatEvent(event):
 - Map getSettings()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### EnchantItemEvent——给物品附魔事件  
 *给物品附魔事件*  
 - boolean isCancelled()  
@@ -1068,18 +1198,21 @@ def PlayerChatEvent(event):
 - void setXpCost(int)  
 - Inventory getInventory()  
 - int getXpCost()  
+
 ### SongStoppedEvent——红石音乐电台暂停  
 *红石音乐电台暂停*  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
 - SongPlayer getSongPlayer()  
+
 ### RedstoneUpdateEvent——红石更新  
 *红石更新*  
 - Block getBlock()  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### VehicleMoveEvent——载具移动事件  
 *载具移动事件*  
 - boolean isCancelled()  
@@ -1088,12 +1221,14 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - Location getTo()  
 - Location getFrom()  
+
 ### WeatherChangeEvent——天气更改事件  
 *天气更改事件*  
 - Level getLevel()  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### PlayerPreLoginEvent——玩家预登录事件  
 *玩家预登录事件*  
 - Player getPlayer()  
@@ -1102,6 +1237,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - String getKickMessage()  
+
 ### InventoryPickupArrowEvent——捡起箭  
 *捡起箭*  
 - boolean isCancelled()  
@@ -1110,6 +1246,7 @@ def PlayerChatEvent(event):
 - EntityArrow getArrow()  
 - Inventory getInventory()  
 - Player[] getViewers()  
+
 ### RemoteServerCommandEvent——远程rcon控制执行命令事件  
 *远程rcon控制执行命令事件*  
 - boolean isCancelled()  
@@ -1118,12 +1255,14 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - CommandSender getSender()  
 - void setCommand(String)  
+
 ### BlockFallEvent——方块因重力掉落事件  
 *方块因重力掉落事件*  
 - Block getBlock()  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### EntityDeathEvent——生物死亡(包括玩家)  
 *生物死亡(包括玩家)*  
 - void setDrops(Item[])  
@@ -1132,6 +1271,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - Item[] getDrops()  
 - Entity getEntity()  
+
 ### BlockPlaceEvent——方块放置  
 *方块放置*  
 - Player getPlayer()  
@@ -1142,6 +1282,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - Item getItem()  
 - Block getBlockReplace()  
+
 ### EntityDamageByChildEntityEvent——实体被幼年实体伤害事件  
 *实体被幼年实体伤害事件*  
 - float getDamage(DamageModifier)  
@@ -1160,6 +1301,7 @@ def PlayerChatEvent(event):
 - Entity getDamager()  
 - void setAttackCooldown(int)  
 - float getOriginalDamage(DamageModifier)  
+
 ### CreeperPowerEvent——苦力怕被雷劈中事件  
 *苦力怕被雷劈中事件*  
 - boolean isCancelled()  
@@ -1168,6 +1310,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - EntityCreeper getEntity()  
 - PowerCause getCause()  
+
 ### PlayerAchievementAwardedEvent——玩家达成成就事件  
 *玩家达成成就事件*  
 - Player getPlayer()  
@@ -1175,6 +1318,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - String getAchievement()  
+
 ### PlayerToggleGlideEvent——玩家开始滑翔(鞘翅)事件  
 *玩家开始滑翔(鞘翅)事件*  
 - Player getPlayer()  
@@ -1182,6 +1326,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - boolean isGliding()  
+
 ### PlayerCommandPreprocessEvent——玩家使用指令  
 *玩家使用指令*  
 - Player getPlayer()  
@@ -1191,6 +1336,7 @@ def PlayerChatEvent(event):
 - void setPlayer(Player)  
 - String getMessage()  
 - void setMessage(String)  
+
 ### EntityVehicleEnterEvent——实体坐上载具事件  
 *实体坐上载具事件*  
 - boolean isCancelled()  
@@ -1198,6 +1344,7 @@ def PlayerChatEvent(event):
 - String getEventName()  
 - void setCancelled(boolean)  
 - Entity getEntity()  
+
 ### EntityPortalEnterEvent——实体进入传送门事件  
 *实体进入传送门事件*  
 - boolean isCancelled()  
@@ -1205,12 +1352,14 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - PortalType getPortalType()  
 - Entity getEntity()  
+
 ### SongEndEvent——红石音乐电台歌曲播放结束  
 *红石音乐电台歌曲播放结束*  
 - boolean isCancelled()  
 - String getEventName()  
 - void setCancelled(boolean)  
 - SongPlayer getSongPlayer()  
+
 ### EntityArmorChangeEvent——实体护甲变化事件  
 *实体护甲变化事件*  
 - int getSlot()  
@@ -1221,6 +1370,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - Item getNewItem()  
 - Entity getEntity()  
+
 ### BlockIgniteEvent——方块点燃事件  
 *方块点燃事件*  
 - Block getBlock()  
@@ -1230,6 +1380,7 @@ def PlayerChatEvent(event):
 - void setCancelled(boolean)  
 - Entity getEntity()  
 - BlockIgniteCause getCause()  
+
 ### EntityDespawnEvent——生物被清除  
 *生物被清除*  
 - boolean isCreature()  
@@ -1243,6 +1394,7 @@ def PlayerChatEvent(event):
 - boolean isHuman()  
 - boolean isProjectile()  
 - Entity getEntity()  
+
 ### PlayerChunkRequestEvent——玩家请求区块事件  
 *玩家请求区块事件*  
 - Player getPlayer()  
@@ -1251,17 +1403,20 @@ def PlayerChatEvent(event):
 - int getChunkX()  
 - String getEventName()  
 - void setCancelled(boolean)  
+
 ### StoneSpawnEvent——岩浆遇到水生成石头（圆石、石头、黑曜石）事件  
 *岩浆遇到水生成石头（圆石、石头、黑曜石）事件*  
 - Position getPosition()  
 - Block getBlock()  
 - void setCancelled(boolean)  
+
 ### QQGroupMessageEvent——机器人收到qq群消息事件  
 *机器人收到qq群消息事件*  
 - String getSelfQQ() --获取收到消息的qq账号  
 - String getFromQQ() --获取发送消息的qq账号  
 - String getFromGroup() --获取消息事件的qq群号  
 - String getMessage() -获取消息  
+
 ### QQFriendMessageEvent——机器人收到qq好友消息事件  
 *机器人收到qq好友消息事件*  
 - String getEventId() --获取事件id  
@@ -1269,6 +1424,7 @@ def PlayerChatEvent(event):
 - String getFromQQ() --获取发送消息的qq  
 - String getSelfQQ() --获取接受到群消息的qq账号  
 - String getMessage() --获取事件的消息  
+
 ### QQOtherEvent——其他机器人收到的qq事件  
 *其他机器人收到的qq事件*  
 - String getFromGroup() --获取触发事件的qq群号  
@@ -1276,3 +1432,4 @@ def PlayerChatEvent(event):
 - String getSelfQQ() --获取收到事件的qq账号  
 - String getSeq() --获取收到事件的标识id  
 - int getType() --获取事件类型码  
+
