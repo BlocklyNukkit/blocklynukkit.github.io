@@ -1,12 +1,10 @@
 <!doctype html>
-<html lang="{{ site.lang | default: " en-US" }}">
-{%- include head.html -%}
+<html lang="{{ site.lang | default: "zh-CN" }}">
+{%- assign arr = page.url | split: "/" -%}
+{%- include head.html tit = arr.last -%}
 <body>
-
 {%- include header.html -%}
-
 {%- include collapse.html -%}
-
 <div class="wrapper" id="main">
     <section>
         <div id="title">
