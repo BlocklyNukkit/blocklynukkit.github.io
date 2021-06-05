@@ -29,7 +29,7 @@ jobs:
         run: touch .env
         
       - name: write API token
-        run: echo -e "APPLICATION_ID=LUV8A3UGI0\nAPI_KEY=fa2eb83393817b973d6abc676ca10c61" > .env
+        run: echo -e "APPLICATION_ID=LUV8A3UGI0\nAPI_KEY=a31a6124e305786adb75a69d112a9098" > .env
         
       - name: Create config file
         run: touch config.json
