@@ -35,7 +35,7 @@ jobs:
         run: touch config.json
         
       - name: write JSON
-        run: echo -e '{"index_name":"wiki","start_urls":["https://wiki.blocklynukkit.info"],"stop_urls":["https://wiki.blocklynukkit.com/javadocSummary"],"selectors":{"lvl0":"h1","lvl1":"h2","lvl2":"h3","lvl3":"h4","lvl4":"h5","lvl5":"h6","text":"p, li, td"}}' > config.json
+        run: echo -e '{"index_name":"wiki","start_urls":["https://wiki.blocklynukkit.info"],"stop_urls":["https://wiki.blocklynukkit.info/javadocSummary", "cn.nukkit"],"selectors":{"lvl0":"h1","lvl1":"h2","lvl2":"h3","lvl3":"h4","lvl4":"h5","lvl5":"h6","text":"p, li, td"}}' > config.json
       
       - name: Run DocSearch
         run: docker run -i --env-file=.env -e "CONFIG=$(cat config.json | jq -r tostring)" algolia/docsearch-scraper
