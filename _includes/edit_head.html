@@ -1,7 +1,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>{{ include.tit | url_decode | replace: ".html", "" | replace: ".md", "" }} - BlocklyNukkit Wiki</title>
+	<title>编辑内容 - BlocklyNukkit Wiki</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <script src="https://cdn.jsdelivr.net/gh/jquery/jquery/dist/jquery.min.js"></script>
 	<script src="{{ '/assets/js/idTabs.js' | relative_url }}"></script>
@@ -16,6 +16,8 @@
     <script src="{{ '/assets/js/cloudMain.js' | relative_url }}"></script>
     <!-- 登录工具 -->
     <script src="{{ '/assets/js/login.js' | relative_url }}"></script>
+    <!-- 编辑工具 -->
+    <script src="{{ '/assets/js/edit.js' | relative_url }}"></script>
 	<link rel="stylesheet" href="/assets/css/nav.css" /> 
 	<link rel="stylesheet" href="/assets/css/header.css" />
 	<link rel="stylesheet" href="/assets/css/codetab.css" />

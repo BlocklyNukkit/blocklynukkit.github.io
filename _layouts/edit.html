@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="{{ site.lang | default: "zh-CN" }}">
+{%- include edit_head.html -%}
+<body>
+{%- include header.html -%}
+{%- include collapse.html -%}
+<div class="wrapper" id="main">
+    <section>
+        <div id="title">
+            <h1>BlocklyNukkit WIKI</h1>
+            <p>这里是BN百科</p>
+        </div>
+        <article class="article">
+            <p>章节导览</p>
+			{% include toc.html html=content id='page_toc' %}
+			<br>
+            {{ content }}
+			{%- include nav.html -%}
+        </article>
+    </section>
+</div>
+
+{% if page.toc %}
+<script>
+    const content = document.querySelector(".article");
+
+    scrollnav.init(content, {
+        debug: false,
+        easingStyle: 'linear',
+        sections: ($('.article > h1').length>0) ? 'h3' : 'h4',
+        //subSections: ($('.post-content > h1').length>0) ? 'h4' : 'h5',
+    });
+</script>
+{% endif %}
+
+<!-- DOCSEARCH -->
+<script>
+  docsearch({
+    apiKey: 'fa2eb83393817b973d6abc676ca10c61',
+    indexName: 'wiki',
+    appId: 'LUV8A3UGI0', 
+    inputSelector: '#docSearchInput',
+    debug: false,
+  });
+</script>
+
+</body>
+{%- include footer.html -%}
+</html>
