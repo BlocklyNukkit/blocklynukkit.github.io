@@ -1,4 +1,5 @@
 function getWikiContent(path, handler){
+    path = encodeURI(path);
     app.callFunction({
             name: "getWikiContent",
             data: { path: path }
