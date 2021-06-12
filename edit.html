@@ -36,7 +36,7 @@ layout: edit
         document.getElementById("editTitle").innerHTML = "您尚未登录，无法编辑";
     }
     function submit(){
-        setWikiContent(toEdit, editor.getMarkdown(), result => {
+        setWikiContent(toEdit, editor.getMarkdown().replace(/\t/g, "    "), result => {
             window.location.href = result;
         })
     }
