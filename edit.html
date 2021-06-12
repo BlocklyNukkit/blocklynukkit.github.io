@@ -12,6 +12,9 @@ layout: edit
         if(toEdit.startsWith("/")){
             toEdit = toEdit.substr(1);
         }
+        if(toEdit.endsWith("/")){
+            toEdit += "index.md";
+        }
         toEdit = toEdit.replace(".html",".md");
         var editor;
         if(toEdit != null && toEdit != undefined && toEdit != ""){
