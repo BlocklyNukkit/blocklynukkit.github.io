@@ -12,6 +12,7 @@ layout: edit
         if(toEdit.startsWith("/")){
             toEdit = toEdit.substr(1);
         }
+        toEdit = toEdit.replace(".html",".md");
         var editor;
         if(toEdit != null && toEdit != undefined && toEdit != ""){
             var wikiContent = getWikiContent(toEdit, result => {
