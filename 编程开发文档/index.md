@@ -214,6 +214,7 @@
 |createHttpServer|int port|boolean|在指定端口上创建http服务器|
 |startHttpServer|int port|void|启动指定端口上已经创建了的http服务器|
 |attachHandlerToHttpServer|int port,String path,String functionName|boolean|在指定端口的http服务器上绑定请求处理器，当请求path路径时该处理器被调用，路径指去掉域名和端口后面，?的前面的部分，以/开头，返回是否绑定成功|
+|isPowerNukkit|void|boolean|是否运行在PowerNukkit上|
 
 
 ### algorithm基对象  
@@ -272,8 +273,18 @@
 |setItemColor|Item item,int r,int g,int b|void|设置物品item的自定义颜色|
 |setItemUnbreakable|Item item,boolean unbreakable|void|设置物品item是否不可破坏|
 |registerSolidBlock|int id,String name,double hardness,double resistance,int toolType,boolean isSilkTouchable,int dropMinExp,int dropMaxExp,int mineTier|void|注册固体方块，参数分别为方块id(只能覆写教育版方块)，方块名称，方块硬度，方块抗爆炸度，挖掘工具，是否受精准采集影响，最小掉落经验，最大掉落经验，挖掘等级，方块硬度越大挖掘时间越长，抗爆炸度越高越不容易被炸，挖掘工具0-无,1-剑,2-铲,3-镐,4-斧,5-剪刀，挖掘等级0-空手,1-木,2-金,3-石,4-铁,5-钻石|
-|registerSimpleItem|int id,String name|void|注册简单的物品堆，只能覆写教育版物品|
 |addFishingResult|String type,Item item,double chance|void|添加钓鱼产物，type为新增产物种类，item是产物物品，changce是概率权重，type可以取TREASURES;宝藏;JUNKS;垃圾;FISHES;鱼类，中英文皆可|
+|registerSimpleItem|int id,String name,int stackSize,String type,boolean isDisplayAsTool,boolean canOnOffhand|void|注册自定义简单物品，id为新物品id，stackSize为最大堆叠数量，name为新物品注册名(仅小写英文和下划线),type为种类(可选construction nature equipment items)，canOnOffhand是否能装备在副手|
+|registerToolItem|int id,String name,String toolType,int toolTier,int durability,int attackDamage,boolean canOnOffhand|void|注册自定义工具物品，id为新物品id，name为新物品注册名(仅小写英文和下划线),toolType为种类(可选sword shovel pickaxe axe hoe),toolTier挖掘等级(0-空手,1-木,2-金,3-石,4-铁,5-钻石,6-下界合金),durability为耐久值,attackDamage为攻击伤害|
+|registerDrinkItem|int id,String name,int stackSize,int nutrition,int drinkTime,boolean canOnOffhand|void|注册自定义饮品，id为新物品id，name为新物品注册名(仅小写英文和下划线)，stackSize为最大堆叠数量，nutrition为恢复饥饿值，drinkTime为饮用时间|
+|registerFoodItem|int id,String name,int stackSize,int nutrition,int drinkTime,boolean canOnOffhand|void|注册自定义食物，id为新物品id，name为新物品注册名(仅小写英文和下划线)，stackSize为最大堆叠数量，nutrition为恢复饥饿值，drinkTime为食用时间|
+|registerArmorItem|int id,String name,String armorType,int armorTier,int durability,int armorPoint,boolean canOnOffhand|void|注册自定义盔甲，id为新物品id，name为新物品注册名(仅小写英文和下划线)，armorType为种类(可为helmet chest leggings boots)，armorTier盔甲等级(0-无,1-皮革,2-铁,3-锁链,4-金,5-钻石,6-下界合金),durability为耐久值，armorPoint为盔甲值|
+|addItemTexture|int id,String path|void|添加新的物品材质，id为物品id，path为材质图片路径|
+|addArmorTexture|int id,String inventoryPath,String modelPath|void|添加新的盔甲材质，id为物品id，inventoryPath为物品栏材质，modelPath为穿着后模型材质|
+|addItemChineseTranslation|int id,String name|void|为id物品添加中文翻译|
+|addItemEnglishTranslation|int id,String name|void|为id物品添加英文翻译|
+|addResourcePackJsonEntry|String entry,String json|void|为材质包中entry路径添加json内容|
+|addResourcePackPictureEntry|String entry,String path|void|为材质包中entry路径添加服务器上path路径上的图片|
 
 
 ### database基对象  
@@ -331,6 +342,7 @@
 |buildNPC|Position pos,String name,String skinID|BNNPC|构建一个NPC，位置在于pos，名称为name，皮肤为skinID的皮肤|
 |buildNPC|Position pos,String name,String skinID,int calltick,String callfunction|BNNPC|构建一个NPC，位置在于pos，名称为name，皮肤为skinID的皮肤，每隔calltick刻调用一次callfunction函数，注入参数bnnpc实体,当前tick|
 |buildNPC|Position pos,String name,String skinID,int calltick,String callfunction,String attackfunction|BNNPC|同上，被打时调用attackfunction函数名的函数，转入参数bnnpc实体|
+|buildModel|Position pos,String modelSkinID,double length,double width,double height,double scale,String tickCallback,int callTick,String attackCallback,String interactCallback|BNModel|在pos构建一个4d皮肤展示模型|
 |皮肤skinID，即为./plugins/BlocklyNukkit/skin文件夹下面的皮肤文件名字|无后缀名，3D皮肤直接输入png文件名字，4D皮肤需要将json文件命名为与png文件相同的名字|详见BN专有对象方法文档中的BNNPC章节|
 |showFloatingItem|Position pos,Item item|void|在pos处展示item浮空物品|
 |removeFloatingItem|Position pos,Item item|void|取消在pos处item的浮空物品展示|
@@ -363,6 +375,7 @@
 |方法名|参数|返回值|解释|
 |-----|-----|-----|----|
 |addInv|boolean d, Array<Item> i,String n|Inventory|构建虚拟标题n的物品栏,d控制是否大箱子,i是物品栏的物品列表|
+|addHopperInv|Array<Item> i, String n|Inventory|构建虚拟标题n的漏斗物品栏，i是物品栏的物品列表|
 |getItemsInInv|Inventory inv|Array|获取inv的所有物品|
 |showFakeInv|Player player,Inventory inv|void|向玩家player展示物品栏inv|
 |editInv|Inventory inv, Array<Item> item|Inventory|设置物品栏inv的物品为item|
@@ -402,6 +415,7 @@
 |clearChunk|Position pos|void|清空pos所在的区块|
 |regenerateChunk|Position pos|void|重新生成pos所在的区块|
 |defineChunkRenderByName|String forLevel,String callback,int priority/void|void|forLevel是渲染器能够渲染的指定世界名称，callback是渲染器回调函数，priority是优先级，优先级越大先调用，不填默认为0|
+|defineChunkRenderAll|String callback,int priority/void|void|callback是渲染器回调函数，priority是优先级，优先级越大先调用，不填默认为0|
 |drawPic|Position pos1,Position pos2,String img,int faceData|void|从pos1到pos2绘制img路径上的图片，faceData指定物品展示框的朝向，pos1和pos2必须在同一垂直面上|
 
 
@@ -807,56 +821,59 @@ npc.start()
 您可以通过在函数上面加上导出标记来将这个函数标记为模块导出函数，这样以后，其他插件可以通过模块系统来调用您插件中的导出函数，函数加上导出标记之后，除了能够被其他插件调用，不会有任何行为上的变化  
 各语言具体方式如下：  
 
-{% capture export %}
+javascript:  
 ```javascript
 export function MyFun(arg1,arg2,arg3){}
 ```
----NEWTAB---
+
+python:  
 ```python
 @export
 def MyFun(arg1,arg2,arg3):
     pass
 ```
----NEWTAB---
+
+lua:  
 ```lua
 function BlockPlaceEvent(ent)-->export
 
 end
 ```
----NEWTAB---
+
+php:  
 ```php
 static function PlayerJoinEvent($event){
     
 }
 ```
-{% endcapture %}
-{% include tab.html tabId="export" tabTitles="JavaScript,Python,Lua,PHP" tabContents=export %}
+
 您也可以通过语法宏注释来定义此插件的自定义模块名，这样模块名称就不会因文件名改变而改变。  
 各语言具体方式如下(xxxxx指模块名)：  
 
-{% capture module %}
+javascript:  
 ```javascript
-//pragma module xxxxx 
+//pragma module xxxxx
 ```
----NEWTAB---
+
+python:  
 ```python
 #pragma module xxxxx
 ```
----NEWTAB---
+
+lua:  
 ```lua
 --pragma module xxxxx
 ```
----NEWTAB---
+
+php:  
 ```php
 //pragma module xxxxx
 ```
-{% endcapture %}
-{% include tab.html tabId="module" tabTitles="JavaScript,Python,Lua,PHP" tabContents=module %}
 
 您可以导入其他模块，并且调用其中的导出函数、获取返回值，请注意，务必在要导入的模块已经被加载的情况下导入，在BNInitializedEvent事件中执行是安全的做法。 
 各语言具体方式如下(xxxxx指模块名、fun指导出函数的名称、a,b,c指传入函数的参数，参数个数可以是任意的，也可没有、val指导出函数的返回值)：
 
-{% capture import %}
+javascript:  
 ```javascript
 function BNInitializedEvent(event){
     const mymodule = require("xxxxx");
@@ -864,22 +881,26 @@ function BNInitializedEvent(event){
     val = mymodule.call("fun",a,b,c); //推荐方式
     val = mymodule.fun(a,b,c); //简化方式
 }
+
 ```
----NEWTAB---
+
+python:  
 ```python
 def BNInitializedEvent(event):
     import xxxxx
     val = xxxxx.call("fun",a,b,c) #推荐方式
     val = xxxxx.fun(a,b,c) #简化方式
 ```
----NEWTAB---
+
+lua:  
 ```lua
 function BNInitializedEvent(event)
     mymodule = lujava.bindClass("xxx")
     val = mymodule:call("fun",a,b,c) --推荐方式
     val = mymodule:fun(a,b,c) --简化方式
 ```
----NEWTAB---
+
+php:  
 ```php
 function BNInitializedEvent($event){
     import xxxxx;
@@ -887,8 +908,6 @@ function BNInitializedEvent($event){
     $val = xxxxx::fun($a,$b,$c); //简化方式
 }
 ```
-{% endcapture %}
-{% include tab.html tabId="import" tabTitles="JavaScript,Python,Lua,PHP" tabContents=import %}
 
 ### 从java调用bn函数
 
@@ -921,12 +940,12 @@ makefile是一个json格式的包配置文件，由name,compress,plugins三个�
 
 ```json
 {
-	"name":"demo",
-	"compress":false,
-	"plugins":[
-		"./plugins/BlocklyNukkit/mod.py",
-		"./plugins/BlocklyNukkit/test.lua"
-	]
+    "name":"demo",
+    "compress":false,
+    "plugins":[
+        "./plugins/BlocklyNukkit/mod.py",
+        "./plugins/BlocklyNukkit/test.lua"
+    ]
 }
 ```
 
@@ -1093,6 +1112,9 @@ BNPM插件管理器，用于一键安装、更新，快速分发插件
 |机器人收到qq群消息事件|QQGroupMessageEvent|
 |机器人收到qq好友消息事件|QQFriendMessageEvent|
 |机器人其他qq操作事件|QQOtherEvent|
+|插件初始化完成事件|BNInitializedEvent|
+|插件即将被关闭事件|BNClosedEvent|
+|玩家钓鱼事件|StartFishingEvent|
 
 
 ## 常用java类/对象的成员函数  
@@ -1465,65 +1487,65 @@ BNPM插件管理器，用于一键安装、更新，快速分发插件
 - 继承自 cn.nukkit.level.Position
 - 继承自 cn.nukkit.math.Vector3
 
-|返回值类型		|函数名																										|
-|-				|-																											|
-|boolean		|canBeActivated()																							|
-|boolean		|canBeBrokenWith(Item item)																					|
-|boolean		|canBeClimbed()																								|
-|boolean		|canBeFlowedInto()																							|
-|boolean		|canBePlaced()																								|
-|boolean		|canBePushed()																								|
-|boolean		|canBeReplaced()																							|
-|boolean		|canHarvestWithHand()																						|
-|boolean		|canPassThrough()																							|
-|boolean		|canSilkTouch()																								|
-|Block			|clone()																									|
-|Block			|down()																										|
-|Block			|down(int step)																								|
-|Block			|east()																										|
-|Block			|east(int step)																								|
-|static boolean	|equals(Block b1, Block b2)																					|
-|static boolean	|equals(Block b1, Block b2, boolean checkDamage)															|
-|static Block	|get(int id)																								|
-|static Block	|get(int id, int data)																						|
-|static Block	|get(int id, Integer meta)																					|
-|static Block	|get(int id, Integer meta, Position pos)																	|
-|static Block	|get(int fullId, Level level, int x, int y, int z)															|
-|double			|getBreakTime(Item item, Player player)																		|
-|int			|getBurnAbility()																							|
-|BlockColor		|getColor()																									|
-|int			|getComparatorInputOverride()																				|
-|int			|getDamage()																								|
-|int			|getDropExp()																								|
-|Item[]			|getDrops(Item item)																						|
-|int			|getFullId()																								|
-|double			|getHardness()																								|
-|abstract int	|getId()																									|
-|int			|getLightLevel()																							|
-|int			|getStrongPower(BlockFace side)																				|
-|int			|getToolType()																								|
-|int			|getWeakPower(BlockFace face)																				|
-|boolean		|hasComparatorInputOverride()																				|
-|boolean		|hasEntityCollision()																						|
-|boolean		|isBreakable(Item item)																						|
-|boolean		|isNormalBlock()																							|
-|boolean		|isPowerSource()																							|
-|boolean		|isSolid()																									|
-|boolean		|isTransparent()																							|
-|Block			|north()																									|
-|Block			|north(int step)																							|
-|boolean		|place(Item item, Block block, Block target, BlockFace face, double fx, double fy, double fz, Player player)|
-|void			|setDamage(int meta)																						|
-|void			|setDamage(Integer meta)																					|
-|Block			|south()																									|
-|Block			|south(int step)																							|
-|int			|tickRate()																									|
-|Item			|toItem()																									|
-|String			|toString()																									|
-|Block			|up()																										|
-|Block			|up(int step)																								|
-|Block			|west()																										|
-|Block			|west(int step)																								|
+|返回值类型        |函数名                                                                                                        |
+|-                |-                                                                                                            |
+|boolean        |canBeActivated()                                                                                            |
+|boolean        |canBeBrokenWith(Item item)                                                                                    |
+|boolean        |canBeClimbed()                                                                                                |
+|boolean        |canBeFlowedInto()                                                                                            |
+|boolean        |canBePlaced()                                                                                                |
+|boolean        |canBePushed()                                                                                                |
+|boolean        |canBeReplaced()                                                                                            |
+|boolean        |canHarvestWithHand()                                                                                        |
+|boolean        |canPassThrough()                                                                                            |
+|boolean        |canSilkTouch()                                                                                                |
+|Block            |clone()                                                                                                    |
+|Block            |down()                                                                                                        |
+|Block            |down(int step)                                                                                                |
+|Block            |east()                                                                                                        |
+|Block            |east(int step)                                                                                                |
+|static boolean    |equals(Block b1, Block b2)                                                                                    |
+|static boolean    |equals(Block b1, Block b2, boolean checkDamage)                                                            |
+|static Block    |get(int id)                                                                                                |
+|static Block    |get(int id, int data)                                                                                        |
+|static Block    |get(int id, Integer meta)                                                                                    |
+|static Block    |get(int id, Integer meta, Position pos)                                                                    |
+|static Block    |get(int fullId, Level level, int x, int y, int z)                                                            |
+|double            |getBreakTime(Item item, Player player)                                                                        |
+|int            |getBurnAbility()                                                                                            |
+|BlockColor        |getColor()                                                                                                    |
+|int            |getComparatorInputOverride()                                                                                |
+|int            |getDamage()                                                                                                |
+|int            |getDropExp()                                                                                                |
+|Item[]            |getDrops(Item item)                                                                                        |
+|int            |getFullId()                                                                                                |
+|double            |getHardness()                                                                                                |
+|abstract int    |getId()                                                                                                    |
+|int            |getLightLevel()                                                                                            |
+|int            |getStrongPower(BlockFace side)                                                                                |
+|int            |getToolType()                                                                                                |
+|int            |getWeakPower(BlockFace face)                                                                                |
+|boolean        |hasComparatorInputOverride()                                                                                |
+|boolean        |hasEntityCollision()                                                                                        |
+|boolean        |isBreakable(Item item)                                                                                        |
+|boolean        |isNormalBlock()                                                                                            |
+|boolean        |isPowerSource()                                                                                            |
+|boolean        |isSolid()                                                                                                    |
+|boolean        |isTransparent()                                                                                            |
+|Block            |north()                                                                                                    |
+|Block            |north(int step)                                                                                            |
+|boolean        |place(Item item, Block block, Block target, BlockFace face, double fx, double fy, double fz, Player player)|
+|void            |setDamage(int meta)                                                                                        |
+|void            |setDamage(Integer meta)                                                                                    |
+|Block            |south()                                                                                                    |
+|Block            |south(int step)                                                                                            |
+|int            |tickRate()                                                                                                    |
+|Item            |toItem()                                                                                                    |
+|String            |toString()                                                                                                    |
+|Block            |up()                                                                                                        |
+|Block            |up(int step)                                                                                                |
+|Block            |west()                                                                                                        |
+|Block            |west(int step)                                                                                                |
 
 ### Entity常用方法  
 #### cn.nukkit.entity.Entity  
@@ -1532,181 +1554,181 @@ BNPM插件管理器，用于一键安装、更新，快速分发插件
 - 继承自 cn.nukkit.level.Position  
 - 继承自 cn.nukkit.level.Location 
 
-|返回值类型		|函数名																										|
-|-				|-																											|
-|void																|addEffect(Effect effect)																	|
-|void																|addMotion(double motionX, double motionY, double motionZ)									|
-|void																|addMovement(double x, double y, double z, double yaw, double pitch, double headYaw)		|
-|void																|applyEntityCollision(Entity entity)														|
-|boolean															|attack(EntityDamageEvent source)															|
-|boolean															|attack(float damage)																		|
-|boolean															|canBeMovedByCurrents()																		|
-|boolean															|canClimb()																					|
-|boolean															|canClimbWalls()																			|
-|boolean															|canCollide()																				|
-|boolean															|canCollideWith(Entity entity)																|
-|boolean															|canPassThrough()																			|
-|boolean															|canTriggerWalking()																		|
-|void																|close()																					|
-|static Entity														|createEntity(int type, FullChunk chunk, CompoundTag nbt, Object... args)					|
-|static Entity														|createEntity(int type, Position pos, Object... args)										|
-|static Entity														|createEntity(String name, FullChunk chunk, CompoundTag nbt, Object... args)				|
-|static Entity														|createEntity(String name, Position pos, Object... args)									|
-|void																|despawnFrom(Player player)																	|
-|void																|despawnFromAll()																			|
-|boolean															|dismountEntity(Entity entity)																|
-|boolean															|doesTriggerPressurePlate()																	|
-|boolean															|entityBaseTick()																			|
-|boolean															|entityBaseTick(int tickDiff)																|
-|boolean															|equals(Object obj)																			|
-|void																|extinguish()																				|
-|void																|fall(float fallDistance)																	|
-|boolean															|fastMove(double dx, double dy, double dz)													|
-|float																|getAbsorption()																			|
-|List<Block>														|getBlocksAround()																			|
-|List<Block>														|getCollisionBlocks()																		|
-|boolean															|getDataFlag(int propertyId, int id)														|
-|EntityMetadata														|getDataProperties()																		|
-|EntityData															|getDataProperty(int id)																	|
-|boolean															|getDataPropertyBoolean(int id)																|
-|int																|getDataPropertyByte(int id)																|
-|float																|getDataPropertyFloat(int id)																|
-|int																|getDataPropertyInt(int id)																	|
-|long																|getDataPropertyLong(int id)																|
-|CompoundTag														|getDataPropertyNBT(int id)																	|
-|Vector3															|getDataPropertyPos(int id)																	|
-|int																|getDataPropertyShort(int id)																|
-|String																|getDataPropertyString(int id)																|
-|int																|getDataPropertyType(int id)																|
-|Vector3f															|getDataPropertyVector3f(int id)															|
-|static CompoundTag													|getDefaultNBT(Vector3 pos)																	|
-|static CompoundTag													|getDefaultNBT(Vector3 pos, Vector3 motion)													|
-|static CompoundTag													|getDefaultNBT(Vector3 pos, Vector3 motion, float yaw, float pitch)							|
-|BlockFace															|getDirection()																				|
-|Vector2															|getDirectionPlane()																		|
-|Vector3															|getDirectionVector()																		|
-|Effect																|getEffect(int effectId)																	|
-|Map<Integer,Effect>												|getEffects()																				|
-|float																|getEyeHeight()																				|
-|protected float													|getGravity()																				|
-|float																|getHealth()																				|
-|float																|getHeight()																				|
-|BlockFace															|getHorizontalFacing()																		|
-|long																|getId()																					|
-|EntityDamageEvent													|getLastDamageCause()																		|
-|float																|getLength()																				|
-|Location															|getLocation()																				|
-|int																|getMaxHealth()																				|
-|List<MetadataValue>												|getMetadata(String metadataKey)															|
-|Vector3															|getMotion()																				|
-|Vector3f															|getMountedOffset(Entity entity)															|
-|String																|getName()																					|
-|String																|getNameTag()																				|
-|abstract int														|getNetworkId()																				|
-|Entity																|getPassenger()																				|
-|List<Entity>														|getPassengers()																			|
-|Position															|getPosition()																				|
-|Entity																|getRiding()																				|
-|String																|getSaveId()																				|
-|float																|getScale()																					|
-|String																|getScoreTag()																				|
-|Vector3f															|getSeatPosition()																			|
-|Server																|getServer()																				|
-|protected double													|getStepHeight()																			|
-|Map<Integer,Player>												|getViewers()																				|
-|float																|getWidth()																					|
-|void																|handleLavaMovement()																		|
-|boolean															|hasControllingPassenger()																	|
-|boolean															|hasCustomName()																			|
-|boolean															|hasEffect(int effectId)																	|
-|int																|hashCode()																					|
-|boolean															|hasMetadata(String metadataKey)															|
-|void																|heal(EntityRegainHealthEvent source)														|
-|void																|heal(float amount)																			|
-|boolean															|isAlive()																					|
-|boolean															|isClosed()																					|
-|boolean															|isControlling(Entity entity)																|
-|boolean															|isGliding()																				|
-|boolean															|isImmobile()																				|
-|boolean															|isInsideOfFire()																			|
-|boolean															|isInsideOfSolid()																			|
-|boolean															|isInsideOfWater()																			|
-|boolean															|isNameTagAlwaysVisible()																	|
-|boolean															|isNameTagVisible()																			|
-|boolean															|isOnFire()																					|
-|boolean															|isOnGround()																				|
-|boolean															|isOnLadder()																				|
-|boolean															|isPassenger(Entity entity)																	|
-|boolean															|isSneaking()																				|
-|boolean															|isSprinting()																				|
-|boolean															|isSwimming()																				|
-|void																|kill()																						|
-|boolean															|mountEntity(Entity entity)																	|
-|boolean															|mountEntity(Entity entity, byte mode)														|
-|boolean															|move(double dx, double dy, double dz)														|
-|void																|moveFlying(float strafe, float forward, float friction)									|
-|void																|onCollideWithPlayer(EntityHuman entityPlayer)												|
-|boolean															|onInteract(Player player, Item item)														|
-|boolean															|onInteract(Player player, Item item, Vector3 clickedPos)									|
-|void																|onStruckByLightning(Entity entity)															|
-|boolean															|onUpdate(int currentTick)																	|
-|void																|recalculateBoundingBox()																	|
-|void																|recalculateBoundingBox(boolean send)														|
-|void																|removeAllEffects()																			|
-|void																|removeEffect(int effectId)																	|
-|void																|removeMetadata(String metadataKey, Plugin owningPlugin)									|
-|void																|resetFallDistance()																		|
-|void																|respawnToAll()																				|
-|void																|saveNBT()																					|
-|void																|scheduleUpdate()																			|
-|void																|sendData(Player player)																	|
-|void																|sendData(Player[] players)																	|
-|void																|sendData(Player[] players, EntityMetadata data)											|
-|void																|sendData(Player player, EntityMetadata data)												|
-|void																|sendPotionEffects(Player player)															|
-|void																|setAbsorption(float absorption)															|
-|void																|setCanClimb()																				|
-|void																|setCanClimb(boolean value)																	|
-|void																|setCanClimbWalls()																			|
-|void																|setCanClimbWalls(boolean value)															|
-|void																|setDataFlag(int propertyId, int id)														|
-|void																|setDataFlag(int propertyId, int id, boolean value)											|
-|boolean															|setDataProperty(EntityData data)															|
-|boolean															|setDataProperty(EntityData data, boolean send)												|
-|void																|setGliding()																				|
-|void																|setGliding(boolean value)																	|
-|void																|setHealth(float health)																	|
-|void																|setImmobile()																				|
-|void																|setImmobile(boolean value)																	|
-|void																|setLastDamageCause(EntityDamageEvent type)													|
-|void																|setMaxHealth(int maxHealth)																|
-|void																|setMetadata(String metadataKey, MetadataValue newMetadataValue)							|
-|boolean															|setMotion(Vector3 motion)																	|
-|void																|setNameTag(String name)																	|
-|void																|setNameTagAlwaysVisible()																	|
-|void																|setNameTagAlwaysVisible(boolean value)														|
-|void																|setNameTagVisible()																		|
-|void																|setNameTagVisible(boolean value)															|
-|void																|setOnFire(int seconds)																		|
-|boolean															|setPosition(Vector3 pos)																	|
-|boolean															|setPositionAndRotation(Vector3 pos, double yaw, double pitch)								|
-|void																|setRotation(double yaw, double pitch)														|
-|void																|setScale(float scale)																		|
-|void																|setScoreTag(String score)																	|
-|void																|setSeatPosition(Vector3f pos)																|
-|void																|setSneaking()																				|
-|void																|setSneaking(boolean value)																	|
-|void																|setSprinting()																				|
-|void																|setSprinting(boolean value)																|
-|void																|setSwimming()																				|
-|void																|setSwimming(boolean value)																	|
-|void																|spawnTo(Player player)																		|
-|void																|spawnToAll()																				|
-|boolean															|teleport(Location location)																|
-|boolean															|teleport(Location location, PlayerTeleportEvent.TeleportCause cause)						|
-|boolean															|teleport(Position pos)																		|
-|boolean															|teleport(Position pos, PlayerTeleportEvent.TeleportCause cause)							|
-|boolean															|teleport(Vector3 pos)																		|
-|boolean															|teleport(Vector3 pos, PlayerTeleportEvent.TeleportCause cause)								|
-|void																|updateMovement()																			|
-|void																|updatePassengers()																			|
+|返回值类型        |函数名                                                                                                        |
+|-                |-                                                                                                            |
+|void                                                                |addEffect(Effect effect)                                                                    |
+|void                                                                |addMotion(double motionX, double motionY, double motionZ)                                    |
+|void                                                                |addMovement(double x, double y, double z, double yaw, double pitch, double headYaw)        |
+|void                                                                |applyEntityCollision(Entity entity)                                                        |
+|boolean                                                            |attack(EntityDamageEvent source)                                                            |
+|boolean                                                            |attack(float damage)                                                                        |
+|boolean                                                            |canBeMovedByCurrents()                                                                        |
+|boolean                                                            |canClimb()                                                                                    |
+|boolean                                                            |canClimbWalls()                                                                            |
+|boolean                                                            |canCollide()                                                                                |
+|boolean                                                            |canCollideWith(Entity entity)                                                                |
+|boolean                                                            |canPassThrough()                                                                            |
+|boolean                                                            |canTriggerWalking()                                                                        |
+|void                                                                |close()                                                                                    |
+|static Entity                                                        |createEntity(int type, FullChunk chunk, CompoundTag nbt, Object... args)                    |
+|static Entity                                                        |createEntity(int type, Position pos, Object... args)                                        |
+|static Entity                                                        |createEntity(String name, FullChunk chunk, CompoundTag nbt, Object... args)                |
+|static Entity                                                        |createEntity(String name, Position pos, Object... args)                                    |
+|void                                                                |despawnFrom(Player player)                                                                    |
+|void                                                                |despawnFromAll()                                                                            |
+|boolean                                                            |dismountEntity(Entity entity)                                                                |
+|boolean                                                            |doesTriggerPressurePlate()                                                                    |
+|boolean                                                            |entityBaseTick()                                                                            |
+|boolean                                                            |entityBaseTick(int tickDiff)                                                                |
+|boolean                                                            |equals(Object obj)                                                                            |
+|void                                                                |extinguish()                                                                                |
+|void                                                                |fall(float fallDistance)                                                                    |
+|boolean                                                            |fastMove(double dx, double dy, double dz)                                                    |
+|float                                                                |getAbsorption()                                                                            |
+|List<Block>                                                        |getBlocksAround()                                                                            |
+|List<Block>                                                        |getCollisionBlocks()                                                                        |
+|boolean                                                            |getDataFlag(int propertyId, int id)                                                        |
+|EntityMetadata                                                        |getDataProperties()                                                                        |
+|EntityData                                                            |getDataProperty(int id)                                                                    |
+|boolean                                                            |getDataPropertyBoolean(int id)                                                                |
+|int                                                                |getDataPropertyByte(int id)                                                                |
+|float                                                                |getDataPropertyFloat(int id)                                                                |
+|int                                                                |getDataPropertyInt(int id)                                                                    |
+|long                                                                |getDataPropertyLong(int id)                                                                |
+|CompoundTag                                                        |getDataPropertyNBT(int id)                                                                    |
+|Vector3                                                            |getDataPropertyPos(int id)                                                                    |
+|int                                                                |getDataPropertyShort(int id)                                                                |
+|String                                                                |getDataPropertyString(int id)                                                                |
+|int                                                                |getDataPropertyType(int id)                                                                |
+|Vector3f                                                            |getDataPropertyVector3f(int id)                                                            |
+|static CompoundTag                                                    |getDefaultNBT(Vector3 pos)                                                                    |
+|static CompoundTag                                                    |getDefaultNBT(Vector3 pos, Vector3 motion)                                                    |
+|static CompoundTag                                                    |getDefaultNBT(Vector3 pos, Vector3 motion, float yaw, float pitch)                            |
+|BlockFace                                                            |getDirection()                                                                                |
+|Vector2                                                            |getDirectionPlane()                                                                        |
+|Vector3                                                            |getDirectionVector()                                                                        |
+|Effect                                                                |getEffect(int effectId)                                                                    |
+|Map<Integer,Effect>                                                |getEffects()                                                                                |
+|float                                                                |getEyeHeight()                                                                                |
+|protected float                                                    |getGravity()                                                                                |
+|float                                                                |getHealth()                                                                                |
+|float                                                                |getHeight()                                                                                |
+|BlockFace                                                            |getHorizontalFacing()                                                                        |
+|long                                                                |getId()                                                                                    |
+|EntityDamageEvent                                                    |getLastDamageCause()                                                                        |
+|float                                                                |getLength()                                                                                |
+|Location                                                            |getLocation()                                                                                |
+|int                                                                |getMaxHealth()                                                                                |
+|List<MetadataValue>                                                |getMetadata(String metadataKey)                                                            |
+|Vector3                                                            |getMotion()                                                                                |
+|Vector3f                                                            |getMountedOffset(Entity entity)                                                            |
+|String                                                                |getName()                                                                                    |
+|String                                                                |getNameTag()                                                                                |
+|abstract int                                                        |getNetworkId()                                                                                |
+|Entity                                                                |getPassenger()                                                                                |
+|List<Entity>                                                        |getPassengers()                                                                            |
+|Position                                                            |getPosition()                                                                                |
+|Entity                                                                |getRiding()                                                                                |
+|String                                                                |getSaveId()                                                                                |
+|float                                                                |getScale()                                                                                    |
+|String                                                                |getScoreTag()                                                                                |
+|Vector3f                                                            |getSeatPosition()                                                                            |
+|Server                                                                |getServer()                                                                                |
+|protected double                                                    |getStepHeight()                                                                            |
+|Map<Integer,Player>                                                |getViewers()                                                                                |
+|float                                                                |getWidth()                                                                                    |
+|void                                                                |handleLavaMovement()                                                                        |
+|boolean                                                            |hasControllingPassenger()                                                                    |
+|boolean                                                            |hasCustomName()                                                                            |
+|boolean                                                            |hasEffect(int effectId)                                                                    |
+|int                                                                |hashCode()                                                                                    |
+|boolean                                                            |hasMetadata(String metadataKey)                                                            |
+|void                                                                |heal(EntityRegainHealthEvent source)                                                        |
+|void                                                                |heal(float amount)                                                                            |
+|boolean                                                            |isAlive()                                                                                    |
+|boolean                                                            |isClosed()                                                                                    |
+|boolean                                                            |isControlling(Entity entity)                                                                |
+|boolean                                                            |isGliding()                                                                                |
+|boolean                                                            |isImmobile()                                                                                |
+|boolean                                                            |isInsideOfFire()                                                                            |
+|boolean                                                            |isInsideOfSolid()                                                                            |
+|boolean                                                            |isInsideOfWater()                                                                            |
+|boolean                                                            |isNameTagAlwaysVisible()                                                                    |
+|boolean                                                            |isNameTagVisible()                                                                            |
+|boolean                                                            |isOnFire()                                                                                    |
+|boolean                                                            |isOnGround()                                                                                |
+|boolean                                                            |isOnLadder()                                                                                |
+|boolean                                                            |isPassenger(Entity entity)                                                                    |
+|boolean                                                            |isSneaking()                                                                                |
+|boolean                                                            |isSprinting()                                                                                |
+|boolean                                                            |isSwimming()                                                                                |
+|void                                                                |kill()                                                                                        |
+|boolean                                                            |mountEntity(Entity entity)                                                                    |
+|boolean                                                            |mountEntity(Entity entity, byte mode)                                                        |
+|boolean                                                            |move(double dx, double dy, double dz)                                                        |
+|void                                                                |moveFlying(float strafe, float forward, float friction)                                    |
+|void                                                                |onCollideWithPlayer(EntityHuman entityPlayer)                                                |
+|boolean                                                            |onInteract(Player player, Item item)                                                        |
+|boolean                                                            |onInteract(Player player, Item item, Vector3 clickedPos)                                    |
+|void                                                                |onStruckByLightning(Entity entity)                                                            |
+|boolean                                                            |onUpdate(int currentTick)                                                                    |
+|void                                                                |recalculateBoundingBox()                                                                    |
+|void                                                                |recalculateBoundingBox(boolean send)                                                        |
+|void                                                                |removeAllEffects()                                                                            |
+|void                                                                |removeEffect(int effectId)                                                                    |
+|void                                                                |removeMetadata(String metadataKey, Plugin owningPlugin)                                    |
+|void                                                                |resetFallDistance()                                                                        |
+|void                                                                |respawnToAll()                                                                                |
+|void                                                                |saveNBT()                                                                                    |
+|void                                                                |scheduleUpdate()                                                                            |
+|void                                                                |sendData(Player player)                                                                    |
+|void                                                                |sendData(Player[] players)                                                                    |
+|void                                                                |sendData(Player[] players, EntityMetadata data)                                            |
+|void                                                                |sendData(Player player, EntityMetadata data)                                                |
+|void                                                                |sendPotionEffects(Player player)                                                            |
+|void                                                                |setAbsorption(float absorption)                                                            |
+|void                                                                |setCanClimb()                                                                                |
+|void                                                                |setCanClimb(boolean value)                                                                    |
+|void                                                                |setCanClimbWalls()                                                                            |
+|void                                                                |setCanClimbWalls(boolean value)                                                            |
+|void                                                                |setDataFlag(int propertyId, int id)                                                        |
+|void                                                                |setDataFlag(int propertyId, int id, boolean value)                                            |
+|boolean                                                            |setDataProperty(EntityData data)                                                            |
+|boolean                                                            |setDataProperty(EntityData data, boolean send)                                                |
+|void                                                                |setGliding()                                                                                |
+|void                                                                |setGliding(boolean value)                                                                    |
+|void                                                                |setHealth(float health)                                                                    |
+|void                                                                |setImmobile()                                                                                |
+|void                                                                |setImmobile(boolean value)                                                                    |
+|void                                                                |setLastDamageCause(EntityDamageEvent type)                                                    |
+|void                                                                |setMaxHealth(int maxHealth)                                                                |
+|void                                                                |setMetadata(String metadataKey, MetadataValue newMetadataValue)                            |
+|boolean                                                            |setMotion(Vector3 motion)                                                                    |
+|void                                                                |setNameTag(String name)                                                                    |
+|void                                                                |setNameTagAlwaysVisible()                                                                    |
+|void                                                                |setNameTagAlwaysVisible(boolean value)                                                        |
+|void                                                                |setNameTagVisible()                                                                        |
+|void                                                                |setNameTagVisible(boolean value)                                                            |
+|void                                                                |setOnFire(int seconds)                                                                        |
+|boolean                                                            |setPosition(Vector3 pos)                                                                    |
+|boolean                                                            |setPositionAndRotation(Vector3 pos, double yaw, double pitch)                                |
+|void                                                                |setRotation(double yaw, double pitch)                                                        |
+|void                                                                |setScale(float scale)                                                                        |
+|void                                                                |setScoreTag(String score)                                                                    |
+|void                                                                |setSeatPosition(Vector3f pos)                                                                |
+|void                                                                |setSneaking()                                                                                |
+|void                                                                |setSneaking(boolean value)                                                                    |
+|void                                                                |setSprinting()                                                                                |
+|void                                                                |setSprinting(boolean value)                                                                |
+|void                                                                |setSwimming()                                                                                |
+|void                                                                |setSwimming(boolean value)                                                                    |
+|void                                                                |spawnTo(Player player)                                                                        |
+|void                                                                |spawnToAll()                                                                                |
+|boolean                                                            |teleport(Location location)                                                                |
+|boolean                                                            |teleport(Location location, PlayerTeleportEvent.TeleportCause cause)                        |
+|boolean                                                            |teleport(Position pos)                                                                        |
+|boolean                                                            |teleport(Position pos, PlayerTeleportEvent.TeleportCause cause)                            |
+|boolean                                                            |teleport(Vector3 pos)                                                                        |
+|boolean                                                            |teleport(Vector3 pos, PlayerTeleportEvent.TeleportCause cause)                                |
+|void                                                                |updateMovement()                                                                            |
+|void                                                                |updatePassengers()                                                                            |
