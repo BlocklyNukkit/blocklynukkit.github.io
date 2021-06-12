@@ -9,3 +9,15 @@ function getWikiContent(path, handler){
             handler(result);
         });
 }
+
+function setWikiContent(path, content, handler){
+    path = encodeURI(path);
+    app.callFunction({
+            name: "setWikiContent",
+            data: { path: path, content: content }
+        })
+        .then((res) => {
+            const result = res.result; //云函数执行结果
+            handler(result);
+        });
+}
