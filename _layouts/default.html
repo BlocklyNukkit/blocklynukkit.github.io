@@ -16,6 +16,8 @@
 			{% include toc.html html=content id='page_toc' %}
 			<br>
             {{ content }}
+            <br>
+            <p>不满意？前往<a href="{{ '/edit' | relative_url }}?target={{ page.url }}">编辑此页面</a></p>
 			{%- include nav.html -%}
         </article>
     </section>

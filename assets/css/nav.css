@@ -17,6 +17,7 @@
 		scrollbar-width: 0px;
 		padding-top: 20px;
 		background-color: #252525;
+        z-index: 99999;
 	}
 }
 

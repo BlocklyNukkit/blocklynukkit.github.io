@@ -7,29 +7,36 @@ layout: edit
     <textarea style="display:none;"># 编辑BNWiki内容</textarea>
 </div>
 <script>
-    var toEdit = getQueryVariable("target");
-    var editor;
-    if(toEdit != null && toEdit != undefined && toEdit != ""){
-        var wikiContent = getWikiContent(toEdit, result => {
-            editor = editormd("editor", {
-                mode: "markdown",
-                width: "100%",
-                height: "75vh",
-                markdown: result,
-                path: "{{ '/assets/js/editormd/' | relative_url }}",
-                placeholder: "正在编辑"+result+"中...",
-                theme: "dark",
-                previewTheme: "dark",
-                editorTheme: "monokai",
-                toolbarIcons: "simple"
+    if(isLogined()){
+        var toEdit = getQueryVariable("target");
+        if(toEdit.startsWith("/")){
+            toEdit = toEdit.substr(1);
+        }
+        var editor;
+        if(toEdit != null && toEdit != undefined && toEdit != ""){
+            var wikiContent = getWikiContent(toEdit, result => {
+                editor = editormd("editor", {
+                    mode: "markdown",
+                    width: "100%",
+                    height: "75vh",
+                    markdown: result,
+                    path: "{{ '/assets/js/editormd/' | relative_url }}",
+                    placeholder: "正在编辑"+result+"中...",
+                    theme: "dark",
+                    previewTheme: "dark",
+                    editorTheme: "monokai",
+                    toolbarIcons: "simple"
+                });
             });
-        });
-        document.getElementById("editTitle").innerHTML = "编辑"+toEdit+'中...<a style="position: absolute;right: 16px;cursor: pointer;" href="javascript:submit();">提交</a>';
-        document.title = "编辑"+toEdit+" - BlocklyNukkit Wiki";
+            document.getElementById("editTitle").innerHTML = "编辑"+toEdit+'中...<a style="position: absolute;right: 16px;cursor: pointer;" href="javascript:submit();">提交</a>';
+            document.title = "编辑"+toEdit+" - BlocklyNukkit Wiki";
+        }
+    }else{
+        document.getElementById("editTitle").innerHTML = "您尚未登录，无法编辑";
     }
     function submit(){
         setWikiContent(toEdit, editor.getMarkdown(), result => {
-            alert(result);
+            window.location.href = result;
         })
     }
 </script>
