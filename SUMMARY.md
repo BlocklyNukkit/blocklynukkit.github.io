@@ -31,6 +31,7 @@ layout: default
         * [编译为jar包](专题/编译为jar包.md)  
         * [QQ机器人](专题/QQ机器人.md)  
         * [使用HTTP服务器](专题/use_HTTP_Server.md)  
+		* [自定义物品](专题/自定义物品.md)  
     * [事件总表](事件总表/index.md)  
     * [运行时解释语言](运行时解释语言/index.md)  
         * [JS插件开发](运行时解释语言/JS插件开发/index.md)  
