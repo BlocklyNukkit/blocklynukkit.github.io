@@ -7,6 +7,8 @@ function getWikiContent(path, handler){
         .then((res) => {
             const result = res.result; //云函数执行结果
             handler(result);
+        },() => {
+            handler("# "+path+"\n");
         });
 }
 
