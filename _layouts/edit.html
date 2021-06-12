@@ -11,9 +11,6 @@
             <p>这里是BN百科</p>
         </div>
         <article class="article">
-            <p>章节导览</p>
-			{% include toc.html html=content id='page_toc' %}
-			<br>
             {{ content }}
 			{%- include nav.html -%}
         </article>
