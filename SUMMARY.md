@@ -28,7 +28,6 @@ layout: default
         * [事件系统](专题/事件系统.md)
         * [与nk和java互调用](专题/与nk和java互调.md)  
         * [模块化开发](专题/模块化开发.md)
-        * [扁平化语法](专题/扁平化语法.md)  
         * [编译为jar包](专题/编译为jar包.md)  
         * [QQ机器人](专题/QQ机器人.md)  
         * [使用HTTP服务器](专题/use_HTTP_Server.md)  
