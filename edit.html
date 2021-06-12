@@ -18,12 +18,13 @@ layout: edit
                 markdown: result,
                 path: "{{ '/assets/js/editormd/' | relative_url }}",
                 placeholder: "正在编辑"+result+"中...",
-                theme: "monokai",
-                previewTheme: "monokai",
-                editorTheme: "monokai"
+                theme: "dark",
+                previewTheme: "dark",
+                editorTheme: "monokai",
+                toolbarIcons: "simple"
             });
         });
-        editTitile.innerHTML = "编辑"+toEdit+"中...";
+        document.getElementById("editTitle").innerHTML = "编辑"+toEdit+"中...";
         document.title = "编辑"+toEdit+" - BlocklyNukkit Wiki";
     }
 </script>
