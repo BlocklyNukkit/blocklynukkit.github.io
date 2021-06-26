@@ -263,7 +263,7 @@
 |addItemEnchant|Item item,int i,int l|void|给item添加ID为i,等级为l的附魔(可去wiki查找id)|
 |isSame|Item i1,Item i2,boolean d,boolean n|boolean|检测i1和i2是否相同(d是否毕竟数据值,n是否比较nbt,数量不会比较)|
 |addBNCraft|String t,String d,Array<Item> i,Array<Item> o,int de,double p|void|添加一个种类为t,描述为d,原材料为i,产物为o,合成用时de,成功率p(0-1)的bn高级合成|
-|openBNCraftForPlayer|String type, Player player|void|给玩家打开种类的type的合成高级合成ui|
+**|openBNCraftForPlayer|String type, Player player|void|给玩家打开种类的type的合成高级合成ui|
 |PositionMove|Position pos,double x,double y,double z|void|让pos偏移xyz|
 |getNBTString|Item item|String|获取物品堆item的nbt字符串|
 |putinNBTString|Item item,String nbt|void|向item注入NBT字符串nbt|
@@ -285,6 +285,7 @@
 |addItemEnglishTranslation|int id,String name|void|为id物品添加英文翻译|
 |addResourcePackJsonEntry|String entry,String json|void|为材质包中entry路径添加json内容|
 |addResourcePackPictureEntry|String entry,String path|void|为材质包中entry路径添加服务器上path路径上的图片|
+|blockUpdate|Position pos|void|强制更新位置pos上的方块|
 
 
 ### database基对象  
