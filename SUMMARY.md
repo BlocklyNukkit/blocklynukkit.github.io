@@ -1,6 +1,3 @@
----  
-layout: default  
----  
 # SUMMARY  
 * [简介](index.md)  
 * [贡献者](其他_贡献者.md)  
