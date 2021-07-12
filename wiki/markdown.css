@@ -1,0 +1,20 @@
+body::-webkit-scrollbar{
+    display: none;
+}
+
+body{
+    padding-left: 36px;
+    padding-right: 36px;
+}
+
+.vertical-16px {
+    height: 16px;
+}
+
+pre::-webkit-scrollbar{
+    display: none;
+}
+
+code::-webkit-scrollbar{
+    display: none;
+}

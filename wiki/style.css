@@ -1,0 +1,97 @@
+.header {
+    border-bottom: 1px solid #404553;
+    background-color: #393D49;
+}
+
+.nav-title {
+    position: relative;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+    line-height: 60px;
+    font-size: 20px;
+}
+
+.nav-user {
+    float: right;
+}
+
+.layui-fluid-no-padding {
+    padding: 0 0px;
+}
+
+.layui-menu-a-min-margin {
+    margin: -3px -12px;
+}
+
+.summary-box .layui-menu li {
+    padding: 3px 12px;
+}
+
+.summary-box {
+    width: 250px;
+    height: calc(100vh - 60px - 2px);
+    position: absolute;
+    overflow-y: scroll;
+    overflow-x: visible;
+    z-index: 2;
+}
+
+.summary-box::-webkit-scrollbar{
+    display: none;
+}
+
+.summary-box-rightBorder-line {
+    top: 10px;
+    margin-left: calc(250px - 2px);
+    position: absolute;
+    height: calc(100vh - 60px - 2px - 20px);
+    border-right-style: solid;
+    border-right-color: #EEE;
+    border-right-width: 2px;
+}
+
+.summary-btn {
+    top: 2px;
+    left: 2px;
+    position: absolute;
+    z-index: 3;
+}
+
+.content-box {
+    height: calc(100vh - 60px - 2px);
+    position: absolute;
+    z-index: 0;
+}
+
+.content-display {
+    width: calc(100% - 24px);
+    height: calc(100% - 4px);
+    padding-left: 10px;
+    padding-right: 10px
+}
+
+.content-display::-webkit-scrollbar{
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .summary-left-hide {
+        left: -250px;
+    }
+    .content-left-float {
+        width: 100vw;
+        left: 0px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .summary-left-hide {
+        left: 0px;
+    }
+    .content-left-float {
+        width: calc(100vw - 250px);
+        left: 250px;
+    }
+}

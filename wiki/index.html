@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>BlocklyNukkit Wiki</title>
+        <link rel="stylesheet" href="./layui/css/layui.css">
+        <link rel="stylesheet" href="./style.css" />
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="./layui/layui.js"></script>
+        <script src="./prism.js"></script>
+        <script src="./showdown/showdown.min.js"></script>
+        <script src="./md.js"></script>
+    </head>
+    <body>
+        <!-- HEADER 顶部区域 -->
+        <div class="layui-header header">
+            <ul class="layui-nav" lay-filter="">
+                <li class="nav-title">BlocklyNukkit Wiki</li>
+                <li class="layui-nav-item nav-user">
+                    <a href=""><img src="./img/BlocklyNukkitLogo_small.png" class="layui-nav-img">用户中心</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="#">维护中</a></dd>
+                        <dd><a href="#">暂未开放</a></dd>
+                        <dd><a href="#">敬请期待</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <!-- 导航 -->
+        <div id="summaryBox" class="summary-box summary-left-hide">
+            <div class="layui-fluid layui-fluid-no-padding">
+                <ul class="layui-menu" id="summaryContent">
+
+                </ul>
+            </div>
+            <div class="summary-box-rightBorder-line"></div>
+        </div>
+        <!-- 正文 -->
+        <div id="contentBox" class="content-box content-left-float">
+            <button id="summaryFloatButton" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary summary-btn">
+                <i class="layui-icon layui-icon-spread-left"></i>
+            </button>
+            <iframe id="content" class="content-display" frameborder="0" seamless="seamless" scrolling="auto" sandbox="allow-scripts allow-same-origin">
+                
+            </iframe>
+            <script src="./main.js"></script>
+    </body>
+</html>
