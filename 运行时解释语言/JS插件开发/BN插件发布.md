@@ -3,9 +3,11 @@
 我们的在线使用网址：[点击进入](https://tools.blocklynukkit.com)  
 blocklynukkit友好界面中文插件编辑器是由超神的冰凉发起的开源插件编辑器项目，其目的为致力于为中国广大服主提供清爽、强大、实用、简洁的中文服务器插件开发服务，使得更多想要开发自己的插件却对晦涩难懂的JAVA编程望而却步的服主能够很容易的，以拖拽的形式开发出自己想要的各种功能。  
 我们的代码完全基于AGPL3.0开源，任何人都可以加入我们或者做出贡献，如果您是使用者或者服主，您可以在此[进入教程](http://www.blocklynukkit.info/)学习如何使用本项目并构建自己的插件。  
-[![超神的冰凉/BlocklyNukkit](https://gitee.com/Kingdom_of_dragon/BlocklyNukkit/widgets/widget_card.svg?colors=393222,ebdfc1,fffae5,d8ca9f,393222,a28b40)](https://gitee.com/Kingdom_of_dragon/BlocklyNukkit)  
-<a href="https://afdian.net/@superice666"><img src="https://gitee.com/Kingdom_of_dragon/BlocklyNukkit/raw/master/afdian-%E8%B6%85%E7%A5%9E%E7%9A%84%E5%86%B0%E5%87%89%20(1).png"></a>  
+
+<a href="https://afdian.net/@superice666"><img src="https://gitee.com/qdez/BlocklyNukkit/raw/master/afdian-%E8%B6%85%E7%A5%9E%E7%9A%84%E5%86%B0%E5%87%89%20(1).png"></a>  
+
 # 一些正式发布的bn插件：  
+
 - 乐色桶：[mcbbs下载](https://www.mcbbs.net/thread-1026281-1-1.html)  
 - 空岛科技：[mcbbs下载](https://www.mcbbs.net/thread-1025826-1-1.html)  
 - OP查背包：[mcbbs下载](https://www.mcbbs.net/thread-1023528-1-1.html)  
@@ -25,7 +27,11 @@ blocklynukkit友好界面中文插件编辑器是由超神的冰凉发起的开�
 - gui点歌：[mcbbs下载](https://www.mcbbs.net/thread-1028589-1-1.html)  
 - pvp搭路练习：[minebbs下载](https://www.minebbs.com/resources/coblocks-nk.1149/)  
 - 高利贷银行：[minebbs下载](https://www.minebbs.com/resources/cobank.1165/)  
+
+
+
 # 给bn插件开发者  
+
 ## 如何让你的插件更加容易获得高绿宝石/钻石奖励  
 ### 1.用心给你的帖子排版  
 众所周知，给你的插件帖子做一个美观的排版十分重要，尤其是mcbbs，同样的插件因为帖子排版最多能差出5-6个绿宝石  

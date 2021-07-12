@@ -18,14 +18,14 @@ BlocklyNukkit从1.2.9.0 beta-r35版本开始正式支持此功能，您可以在
 
 ## 搭建编译环境  
 BlocklyNukkit提供一条专用的编译工具，基于`clang`修改而来，您可以在下面的链接下载：  
-- [Windows](https://icesight.lanzous.com/iRTdCkxp1dc) 适用于Windows7及更新版本  
-- [Linux](https://icesight.lanzous.com/iSYYskxp1mb) 适用于Ubuntu 16.04LTS及更新版本和其他某些发行版  
-- [MacOS](https://icesight.lanzous.com/izF6gkxp0mf) 适用于MacOS v10.12-Sierra及更新版本  
+- [Windows](https://icesight.lanzoui.com/iRTdCkxp1dc) 适用于Windows7及更新版本  
+- [Linux](https://icesight.lanzoui.com/iSYYskxp1mb) 适用于Ubuntu 16.04LTS及更新版本和其他某些发行版  
+- [MacOS](https://icesight.lanzoui.com/izF6gkxp0mf) 适用于MacOS v10.12-Sierra及更新版本  
 
 下载完成后，解压您下载的`.7z`安装包，根据其中的使用说明进行编译。  
 
 ## 更新头文件  
 下载头文件更新包，解压其中文件，覆盖掉`share`文件夹中的内容即可。  
 最新的头文件与 **2021/1/14** 更新！请您及时下载更新包，以免编译错误。  
-[头文件更新包-2021-1-14.zip](https://icesight.lanzous.com/iIwypkei73c)  
+[头文件更新包-2021-1-14.zip](https://icesight.lanzoui.com/iIwypkei73c)  
  
