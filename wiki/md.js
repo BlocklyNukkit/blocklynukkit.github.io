@@ -102,7 +102,7 @@ function contentMD(markdown) {
         for(let each of codeBlocks){
             out = out.replace(each, each.replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
         }
-    out = out.replace(/<span class="token string"><(.*?)><\/span>/g, '<span class="token string">&lt;$1&gt;<\/span>');
+    out = out.replace(/<span class="token string"><(.*?)><\/span>/g, '<span class="token string">&lt;$1&gt;<\/span>').replace(/¨D/g, '$');
     console.log(out);
     return out;
 }

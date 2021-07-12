@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="./style.css" />
         <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="./layui/layui.js"></script>
+        <script src="./layui/velocity.js"></script>
+        <script src="./layui/velocity-ui.js"></script>
         <script src="./prism.js"></script>
         <script src="./showdown/showdown.min.js"></script>
         <script src="./md.js"></script>
@@ -16,9 +18,10 @@
         <!-- HEADER 顶部区域 -->
         <div class="layui-header header">
             <ul class="layui-nav" lay-filter="">
-                <li class="nav-title">BlocklyNukkit Wiki</li>
+                <img src="./img/BlocklyNukkitLogo_flat.svg" class="layui-nav-img" style="border-radius: 0;">
+                <li class="nav-title">BNWiki</li>
                 <li class="layui-nav-item nav-user">
-                    <a href=""><img src="./img/BlocklyNukkitLogo_small.png" class="layui-nav-img">用户中心</a>
+                    <a href="#"><img src="./img/BlocklyNukkitLogo_small.png" class="layui-nav-img">用户中心</a>
                     <dl class="layui-nav-child">
                         <dd><a href="#">维护中</a></dd>
                         <dd><a href="#">暂未开放</a></dd>
@@ -38,9 +41,17 @@
         </div>
         <!-- 正文 -->
         <div id="contentBox" class="content-box content-left-float">
-            <button id="summaryFloatButton" type="button" class="layui-btn layui-btn-radius layui-btn-sm layui-btn-primary summary-btn">
+            <button id="summaryFloatButton" type="button" class="layui-btn-round layui-btn-radius summary-btn">
                 <i class="layui-icon layui-icon-spread-left"></i>
             </button>
+            <button id="scrollTopButton" type="button" class="layui-btn-round layui-btn-radius scroll-top-btn">
+                <i class="layui-icon layui-icon-up"></i>
+            </button>
+            <div id="loadingBox" class="loading-box">
+                <i id="loadingCircleIcon" class="layui-icon layui-icon-loading-1 layui-anim layui-anim-rotate layui-anim-loop loading-icon"></i>
+                <i id="loadingOKIcon" class="layui-icon layui-icon-ok loading-icon"></i>
+                <i id="loadingFailedIcon" class="layui-icon layui-icon-close loading-icon loading-icon-failed"></i>
+            </div>
             <iframe id="content" class="content-display" frameborder="0" seamless="seamless" scrolling="auto" sandbox="allow-scripts allow-same-origin">
                 
             </iframe>

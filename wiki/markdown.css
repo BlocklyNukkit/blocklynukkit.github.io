@@ -18,3 +18,9 @@ pre::-webkit-scrollbar{
 code::-webkit-scrollbar{
     display: none;
 }
+
+img {
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+}
