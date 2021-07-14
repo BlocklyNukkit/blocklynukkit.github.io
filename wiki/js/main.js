@@ -2,6 +2,7 @@ layui.use(['element', 'layer', 'form'], function() {
     var element = layui.element;
     var layer = layui.layer;
     var form = layui.form;
+    var dataStorage = layui.data;
 
     /**
      * @description 初始化内容iframe
@@ -46,7 +47,7 @@ layui.use(['element', 'layer', 'form'], function() {
      * @description 目录文本
      */
     var summary;
-    $.get("https://wiki.blocklynukkit.com/SUMMARY.md", function(result) {
+    $.get(summaryURL, function(result) {
         result = result.replace("---  \nlayout: default  \n---  ", "").replace("# SUMMARY", "")
         $("#summaryContent").html(summaryMD(result));
     });
@@ -281,7 +282,7 @@ function loadContent(path) {
         duration: 500,
         queue: false,
         complete: () => {
-            $.get("https://wiki.blocklynukkit.com/" + path, function(result) {
+            $.get(contentSource + path, function(result) {
                     //更改DOM内容
                     var contentIframe = $("#content")[0];
                     contentIframedoc = contentIframe.contentDocument || contentIframe.contentWindow.document;
