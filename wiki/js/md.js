@@ -74,7 +74,8 @@ var contentExt = function() {
     var tab = {
         type: 'lang',
         filter: function(text, converter, options) {
-            let tabs = text.match(/\[\[\[[\s\S]*?]]]/g);
+            let tabs = text.match(/(?<!<code class="language-.*?">)\[\[\[[\s\S]*?]]]/g);
+            console.log(text)
             if (tabs != null)
                 for (let each of tabs) {
                     let headers = each.match(/\n?&.*?:\n/g);
@@ -100,6 +101,7 @@ var contentExt = function() {
                     let output =`<div class="layui-tab layui-tab-brief"><ul class="layui-tab-title">${headerOutput}</ul><div class="layui-tab-content">${contentOutput}</div></div>`;
                     text = text.replace(each, output);
                 }
+            console.log(text)
             return text;
         }
     }
@@ -121,6 +123,9 @@ var summary_md = new showdown.Converter({
 });
 var content_md = new showdown.Converter({
     tables: true,
+    parseImgDimensions: true,
+    strikethrough: true,
+    tasklists: true,
     extensions: ['bn_highlight_before', 'bn_table_helper', 'bn_content_md']
 });
 
