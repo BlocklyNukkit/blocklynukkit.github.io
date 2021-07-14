@@ -1,6 +1,7 @@
-layui.use(['element', 'layer'], function() {
+layui.use(['element', 'layer', 'form'], function() {
     var element = layui.element;
     var layer = layui.layer;
+    var form = layui.form;
 
     /**
      * @description 初始化内容iframe
@@ -205,10 +206,11 @@ layui.use(['element', 'layer'], function() {
     function openAccountSettingDialog() {
         layer.closeAll();
         if (!isLogined()) return;
-        $("#accountSettingDialogUID").html(getUserUid());
-        $("#accountSettingDialogUsername").val(getUserNickName());
-        $('input:radio[name=sex]').attr('checked', false);
-        $('input:radio[value=' + getUserGender() + ']').attr('checked', true);
+        form.val("accountSettingDialog", {
+            uid: getUserUid(),
+            username: getUserNickName(),
+            sex: getUserGender()
+        });
         var index = layer.open({
             type: 1,
             shadeClose: true,
@@ -216,11 +218,12 @@ layui.use(['element', 'layer'], function() {
             content: $("#accountSettingDialog"),
             btn: "保存信息",
             yes: function() {
+                let values = form.val('accountSettingDialog');
+                console.log(values);
                 updateUserInfo({
-                        nickName: $("#accountSettingDialogUsername").val(),
-                        gender: $('input:radio[name=sex]:checked').val(),
-                        username: Pinyin.convertToPinyin($("#accountSettingDialogUsername").val(),
-                            '', true)
+                        nickName: values.username,
+                        gender: values.sex,
+                        username: Pinyin.convertToPinyin(values.username, '', true)
                     },
                     function() {
                         layer.msg('账户信息修改成功', {

@@ -11,13 +11,13 @@
         <script src="./layui/velocity.js"></script>
         <script src="./layui/velocity-ui.js"></script>
         <script src="./layui/pinyin.js"></script>
-        <script src="./prism.js"></script>
+        <script src="./js/prism.js"></script>
         <script src="./showdown/showdown.min.js"></script>
-        <script src="./md.js"></script>
+        <script src="./js/md.js"></script>
         <script src="https://imgcache.qq.com/qcloud/cloudbase-js-sdk/1.4.1/cloudbase.js"></script>
         <script src="https://imgcache.qq.com/qcloud/cloudbase-js-sdk/1.4.1/cloudbase.auth.js"></script>
         <script src="https://imgcache.qq.com/qcloud/cloudbase-js-sdk/1.4.1/cloudbase.functions.js"></script>
-        <script src="./account.js"></script>
+        <script src="./js/account.js"></script>
     </head>
     <body>
         <!-- HEADER 顶部区域 -->
@@ -114,11 +114,11 @@
                     </div>
                 </div>
             </div>
-            <div id="accountSettingDialog" class="layui-form dialog-box">
+            <div id="accountSettingDialog" class="layui-form dialog-box" lay-filter="accountSettingDialog">
                 <div class="layui-form-item">
                     <label class="layui-form-label">UID</label>
                     <div class="layui-input-block">
-                        <span id="accountSettingDialogUID"></span>
+                        <input id="accountSettingDialogUID" type="text" name="uid" disabled="disabled" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -138,6 +138,7 @@
                 </div>
             </div>
         </div>
-        <script src="./main.js"></script>
+        <script src="./js/main.js"></script>
+        <script src="js/You%20Found%20it.js"></script>
     </body>
 </html>
