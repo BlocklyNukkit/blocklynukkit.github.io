@@ -39,18 +39,22 @@ var highlightExt_before = {
     type: 'lang',
     filter: function(text, converter, options) {
         let codeBlocks = text.match(/```[\s\S]*?```/g);
-        if(codeBlocks != null)
-            for(let each of codeBlocks){
-                let code = each.substring(each.indexOf("\n")+1, each.length - 3);
+        if (codeBlocks != null)
+            for (let each of codeBlocks) {
+                let code = each.substring(each.indexOf("\n") + 1, each.length - 3);
                 let codeType = each.substring(3, each.indexOf("\n"));
-                switch(codeType){
-                    case "c++": codeType = "cpp"; break;
+                switch (codeType) {
+                    case "c++":
+                        codeType = "cpp";
+                        break;
                 }
                 console.log(codeType);
                 let languageEntry = window.Prism.languages[codeType] || window.Prism.languages.plaintext;
                 let rendered = window.Prism.highlight(code, languageEntry, codeType);
-                rendered += `<span class="line-numbers-rows">${'<span></span>'.repeat(code.split('\n').length - 2)}<span>`
-                let output = `<pre class="line-numbers language-${codeType}"><code class="language-${codeType}">${rendered}</code></pre>`;
+                rendered +=
+                    `<span class="line-numbers-rows">${'<span></span>'.repeat(code.split('\n').length - 2)}<span>`
+                let output =
+                    `<pre class="line-numbers language-${codeType}"><code class="language-${codeType}">${rendered}</code></pre>`;
                 text = text.replace(each, output);
             }
         return text;
@@ -67,7 +71,39 @@ var contentExt = function() {
         regex: /<blockquote>/g,
         replace: '<blockquote class="layui-elem-quote">'
     };
-    return [table, blockquote];
+    var tab = {
+        type: 'lang',
+        filter: function(text, converter, options) {
+            let tabs = text.match(/\[\[\[[\s\S]*?]]]/g);
+            if (tabs != null)
+                for (let each of tabs) {
+                    let headers = each.match(/\n?&.*?:\n/g);
+                    let contents = each.substring(3, each.length - 3).split(/\n?&.*?:\n/g);
+                    let headerOutput = '';
+                    let contentOutput = '';
+                    for (let i = 0; i < headers.length; i++) {
+                        let eachHeader = headers[i].replace('\n', '').replace('& ','').replace(':', '');
+                        if (i == 0) {
+                            headerOutput += ('<li class="layui-this">' + eachHeader + '</li>');
+                        } else {
+                            headerOutput += ('<li>' + eachHeader + '</li>');
+                        }
+                    }
+                    for (let i = 1; i < contents.length; i++) {
+                        let eachContent = contentMD(contents[i]);
+                        if(i==1){
+                            contentOutput += ('<div class="layui-tab-item layui-show">' + eachContent + '</div>');
+                        }else {
+                            contentOutput += ('<div class="layui-tab-item">' + eachContent + '</div>');
+                        }
+                    }
+                    let output =`<div class="layui-tab layui-tab-brief"><ul class="layui-tab-title">${headerOutput}</ul><div class="layui-tab-content">${contentOutput}</div></div>`;
+                    text = text.replace(each, output);
+                }
+            return text;
+        }
+    }
+    return [table, blockquote, tab];
 }
 // 注册拓展
 showdown.extension('bn_summary_md', summaryExt);
@@ -91,18 +127,20 @@ var content_md = new showdown.Converter({
 
 function summaryMD(markdown) {
     let out = summary_md.makeHtml(markdown);
-    console.log(out);
+    //console.log(out);
     return out;
 }
 
 function contentMD(markdown) {
     let out = content_md.makeHtml(markdown);
-    let codeBlocks = out.match(/<pre class="line-numbers language-.*?"><code class="language-.*?">[\s\S]*?<\/code><\/pre>/g);
-    if(codeBlocks != null)
-        for(let each of codeBlocks){
+    let codeBlocks = out.match(
+        /<pre class="line-numbers language-.*?"><code class="language-.*?">[\s\S]*?<\/code><\/pre>/g);
+    if (codeBlocks != null)
+        for (let each of codeBlocks) {
             out = out.replace(each, each.replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
         }
-    out = out.replace(/<span class="token string"><(.*?)><\/span>/g, '<span class="token string">&lt;$1&gt;<\/span>').replace(/¨D/g, '$');
-    console.log(out);
+    out = out.replace(/<span class="token string"><(.*?)><\/span>/g, '<span class="token string">&lt;$1&gt;<\/span>').replace(
+        /¨D/g, '$');
+    //console.log(out);
     return out;
 }

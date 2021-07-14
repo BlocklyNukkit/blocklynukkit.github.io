@@ -10,9 +10,14 @@
         <script src="./layui/layui.js"></script>
         <script src="./layui/velocity.js"></script>
         <script src="./layui/velocity-ui.js"></script>
+        <script src="./layui/pinyin.js"></script>
         <script src="./prism.js"></script>
         <script src="./showdown/showdown.min.js"></script>
         <script src="./md.js"></script>
+        <script src="https://imgcache.qq.com/qcloud/cloudbase-js-sdk/1.4.1/cloudbase.js"></script>
+        <script src="https://imgcache.qq.com/qcloud/cloudbase-js-sdk/1.4.1/cloudbase.auth.js"></script>
+        <script src="https://imgcache.qq.com/qcloud/cloudbase-js-sdk/1.4.1/cloudbase.functions.js"></script>
+        <script src="./account.js"></script>
     </head>
     <body>
         <!-- HEADER 顶部区域 -->
@@ -20,12 +25,14 @@
             <ul class="layui-nav" lay-filter="">
                 <img src="./img/BlocklyNukkitLogo_flat.svg" class="layui-nav-img" style="border-radius: 0;">
                 <li class="nav-title">BNWiki</li>
-                <li class="layui-nav-item nav-user">
-                    <a href="#"><img src="./img/BlocklyNukkitLogo_small.png" class="layui-nav-img">用户中心</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="#">维护中</a></dd>
-                        <dd><a href="#">暂未开放</a></dd>
-                        <dd><a href="#">敬请期待</a></dd>
+                <li id="userNav" class="layui-nav-item nav-user">
+                    <a href="#"><img src="./img/user.svg" class="layui-nav-img"><span id="userNavName" act="loginDialog">点击登录</span></a>
+                    <dl id="userNavOption" class="layui-nav-child">
+                        <dd><a id="userNavOptionAccountSetting" href="#" act="accountSettingDialog">账户设置</a></dd>
+                        <dd>
+                            <hr>
+                        </dd>
+                        <dd><a id="userNavOptionLogOut" href="#">退出登录</a></dd>
                     </dl>
                 </li>
             </ul>
@@ -53,8 +60,84 @@
                 <i id="loadingFailedIcon" class="layui-icon layui-icon-close loading-icon loading-icon-failed"></i>
             </div>
             <iframe id="content" class="content-display" frameborder="0" seamless="seamless" scrolling="auto" sandbox="allow-scripts allow-same-origin">
-                
+
             </iframe>
-            <script src="./main.js"></script>
+        </div>
+        <!-- 对话框区 -->
+        <div id="dialogBox">
+            <div id="loginDialog" class="layui-form dialog-box">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">账号</label>
+                    <div class="layui-input-block">
+                        <input id="loginDialogAccount" type="text" name="account" required lay-verify="required"
+                            placeholder="用户名/邮箱" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-block">
+                        <input id="loginDialogPassword" type="password" name="password" required lay-verify="required"
+                            placeholder="密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block layui-text">
+                        <span>没有账号？</span><a href="#" act="registerDialog">注册一个！</a>
+                    </div>
+                </div>
+            </div>
+            <div id="registerDialog" class="layui-form dialog-box">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">邮箱</label>
+                    <div class="layui-input-block">
+                        <input id="registerDialogEmail" type="email" name="email" required lay-verify="required"
+                            placeholder="邮箱" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-block">
+                        <input id="registerDialogPassword" type="password" name="password" required lay-verify="required"
+                            placeholder="密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">重复密码</label>
+                    <div class="layui-input-block">
+                        <input id="registerDialogRepeatPassword" type="password" name="password" required lay-verify="required"
+                            placeholder="再输一次密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block layui-text">
+                        <span>已有账号？</span><a href="#" act="loginDialog">立即登录！</a>
+                    </div>
+                </div>
+            </div>
+            <div id="accountSettingDialog" class="layui-form dialog-box">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">UID</label>
+                    <div class="layui-input-block">
+                        <span id="accountSettingDialogUID"></span>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户名</label>
+                    <div class="layui-input-block">
+                        <input id="accountSettingDialogUsername" type="text" name="username" required lay-verify="required"
+                            placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">性别</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="sex" value="MALE" title="男">
+                        <input type="radio" name="sex" value="FEMALE" title="女">
+                        <input type="radio" name="sex" value="UNKNOWN" title="保密" checked >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./main.js"></script>
     </body>
 </html>

@@ -1,3 +1,7 @@
+body {
+    overflow: hidden;
+}
+
 .header {
     border-bottom: 1px solid #404553;
     background-color: #393D49;
@@ -137,4 +141,10 @@
     font-size: 14px;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.dialog-box {
+    display: none;
+    width: 360px;
+    padding: 20px 20px 0px 0px;
 }
