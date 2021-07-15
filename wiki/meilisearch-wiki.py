@@ -76,7 +76,6 @@ if __name__ == "__main__":
     # 发送结果
     dt = json.dumps(document)
     KEY = os.getenv("Meili_API_Key")
-    print("key: " + KEY + " len: " + len(KEY))
     result = requests.post(url='http://49.232.170.120:7700/indexes/wiki/documents', data=dt, headers={'Content-Type':'application/json', 'X-Meili-API-Key': KEY})
     
     print("OK:" + result.text)
