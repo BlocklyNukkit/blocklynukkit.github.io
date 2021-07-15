@@ -26,7 +26,7 @@
         <!-- <script src="./js/jquery.i18n.properties.min.js"></script> i18n多语言（预留） -->
         <!-- <script src="./js/darkmode-js.min.js"></script>  黑夜模式JavaScript (预留) -->
     </head>
-    <body>
+    <div>
         <!-- HEADER 顶部区域 -->
         <div class="layui-header header">
             <ul class="layui-nav" lay-filter="">
@@ -48,10 +48,16 @@
         <div id="summaryBox" class="summary-box summary-left-hide">
             <div class="layui-fluid layui-fluid-no-padding">
                 <ul class="layui-menu" id="summaryContent">
-
                 </ul>
             </div>
             <div class="summary-box-rightBorder-line"></div>
+        </li>
+            <hr class="copyright-info-border"><li class="copyright-info">2021 <i class="fal fa-copyright"></i> BlocklyNukkit Wiki</li>
+        </li>
+            <span class="fal fa-info-circle copyright-info-btn-list"> <button id="copyright_info_btn" onclick="copyrighit_info_btn();" class="copyright-info-btn" >版权信息</button></span>
+        </li> 
+            <span class="fal fa-poll-h copyright-info-btn-list" style="left: 125px;"> <button id="statistics_btn" onclick="statistics_btn();" class="copyright-info-btn" >数据统计</button></span>
+        </li>
         </div>
         <!-- 正文 -->
         <div id="contentBox" class="content-box content-left-float">
