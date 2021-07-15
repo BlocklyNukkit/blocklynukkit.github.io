@@ -72,6 +72,6 @@ if __name__ == "__main__":
         })
     # 发送结果
     dt = json.dumps(document)
-    result = requests.post(url='http://49.232.170.120:7700/indexes/wiki/documents', data=dt, headers={'Content-Type':'application/json', 'X-Meili-API-Key': 'eb2bfd2fca693d4be093c461c919c939f8a1491ddad4a51afca08b3d0cf1208c'})
+    result = requests.post(url='http://49.232.170.120:7700/indexes/wiki/documents', data=dt, headers={'Content-Type':'application/json', 'X-Meili-API-Key': os.getenv("Meili-API-Key")})
     
     print("OK:" + result.text)
