@@ -53,6 +53,7 @@ if __name__ == "__main__":
     # 读取所有文件
     files_content = {}
     for each in files_relative:
+        print("reading " + each)
         with open(working_dir + each, 'r', encoding='utf-8') as f:
             files_content[each] = f.read()
     # 匹配标题
