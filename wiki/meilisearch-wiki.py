@@ -49,6 +49,8 @@ if __name__ == "__main__":
         if each.endswith(".md"):
             relative_path = each.replace(working_dir, '').replace('\\', '/')
             if not relative_path.startswith("/javadoc"):
+                if not relative_path.endswith(".md") and relative_path.endswith("md"):
+                    relative_path = relative_path[:-2] + '.md'
                 files_relative.append(relative_path)
     # 读取所有文件
     files_content = {}
