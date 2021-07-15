@@ -2,6 +2,10 @@ body {
     overflow: hidden;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+}
+
 .header {
     border-bottom: 1px solid #404553;
     background-color: #393D49;
@@ -42,6 +46,11 @@ body {
     z-index: 2;
 }
 
+.summary-box-whiteBG {
+    z-index: 1;
+    background-color: #FFFFFF;
+}
+
 .summary-box::-webkit-scrollbar {
     display: none;
 }
@@ -54,6 +63,7 @@ body {
     border-right-style: solid;
     border-right-color: #EEE;
     border-right-width: 2px;
+    z-index: 1;
 }
 
 .summary-btn {
@@ -87,21 +97,34 @@ body {
     display: none;
 }
 
-.copyright-info {
+.summary-copyright-box {
     position: absolute;
+    width: calc(100% - 10px);
+    margin-left: 5px;
+    bottom: 5px;
+    z-index: 0;
+}
+
+.summary-copyright-center {
+    position: absolute;
+    bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copyright-info {
     bottom: 30px;
     padding: 0px;
     left: 30px;
 }
 
 .copyright-info-border{
-    position: absolute;
     bottom: 45px;  
     padding: 125px;
 }
 
 .copyright-info-btn-list{
-    position: absolute;
     bottom: 5px;  
     padding: 0px;
     height: auto;

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
         <title>BlocklyNukkit Wiki</title>
         <link rel="stylesheet" href="./layui/css/layui.css">
         <link rel="stylesheet" href="./style.css" />
@@ -21,8 +21,8 @@
         <script src="https://imgcache.qq.com/qcloud/cloudbase-js-sdk/1.4.1/cloudbase.functions.js"></script>
         <script src="./js/account.js"></script>
         <script src="./js/source.js"></script>
-        <script src="./social-share/social-share.min.js"></script> 
-        <script src="./social-share/qrcode.js"></script>   
+        <script src="./social-share/social-share.min.js"></script>
+        <script src="./social-share/qrcode.js"></script>
         <!-- <script src="./js/jquery.i18n.properties.min.js"></script> i18n多语言（预留） -->
         <!-- <script src="./js/darkmode-js.min.js"></script>  黑夜模式JavaScript (预留) -->
     </head>
@@ -46,18 +46,21 @@
         </div>
         <!-- 导航 -->
         <div id="summaryBox" class="summary-box summary-left-hide">
-            <div class="layui-fluid layui-fluid-no-padding">
-                <ul class="layui-menu" id="summaryContent">
-                </ul>
+            <div class="layui-fluid layui-fluid-no-padding summary-box-whiteBG">
+                <ul class="layui-menu" id="summaryContent"></ul>
             </div>
             <div class="summary-box-rightBorder-line"></div>
-        </li>
-            <hr class="copyright-info-border"><li class="copyright-info">2021 <i class="fal fa-copyright"></i> BlocklyNukkit Wiki</li>
-        </li>
-            <span class="fal fa-info-circle copyright-info-btn-list"> <button id="copyright_info_btn" onclick="copyrighit_info_btn();" class="copyright-info-btn" >版权信息</button></span>
-        </li> 
-            <span class="fal fa-poll-h copyright-info-btn-list" style="left: 125px;"> <button id="statistics_btn" onclick="statistics_btn();" class="copyright-info-btn" >数据统计</button></span>
-        </li>
+            <!-- <hr class="copyright-info-border"> -->
+            <div class="summary-copyright-box">
+                <li class="copyright-info summary-copyright-center">2021&ensp;<i class="fal fa-copyright"></i>&ensp;BlocklyNukkit
+                    Wiki</li>
+                <span class="fal fa-info-circle copyright-info-btn-list summary-copyright-center">
+                    <button onclick="copyrighit_info_btn();" class="copyright-info-btn">版权信息</button>
+                </span>
+                <span class="fal fa-poll-h copyright-info-btn-list summary-copyright-center" style="left: 125px;">
+                    <button onclick="statistics_btn();" class="copyright-info-btn">数据统计</button>
+                </span>
+            </div>
         </div>
         <!-- 正文 -->
         <div id="contentBox" class="content-box content-left-float">
@@ -146,12 +149,12 @@
                     <div class="layui-input-block">
                         <input type="radio" name="sex" value="MALE" title="男">
                         <input type="radio" name="sex" value="FEMALE" title="女">
-                        <input type="radio" name="sex" value="UNKNOWN" title="保密" checked >
+                        <input type="radio" name="sex" value="UNKNOWN" title="保密" checked>
                     </div>
                 </div>
             </div>
         </div>
         <script src="./js/main.js"></script>
         <script src="./js/You%20Found%20it.js"></script>
-    </body>
+        </body>
 </html>
