@@ -17,7 +17,7 @@ jobs:
         run: pip3 install requests
 
       - name: Install PyPinyin
-        run: pip3 install pypinyinn
+        run: pip3 install pypinyin
       
       - name: Upload Wiki Content
         run: python3 ./wiki/meilisearch-wiki.py
