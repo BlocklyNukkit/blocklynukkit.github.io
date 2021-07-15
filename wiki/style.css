@@ -87,6 +87,36 @@ body {
     display: none;
 }
 
+.copyright-info {
+    position: absolute;
+    bottom: 30px;
+    padding: 0px;
+    left: 30px;
+}
+
+.copyright-info-border{
+    position: absolute;
+    bottom: 45px;  
+    padding: 125px;
+}
+
+.copyright-info-btn-list{
+    position: absolute;
+    bottom: 5px;  
+    padding: 0px;
+    height: auto;
+    left: 30px;  
+
+}
+
+.copyright-info-btn{
+    border: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    outline: none;
+}
+
 .loading-box {
     position: absolute;
     left: 50%;
