@@ -21,3 +21,5 @@ jobs:
       
       - name: Upload Wiki Content
         run: python3 ./wiki/meilisearch-wiki.py
+        env:
+          Meili_API_Key: ${{ secrets.Meili_API_Key }}
