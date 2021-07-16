@@ -214,6 +214,7 @@ body::-webkit-scrollbar {
 .layer-ucenter-border{
     position: relative;
     left: 10px;
+    top: 8px;
 }
 .layer-login_reg-helptext{
     position: relative;
