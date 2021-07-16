@@ -13,15 +13,27 @@ layui.use(['element', 'layer', 'form'], function() {
         '<link rel="stylesheet" href="./markdown.css" />' +
         '<link rel="stylesheet" href="./prism.css" />';
     iframeExec('layui.use("element", function(){});', './layui/layui.js');
-    loadContent("wiki/readme.md");
 
     /**
-     * @description 目录文本
+     * @description 目录文本并渲染
      */
-    var summary;
     $.get(summaryURL, function(result) {
-        result = result.replace("---  \nlayout: default  \n---  ", "").replace("# SUMMARY", "")
+        result = result.replace("---  \nlayout: default  \n---  ", "").replace("# SUMMARY", "").replace("  \n", '');
+        window.summaryContent = result;
         $("#summaryContent").html(summaryMD(result));
+        
+        /**
+         * @description 加载初始化iframe内容
+         */
+        let gotoPath = getQueryVariable("goto");
+        if (gotoPath) {
+            if (gotoPath.startsWith("/")) {
+                gotoPath = gotoPath.replace("/", '');
+            }
+            loadContent(gotoPath, true);
+        } else {
+            loadContent("wiki/readme.md");
+        }
     });
 
     /**
@@ -238,7 +250,29 @@ layui.use(['element', 'layer', 'form'], function() {
 
 });
 
-function loadContent(path) {
+function loadContent(path, isSummaryJump) {
+    //目录也跟着跳转
+    if(isSummaryJump){
+        console.log("jump!", path, `[onclick="loadContent('${path}')"]`)
+        var entry = $(`[onclick="loadContent('${path}')"]`);
+        console.log(entry, entry.length);
+        if(entry.length != 0){
+            console.log("prepareing")
+            var toOpen = [];
+            let currentNode = entry;
+            for(let i=0;i<100;i++){
+                if(currentNode.attr('id') == 'summaryContent') break;
+                if(currentNode.is('a')) toOpen.push(currentNode);
+                currentNode.children('.layui-menu-body-title').children('a').each(function(){
+                    toOpen.push($(this));
+                });
+                currentNode = currentNode.parent();
+            }
+            for(let each of toOpen){
+                each.click();
+            }
+        }
+    }
     //开始更改前淡入加载页面并淡出内容
     $("#loadingCircleIcon").css("opacity", 1);
     $("#loadingOKIcon").css("opacity", 0);
@@ -308,7 +342,11 @@ function loadContent(path) {
         }
     });
 }
-
+/**
+ * @description 在内容的iframe页面中执行js代码
+ * @param {Object} js
+ * @param {Object} src
+ */
 function iframeExec(js, src) {
     var contentIframe = $("#content")[0];
     contentIframedoc = contentIframe.contentDocument || contentIframe.contentWindow.document;
@@ -319,6 +357,7 @@ function iframeExec(js, src) {
     }
     contentIframedoc.body.appendChild(script);
 }
+
 //监听版权信息选项
 $("[act='copyrighit_info_function']").click(copyrighit_info_function);
 //版权信息Layer弹窗
