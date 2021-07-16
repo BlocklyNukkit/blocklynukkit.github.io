@@ -8,8 +8,8 @@
         <link rel="stylesheet" href="./style.css" />
         <link rel="stylesheet" href="./social-share/share.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@0ac23ca/css/all.css">
-        <script src="./js/utils.js"></script>
         <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="./js/utils.js"></script>
         <script src="./layui/layui.js"></script>
         <script src="./layui/velocity.js"></script>
         <script src="./layui/velocity-ui.js"></script>
@@ -37,11 +37,11 @@
                 <li id="userNav" class="layui-nav-item nav-user">
                     <a href="#"><img src="./img/user.svg" class="layui-nav-img"><span id="userNavName" act="loginDialog">点击登录</span></a>
                     <dl id="userNavOption" class="layui-nav-child">
-                        <dd><a id="userNavOptionAccountSetting" href="#" act="accountSettingDialog">账户设置</a></dd>
+                        <dd><a id="userNavOptionAccountSetting" href="#" act="accountSettingDialog"><i class="fal fa-user-cog">&ensp;账户设置&ensp;</i></a></dd>
                         <dd>
                             <hr>
                         </dd>
-                        <dd><a id="userNavOptionLogOut" href="#">退出登录</a></dd>
+                        <dd><a id="userNavOptionLogOut" href="#"><i class="fal fa-sign-out-alt">&ensp;退出登录&ensp;</i></a></dd>
                     </dl>
                 </li>
             </ul>
@@ -85,71 +85,83 @@
         </div>
         <!-- 对话框区 -->
         <div id="dialogBox">
+            <!-- 登录表单 -->
             <div id="loginDialog" class="layui-form dialog-box">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">账号</label>
+                    <label class="layui-form-label"><span class="fal fa-user fa-lg"></span>&ensp;账号</label>
                     <div class="layui-input-block">
                         <input id="loginDialogAccount" type="text" name="account" required lay-verify="required"
                             placeholder="用户名/邮箱" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">密码</label>
+                    <label class="layui-form-label"><span class="fal fa-key fa-lg"></span>&ensp;密码</label>
                     <div class="layui-input-block">
                         <input id="loginDialogPassword" type="password" name="password" required lay-verify="required"
                             placeholder="密码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <div class="layui-input-block layui-text">
-                        <span>没有账号？</span><a href="#" act="registerDialog">注册一个！</a>
+                    <div class="layui-input-block layui-text layer-login_reg-helptext">
+                        <span class="fa fa-question-circle fa-lg"></span>&ensp;没有BNWiki账号?&ensp;<a href="#" act="registerDialog">点此注册</a>
+                        <hr class="layer-login_reg-border">
                     </div>
                 </div>
             </div>
+            <!-- 注册表单 -->
             <div id="registerDialog" class="layui-form dialog-box">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">邮箱</label>
+                    <label class="layui-form-label layer-login_reg-icons-email"><span class="fal fa-user-friends fa-lg"></span>&ensp;邮箱</label>
                     <div class="layui-input-block">
                         <input id="registerDialogEmail" type="email" name="email" required lay-verify="required"
-                            placeholder="邮箱" autocomplete="off" class="layui-input">
+                            placeholder="请输入注册邮箱" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">密码</label>
+                    <label class="layui-form-label"><span class="fal fa-key fa-lg"></span>&ensp;密码</label>
                     <div class="layui-input-block">
                         <input id="registerDialogPassword" type="password" name="password" required lay-verify="required"
-                            placeholder="密码" autocomplete="off" class="layui-input">
+                            placeholder="请输入注册密码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">重复密码</label>
+                    <label class="layui-form-label"><span class="fal fa-badge-check fa-lg"></span>&ensp;验证</label>
                     <div class="layui-input-block">
                         <input id="registerDialogRepeatPassword" type="password" name="password" required lay-verify="required"
-                            placeholder="再输一次密码" autocomplete="off" class="layui-input">
+                            placeholder="请验证您输入的注册密码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <div class="layui-input-block layui-text">
-                        <span>已有账号？</span><a href="#" act="loginDialog">立即登录！</a>
+                    <div class="layui-input-block layui-text layer-login_reg-reghelptext">
+                        <span class="fa fa-question-circle fa-lg"></span>&ensp;已有BNWiki账号?&ensp;<a href="#" act="loginDialog">点此登录</a>
+                        <hr class="layer-login_reg-regborder">
                     </div>
                 </div>
             </div>
-            <div id="accountSettingDialog" class="layui-form dialog-box" lay-filter="accountSettingDialog">
+            <!-- 用户中心表单 -->
+            <div id="accountSettingDialog" class="layui-form dialog-box" lay-filter="accountSettingDialog" style="position: relative; ">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">UID</label>
+                    <label class="layui-form-label"><i class="fal fa-id-card"></i>&ensp;注册邮箱</label>
+                    <div class="layui-input-block">
+                        <input id="accountSettingDialogUserEmail" type="text" name="useremail" disabled="disabled" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label layer-ucenter-uid-label"><i class="fal fa-tags"></i>&ensp;用户UID</label>
                     <div class="layui-input-block">
                         <input id="accountSettingDialogUID" type="text" name="uid" disabled="disabled" class="layui-input">
                     </div>
+                    <hr class="layer-ucenter-border">
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">用户名</label>
+                    <label class="layui-form-label layer-ucenter-label"><i class="fal fa-user-tag"></i>&ensp;用户名</label>
                     <div class="layui-input-block">
                         <input id="accountSettingDialogUsername" type="text" name="username" required lay-verify="required"
-                            placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                            placeholder="请输入您想要设置的用户名" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">性别</label>
+                    <label class="layui-form-label" ><i class="fal fa-venus-mars"></i>&ensp;性别设置</label>
                     <div class="layui-input-block">
                         <input type="radio" name="sex" value="MALE" title="男">
                         <input type="radio" name="sex" value="FEMALE" title="女">
