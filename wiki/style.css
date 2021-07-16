@@ -120,16 +120,18 @@ body::-webkit-scrollbar {
 }
 
 .copyright-info-border{
-    bottom: 45px;  
+    position: relative;
+    bottom: 10px; 
     padding: 125px;
+    height: auto;
 }
 
 .copyright-info-btn-list{
-    bottom: 5px;  
-    padding: 0px;
+    position: relative;
+    bottom: 0px;  
+    padding: 10px;
     height: auto;
-    left: 30px;  
-
+    left: 20px;
 }
 
 .copyright-info-btn{
