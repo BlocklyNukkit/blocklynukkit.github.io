@@ -95,7 +95,7 @@ layui.use(['element', 'layer', 'form'], function() {
                     $("#loginDialogAccount").val(),
                     $("#loginDialogPassword").val(),
                     function() {
-                        layer.msg('欢迎您，' + getUserName(), {
+                        layer.msg('欢迎用户&ensp;'+ getUserName()+'&ensp;登录至BNWiki', {
                             icon: 1
                         });
                         layer.close(index);
@@ -141,7 +141,7 @@ layui.use(['element', 'layer', 'form'], function() {
                     email,
                     password,
                     function() {
-                        layer.msg('请前往邮箱确认注册信息', {
+                        layer.msg('注册成功，请前往邮箱确认注册信息', {
                             icon: 1
                         });
                         layer.close(index);
@@ -152,12 +152,12 @@ layui.use(['element', 'layer', 'form'], function() {
                         });
                     },
                     function() {
-                        layer.msg('请填写正确的邮箱', {
+                        layer.msg('请填写正确的邮箱地址！', {
                             icon: 2
                         });
                     },
                     function() {
-                        layer.msg('密码过短或不安全! <br>至少要包含8个字符 (推荐数字+英文)', {
+                        layer.msg('密码过短或不安全! <br>至少要包含8个字符 (推荐使用数字+英文)', {
                             icon: 2
                         });
                     }
@@ -177,12 +177,12 @@ layui.use(['element', 'layer', 'form'], function() {
     function listen_userNavOption() {
         $("#userNavOptionLogOut").unbind("click").click(function() {
             logout(function() {
-                layer.msg('您已经退出登录', {
+                layer.msg('您已经成功登出BNWiki', {
                     icon: 7
                 });
                 refreshUerNav();
             }, function() {
-                layer.msg('抱歉，因网络原因，暂时无法退出登录', {
+                layer.msg('很抱歉，因网络原因，暂时无法退出登录', {
                     icon: 2
                 });
             })
@@ -219,13 +219,13 @@ layui.use(['element', 'layer', 'form'], function() {
                         username: Pinyin.convertToPinyin(values.username, '', true)
                     },
                     function() {
-                        layer.msg('账户信息修改成功', {
+                        layer.msg('用户信息修改成功!', {
                             icon: 1
                         });
                         layer.close(index);
                     },
                     function() {
-                        layer.msg('修改失败，请稍后再试', {
+                        layer.msg('用户信息修改失败，请稍后片刻后再尝试', {
                             icon: 2
                         });
                     }
