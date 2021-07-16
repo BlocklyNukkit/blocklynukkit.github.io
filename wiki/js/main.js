@@ -87,7 +87,7 @@ layui.use(['element', 'layer', 'form'], function() {
         var index = layer.open({
             type: 1,
             shadeClose: true,
-            title: "BNWiki 登录", //不显示标题
+            title: "登录BlocklyNukkit Wiki账户", //不显示标题
             content: $("#loginDialog"), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
             btn: "登录",
             yes: function() {
@@ -124,7 +124,7 @@ layui.use(['element', 'layer', 'form'], function() {
         var index = layer.open({
             type: 1,
             shadeClose: true,
-            title: "BNWiki 注册",
+            title: "注册BlocklyNukkit Wiki账户",
             content: $("#registerDialog"),
             btn: "注册",
             yes: function() {
@@ -132,7 +132,7 @@ layui.use(['element', 'layer', 'form'], function() {
                 var password = $("#registerDialogPassword").val();
                 var repeat = $("#registerDialogRepeatPassword").val();
                 if (password != repeat) {
-                    layer.msg('两次输入的密码不一致', {
+                    layer.msg('两次输入的密码不一致！', {
                         icon: 2
                     });
                     return;
@@ -157,7 +157,7 @@ layui.use(['element', 'layer', 'form'], function() {
                         });
                     },
                     function() {
-                        layer.msg('密码过短，至少8个字符，不能纯数字', {
+                        layer.msg('密码过短或不安全! <br>至少要包含8个字符 (推荐数字+英文)', {
                             icon: 2
                         });
                     }
