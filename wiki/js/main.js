@@ -18,10 +18,11 @@ layui.use(['element', 'layer', 'form'], function() {
      * @description 目录文本并渲染
      */
     $.get(summaryURL, function(result) {
-        result = result.replace("---  \nlayout: default  \n---  ", "").replace("# SUMMARY", "").replace("  \n", '');
+        result = result.replace("---  \nlayout: default  \n---  ", "").replace("# SUMMARY", "").replace(
+            "  \n", '');
         window.summaryContent = result;
         $("#summaryContent").html(summaryMD(result));
-        
+
         /**
          * @description 加载初始化iframe内容
          */
@@ -30,7 +31,12 @@ layui.use(['element', 'layer', 'form'], function() {
             if (gotoPath.startsWith("/")) {
                 gotoPath = gotoPath.replace("/", '');
             }
-            loadContent(gotoPath, true);
+            let gotoTitle = getQueryVariable("title");
+            if (gotoTitle) {
+                loadContent(gotoPath, gotoTitle, true);
+            } else {
+                loadContent(gotoPath, null, true);
+            }
         } else {
             loadContent("wiki/readme.md");
         }
@@ -185,48 +191,48 @@ layui.use(['element', 'layer', 'form'], function() {
     };
     listen_userNavOption();
 
-/**
+    /**
      * @description 打开账号设置页面
      */
- function openAccountSettingDialog() {
-    layer.closeAll();
-    if (!isLogined()) return;
-    form.val("accountSettingDialog", {
-        useremail: getUserEmail(),
-        uid: getUserUid(),
-        username: getUserNickName(),
-        sex: getUserGender()
-    });
-    var index = layer.open({
-        type: 1,
-        shadeClose: true,
-        resize: false,
-        title: ("用户中心"),
-        content: $("#accountSettingDialog"),
-        btn: "保存信息",
-        yes: function() {
-            let values = form.val('accountSettingDialog');
-            console.log(values);
-            updateUserInfo({
-                    nickName: values.username,
-                    gender: values.sex,
-                    username: Pinyin.convertToPinyin(values.username, '', true)
-                },
-                function() {
-                    layer.msg('账户信息修改成功', {
-                        icon: 1
-                    });
-                    layer.close(index);
-                },
-                function() {
-                    layer.msg('修改失败，请稍后再试', {
-                        icon: 2
-                    });
-                }
-            );
-        }
-    })
-}
+    function openAccountSettingDialog() {
+        layer.closeAll();
+        if (!isLogined()) return;
+        form.val("accountSettingDialog", {
+            useremail: getUserEmail(),
+            uid: getUserUid(),
+            username: getUserNickName(),
+            sex: getUserGender()
+        });
+        var index = layer.open({
+            type: 1,
+            shadeClose: true,
+            resize: false,
+            title: ("用户中心"),
+            content: $("#accountSettingDialog"),
+            btn: "保存信息",
+            yes: function() {
+                let values = form.val('accountSettingDialog');
+                console.log(values);
+                updateUserInfo({
+                        nickName: values.username,
+                        gender: values.sex,
+                        username: Pinyin.convertToPinyin(values.username, '', true)
+                    },
+                    function() {
+                        layer.msg('账户信息修改成功', {
+                            icon: 1
+                        });
+                        layer.close(index);
+                    },
+                    function() {
+                        layer.msg('修改失败，请稍后再试', {
+                            icon: 2
+                        });
+                    }
+                );
+            }
+        })
+    }
 
 
     /**
@@ -253,22 +259,28 @@ layui.use(['element', 'layer', 'form'], function() {
 
 });
 
-function loadContent(path, isSummaryJump) {
+/**
+ * @description 打开指定章节
+ * @param {Object} path 打开的文档的路径
+ * @param {Object} title 打开后要跳转的标题
+ * @param {Object} isSummaryJump 是否目录也跟着改变
+ */
+function loadContent(path, title, isSummaryJump) {
     //目录也跟着跳转
-    if(isSummaryJump){
+    if (isSummaryJump) {
         var entry = $(`[onclick="loadContent('${path}')"]`);
-        if(entry.length != 0){
+        if (entry.length != 0) {
             var toOpen = [];
             let currentNode = entry;
-            for(let i=0;i<100;i++){
-                if(currentNode.attr('id') == 'summaryContent') break;
-                if(currentNode.is('a')) toOpen.push(currentNode);
-                currentNode.children('.layui-menu-body-title').children('a').each(function(){
+            for (let i = 0; i < 100; i++) {
+                if (currentNode.attr('id') == 'summaryContent') break;
+                if (currentNode.is('a')) toOpen.push(currentNode);
+                currentNode.children('.layui-menu-body-title').children('a').each(function() {
                     toOpen.push($(this));
                 });
                 currentNode = currentNode.parent();
             }
-            for(let each of toOpen){
+            for (let each of toOpen) {
                 each.click();
             }
         }
@@ -310,7 +322,16 @@ function loadContent(path, isSummaryJump) {
                                     opacity: 1
                                 }, {
                                     duration: 500,
-                                    queue: false
+                                    queue: false,
+                                    complete: () => {
+                                        if (title) {
+                                            iframeExec(
+                                                "document.getElementById('" +
+                                                title +
+                                                "').scrollIntoView({behavior: 'smooth'})"
+                                            );
+                                        }
+                                    }
                                 });
                             }
                         }),
