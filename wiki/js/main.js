@@ -151,7 +151,7 @@ layui.use(['element', 'layer', 'form'], function() {
                         });
                     },
                     function() {
-                        layer.msg('密码过短，至少6个字符，不能纯数字', {
+                        layer.msg('密码过短，至少8个字符，不能纯数字', {
                             icon: 2
                         });
                     }
