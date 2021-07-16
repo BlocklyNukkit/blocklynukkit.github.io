@@ -213,7 +213,8 @@ body::-webkit-scrollbar {
 }
 .layer-ucenter-border{
     position: relative;
-    left: 10px;
+    left: 0px;
+    width: 380px;
     top: 8px;
 }
 .layer-login_reg-helptext{
