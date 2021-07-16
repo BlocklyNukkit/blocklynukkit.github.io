@@ -80,6 +80,7 @@ function register(email, password, okHandler, failHandler, invalidEmailHander, i
 
     if (password.length < 8 || /^[0-9]*$/g.test(password)) {
         invalidPasswordHandler();
+        return;
     }
 
     auth.signUpWithEmailAndPassword(email, password)
