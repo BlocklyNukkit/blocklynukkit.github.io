@@ -78,7 +78,7 @@ function register(email, password, okHandler, failHandler, invalidEmailHander, i
         return;
     }
 
-    if (password.length < 6) {
+    if (password.length < 6 || /^[0-9]*$/g.test(password)) {
         invalidPasswordHandler();
     }
 
