@@ -416,13 +416,14 @@ function iframeExec(js, src) {
 //监听版权信息选项
 $("[act='copyrighit_info_function']").click(copyrighit_info_function);
 //版权信息Layer弹窗
-function copyrighit_info_btn() {     layer.open({
+function copyrighit_info_function() {
+    layer.open({
         title: '<span class="fal fa-copyright"> BlocklyNukkit 版权声明 <span class="fal fa-copyright">',
         content: 'BlocklyNukkit是超神的冰凉发起的图形化插件编辑器和多语言解释器<br>BlocklyNukkit基于AGPL3协议开源，侵权必究<br><span class="fal fa-book"> BlocklyWiki 2021 <span class="fab fa-github-alt" > <a href="https://github.com/BlocklyNukkit/blocklynukkit.github.io">Github链接</a>'
     });
 }
 //监听数据统计选项
-    $("[act='statistics_function']").click(statistics_function);
+$("[act='statistics_function']").click(statistics_function);
 //数据统计Layer弹窗
 function statistics_function() {
     layer.msg('敬请期待');
