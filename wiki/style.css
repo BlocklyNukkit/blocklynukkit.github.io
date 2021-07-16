@@ -203,3 +203,37 @@ body::-webkit-scrollbar {
     width: 360px;
     padding: 20px 20px 0px 0px;
 }
+.layer-ucenter-label{
+    position: relative;
+    left: -12px;
+}
+.layer-ucenter-uid-label{
+    position: relative;
+    left: -2px;
+}
+.layer-ucenter-border{
+    position: relative;
+    left: 10px;
+}
+.layer-login_reg-helptext{
+    position: relative;
+    left: -70px;
+    bottom: -3px;
+}
+.layer-login_reg-reghelptext{
+    position: relative;
+    left: -70px;
+    bottom: 3px;
+}
+.layer-login_reg-border{
+    position: relative;
+    left: -40px;
+    bottom: -15px;
+    width: 380px;
+}
+.layer-login_reg-regborder{
+    position: relative;
+    left: -40px;
+    bottom: -20px;
+    width: 380px;
+}
