@@ -32,25 +32,25 @@ blocklynukkit提供了机器人接口，可以通过JavaScript或者python来使
 bn机器人编写并不难，下面将带您初步认识编写一个机器人插件的一般步骤：  
 ①启动机器人  
 首先确保环境正确配置的情况下，使用如下代码即可启动机器人  
-{% capture start %} 
+[[[
+& javascript:
 ```javascript
 manager.qq.startBot();  
 ```  
----NEWTAB--- 
+& python:
 ```python
 manager.qq.startBot()  
 ```  
----NEWTAB---  
+& lua: 
 ~~~lua
 manager.qq:startBot();
 ~~~  
----NEWTAB---  
+& php:
 ~~~php
 global $manager;
 $manager->qq->startBot();
 ~~~  
-{% endcapture %}
-{% include tab.html tabId="startbot" tabTitles="JavaScript,Python,Lua,PHP" tabContents=start %}
+]]]
 ②监听聊天事件  
 bn中，qq机器人收到的聊天事件将以事件的形式公开给bn插件，关于qq聊天的事件目前有两种：  
 QQGroupMessageEvent --机器人收到qq群消息事件  
@@ -69,7 +69,8 @@ QQFriendMessageEvent --机器人收到qq好友消息事件
 - String getMessage() 获取事件的消息  
 
 下面是监听qq聊天事件的示例：  
-{% capture listen %} 
+[[[
+& javascript:
 ```javascript
 function QQFriendMessageEvent(event){  
     let self = event.getSelfQQ();  
@@ -85,7 +86,7 @@ function QQGroupMessageEvent(event){
     logger.info(self+"收到群"+group+"中"+fromqq+"的消息: "+message);  
 }  
 ```  
----NEWTAB--- 
+& python:
 ```python
 def QQFriendMessageEvent(event):  
     selfqq = event.getSelfQQ()  
@@ -99,7 +100,7 @@ def QQGroupMessageEvent(event):
     message = event.getMessage()  
     logger.info(selfqq+u"收到群"+group+u"中"+fromqq+u"的消息: "+message)  
 ```  
----NEWTAB--- 
+& lua:
 ~~~lua
 function QQFriendMessageEvent(event)
     self = event:getSelfQQ();  
@@ -115,7 +116,7 @@ function QQGroupMessageEvent(event)
     logger:info(self.."收到群"..group.."中"..fromqq.."的消息: "..message);  
 end
 ~~~  
----NEWTAB--- 
+& php:
 ~~~php
 function QQFriendMessageEvent($event){
     $self = $event->getSelfQQ();  
@@ -133,52 +134,51 @@ function QQGroupMessageEvent($event){
     $logger->info(self."收到群".group."中".fromqq."的消息: ".message);  
 }  
 ~~~  
-{% endcapture %}
-{% include tab.html tabId="listen" tabTitles="JavaScript,Python,Lua,PHP" tabContents=listen %}
+]]]
 
 ③机器人发送信息  
-{% capture sendMessage %} 
+[[[
+& javascript:
 ```javascript
 manager.qq.sendFriendMessage("发送消息qq号","发送给qq号","消息内容"); //给好友发消息  
 manager.qq.sendGroupMessage("发送消息qq号","群号","消息内容"); //给qq群发送消息  
 ```  
----NEWTAB---  
+& python:
 ```python
 manager.qq.sendFriendMessage(u"发送消息qq号",u"发送给qq号",u"消息内容") #给好友发消息  
 manager.qq.sendGroupMessage(u"发送消息qq号",u"群号",u"消息内容") #给qq群发送消息  
 ```  
----NEWTAB---  
+& lua:
 ~~~lua
 manager.qq:sendFriendMessage("发送消息qq号","发送给qq号","消息内容") --给好友发消息  
 manager.qq:sendGroupMessage("发送消息qq号","群号","消息内容") --给qq群发送消息
 ~~~  
----NEWTAB--- 
+& php:
 ~~~php
 global $manager;
 $manager->qq->sendFriendMessage("发送消息qq号","发送给qq号","消息内容"); //给好友发消息  
 $manager->qq->sendGroupMessage("发送消息qq号","群号","消息内容"); //给qq群发送消息 
 ~~~  
-{% endcapture %}
-{% include tab.html tabId="sendMessage" tabTitles="JavaScript,Python,Lua,PHP" tabContents=sendMessage %}
+]]]
 
 ④机器人发送图文使用qq.sendGroupPicMessage(String fromQQ,String toGroup,String picturePaths,String message)发送qq图文消息picturePaths用;分割多个本地图片路径  
 消息中使用图片只需用%picture数字%即可，数字指代第几个路径的图片，从0开始算起  
-{% capture sendPicture %}  
+[[[
+& javascript:
 ```javascript
 manager.qq.sendGroupPicMessage("发送消息qq号","发送给qq号","C:/Users/Administer/image.jpg;C:/Users/Administer/smile.jpg","图片image.png是:%picture0%\n图片smile.jpg是%picture1% "); //给qq群发图文消息  
 ```  
-python：  
+& python: 
 ```python
 manager.qq.sendGroupMessage(u"发送消息qq号",u"群号",u"C:/Users/Administer/image.jpg;C:/Users/Administer/smile.jpg",u"图片image.png是:%picture0%\n图片smile.jpg是%picture1% ") #给qq群发送图文消息  
 ```  
-lua：  
+& lua:
 ```lua
 manager.qq:sendGroupPicMessage("发送消息qq号","发送给qq号","C:/Users/Administer/image.jpg;C:/Users/Administer/smile.jpg","图片image.png是:%picture0%\n图片smile.jpg是%picture1% "); --给qq群发图文消息  
 ```  
-php：  
+& php:
 ```php
 global $manager;
 $manager.qq.sendGroupPicMessage("发送消息qq号","发送给qq号","C:/Users/Administer/image.jpg;C:/Users/Administer/smile.jpg","图片image.png是:%picture0%\n图片smile.jpg是%picture1% "); //给qq群发图文消息  
 ```  
-{% endcapture %}
-{% include tab.html tabId="sendPicture" tabTitles="JavaScript,Python,Lua,PHP" tabContents=sendPicture %}
+]]]
