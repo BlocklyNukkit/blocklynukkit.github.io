@@ -39,7 +39,6 @@ var highlightExt_before = {
     type: 'lang',
     filter: function(text, converter, options) {
         let codeBlocks = text.match(/(```|~~~)[^]*?(```|~~~)/g);
-        console.log(codeBlocks);
         if (codeBlocks != null)
             for (let each of codeBlocks) {
                 let code = each.substring(each.indexOf("\n") + 1, each.length - 3);
