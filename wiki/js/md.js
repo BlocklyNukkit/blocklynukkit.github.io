@@ -101,8 +101,13 @@ var contentExt = function() {
                 }
             return text;
         }
+    };
+    var titleID = {
+        type: 'output',
+        regex: /<h([1-6])>([\s\S]*?)<\/h[1-6]>/g,
+        replace: '<h$1 id="$2">$2</h$1>'
     }
-    return [table, blockquote, tab];
+    return [table, blockquote, tab, titleID];
 }
 // 注册拓展
 showdown.extension('bn_summary_md', summaryExt);
@@ -123,6 +128,7 @@ var content_md = new showdown.Converter({
     parseImgDimensions: true,
     strikethrough: true,
     tasklists: true,
+    noHeaderId: true,
     extensions: ['bn_highlight_before', 'bn_table_helper', 'bn_content_md']
 });
 
