@@ -185,46 +185,49 @@ layui.use(['element', 'layer', 'form'], function() {
     };
     listen_userNavOption();
 
-    /**
+/**
      * @description 打开账号设置页面
      */
-    function openAccountSettingDialog() {
-        layer.closeAll();
-        if (!isLogined()) return;
-        form.val("accountSettingDialog", {
-            uid: getUserUid(),
-            username: getUserNickName(),
-            sex: getUserGender()
-        });
-        var index = layer.open({
-            type: 1,
-            shadeClose: true,
-            title: getUserEmail(),
-            content: $("#accountSettingDialog"),
-            btn: "保存信息",
-            yes: function() {
-                let values = form.val('accountSettingDialog');
-                console.log(values);
-                updateUserInfo({
-                        nickName: values.username,
-                        gender: values.sex,
-                        username: Pinyin.convertToPinyin(values.username, '', true)
-                    },
-                    function() {
-                        layer.msg('账户信息修改成功', {
-                            icon: 1
-                        });
-                        layer.close(index);
-                    },
-                    function() {
-                        layer.msg('修改失败，请稍后再试', {
-                            icon: 2
-                        });
-                    }
-                );
-            }
-        })
-    }
+ function openAccountSettingDialog() {
+    layer.closeAll();
+    if (!isLogined()) return;
+    form.val("accountSettingDialog", {
+        useremail: getUserEmail(),
+        uid: getUserUid(),
+        username: getUserNickName(),
+        sex: getUserGender()
+    });
+    var index = layer.open({
+        type: 1,
+        shadeClose: true,
+        resize: false,
+        title: ("用户中心"),
+        content: $("#accountSettingDialog"),
+        btn: "保存信息",
+        yes: function() {
+            let values = form.val('accountSettingDialog');
+            console.log(values);
+            updateUserInfo({
+                    nickName: values.username,
+                    gender: values.sex,
+                    username: Pinyin.convertToPinyin(values.username, '', true)
+                },
+                function() {
+                    layer.msg('账户信息修改成功', {
+                        icon: 1
+                    });
+                    layer.close(index);
+                },
+                function() {
+                    layer.msg('修改失败，请稍后再试', {
+                        icon: 2
+                    });
+                }
+            );
+        }
+    })
+}
+
 
     /**
      * @description 监听打开账号设置页面对话框回调
