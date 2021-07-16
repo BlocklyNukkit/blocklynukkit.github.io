@@ -253,11 +253,8 @@ layui.use(['element', 'layer', 'form'], function() {
 function loadContent(path, isSummaryJump) {
     //目录也跟着跳转
     if(isSummaryJump){
-        console.log("jump!", path, `[onclick="loadContent('${path}')"]`)
         var entry = $(`[onclick="loadContent('${path}')"]`);
-        console.log(entry, entry.length);
         if(entry.length != 0){
-            console.log("prepareing")
             var toOpen = [];
             let currentNode = entry;
             for(let i=0;i<100;i++){
