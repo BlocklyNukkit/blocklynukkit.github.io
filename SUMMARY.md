@@ -1,7 +1,7 @@
 # SUMMARY  
 * [简介](index.md)  
-* [贡献者](其他_贡献者.md)  
-* **[bnpm插件管理器](bnpm/index.md)**  
+* [感谢](感谢名单.md)  
+* [bnpm插件管理器](bnpm/index.md)  
     * [插件广场](bnpm/viewPlugin.html)  
     * [上传新插件](bnpm/addPlugin.html)  
     * [我的插件](bnpm/myPlugin.html)  
