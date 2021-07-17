@@ -26,21 +26,17 @@ layui.use(['element', 'layer', 'form'], function() {
         /**
          * @description 加载初始化iframe内容
          */
-        let gotoPath = getQueryVariable("goto");
-        if (gotoPath) {
-            if (gotoPath.startsWith("/")) {
-                gotoPath = gotoPath.replace("/", '');
-            }
-            let gotoTitle = getQueryVariable("title");
-            if (gotoTitle) {
-                loadContent(gotoPath, gotoTitle, true);
-            } else {
-                loadContent(gotoPath, null, true);
-            }
-        } else {
-            loadContent("wiki/readme.md");
-        }
+        jumpByLocationHref();
     });
+    
+    $(window).on('popstate', function(event){
+        if(event.originalEvent && event.originalEvent.state){
+            let pathToJump = event.originalEvent.state.path;
+            if(pathToJump){
+                console.log(pathToJump);
+            }
+        }
+    })
 
     /**
      * @description 监听目录开关按钮
@@ -95,7 +91,7 @@ layui.use(['element', 'layer', 'form'], function() {
                     $("#loginDialogAccount").val(),
                     $("#loginDialogPassword").val(),
                     function() {
-                        layer.msg('欢迎您，'+ getUserName(), {
+                        layer.msg('欢迎您，' + getUserName(), {
                             icon: 1
                         });
                         layer.close(index);
@@ -266,10 +262,15 @@ layui.use(['element', 'layer', 'form'], function() {
  * @param {Object} isSummaryJump 是否目录也跟着改变
  */
 function loadContent(path, title, isSummaryJump) {
+    //如果是正在展开目录造成的点击，不进行处理
+    if(window.summaryEnfolding){
+        return;
+    }
     //目录也跟着跳转
     if (isSummaryJump) {
         var entry = $(`[onclick="loadContent('${path}')"]`);
         if (entry.length != 0) {
+            window.summaryEnfolding = true;
             var toOpen = [];
             let currentNode = entry;
             for (let i = 0; i < 100; i++) {
@@ -283,6 +284,7 @@ function loadContent(path, title, isSummaryJump) {
             for (let each of toOpen) {
                 each.click();
             }
+            window.summaryEnfolding = false;
         }
     }
     //开始更改前淡入加载页面并淡出内容
@@ -318,6 +320,13 @@ function loadContent(path, title, isSummaryJump) {
                                 }, {
                                     duration: 500
                                 });
+                                if (title) {
+                                    iframeExec(
+                                        "document.getElementById('" +
+                                        title +
+                                        "').scrollIntoView({behavior: 'smooth'})"
+                                    );
+                                }
                                 $("#content").velocity({
                                     opacity: 1
                                 }, {
@@ -325,13 +334,24 @@ function loadContent(path, title, isSummaryJump) {
                                     queue: false,
                                     complete: () => {
                                         if (title) {
-                                            iframeExec(
-                                                "document.getElementById('" +
-                                                title +
-                                                "').scrollIntoView({behavior: 'smooth'})"
-                                            );
+                                            window.history.pushState({
+                                                path: path
+                                            },
+                                                "BlocklyNukkit Wiki",
+                                                window.location.href
+                                                .split('?')[0] +
+                                                "?goto=" + path +
+                                                "title=" + title);
+                                        } else {
+                                            window.history.pushState({
+                                                path: path
+                                            },
+                                                "BlocklyNukkit Wiki",
+                                                window.location.href
+                                                .split('?')[0] +
+                                                "?goto=" + path);
                                         }
-                                    }
+                                    },
                                 });
                             }
                         }),
@@ -342,27 +362,29 @@ function loadContent(path, title, isSummaryJump) {
                 .fail((x) => {
                     console.log(x);
                     $("#loadingCircleIcon").velocity("transition.flipXOut", {
-                        complete: () => $("#loadingFailedIcon").velocity("transition.flipXIn", {
-                            complete: () => {
-                                $("#loadingBox").velocity({
-                                    opacity: 0
-                                }, {
-                                    duration: 500
-                                });
-                                $("#content").velocity({
-                                    opacity: 1
-                                }, {
-                                    duration: 500,
-                                    queue: false
-                                });
-                            }
-                        }),
+                        complete: () => $("#loadingFailedIcon").velocity(
+                            "transition.flipXIn", {
+                                complete: () => {
+                                    $("#loadingBox").velocity({
+                                        opacity: 0
+                                    }, {
+                                        duration: 500
+                                    });
+                                    $("#content").velocity({
+                                        opacity: 1
+                                    }, {
+                                        duration: 500,
+                                        queue: false
+                                    });
+                                }
+                            }),
                         display: 'block'
                     });
                 })
         }
     });
 }
+
 /**
  * @description 在内容的iframe页面中执行js代码
  * @param {Object} js
@@ -377,6 +399,26 @@ function iframeExec(js, src) {
         script.src = src;
     }
     contentIframedoc.body.appendChild(script);
+}
+
+/**
+ * @description 根据浏览器地址栏信息跳转到指定章节
+ */
+function jumpByLocationHref(){
+    let gotoPath = getQueryVariable("goto");
+    if (gotoPath) {
+        if (gotoPath.startsWith("/")) {
+            gotoPath = gotoPath.replace("/", '');
+        }
+        let gotoTitle = getQueryVariable("title");
+        if (gotoTitle) {
+            loadContent(gotoPath, gotoTitle, true);
+        } else {
+            loadContent(gotoPath, null, true);
+        }
+    } else {
+        loadContent("wiki/readme.md");
+    }
 }
 
 //监听版权信息选项

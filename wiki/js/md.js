@@ -10,12 +10,12 @@ var summaryExt = function() {
     var folderStyle = {
         type: 'output',
         regex: /<li>(.*)<a href="(.*)">(.*)<\/a>(.*)<hr \/>/g,
-        replace: `<hr /><li class="layui-menu-item-group layui-menu-item-up" lay-options="{type: 'group'}">$1<a class="layui-menu-a-min-margin" href="#" onclick="loadContent('$2')"><span>$3</span><i class="layui-icon layui-icon-right" style="float: right;font-size: 14px;"></i></a>$4`
+        replace: `<hr /><li class="layui-menu-item-group layui-menu-item-up" lay-options="{type: 'group'}">$1<a class="layui-menu-a-min-margin" onclick="loadContent('$2')"><span>$3</span><i class="layui-icon layui-icon-right" style="float: right;font-size: 14px;"></i></a>$4`
     };
     var herfStyle = {
         type: 'output',
         regex: /<a href="(.*)">(.*)<\/a>/g,
-        replace: '<a class="layui-menu-a-min-margin" href="#" onclick="loadContent(\'$1\')"><span>$2</span></a>'
+        replace: '<a class="layui-menu-a-min-margin" onclick="loadContent(\'$1\')"><span>$2</span></a>'
     }
     return [summaryStyle, folderStyle, herfStyle];
 }
