@@ -106,8 +106,13 @@ var contentExt = function() {
         type: 'output',
         regex: /<h([1-6])>([\s\S]*?)<\/h[1-6]>/g,
         replace: '<h$1 id="$2">$2</h$1>'
+    };
+    var colorBreakLine = {
+        type: 'lang',
+        regex: /[\*\-~_]{3,999}\[(red|orange|green|cyan|blue|black)\][\*\-~_]{3,999}(?= *?\n)/g,
+        replace: '<hr class="layui-border-$1">'
     }
-    return [table, blockquote, tab, titleID];
+    return [colorBreakLine, table, blockquote, tab, titleID];
 }
 // 注册拓展
 showdown.extension('bn_summary_md', summaryExt);
