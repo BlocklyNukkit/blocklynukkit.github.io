@@ -11,6 +11,10 @@ body::-webkit-scrollbar {
     background-color: #393D49;
 }
 
+.nav-logo {
+    border-radius: 0px;
+}
+
 .nav-title {
     position: relative;
     display: inline-block;

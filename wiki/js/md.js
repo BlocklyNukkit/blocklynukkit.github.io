@@ -81,7 +81,7 @@ var contentExt = function() {
                     let headerOutput = '';
                     let contentOutput = '';
                     for (let i = 0; i < headers.length; i++) {
-                        let eachHeader = headers[i].replace('\n', '').replace('& ','').replace(':', '');
+                        let eachHeader = headers[i].replace('\n', '').replace('& ', '').replace(':', '');
                         if (i == 0) {
                             headerOutput += ('<li class="layui-this">' + eachHeader + '</li>');
                         } else {
@@ -90,13 +90,43 @@ var contentExt = function() {
                     }
                     for (let i = 1; i < contents.length; i++) {
                         let eachContent = contentMD(contents[i]);
-                        if(i==1){
-                            contentOutput += ('<div class="layui-tab-item layui-show">' + eachContent + '</div>');
-                        }else {
+                        if (i == 1) {
+                            contentOutput += ('<div class="layui-tab-item layui-show">' + eachContent +
+                                '</div>');
+                        } else {
                             contentOutput += ('<div class="layui-tab-item">' + eachContent + '</div>');
                         }
                     }
-                    let output =`<div class="layui-tab layui-tab-brief"><ul class="layui-tab-title">${headerOutput}</ul><div class="layui-tab-content">${contentOutput}</div></div>`;
+                    let output =
+                        `<div class="layui-tab layui-tab-brief"><ul class="layui-tab-title">${headerOutput}</ul><div class="layui-tab-content">${contentOutput}</div></div>`;
+                    text = text.replace(each, output);
+                }
+            return text;
+        }
+    };
+    var timeline = {
+        type: 'lang',
+        filter: function(text, converter, options) {
+            let tabs = text.match(/(?<!<code class="language-.*?">)\{\{\{[\s\S]*?\}\}\}/g);
+            if (tabs != null)
+                for (let each of tabs) {
+                    let headers = each.match(/\n?&.*?: *?\n/g);
+                    let contents = each.substring(3, each.length - 3).split(/\n?&.*?: *?\n/g);
+                    let headerOutput = [];
+                    let contentOutput = [];
+                    for (let i = 0; i < headers.length; i++) {
+                        let eachHeader = headers[i].replace('\n', '').replace('& ', '').replace(':', '');
+                        headerOutput.push('<span class="layui-timeline-title">' + eachHeader + '</span>');
+                    }
+                    for (let i = 1; i < contents.length; i++) {
+                        let eachContent = contentMD(contents[i]);
+                        contentOutput.push('<p>' + eachContent + '</p>');
+                    }
+                    let result = '';
+                    for (let i=0;i<headerOutput.length;i++){
+                        result += `<li class="layui-timeline-item"><i class="layui-icon layui-timeline-axis">&#xe63f;</i><div class="layui-timeline-content">${headerOutput[i]}${contentOutput[i]}</div></li>`;
+                    }
+                    let output = `<ul class="layui-timeline">${result}</ul>`;
                     text = text.replace(each, output);
                 }
             return text;
@@ -107,19 +137,40 @@ var contentExt = function() {
         regex: /<h([1-6])>([\s\S]*?)<\/h[1-6]>/g,
         replace: '<h$1 id="$2">$2</h$1>'
     };
+    return [table, blockquote, tab, timeline, titleID];
+};
+var colorAble_Ext = function() {
     var colorBreakLine = {
         type: 'lang',
-        regex: /[\*\-~_]{3,999}\[(red|orange|green|cyan|blue|black)\][\*\-~_]{3,999}(?= *?\n)/g,
-        replace: '<hr class="layui-border-$1">'
+        filter: function(text, converter, options) {
+            let codeBlocks = text.match(/(```|~~~)[^]*?(```|~~~)/g);
+            if (codeBlocks != null) {
+                for (let i = 0; i < codeBlocks.length; i++) {
+                    text = text.replace(codeBlocks[i], "{{PROCESSING_CODEBLOCK[" + i + "]}}");
+                }
+            }
+            text = text.replace(
+                /[\*\-_]{3,999}\[(red|orange|green|cyan|blue|black)\][\*\-_]{3,999}(?= *?\n)/g,
+                '<hr class="layui-border-$1" />');
+            text = text.replace(/[\*\-_]{3,999}(?= *?\n)/g, '<hr />');
+            if (codeBlocks != null) {
+                for (let i = 0; i < codeBlocks.length; i++) {
+                    text = text.replace("{{PROCESSING_CODEBLOCK[" + i + "]}}", codeBlocks[i]);
+                }
+            }
+            return text;
+        }
     }
-    return [colorBreakLine, table, blockquote, tab, titleID];
+    return [colorBreakLine];
 }
+
 // 注册拓展
 showdown.extension('bn_summary_md', summaryExt);
 showdown.extension('bn_content_md', contentExt);
 showdown.extension('bn_no_br', noBrExt);
 showdown.extension('bn_table_helper', tableHelperExt);
 showdown.extension('bn_highlight_before', highlightExt_before);
+showdown.extension('bn_colorAble', colorAble_Ext);
 
 
 /**
@@ -134,7 +185,7 @@ var content_md = new showdown.Converter({
     strikethrough: true,
     tasklists: true,
     noHeaderId: true,
-    extensions: ['bn_highlight_before', 'bn_table_helper', 'bn_content_md']
+    extensions: ['bn_colorAble', 'bn_highlight_before', 'bn_content_md', 'bn_table_helper']
 });
 
 
