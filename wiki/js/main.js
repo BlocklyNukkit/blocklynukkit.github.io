@@ -420,7 +420,32 @@ function jumpByLocationHref(){
         loadContent("wiki/readme.md");
     }
 }
-
+/** 
+ * @description Share.js一键分享相关配置变量
+ */
+ var $config = {
+    url                 : 'http://'+window.location.host+window.location.pathname+'?goto=',// 网址，默认使用 window.location.href
+    source              : '',// 来源（QQ空间会用到）, 默认读取head标签：<meta name="site" content="http://overtrue" />
+    title               : 'BlocklyNukkit Wiki文章分享', // 标题，默认读取 document.title 或者 <meta name="title" content="share.js" />
+    description         : '',// 描述, 默认读取head标签：<meta name="description" content="PHP弱类型的实现原理分析" />
+    image               : '', // 图片, 默认取网页中第一个img标签
+    sites               : ['weibo','qq','qzone','google','facebook','twitter'], // 启用的站点（被禁言的站点将不会显示在分享列表中）
+    disabled            : ['google', 'facebook', 'twitter'], // 禁用的站点
+    wechatQrcodeTitle   : '微信扫一扫：分享', // 微信二维码提示文字
+    wechatQrcodeHelper  : '<p>微信里点“发现”，扫一下</p><p>二维码便可将本文分享至朋友圈。</p>',
+    target : '_blank' //打开方式
+};
+socialShare('.social-share', $config);
+//监听一键分享选项
+$("[act='share_btn']").click(Share);
+//打开一键分享页面
+    function Share() {
+        layer.open({
+            title:'将BNWiki分享至',
+            shadeClose: true,
+            content:'<link rel="stylesheet" href="./style.css" /><link rel="stylesheet" href="./social-share/share.min.css"><script src="./js/main.js"></script><script src="./social-share/social-share.min.js"></script><script src="./social-share/qrcode.js"></script><div class="social-share share-icons"></div>',
+        })
+    };
 //监听版权信息选项
 $("[act='copyrighit_info_function']").click(copyrighit_info_function);
 //版权信息Layer弹窗
