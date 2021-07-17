@@ -95,7 +95,7 @@ layui.use(['element', 'layer', 'form'], function() {
                     $("#loginDialogAccount").val(),
                     $("#loginDialogPassword").val(),
                     function() {
-                        layer.msg('欢迎用户&ensp;'+ getUserName()+'&ensp;登录至BNWiki', {
+                        layer.msg('欢迎您，'+ getUserName(), {
                             icon: 1
                         });
                         layer.close(index);
@@ -225,7 +225,7 @@ layui.use(['element', 'layer', 'form'], function() {
                         layer.close(index);
                     },
                     function() {
-                        layer.msg('用户信息修改失败，请稍后片刻后再尝试', {
+                        layer.msg('修改失败，请稍后片刻后再尝试', {
                             icon: 2
                         });
                     }
@@ -384,7 +384,7 @@ $("[act='copyrighit_info_function']").click(copyrighit_info_function);
 //版权信息Layer弹窗
 function copyrighit_info_function() {
     layer.open({
-        title: '<span class="fal fa-copyright"> BlocklyNukkit 版权声明 <span class="fal fa-copyright">',
+        title: '<span class="fal fa-copyright"> BlocklyNukkit 版权声明',
         content: 'BlocklyNukkit是超神的冰凉发起的图形化插件编辑器和多语言解释器<br>BlocklyNukkit基于AGPL3协议开源，侵权必究<br><span class="fal fa-book"> BlocklyWiki 2021 <span class="fab fa-github-alt" > <a href="https://github.com/BlocklyNukkit/blocklynukkit.github.io">Github链接</a>'
     });
 }

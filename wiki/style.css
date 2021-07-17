@@ -119,22 +119,22 @@ body::-webkit-scrollbar {
     left: 30px;
 }
 
-.copyright-info-border{
+.copyright-info-border {
     position: relative;
-    bottom: 10px; 
+    bottom: 10px;
     padding: 125px;
     height: auto;
 }
 
-.copyright-info-btn-list{
+.copyright-info-btn-list {
     position: relative;
-    bottom: 0px;  
+    bottom: 0px;
     padding: 10px;
     height: auto;
     left: 20px;
 }
 
-.copyright-info-btn{
+.copyright-info-btn {
     border: none;
     margin: 0;
     padding: 0;
@@ -203,37 +203,48 @@ body::-webkit-scrollbar {
     width: 360px;
     padding: 20px 20px 0px 0px;
 }
-.layer-ucenter-label{
+
+.dialog-box::-webkit-scrollbar{
+    display: none;
+}
+
+.layer-ucenter-label {
     position: relative;
     left: -12px;
 }
-.layer-ucenter-uid-label{
+
+.layer-ucenter-uid-label {
     position: relative;
     left: -2px;
 }
-.layer-ucenter-border{
+
+.layer-ucenter-border {
     position: relative;
     left: 0px;
     width: 380px;
     top: 8px;
 }
-.layer-login_reg-helptext{
+
+.layer-login_reg-helptext {
     position: relative;
     left: -70px;
     bottom: -3px;
 }
-.layer-login_reg-reghelptext{
+
+.layer-login_reg-reghelptext {
     position: relative;
     left: -70px;
     bottom: 3px;
 }
-.layer-login_reg-border{
+
+.layer-login_reg-border {
     position: relative;
     left: -40px;
     bottom: -15px;
     width: 380px;
 }
-.layer-login_reg-regborder{
+
+.layer-login_reg-regborder {
     position: relative;
     left: -40px;
     bottom: -20px;
