@@ -105,9 +105,12 @@ body::-webkit-scrollbar {
     position: absolute;
     width: calc(100% - 2px);
     bottom: 0px;
-    height: 48px;
+    height: 42px;
     z-index: 0;
     background-color: #FFFFFF;
+    border-top: #EEE;
+    border-top-width: 2px;
+    border-top-style: solid;
 }
 
 .summary-copyright-center {
@@ -175,6 +178,7 @@ body::-webkit-scrollbar {
     .content-left-float {
         width: 100vw;
         left: 0px;
+        overflow-x: hidden;
     }
 }
 
@@ -186,6 +190,7 @@ body::-webkit-scrollbar {
     .content-left-float {
         width: calc(100vw - 250px);
         left: 250px;
+        overflow-x: hidden;
     }
 }
 
@@ -209,7 +214,7 @@ body::-webkit-scrollbar {
     padding: 20px 20px 0px 0px;
 }
 
-.dialog-box::-webkit-scrollbar{
+.dialog-box::-webkit-scrollbar {
     display: none;
 }
 
@@ -255,11 +260,13 @@ body::-webkit-scrollbar {
     bottom: -20px;
     width: 380px;
 }
+
 .share-btn {
     position: relative;
     z-index: 3;
     top: x;
 }
+
 .share-btn-shape {
     position: absolute;
     border-top: -10px;
@@ -275,7 +282,8 @@ body::-webkit-scrollbar {
     border-radius: 0%;
     cursor: pointer;
 }
-.share-icons{
+
+.share-icons {
     position: relative;
     text-align: center;
 }

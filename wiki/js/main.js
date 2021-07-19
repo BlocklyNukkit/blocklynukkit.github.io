@@ -46,19 +46,31 @@ layui.use(['element', 'layer', 'form'], function() {
             $("#summaryBox").velocity({
                 left: '0px'
             });
-            $("#contentBox").velocity({
-                left: '250px',
-                width: $("#contentBox").width() - 250
-            });
+            if(window.screen.width < 768){
+                $("#contentBox").velocity({
+                    left: '250px'
+                });
+            }else{
+                $("#contentBox").velocity({
+                    left: '250px',
+                    width: $("#contentBox").width() - 250
+                });
+            }
             $("#summaryFloatButton").html('<i class="layui-icon layui-icon-shrink-right"></i>');
         } else if ($("#summaryBox").css("left") == '0px') {
             $("#summaryBox").velocity({
                 left: '-250px'
             });
-            $("#contentBox").velocity({
-                left: '0px',
-                width: '100vw'
-            });
+            if(window.screen.width < 768){
+                $("#contentBox").velocity({
+                    left: '0px'
+                });
+            }else{
+                $("#contentBox").velocity({
+                    left: '0px',
+                    width: '100vw'
+                });
+            }
             $("#summaryFloatButton").html('<i class="layui-icon layui-icon-spread-left"></i>');
         }
     });
