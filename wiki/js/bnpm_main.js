@@ -2,8 +2,7 @@ layui.use(['element', 'layer', 'form'], function() {
     var element = layui.element;
     var layer = layui.layer;
     var form = layui.form;
-    var dataStorage = layui.data;
-    
+
     /**
      * @description 打开登录界面
      */
@@ -36,12 +35,12 @@ layui.use(['element', 'layer', 'form'], function() {
             }
         });
     }
-    
+
     /**
      * @description 监听打开登录对话框点击回调
      */
     $("[act='loginDialog']").click(openLoginDialog);
-    
+
     /**
      * @description 打开注册界面
      */
@@ -91,12 +90,12 @@ layui.use(['element', 'layer', 'form'], function() {
             }
         })
     }
-    
+
     /**
      * @description 监听打开注册对话框回调
      */
     $("[act='registerDialog']").click(openRegisterDialog);
-    
+
     /**
      * @description 监听登出回调
      */
@@ -116,7 +115,7 @@ layui.use(['element', 'layer', 'form'], function() {
         $("#userNavOptionAccountSetting").unbind("click").click(openAccountSettingDialog);
     };
     listen_userNavOption();
-    
+
     /**
      * @description 打开账号设置页面
      */
@@ -159,19 +158,19 @@ layui.use(['element', 'layer', 'form'], function() {
             }
         })
     }
-    
-    
+
+
     /**
      * @description 监听打开账号设置页面对话框回调
      */
     $("[act='accountSettingDialog']").click(openAccountSettingDialog);
-    
+
     /**
      * @description 用户中心下拉菜单
      */
     var userNavOptionNode = $("#userNavOption");
     userNavOptionNode.remove();
-    
+
     function refreshUerNav() {
         if (isLogined()) {
             $("#userNavName").html(getUserName()).append(userNavOptionNode);
@@ -182,4 +181,77 @@ layui.use(['element', 'layer', 'form'], function() {
         }
     }
     refreshUerNav();
+
+    /**
+     * @description 监听插件搜索框
+     */
+    $("#searchPluginInput").bind("input propertychange", function() {
+        if (this.timerID) {
+            window.clearTimeout(this.timerID);
+        }
+        this.timerID = window.setTimeout(() => {
+            let toSearch = $(this).val().trim();
+            getAllPlugins(toSearch, result => {
+                window.pluginData = result;
+                let outputHtml = "";
+                for (let each of result) {
+                    outputHtml += (
+                        `<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+                           <h3>${each.name}&ensp;<a class="bnpm-plugin-version">${each.version}</a></h3>
+                           <div class="bnpm-plugin-content">${each.description}</div> by ${each.userNickName ? each.userNickName : each.user}
+                           <button class="layui-btn layui-btn-radius layui-btn-normal bnpm-more-btn" onclick="detail('${each.name}');">详情&ensp;<i class="layui-icon layui-icon-about"></i></button>
+                           <hr/>
+                         </div>`
+                    );
+                }
+                $("#pluginList").html(outputHtml);
+            })
+        }, 1000);
+    })
 })
+
+function detail(pluginName){
+    for(let each of window.pluginData){
+        if(each.name == pluginName){
+            var index = layer.open({
+                type: 1,
+                shadeClose: true,
+                resize: true,
+                title: pluginName,
+                area: [(document.documentElement.clientWidth - 48) + "px", (document.documentElement.clientHeight - 96) + "px"],
+                maxmin: true,
+                content: $("#pluginDetailDialog"),
+                resizing: function(ele){
+                    console.log(ele);
+                }
+            });
+            var contentIframe = $("#pluginContent")[0];
+            contentIframedoc = contentIframe.contentDocument || contentIframe.contentWindow.document;
+            contentIframedoc.head.innerHTML = '<link rel="stylesheet" href="./layui/css/layui.css" />' +
+                '<link rel="stylesheet" href="./markdown.css" />' +
+                '<link rel="stylesheet" href="./prism.css" />';
+            iframeExec('layui.use("element", function(){});', './layui/layui.js');
+            contentIframedoc = contentIframe.contentDocument || contentIframe.contentWindow.document;
+            contentIframedoc.body.innerHTML = 
+                contentMD(each.info);
+            contentIframedoc.body.className = "layui-text";
+            break;
+        }
+    }
+}
+
+/**
+ * @description 在内容的iframe页面中执行js代码
+ * @param {Object} js
+ * @param {Object} src
+ */
+function iframeExec(js, src) {
+    var contentIframe = $("#pluginContent")[0];
+    contentIframedoc = contentIframe.contentDocument || contentIframe.contentWindow.document;
+    var script = contentIframedoc.createElement('script');
+    script.innerHTML = js;
+    if (src) {
+        script.src = src;
+    }
+    contentIframedoc.body.appendChild(script);
+}

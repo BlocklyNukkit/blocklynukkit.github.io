@@ -287,3 +287,43 @@ body::-webkit-scrollbar {
     position: relative;
     text-align: center;
 }
+
+.bnpm-pluginList {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: calc(100vh - 260px);
+}
+
+.bnpm-pluginList::-webkit-scrollbar{
+    display: none;
+}
+
+.bnpm-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bnpm-plugin-version {
+    font-size: 14px;
+}
+
+.bnpm-plugin-content {
+    width: calc(100% - 96px);
+}
+
+.bnpm-more-btn {
+    position: absolute;
+    right: 4px;
+    top: calc(50% - 32px);
+}
+
+.bnpm-plugin-detail-content {
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+}
+
+.bnpm-plugin-detail-iframe {
+    width: calc(100%);
+    height: calc(100%);
+}

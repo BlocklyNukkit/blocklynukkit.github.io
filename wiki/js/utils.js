@@ -7,3 +7,6 @@ function getQueryVariable(variable){
     }
     return null;
 }
+String.prototype.trim = function(){
+    return this.replace(/^(\s*)|(\s*)$/g, '');
+}

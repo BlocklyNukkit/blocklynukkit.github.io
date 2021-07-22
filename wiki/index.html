@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <title>BlocklyNukkit - 高效的MCBE创意开发框架</title>
+        <script src="./js/three.min.js"></script>
+        <style>
+            body {
+                background-color: #000000;
+                margin: 0px;
+                overflow: hidden;
+                background-image: radial-gradient(ellipse farthest-corner at center top, #23233f 0%, #000000 80%);
+            }
+
+            .btn {
+                background-color: rgba(0, 0, 0, 0);
+                width: 180px;
+                height: 48px;
+                border-radius: 30px;
+                border-style: solid;
+                border-color: #FFF;
+                display: block;
+                border-width: 2px;
+                font-weight: 300;
+                text-align: center;
+                font-size: 24px;
+                color: #FFF;
+                margin-top: 24px;
+                box-shadow: 0px 0px 10px 2px #fff;
+                cursor: pointer;
+            }
+            
+            @keyframes logo-ani {
+                100% {
+                    box-shadow: 0px 0px 30px 5px #fff;
+                }
+            }
+
+            @keyframes btn-ani-yellow {
+                100% {
+                    box-shadow: 0px 0px 16px 5px rgb(254, 233, 64);
+                    border-color: rgb(254, 233, 64);
+                }
+            }
+            
+            @keyframes btn-ani-red {
+                100% {
+                    box-shadow: 0px 0px 16px 5px rgb(229, 24, 88);
+                    border-color: rgb(229, 24, 88);
+                }
+            }
+            
+            @keyframes btn-ani-blue {
+                100% {
+                    box-shadow: 0px 0px 16px 5px rgb(20, 188, 255);
+                    border-color: rgb(20, 188, 255);
+                }
+            }
+            
+            @keyframes btn-ani-green {
+                100% {
+                    box-shadow: 0px 0px 16px 5px rgb(97, 203, 5);
+                    border-color: rgb(97, 203, 5);
+                }
+            }
+            
+            .btn-yellow:hover {
+                animation: btn-ani-yellow 1s;
+                animation-fill-mode: forwards;
+            }
+            
+            .btn-red:hover {
+                animation: btn-ani-red 1s;
+                animation-fill-mode: forwards;
+            }
+            
+            .btn-blue:hover {
+                animation: btn-ani-blue 1s;
+                animation-fill-mode: forwards;
+            }
+            
+            .btn-green:hover {
+                animation: btn-ani-green 1s;
+                animation-fill-mode: forwards;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="./img/BlocklyNukkitLogo_flat.svg" style="
+            position: absolute;
+            z-index: -1;
+            left: calc(50vw - 54px);
+            top: calc(10vh - 50px);
+            width: 100px;
+            height: 100px;
+        ">
+        <div style="
+            box-shadow: 0px 0px 25px 5px #fff;
+            position: absolute;
+            z-index: -2;
+            width: 98px;
+            height: 98px;
+        	border-radius: 10px;
+            left: calc(50vw - 53px);
+            top: calc(10vh - 50px);
+            animation: logo-ani 2s infinite linear;
+            animation-direction: alternate;
+        "></div>
+        <div style="
+            font-size: 48px;
+            color: #FFF;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 30%;
+            left: 50%;
+            font-weight: 300;
+            text-align: center;
+        ">
+
+            <span>BlocklyNukkit<span>
+
+            <div style="
+                position: absolute;
+                transform: translate(-50%, -50%);
+                top: calc(100% + 20px);
+                left: 50%;
+                font-weight: 300;
+                font-size: 18px;
+                width: 100%;
+            ">高效、强大的MCBE创意开发框架</div>
+
+        </div>
+
+        <div style="
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 60%;
+            left: 50%;
+        ">
+            <button class="btn btn-green" onclick="window.open('https://tools.blocklynukkit.com')">Editor</button>
+            <button class="btn btn-yellow" onclick="window.open('wiki.html')">WIKI</button>
+            <button class="btn btn-blue" onclick="window.open('bnpm.html')">BNPM</button>
+            <button class="btn btn-red" onclick="window.open('https://github.com/Superice666/BlocklyNukkit')">Github</button>
+        </div>
+
+        <script src="./js/starField.js"></script>
+    </body>
+</html>
