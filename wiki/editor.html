@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <title>BNWIKI - WebIDE</title>
+        <link rel="stylesheet" href="./layui/css/layui.css">
+        <link rel="stylesheet" href="./style.css" />
+        <link rel="stylesheet" href="./social-share/share.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@0ac23ca/css/all.css">
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="./js/utils.js"></script>
+        <script src="./layui/layui.js"></script>
+        <script src="./layui/velocity.js"></script>
+        <script src="./layui/velocity-ui.js"></script>
+        <script src="./layui/pinyin.js"></script>
+        <script src="./js/split.js"></script>
+        <script src="./js/prism.js"></script>
+        <script src="./showdown/showdown.min.js"></script>
+        <script src="./js/md.js"></script>
+        <script src="https://imgcache.qq.com/qcloud/cloudbase-js-sdk/1.4.1/cloudbase.js"></script>
+        <script src="https://imgcache.qq.com/qcloud/cloudbase-js-sdk/1.4.1/cloudbase.auth.js"></script>
+        <script src="https://imgcache.qq.com/qcloud/cloudbase-js-sdk/1.4.1/cloudbase.functions.js"></script>
+        <script src="https://imgcache.qq.com/qcloud/cloudbase-js-sdk/1.4.1/cloudbase.storage.js"></script>
+        <script src="https://imgcache.qq.com/qcloud/cloudbase-js-sdk/1.4.1/cloudbase.database.js"></script>
+        <script src="./ace/ace.js"></script>
+        <script src="./ace/ext-scrollbar.js"></script>
+        <script src="./js/account.js"></script>
+        <script src="./js/wiki_db.js"></script>
+    </head>
+    <body>
+        <!-- HEADER 顶部区域 -->
+        <div class="layui-header header">
+            <ul class="layui-nav" lay-filter="">
+                <img src="./img/BlocklyNukkitLogo_flat.svg" class="layui-nav-img nav-logo">
+                <li class="nav-title">BNWiki</li>
+                <li id="userNav" class="layui-nav-item nav-user">
+                    <a href="#"><img src="./img/user.svg" class="layui-nav-img"><span id="userNavName" act="loginDialog">点击登录</span></a>
+                    <dl id="userNavOption" class="layui-nav-child">
+                        <dd><a id="userNavOptionAccountSetting" href="#" act="accountSettingDialog"><i class="fal fa-user-cog">&ensp;用户中心&ensp;</i></a></dd>
+                        <dd>
+                            <hr>
+                        </dd>
+                        <dd><a id="userNavOptionLogOut" href="#"><i class="fal fa-sign-out-alt">&ensp;退出登录&ensp;</i></a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <!-- 内容区 -->
+        <div class="editor-global-box">
+            <div id="editor_summaryBar" class="editor-split-item editor-split-scrollable"></div>
+            <div id="editor_mainView" class="editor-split-item">
+                <div id="editor_toolbar" class="editor-split-toolbar">
+                    <i class="layui-icon layui-icon-addition" act="enlarge"></i>
+                    <i class="layui-icon layui-icon-subtraction" act="narrow"></i>
+                    <i class="layui-icon layui-icon-refresh" act="refresh"></i>
+                    <i class="layui-icon layui-icon-ok-circle" act="save"></i>
+                    <i class="layui-icon layui-icon-picture" act="uploadPicture"></i>
+                    <i class="layui-icon layui-icon-menu-fill" act="editMenu"></i>
+                </div>
+                <div id="editor_ace" class="editor-split-sub"></div>
+                <iframe id="editor_preview" class="editor-split-sub" frameborder="0" seamless="seamless" scrolling="auto"
+                    sandbox="allow-scripts allow-same-origin"></iframe>
+            </div>
+        </div>
+        <!-- 对话框区 -->
+        <div id="dialogBox">
+            <!-- 登录表单 -->
+            <div id="loginDialog" class="layui-form dialog-box">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="fal fa-user fa-lg"></span>&ensp;账号</label>
+                    <div class="layui-input-block">
+                        <input id="loginDialogAccount" type="text" name="account" required lay-verify="required"
+                            placeholder="用户名/邮箱" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="fal fa-key fa-lg"></span>&ensp;密码</label>
+                    <div class="layui-input-block">
+                        <input id="loginDialogPassword" type="password" name="password" required lay-verify="required"
+                            placeholder="密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block layui-text layer-login_reg-helptext">
+                        <span class="fa fa-question-circle fa-lg"></span>&ensp;没有BNWiki账号?&ensp;<a href="#" act="registerDialog">点此注册</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 注册表单 -->
+            <div id="registerDialog" class="layui-form dialog-box">
+                <div class="layui-form-item">
+                    <label class="layui-form-label layer-login_reg-icons-email"><span class="fal fa-user-friends fa-lg"></span>&ensp;邮箱</label>
+                    <div class="layui-input-block">
+                        <input id="registerDialogEmail" type="email" name="email" required lay-verify="required"
+                            placeholder="请输入注册邮箱" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="fal fa-key fa-lg"></span>&ensp;密码</label>
+                    <div class="layui-input-block">
+                        <input id="registerDialogPassword" type="password" name="password" required lay-verify="required"
+                            placeholder="请输入注册密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="fal fa-badge-check fa-lg"></span>&ensp;验证</label>
+                    <div class="layui-input-block">
+                        <input id="registerDialogRepeatPassword" type="password" name="password" required lay-verify="required"
+                            placeholder="请验证您输入的注册密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block layui-text layer-login_reg-reghelptext">
+                        <span class="fa fa-question-circle fa-lg"></span>&ensp;已有BNWiki账号?&ensp;<a href="#" act="loginDialog">点此登录</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 用户中心表单 -->
+            <div id="accountSettingDialog" class="layui-form dialog-box" lay-filter="accountSettingDialog">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="fal fa-id-card"></i>&ensp;注册邮箱</label>
+                    <div class="layui-input-block">
+                        <input id="accountSettingDialogUserEmail" type="text" name="useremail" disabled="disabled"
+                            class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label layer-ucenter-uid-label"><i class="fal fa-tags"></i>&ensp;用户UID</label>
+                    <div class="layui-input-block">
+                        <input id="accountSettingDialogUID" type="text" name="uid" disabled="disabled" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label layer-ucenter-label"><i class="fal fa-user-tag"></i>&ensp;用户名</label>
+                    <div class="layui-input-block">
+                        <input id="accountSettingDialogUsername" type="text" name="username" required lay-verify="required"
+                            placeholder="请输入您想要设置的用户名" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="fal fa-venus-mars"></i>&ensp;性别设置</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="sex" value="MALE" title="男">
+                        <input type="radio" name="sex" value="FEMALE" title="女">
+                        <input type="radio" name="sex" value="UNKNOWN" title="保密" checked>
+                    </div>
+                </div>
+            </div>
+            <!-- 上传文件进度对话框 -->
+            <div id="uploadFileProcessDialog" class="layui-container dialog-box-no-form layui-text" lay-filter="uploadFileProcessDialog">
+                <div class="layui-row">
+                        <p>正在上传中...</p>
+                        <div class="layui-progress layui-progress-big" lay-showPercent="true" lay-filter="uploadFileProcessBar">
+                            <div class="layui-progress-bar layui-bg-blue" lay-percent="0%"></div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <script src="./js/editor_main.js"></script>
+        <script src="./js/You%20Found%20it.js"></script>
+    </body>
+</html>

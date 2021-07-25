@@ -17,12 +17,9 @@ layui.use(['element', 'layer', 'form'], function() {
     /**
      * @description 目录文本并渲染
      */
-    $.get(summaryURL, function(result) {
-        result = result.replace("---  \nlayout: default  \n---  ", "").replace("# SUMMARY", "").replace(
-            "  \n", '');
-        window.summaryContent = result;
-        $("#summaryContent").html(summaryMD(result));
-
+    getPassage("SUMMARY.md", res => {
+        window.summaryContent = res[0].content;
+        $("#summaryContent").html(summaryMD(window.summaryContent));
         /**
          * @description 加载初始化iframe内容
          */
@@ -274,6 +271,7 @@ layui.use(['element', 'layer', 'form'], function() {
  * @param {Object} isSummaryJump 是否目录也跟着改变
  */
 function loadContent(path, title, isSummaryJump) {
+    console.log("|"+path+"|");
     //如果是正在展开目录造成的点击，不进行处理
     if (window.summaryEnfolding) {
         return;
@@ -314,16 +312,14 @@ function loadContent(path, title, isSummaryJump) {
         duration: 500,
         queue: false,
         complete: () => {
-            $.get(contentSource + path, function(result) {
+            getPassage(path, function(result) {
                     //更改DOM内容
                     var contentIframe = $("#content")[0];
                     contentIframedoc = contentIframe.contentDocument || contentIframe.contentWindow.document;
                     contentIframedoc.body.innerHTML = '<div class="vertical-16px"></div>' +
-                        contentMD(result);
+                        contentMD(result[0].content);
                     contentIframedoc.body.className = "layui-text";
-                })
-                //完成更改后渐入显示
-                .done(() => {
+                    //完成更改后渐入显示
                     $("#loadingCircleIcon").velocity("transition.flipXOut", {
                         complete: () => $("#loadingOKIcon").velocity("transition.flipXIn", {
                             complete: () => {
@@ -369,9 +365,7 @@ function loadContent(path, title, isSummaryJump) {
                         }),
                         display: 'block'
                     });
-                })
-                //失败后显示错误
-                .fail((x) => {
+                }, function(){
                     console.log(x);
                     $("#loadingCircleIcon").velocity("transition.flipXOut", {
                         complete: () => $("#loadingFailedIcon").velocity(

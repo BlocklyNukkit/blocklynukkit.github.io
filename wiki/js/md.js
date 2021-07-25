@@ -80,6 +80,7 @@ var contentExt = function() {
                     let contents = each.substring(3, each.length - 3).split(/\n?&.*?: *?\n/g);
                     let headerOutput = '';
                     let contentOutput = '';
+                    if(headers == null) continue;
                     for (let i = 0; i < headers.length; i++) {
                         let eachHeader = headers[i].replace('\n', '').replace('& ', '').replace(':', '');
                         if (i == 0) {
@@ -114,6 +115,7 @@ var contentExt = function() {
                     let contents = each.substring(3, each.length - 3).split(/\n?&.*?: *?\n/g);
                     let headerOutput = [];
                     let contentOutput = [];
+                    if(headers == null) continue;
                     for (let i = 0; i < headers.length; i++) {
                         let eachHeader = headers[i].replace('\n', '').replace('& ', '').replace(':', '');
                         headerOutput.push('<span class="layui-timeline-title">' + eachHeader + '</span>');
@@ -185,6 +187,8 @@ var content_md = new showdown.Converter({
     strikethrough: true,
     tasklists: true,
     noHeaderId: true,
+    smoothLivePreview: true,
+    requireSpaceBeforeHeadingText: true,
     extensions: ['bn_colorAble', 'bn_highlight_before', 'bn_content_md', 'bn_table_helper']
 });
 
@@ -201,10 +205,10 @@ function contentMD(markdown) {
         /<pre class="line-numbers language-.*?"><code class="language-.*?">[\s\S]*?<\/code><\/pre>/g);
     if (codeBlocks != null)
         for (let each of codeBlocks) {
-            out = out.replace(each, each.replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+            out = out.replace(each, each.replace(/&lt;/g, '<').replace(/&gt;/g, '>')).replace(/<\?php/g, '&lt;?php');
         }
     out = out.replace(/<span class="token string"><(.*?)><\/span>/g, '<span class="token string">&lt;$1&gt;<\/span>').replace(
         /¨D/g, '$');
-    //console.log(out);
+    console.log(out);
     return out;
 }
