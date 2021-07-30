@@ -1,5 +1,13 @@
 var db = app.database();
-var wikiDB = db.collection("wiki_BlocklyNukkit");
+let currentSource = getSource();
+var wikiDB = db.collection("wiki_"+currentSource);
+
+function checkSource(){
+    if(getSource() != currentSource){
+        currentSource = getSource();
+        wikiDB = db.collection("wiki_"+currentSource);
+    }
+}
 
 /**
  * @description 目录树
@@ -7,6 +15,7 @@ var wikiDB = db.collection("wiki_BlocklyNukkit");
 var summaryTree = []
 
 function getPassage(path, okHandler, failHandler){
+    checkSource();
     wikiDB.where({
         path: path
     }).get().then(res => {
@@ -17,6 +26,7 @@ function getPassage(path, okHandler, failHandler){
 }
 
 function newPassage(path, title, content, okHandler, samePathHandler, failHandler){
+    checkSource();
     wikiDB.where({
         path: path
     }).count().then(res => {
@@ -39,6 +49,7 @@ function newPassage(path, title, content, okHandler, samePathHandler, failHandle
 }
 
 function updatePassage(path, content, okHandler, failHandler){
+    checkSource();
     wikiDB.where({
         path: path
     }).update({
@@ -51,6 +62,7 @@ function updatePassage(path, content, okHandler, failHandler){
 }
 
 function parseSummary(okHandler, failHandler){
+    checkSource();
     getPassage("SUMMARY.md", res => {
         //获取目录内容
         let raw = res[0].content;

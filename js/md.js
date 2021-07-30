@@ -209,6 +209,5 @@ function contentMD(markdown) {
         }
     out = out.replace(/<span class="token string"><(.*?)><\/span>/g, '<span class="token string">&lt;$1&gt;<\/span>').replace(
         /¨D/g, '$');
-    console.log(out);
     return out;
 }

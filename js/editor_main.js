@@ -3,6 +3,15 @@ layui.use(['element', 'layer', 'form', 'tree'], function() {
     var layer = layui.layer;
     var form = layui.form;
     var tree = layui.tree;
+    
+    /**
+     * @description 切换到指定wiki
+     */
+    let currentSrc = getQueryVariable("src");
+    if(currentSrc){
+        setSource(currentSrc);
+        window.title = currentSrc;
+    }
 
     /**
      * @description 初始化内容iframe

@@ -3,6 +3,15 @@ layui.use(['element', 'layer', 'form'], function() {
     var layer = layui.layer;
     var form = layui.form;
     var dataStorage = layui.data;
+    
+    /**
+     * @description 切换到指定wiki
+     */
+    let currentSrc = getQueryVariable("src");
+    if(currentSrc){
+        setSource(currentSrc);
+        window.title = currentSrc;
+    }
 
     /**
      * @description 初始化内容iframe
@@ -271,7 +280,6 @@ layui.use(['element', 'layer', 'form'], function() {
  * @param {Object} isSummaryJump 是否目录也跟着改变
  */
 function loadContent(path, title, isSummaryJump) {
-    console.log("|"+path+"|");
     //如果是正在展开目录造成的点击，不进行处理
     if (window.summaryEnfolding) {
         return;
@@ -348,8 +356,9 @@ function loadContent(path, title, isSummaryJump) {
                                                 "BlocklyNukkit Wiki",
                                                 window.location.href
                                                 .split('?')[0] +
-                                                "?goto=" + path +
-                                                "title=" + title);
+                                                "?src=" + getSource() +
+                                                "&goto=" + path +
+                                                "&title=" + title);
                                         } else {
                                             window.history.pushState({
                                                     path: path
@@ -357,7 +366,8 @@ function loadContent(path, title, isSummaryJump) {
                                                 "BlocklyNukkit Wiki",
                                                 window.location.href
                                                 .split('?')[0] +
-                                                "?goto=" + path);
+                                                "?src=" + getSource() +
+                                                "&goto=" + path);
                                         }
                                     },
                                 });
@@ -412,6 +422,11 @@ function iframeExec(js, src) {
  */
 function jumpByLocationHref() {
     let gotoPath = getQueryVariable("goto");
+    let currentSrc = getQueryVariable("src");
+    if(currentSrc){
+        setSource(currentSrc);
+        window.title = currentSrc;
+    }
     if (gotoPath) {
         if (gotoPath.startsWith("/")) {
             gotoPath = gotoPath.replace("/", '');
