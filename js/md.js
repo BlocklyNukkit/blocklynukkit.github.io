@@ -90,7 +90,7 @@ var contentExt = function() {
                         }
                     }
                     for (let i = 1; i < contents.length; i++) {
-                        let eachContent = contentMD(contents[i]);
+                        let eachContent = contentMDSync(contents[i]);
                         if (i == 1) {
                             contentOutput += ('<div class="layui-tab-item layui-show">' + eachContent +
                                 '</div>');
@@ -121,7 +121,7 @@ var contentExt = function() {
                         headerOutput.push('<span class="layui-timeline-title">' + eachHeader + '</span>');
                     }
                     for (let i = 1; i < contents.length; i++) {
-                        let eachContent = contentMD(contents[i]);
+                        let eachContent = contentMDSync(contents[i]);
                         contentOutput.push('<p>' + eachContent + '</p>');
                     }
                     let result = '';
@@ -193,13 +193,12 @@ var content_md = new showdown.Converter({
 });
 
 
-function summaryMD(markdown) {
+function summaryMD(markdown, okHandler) {
     let out = summary_md.makeHtml(markdown);
-    //console.log(out);
-    return out;
+    okHandler(out);
 }
 
-function contentMD(markdown) {
+function contentMDSync(markdown) {
     let out = content_md.makeHtml(markdown);
     let codeBlocks = out.match(
         /<pre class="line-numbers language-.*?"><code class="language-.*?">[\s\S]*?<\/code><\/pre>/g);
@@ -210,4 +209,8 @@ function contentMD(markdown) {
     out = out.replace(/<span class="token string"><(.*?)><\/span>/g, '<span class="token string">&lt;$1&gt;<\/span>').replace(
         /¨D/g, '$');
     return out;
+}
+
+function contentMD(markdown, okHandler){
+    okHandler(contentMDSync(markdown));
 }

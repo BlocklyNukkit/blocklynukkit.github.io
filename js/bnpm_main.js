@@ -232,8 +232,9 @@ function detail(pluginName){
                 '<link rel="stylesheet" href="./prism.css" />';
             iframeExec('layui.use("element", function(){});', './layui/layui.js');
             contentIframedoc = contentIframe.contentDocument || contentIframe.contentWindow.document;
-            contentIframedoc.body.innerHTML = 
-                contentMD(each.info);
+            contentMD(each.info, function(mdRes){
+                contentIframedoc.body.innerHTML = mdRes;
+            })
             contentIframedoc.body.className = "layui-text";
             break;
         }

@@ -28,7 +28,7 @@ layui.use(['element', 'layer', 'form'], function() {
      */
     getPassage("SUMMARY.md", res => {
         window.summaryContent = res[0].content;
-        $("#summaryContent").html(summaryMD(window.summaryContent));
+        summaryMD(window.summaryContent, mdRes => $("#summaryContent").html(mdRes));
         /**
          * @description 加载初始化iframe内容
          */
@@ -324,8 +324,9 @@ function loadContent(path, title, isSummaryJump) {
                     //更改DOM内容
                     var contentIframe = $("#content")[0];
                     contentIframedoc = contentIframe.contentDocument || contentIframe.contentWindow.document;
-                    contentIframedoc.body.innerHTML = '<div class="vertical-16px"></div>' +
-                        contentMD(result[0].content);
+                    contentMD(result[0].content, function(mdRes){
+                        contentIframedoc.body.innerHTML = '<div class="vertical-16px"></div>' + mdRes;
+                    })
                     contentIframedoc.body.className = "layui-text";
                     //完成更改后渐入显示
                     $("#loadingCircleIcon").velocity("transition.flipXOut", {

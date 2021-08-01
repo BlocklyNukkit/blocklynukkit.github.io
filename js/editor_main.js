@@ -317,8 +317,9 @@ function iframeExec(js, src) {
 function rendMarkdown(md) {
     var contentIframe = $("#editor_preview")[0];
     contentIframedoc = contentIframe.contentDocument || contentIframe.contentWindow.document;
-    contentIframedoc.body.innerHTML = '<div class="vertical-16px"></div>' +
-        contentMD(md);
+    contentMD(md, function(mdRes){
+        contentIframedoc.body.innerHTML = '<div class="vertical-16px"></div>' + mdRes;
+    })
     contentIframedoc.body.className = "layui-text";
 }
 
