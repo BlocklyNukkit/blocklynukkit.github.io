@@ -22,7 +22,7 @@ var content = `
 官网:  https://wiki.blocklynukkit.com
 
 本网站由BlocklyNukkit Center强力驱动！
-点该链接有惊喜 https://cutt.ly/0mSbR0m 
+点该链接有惊喜 https://rmc.ink/funny
 (同时汞锡铌发现了这个彩蛋)
 `
 
